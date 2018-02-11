@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Make it work.">
 <meta property="og:description" content="集合框架总览框架的接口与实现接口容器接口被分为两组，其中一组扩展于Collection，也就是最基础的容器，由如下接口的组成：  List Set SortedSet NavigableSet Queue BlockingQueue TransferQueue Deque BlockingDeque  另外一组接口基于Map接口，如下：  SortedMap NavigableMap Concur">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-11T15:38:07.000Z">
+<meta property="og:updated_time" content="2018-02-11T15:40:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java集合框架01——综述">
 <meta name="twitter:description" content="集合框架总览框架的接口与实现接口容器接口被分为两组，其中一组扩展于Collection，也就是最基础的容器，由如下接口的组成：  List Set SortedSet NavigableSet Queue BlockingQueue TransferQueue Deque BlockingDeque  另外一组接口基于Map接口，如下：  SortedMap NavigableMap Concur">
@@ -360,10 +360,7 @@
 </ul>
 <h4 id="Q1：unmodifiable-collection-和-immutable-collection的区别？"><a href="#Q1：unmodifiable-collection-和-immutable-collection的区别？" class="headerlink" title="Q1：unmodifiable collection 和 immutable collection的区别？"></a>Q1：unmodifiable collection 和 immutable collection的区别？</h4><ul>
 <li>unmodifiable collection通常是其他collection的readonly-view（只读视图），即一种特定collection的装饰类。不能对其进行任何的修改操作，如add(),remove(E e),set(int index, E e)等操作。但被它装饰的容器(underlying collection)可以进行这些修改操作，并且当容器内的内容改变时，对应的视图（unmodifiable collection）也会跟着改变</li>
-<li>immutable collection中所有的修改操作都被禁止使用。真正意义上的不可修改。下面给出一个unmodifiable collection和immutable collection实现例子<pre>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; modifiableList = <span class="keyword">new</span> ArrayList&lt;&gt;();   <span class="comment">// 被装饰的List	</span></span><br><span class="line">  modifiableList.add(<span class="string">"a"</span>);        </span><br><span class="line">  <span class="comment">// unmodifiable collection</span></span><br><span class="line">  List&lt;String&gt; unModifiableList = Collections.unmodifiableList(modifiableList);  <span class="comment">// read-only view</span></span><br><span class="line">  modifiableList.add(<span class="string">"b"</span>);    <span class="comment">// error,throw UnsupportedOperationException</span></span><br><span class="line">  <span class="comment">// immutableList </span></span><br><span class="line">  List&lt;String&gt; immutableList = Collections.unmodifiableList(<span class="keyword">new</span> ArrayList&lt;String&gt; (modifiableList));</span><br><span class="line">  immutableList.add(<span class="string">"c"</span>)    	<span class="comment">// error,throw UnsupportedOperationException</span></span><br><span class="line">  							<span class="comment">// 通过new操作，定义一个没有underlying collection的unmodifiable collection，</span></span><br><span class="line">  							<span class="comment">// 等价于immutable collection</span></span><br></pre></td></tr></table></figure>
-</pre>
-
+<li>immutable collection中所有的修改操作都被禁止使用。真正意义上的不可修改。下面给出一个unmodifiable collection和immutable collection实现例子<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; modifiableList = <span class="keyword">new</span> ArrayList&lt;&gt;();   <span class="comment">// 被装饰的List	</span></span><br><span class="line">  modifiableList.add(<span class="string">"a"</span>);        </span><br><span class="line">  <span class="comment">// unmodifiable collection</span></span><br><span class="line">  List&lt;String&gt; unModifiableList = Collections.unmodifiableList(modifiableList);  <span class="comment">// read-only view</span></span><br><span class="line">  modifiableList.add(<span class="string">"b"</span>);    <span class="comment">// error,throw UnsupportedOperationException</span></span><br><span class="line">  <span class="comment">// immutableList </span></span><br><span class="line">  List&lt;String&gt; immutableList = Collections.unmodifiableList(<span class="keyword">new</span> ArrayList&lt;String&gt; (modifiableList));</span><br><span class="line">  immutableList.add(<span class="string">"c"</span>)    	<span class="comment">// error,throw UnsupportedOperationException</span></span><br><span class="line">  							<span class="comment">// 通过new操作，定义一个没有underlying collection的unmodifiable collection，</span></span><br><span class="line">  							<span class="comment">// 等价于immutable collection</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><h4 id="各接口的实现如下表"><a href="#各接口的实现如下表" class="headerlink" title="各接口的实现如下表"></a>各接口的实现如下表</h4><table>
@@ -462,6 +459,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/02/11/Java集合框架02——ArrayList/" rel="prev" title="Java集合框架02——ArrayList">
+                Java集合框架02——ArrayList <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -537,7 +538,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
