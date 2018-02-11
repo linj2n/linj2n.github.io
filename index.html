@@ -260,6 +260,217 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/01/01/Java集合框架01——总览/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linj2n">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Make it work.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/01/Java集合框架01——总览/" itemprop="url">Java集合框架01——综述</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-01T23:31:34+08:00">
+                2018-01-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="集合框架总览"><a href="#集合框架总览" class="headerlink" title="集合框架总览"></a>集合框架总览</h1><h2 id="框架的接口与实现"><a href="#框架的接口与实现" class="headerlink" title="框架的接口与实现"></a>框架的接口与实现</h2><h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p>容器接口被分为两组，其中一组扩展于Collection，也就是最基础的容器，由如下接口的组成：</p>
+<ul>
+<li>List</li>
+<li>Set</li>
+<li>SortedSet</li>
+<li>NavigableSet</li>
+<li>Queue</li>
+<li>BlockingQueue</li>
+<li>TransferQueue</li>
+<li>Deque</li>
+<li>BlockingDeque</li>
+</ul>
+<p>另外一组接口基于Map接口，如下：</p>
+<ul>
+<li>SortedMap</li>
+<li>NavigableMap</li>
+<li>ConcurrentMap</li>
+<li>ConcurrentNavigabelMap</li>
+</ul>
+<p>Map区别于Collection接口，但集合同时也实现了Collection视图操作，可以像Collection那样操作Map。</p>
+<p>各接口关系图如下：</p>
+<p>有关接口性质的术语:</p>
+<ul>
+<li><strong>Unmodifiable 和 modifiable</strong>： 分别表示提供修改操作和不提供修改的集合，例如，含有add(),remove(),remove()的集合是可修改的。见Q1</li>
+<li><strong>Immutable 和 mutable</strong>： 见Q1</li>
+<li><strong>Fixed-size Collection 和 varible-size Collection</strong>：分别表示固定大小和可变大小容器</li>
+<li><strong>Random access 和 Sequential access</strong>： 随机访问与顺序访问两种接口，例如ArrayList和LinkedList，前者支持随机，后者只能顺序访问。泛型算法能够根据这两个接口特性分别提供不同的实现，提高效率。* </li>
+</ul>
+<h4 id="Q1：unmodifiable-collection-和-immutable-collection的区别？"><a href="#Q1：unmodifiable-collection-和-immutable-collection的区别？" class="headerlink" title="Q1：unmodifiable collection 和 immutable collection的区别？"></a>Q1：unmodifiable collection 和 immutable collection的区别？</h4><ul>
+<li>unmodifiable collection通常是其他collection的readonly-view（只读视图），即一种特定collection的装饰类。不能对其进行任何的修改操作，如add(),remove(E e),set(int index, E e)等操作。但被它装饰的容器(underlying collection)可以进行这些修改操作，并且当容器内的内容改变时，对应的视图（unmodifiable collection）也会跟着改变</li>
+<li>immutable collection中所有的修改操作都被禁止使用。真正意义上的不可修改。下面给出一个unmodifiable collection和immutable collection实现例子<pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; modifiableList = <span class="keyword">new</span> ArrayList&lt;&gt;();   <span class="comment">// 被装饰的List	</span></span><br><span class="line">  modifiableList.add(<span class="string">"a"</span>);        </span><br><span class="line">  <span class="comment">// unmodifiable collection</span></span><br><span class="line">  List&lt;String&gt; unModifiableList = Collections.unmodifiableList(modifiableList);  <span class="comment">// read-only view</span></span><br><span class="line">  modifiableList.add(<span class="string">"b"</span>);    <span class="comment">// error,throw UnsupportedOperationException</span></span><br><span class="line">  <span class="comment">// immutableList </span></span><br><span class="line">  List&lt;String&gt; immutableList = Collections.unmodifiableList(<span class="keyword">new</span> ArrayList&lt;String&gt; (modifiableList));</span><br><span class="line">  immutableList.add(<span class="string">"c"</span>)    	<span class="comment">// error,throw UnsupportedOperationException</span></span><br><span class="line">  							<span class="comment">// 通过new操作，定义一个没有underlying collection的unmodifiable collection，</span></span><br><span class="line">  							<span class="comment">// 等价于immutable collection</span></span><br></pre></td></tr></table></figure>
+</pre>
+
+</li>
+</ul>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><h4 id="各接口的实现如下表"><a href="#各接口的实现如下表" class="headerlink" title="各接口的实现如下表"></a>各接口的实现如下表</h4><table>
+<thead>
+<tr>
+<th>Interface</th>
+<th>Hash Table</th>
+<th>Resizable Array</th>
+<th>Balanced Tree</th>
+<th>Linked List</th>
+<th>Hash Table and Linked List</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Set    </strong></td>
+<td>HashSet</td>
+<td></td>
+<td>TreeSet</td>
+<td></td>
+<td>LinkedHashSet</td>
+</tr>
+<tr>
+<td><strong>List</strong></td>
+<td></td>
+<td>ArrayList</td>
+<td></td>
+<td>LinkedList</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Deque</strong></td>
+<td></td>
+<td>ArrayDeque</td>
+<td></td>
+<td>LinkedList</td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Map    </strong></td>
+<td>HashMap</td>
+<td></td>
+<td>TreeMap</td>
+<td></td>
+<td>LinkedHashMap</td>
+</tr>
+</tbody>
+</table>
+<p>上述的实现是unsynchronized，即不同步的，不支持多线程。但是Collections类中有一个工厂方法synchronizedCollection使得这些不同步的collection支持同步。</p>
+<h4 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h4><p>此外，Java中还定义了许多实现容器接口的抽象类，这些抽象类定义了接口中的一些最基础的、最共性的操作。这些抽象类如下：</p>
+<ul>
+<li>AbstractCollection</li>
+<li>AbstractList</li>
+<li>AbstractSequentialList</li>
+<li>AbstractSet</li>
+<li>AbstractQueue</li>
+<li>AbstractMap</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/01/01/399-Nuts-and-bolts-problem/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -469,7 +680,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -482,7 +693,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
