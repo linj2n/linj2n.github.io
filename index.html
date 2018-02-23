@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next muse use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -98,7 +98,7 @@
 <meta property="og:title" content="linj2n@zll">
 <meta property="og:url" content="http://linj2n.cn/index.html">
 <meta property="og:site_name" content="linj2n@zll">
-<meta property="og:locale" content="zh-Hans">
+<meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linj2n@zll">
 
@@ -115,7 +115,7 @@
     motion: true,
     duoshuo: {
       userId: '0',
-      author: '博主'
+      author: 'Author'
     },
     algolia: {
       applicationID: '',
@@ -153,7 +153,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
   
   
@@ -203,7 +203,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            首页
+            Home
           </a>
         </li>
       
@@ -213,7 +213,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            归档
+            Archives
           </a>
         </li>
       
@@ -223,7 +223,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            标签
+            Tags
           </a>
         </li>
       
@@ -246,6 +246,322 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/01/03/5-Kth-Large-Element/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linj2n">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="linj2n@zll">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/03/5-Kth-Large-Element/" itemprop="url">5 Kth Large Element</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-03T22:02:22+08:00">
+                2018-01-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="5-Kth-Largest-Element"><a href="#5-Kth-Largest-Element" class="headerlink" title="5. Kth Largest Element"></a>5. Kth Largest Element</h1><h3 id="From：LintCode-5-Kth-Largest-Element"><a href="#From：LintCode-5-Kth-Largest-Element" class="headerlink" title="From：LintCode 5. Kth Largest Element"></a>From：<a href="http://www.lintcode.com/en/problem/kth-largest-element/" target="_blank" rel="noopener">LintCode 5. Kth Largest Element</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Find K-th largest element in an array.</p>
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><p>In array <code>[9,3,2,4,8]</code>, the 3rd largest element is <code>4</code>.</p>
+<p>In array <code>[1,2,3,4,5]</code>, the 1st largest element is <code>5</code>, 2nd largest element is <code>4</code>, 3rd largest element is <code>3</code> and etc.</p>
+<h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis:"></a>Input and output analysis:</h2><p>给定一个<code>int[]</code>与<code>k</code>输出第<code>k</code>个最大的数。</p>
+<h2 id="Approach-1-Sorting"><a href="#Approach-1-Sorting" class="headerlink" title="Approach#1 Sorting"></a>Approach#1 Sorting</h2><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>显然，若对<code>int[]</code>进行排序便可以很方便的根据下标找出第<code>k</code>个最大的数。当数组从小到大排好序后，第<code>k</code>个最大的数，就是<code>nums[nums.length - k]</code>。</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">kthLargestElement</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// write your code here</span></span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        <span class="keyword">return</span> nums[nums.length - k];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></pre>
+
+<h3 id="Coplexity"><a href="#Coplexity" class="headerlink" title="Coplexity"></a>Coplexity</h3><table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Space  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O( nlogn )</td>
+<td>O(1 )</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Approach-2-Quick-selection"><a href="#Approach-2-Quick-selection" class="headerlink" title="Approach#2 Quick selection"></a>Approach#2 Quick selection</h2><h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h3><p>我们只需要找出第<code>k</code>个最大的数，若对整个数组进行排序未免有点浪费时间。这里可以采用用划分的思路，假设数组已经是有序的，求出第<code>k</code>个最大的数在排好序的数组中的最终位置，即<code>kIndex = nums.length - k;</code>。在数组随机选取一个<code>p</code>，根据<code>p</code>的值对数组进行整理，使得<code>p</code>的左边部分的元素全部<code>&lt; p</code>，右边部分的元素<code>&gt;= p</code>。然后比较<code>kIndex</code>与<code>p</code>，若<code>p</code>大了，则在<code>p</code>左边部分继续划分，<code>p</code>小了，则在右边部分划分。更新<code>p</code>值，继续比较，知道<code>kIndex == p</code>，此时<code>nums[kIndex]</code>就是第<code>k</code>个最大数。</p>
+<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">exch</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = nums[i]; nums[i] = nums[j]; nums[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">lomutoPartition</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span></span>&#123;</span><br><span class="line">        Random r = <span class="keyword">new</span> Random();</span><br><span class="line">        <span class="keyword">int</span> p = lo + r.nextInt(hi - lo + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">int</span> pivotValue = nums[p];</span><br><span class="line">        exch(nums,lo,p);</span><br><span class="line">        <span class="keyword">int</span> i = lo, j = lo + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (j &lt;= hi)&#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[j] &lt; pivotValue)</span><br><span class="line">                exch(nums,++i,j);</span><br><span class="line">            ++j;</span><br><span class="line">        &#125;</span><br><span class="line">        exch(nums,i,lo);</span><br><span class="line">        <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">kthLargestElement</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// write your code here</span></span><br><span class="line">        <span class="keyword">int</span> seqKIndex = nums.length - k, lo = <span class="number">0</span>, hi = nums.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> pivot = lomutoPartition(nums,lo,hi);</span><br><span class="line">        <span class="keyword">while</span> (pivot != seqKIndex)&#123;</span><br><span class="line">            <span class="keyword">if</span> (pivot &gt; seqKIndex)&#123;</span><br><span class="line">                hi = pivot - <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                lo = pivot + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            pivot = lomutoPartition(nums,lo,hi);        </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums[seqKIndex];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></pre>
+
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Space  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O( n )</td>
+<td>O( 1 )</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/01/03/80-Median/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linj2n">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="linj2n@zll">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/03/80-Median/" itemprop="url">80 Median</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-03T20:00:27+08:00">
+                2018-01-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="80-Median"><a href="#80-Median" class="headerlink" title="80. Median"></a>80. Median</h1><h3 id="From：LintCode-80-Median"><a href="#From：LintCode-80-Median" class="headerlink" title="From：LintCode 80. Median"></a>From：<a href="http://www.lintcode.com/en/problem/median/" target="_blank" rel="noopener">LintCode 80. Median</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a unsorted array with integers, find the median of it.</p>
+<p>A median is the middle number of the array after it is sorted.</p>
+<p>If there are even numbers in the array, return the N/2-th number after sorted.</p>
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><p>Given <code>[4, 5, 1, 2, 3]</code>, return <code>3</code>.</p>
+<p>Given <code>[7, 9, 4, 5]</code>, return <code>5</code>.</p>
+<h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis"></a>Input and output analysis</h2><p>给定一个<code>size</code>为<code>n</code>的数组<code>nums[0...n-1]</code>，返回按照从小到大顺数第<code>n/2</code>的元素，转换成下标表示即第<code>(n-1)/2</code>的元素。</p>
+<h2 id="Approach-1-库函数排序"><a href="#Approach-1-库函数排序" class="headerlink" title="Approach#1 库函数排序"></a>Approach#1 库函数排序</h2><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>对数组进行排序，拍完序后该数组中位数为<code>nums[(nums.length -1) / 2]</code></p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * @param : A list of integers</span></span><br><span class="line"><span class="comment">     * @return: An integer denotes the middle number of the array</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">median</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// write your code here</span></span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        <span class="keyword">return</span> nums[(nums.length - <span class="number">1</span>) / <span class="number">2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
+
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Space  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O( nlogn )</td>
+<td>O( ? )</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Approach-2-Quick-Selection"><a href="#Approach-2-Quick-Selection" class="headerlink" title="Approach#2 Quick Selection"></a>Approach#2 Quick Selection</h2><h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h3><p>使用<code>quickSelection</code>算法选择第<code>(nums.length -1) / 2</code>个数。详见<a href="http://www.lintcode.com/en/problem/kth-largest-element/" target="_blank" rel="noopener">LintCode 5. Kth Largest Element</a></p>
+<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">exch</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = nums[i]; nums[i] = nums[j]; nums[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">lomutoPartition</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> pivotValue = nums[lo];</span><br><span class="line">        <span class="keyword">int</span> i = lo, j = lo + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (j &lt;= hi)&#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[j] &lt; pivotValue)</span><br><span class="line">                exch(nums,++i,j);</span><br><span class="line">            ++j;</span><br><span class="line">        &#125;</span><br><span class="line">        exch(nums,i,lo);</span><br><span class="line">        <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">median</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// write your code here</span></span><br><span class="line">        <span class="keyword">int</span> m = (nums.length-<span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> lo = <span class="number">0</span>, hi = nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> pivot = lomutoPartition(nums,lo,hi);</span><br><span class="line">        <span class="keyword">while</span> (pivot != m)&#123;</span><br><span class="line">            <span class="keyword">if</span> (pivot &gt; m)&#123;</span><br><span class="line">                hi = pivot - <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                lo = pivot + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            pivot = lomutoPartition(nums,lo,hi);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums[m];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
+
+<h3 id="Complexity-1"><a href="#Complexity-1" class="headerlink" title="Complexity"></a>Complexity</h3><table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Space  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O( n )</td>
+<td>O( 1 )</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -289,9 +605,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-02T00:22:44+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-02T00:22:44+08:00">
                 2018-01-02
               </time>
             
@@ -331,7 +647,7 @@
       
         
           
-            <h1 id="657-Judge-Route-Circle"><a href="#657-Judge-Route-Circle" class="headerlink" title="657. Judge Route Circle"></a>657. Judge Route Circle</h1><h4 id="Source：657-Judge-Route-Circle"><a href="#Source：657-Judge-Route-Circle" class="headerlink" title="Source：657. Judge Route Circle"></a>Source：<a href="https://leetcode.com/problems/judge-route-circle/description/" target="_blank" rel="noopener">657. Judge Route Circle</a></h4><h2 id="Description："><a href="#Description：" class="headerlink" title="Description："></a>Description：</h2><p>Initially, there is a Robot at position (0, 0). Given a sequence of its moves, judge if this robot makes a circle, which means it moves back to the original place.</p>
+            <h1 id="657-Judge-Route-Circle"><a href="#657-Judge-Route-Circle" class="headerlink" title="657. Judge Route Circle"></a>657. Judge Route Circle</h1><h4 id="From：657-Judge-Route-Circle"><a href="#From：657-Judge-Route-Circle" class="headerlink" title="From：657. Judge Route Circle"></a>From：<a href="https://leetcode.com/problems/judge-route-circle/description/" target="_blank" rel="noopener">657. Judge Route Circle</a></h4><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Initially, there is a Robot at position (0, 0). Given a sequence of its moves, judge if this robot makes a circle, which means it moves back to the original place.</p>
 <p>The move sequence is represented by a string. And each move is represent by a character. The valid robot moves are R (Right), L (Left), U (Up) and D (down). The output should be true or false representing whether the robot makes a circle.</p>
 <h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><pre>Input: "UD"
 Output: true
@@ -339,29 +655,13 @@ Output: true
 <pre>Input: "LL"
 Output: false</pre>
 
-<h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis:"></a>Input and output analysis:</h2><h3 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a>Solution：</h3><p>两种判别最后是否在原点的方法：</p>
+<h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis"></a>Input and output analysis</h2><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>两种判别最后是否在原点的方法：</p>
 <ul>
 <li>记录<code>L</code>、<code>R</code>、<code>U</code>、<code>D</code>出现的次数，若<code>L</code>和<code>R</code>出现次数相等，<code>U</code>和<code>D</code>出现次数也相等，则返回<code>true</code>，否则返回<code>false</code>。</li>
 <li>使用两个变量<code>v</code>、<code>h</code>。遍历<code>String moves</code>，若<code>L</code>、<code>U</code>出现则做<code>v++</code>与<code>h++</code>操作，<code>R</code>、<code>D</code>则做<code>v--</code>与<code>h--</code>操作。最后若<code>v == 0 &amp;&amp; h == 0</code>成立则返回<code>true</code>，否则返回<code>false</code>。</li>
 </ul>
 <p>确定判别方法后，接下来就是如何遍历<code>String moves</code>与分别标记<code>L、R、U、D</code>出现次数的问题了，具体见实现代码。</p>
 <h2 id="Approach-1-Using-HashMap"><a href="#Approach-1-Using-HashMap" class="headerlink" title="Approach#1 Using HashMap"></a>Approach#1 Using HashMap</h2><h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Runtime: 48ms</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">judgeCircle</span><span class="params">(String moves)</span> </span>&#123;</span><br><span class="line">        HashMap &lt;Character,Integer&gt; h = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        h.put(<span class="string">'L'</span>,<span class="number">0</span>);h.put(<span class="string">'R'</span>,<span class="number">0</span>);h.put(<span class="string">'U'</span>,<span class="number">0</span>);h.put(<span class="string">'D'</span>,<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; moves.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">char</span> currChar = moves.charAt(i);</span><br><span class="line">            <span class="keyword">int</span> temp = h.get(currChar) + <span class="number">1</span>;</span><br><span class="line">            h.put(currChar,temp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> h.get(<span class="string">'L'</span>).equals(h.get(<span class="string">'R'</span>))  &amp;&amp; h.get(<span class="string">'U'</span>).equals(h.get(<span class="string">'D'</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Coplexity"><a href="#Coplexity" class="headerlink" title="Coplexity"></a>Coplexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O( n )</td>
-<td>O( 1 )</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Approach-2-Convert-the-String-to-a-new-char-array"><a href="#Approach-2-Convert-the-String-to-a-new-char-array" class="headerlink" title="Approach#2 Convert the String to a new char array."></a>Approach#2 Convert the String to a new char array.</h2><h3 id="Solution-and-Code"><a href="#Solution-and-Code" class="headerlink" title="Solution and Code"></a>Solution and Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Runtime: 15ms</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">judgeCircle</span><span class="params">(String moves)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">char</span> [] strArr = moves.toCharArray();   </span><br><span class="line">        <span class="keyword">int</span> v = <span class="number">0</span>, h = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; strArr.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (strArr[i] == <span class="string">'L'</span>) &#123;</span><br><span class="line">                h ++;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span> (strArr[i] == <span class="string">'R'</span>) &#123;</span><br><span class="line">                h --;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span> (strArr[i] == <span class="string">'U'</span>) &#123;</span><br><span class="line">                v ++;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span> (strArr[i] == <span class="string">'D'</span>) &#123;</span><br><span class="line">                v --;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> v == <span class="number">0</span> &amp;&amp; h == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
 
 <h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><table>
 <thead>
@@ -377,9 +677,25 @@ Output: false</pre>
 </tr>
 </tbody>
 </table>
-<h2 id="Approach-3-Use-extra-array-that-storing-the-ocurr-times"><a href="#Approach-3-Use-extra-array-that-storing-the-ocurr-times" class="headerlink" title="Approach#3 Use extra array that storing the ocurr times."></a>Approach#3 Use extra array that storing the ocurr times.</h2><h2 id="Solution-and-Code-1"><a href="#Solution-and-Code-1" class="headerlink" title="Solution and Code"></a>Solution and Code</h2><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Runtime: 9ms</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">judgeCircle</span><span class="params">(String moves)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> [] temp = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">128</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c: moves.toCharArray()) &#123;</span><br><span class="line">            temp[c] ++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> temp[<span class="string">'L'</span>] == temp[<span class="string">'R'</span>] &amp;&amp; temp[<span class="string">'U'</span>] == temp[<span class="string">'D'</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
+<h2 id="Approach-2-Convert-the-String-to-a-new-char-array"><a href="#Approach-2-Convert-the-String-to-a-new-char-array" class="headerlink" title="Approach#2 Convert the String to a new char array."></a>Approach#2 Convert the String to a new char array.</h2><h3 id="Solution-and-Code"><a href="#Solution-and-Code" class="headerlink" title="Solution and Code"></a>Solution and Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Runtime: 15ms</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">judgeCircle</span><span class="params">(String moves)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">char</span> [] strArr = moves.toCharArray();   </span><br><span class="line">        <span class="keyword">int</span> v = <span class="number">0</span>, h = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; strArr.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (strArr[i] == <span class="string">'L'</span>) &#123;</span><br><span class="line">                h ++;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span> (strArr[i] == <span class="string">'R'</span>) &#123;</span><br><span class="line">                h --;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span> (strArr[i] == <span class="string">'U'</span>) &#123;</span><br><span class="line">                v ++;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span> (strArr[i] == <span class="string">'D'</span>) &#123;</span><br><span class="line">                v --;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> v == <span class="number">0</span> &amp;&amp; h == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
 
 <h3 id="Complexity-1"><a href="#Complexity-1" class="headerlink" title="Complexity"></a>Complexity</h3><table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Space  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O( n )</td>
+<td>O( 1 )</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Approach-3-Use-extra-array-that-storing-the-ocurr-times"><a href="#Approach-3-Use-extra-array-that-storing-the-ocurr-times" class="headerlink" title="Approach#3 Use extra array that storing the ocurr times."></a>Approach#3 Use extra array that storing the ocurr times.</h2><h2 id="Solution-and-Code-1"><a href="#Solution-and-Code-1" class="headerlink" title="Solution and Code"></a>Solution and Code</h2><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Runtime: 9ms</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">judgeCircle</span><span class="params">(String moves)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> [] temp = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">128</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c: moves.toCharArray()) &#123;</span><br><span class="line">            temp[c] ++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> temp[<span class="string">'L'</span>] == temp[<span class="string">'R'</span>] &amp;&amp; temp[<span class="string">'U'</span>] == temp[<span class="string">'D'</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
+
+<h3 id="Complexity-2"><a href="#Complexity-2" class="headerlink" title="Complexity"></a>Complexity</h3><table>
 <thead>
 <tr>
 <th>Time</th>
@@ -470,9 +786,9 @@ Output: false</pre>
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-02T00:00:28+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-02T00:00:28+08:00">
                 2018-01-02
               </time>
             
@@ -512,7 +828,7 @@ Output: false</pre>
       
         
           
-            <h1 id="399-Nuts-and-bolts-problem"><a href="#399-Nuts-and-bolts-problem" class="headerlink" title="399.Nuts and bolts problem"></a>399.Nuts and bolts problem</h1><h3 id="Source：lintcode-399-Nuts-amp-Bolts-Problem"><a href="#Source：lintcode-399-Nuts-amp-Bolts-Problem" class="headerlink" title="Source：lintcode 399. Nuts &amp; Bolts Problem"></a>Source：<a href="http://www.lintcode.com/en/problem/nuts-bolts-problem/" target="_blank" rel="noopener">lintcode 399. Nuts &amp; Bolts Problem</a></h3><h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis:"></a>Input and output analysis:</h2><p>给定<code>String[] nuts</code>和<code>String[] bolts</code>分别模拟螺帽和螺丝集合，这些集合里面的元素有大小之分且没有重复的元素。<code>nuts[]</code>和<code>bolts[]</code>一一对应，即nuts[]中的任意元素一定能在bolts[]与其匹配的元素，反之亦可。函数需要对字符串数组进行处理，使得最后两个数组满足条件：</p>
+            <h1 id="399-Nuts-and-bolts-problem"><a href="#399-Nuts-and-bolts-problem" class="headerlink" title="399.Nuts and bolts problem"></a>399.Nuts and bolts problem</h1><h3 id="From：lintcode-399-Nuts-amp-Bolts-Problem"><a href="#From：lintcode-399-Nuts-amp-Bolts-Problem" class="headerlink" title="From：lintcode 399. Nuts &amp; Bolts Problem"></a>From：<a href="http://www.lintcode.com/en/problem/nuts-bolts-problem/" target="_blank" rel="noopener">lintcode 399. Nuts &amp; Bolts Problem</a></h3><h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis"></a>Input and output analysis</h2><p>给定<code>String[] nuts</code>和<code>String[] bolts</code>分别模拟螺帽和螺丝集合，这些集合里面的元素有大小之分且没有重复的元素。<code>nuts[]</code>和<code>bolts[]</code>一一对应，即nuts[]中的任意元素一定能在bolts[]与其匹配的元素，反之亦可。函数需要对字符串数组进行处理，使得最后两个数组满足条件：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对于<span class="number">0</span> &lt; i &lt;= nuts.length - <span class="number">1</span>; 都满足条件 Compaer.cmp(nuts[i],bolts[i]) == <span class="number">0</span>;  </span><br></pre></td></tr></table></figure>
 <p>对题意的理解还需要注意一下几点：</p>
 <ul>
@@ -521,7 +837,7 @@ Output: false</pre>
 <li>nuts和bolts中的元素是有大小的之分的，但不可以通过比较两个螺丝得到这两个螺丝的大小，同样也不能通过比较两个螺帽得到这两个螺帽的大小，这也对应着上一条的限制。</li>
 <li>Compare.cmp(String a, String b)函数的参数顺序不能颠倒，即a只能是nuts数组的元素，b只能是bolts数组的元素，参数顺序不一致会返回2。</li>
 </ul>
-<h2 id="Approach-1-Brute-force"><a href="#Approach-1-Brute-force" class="headerlink" title="Approach#1 Brute force"></a>Approach#1 Brute force</h2><h3 id="Solution："><a href="#Solution：" class="headerlink" title="Solution："></a>Solution：</h3><p>暴力破解法是我们很自然而然想到的方法。算法过程也很简单，利用两层循环，外层遍历nuts[]数组每一个元素，内层循环遍历bolts[]为每一个nuts[]找到与其匹配的元素，并把它放在相应的位置上，具体看代码。</p>
+<h2 id="Approach-1-Brute-force"><a href="#Approach-1-Brute-force" class="headerlink" title="Approach#1 Brute force"></a>Approach#1 Brute force</h2><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>暴力破解法是我们很自然而然想到的方法。算法过程也很简单，利用两层循环，外层遍历nuts[]数组每一个元素，内层循环遍历bolts[]为每一个nuts[]找到与其匹配的元素，并把它放在相应的位置上，具体看代码。</p>
 <h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sortNutsAndBolts</span><span class="params">(String[] nuts, String[] bolts, NBComparator compare)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// write your code here</span></span><br><span class="line">        <span class="keyword">int</span> n = nuts.length;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">            String currNut = nuts[i];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt; n; j++ )&#123;</span><br><span class="line">                <span class="keyword">if</span> (compare.cmp(currNut,bolts[j]) == <span class="number">0</span>)&#123;</span><br><span class="line">                    exch(bolts,i,j); <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">exch</span><span class="params">(String[] a, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">        String temp = a[i]; a[i] = a[j]; a[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><table>
 <thead>
@@ -537,7 +853,7 @@ Output: false</pre>
 </tr>
 </tbody>
 </table>
-<h2 id="Approach-2-Customized-Quicksort-algorithm"><a href="#Approach-2-Customized-Quicksort-algorithm" class="headerlink" title="Approach#2 Customized Quicksort algorithm."></a>Approach#2 Customized Quicksort algorithm.</h2><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>通过题意我们可以知道，两数组的元素一一对应，并且有大小之分，当nuts和bolts按照升序或者降序排列时，同一个位置i，nuts[i]和bolts[i]是一一匹配的，即满足Compare.cmp(nuts[i],bolts[i]) == 0;。自然地，我们想到若能对nuts[]和bolts[]排序，问题便可以得到解决，并且使用一些良好的排序也可以在O(nlogn)内解决问题。</p>
+<h2 id="Approach-2-Customized-Quicksort-algorithm"><a href="#Approach-2-Customized-Quicksort-algorithm" class="headerlink" title="Approach#2 Customized Quicksort algorithm."></a>Approach#2 Customized Quicksort algorithm.</h2><h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h3><p>通过题意我们可以知道，两数组的元素一一对应，并且有大小之分，当nuts和bolts按照升序或者降序排列时，同一个位置i，nuts[i]和bolts[i]是一一匹配的，即满足Compare.cmp(nuts[i],bolts[i]) == 0;。自然地，我们想到若能对nuts[]和bolts[]排序，问题便可以得到解决，并且使用一些良好的排序也可以在O(nlogn)内解决问题。</p>
 <p>由于不能直接对数组nuts[]或bolts[]里面的元素相互比较排序，只能使用比较器拿出一个nuts[]元素与bolts[]元素比较（反之亦可）。所以归并排序、插入排序并不是很适用，剩下只能考虑快速排序。</p>
 <p>这里复习一下快速排序，快速排序中的partition算法有一个很好的优点：</p>
 <ul>
@@ -555,7 +871,7 @@ Output: false</pre>
 </ul>
 </li>
 </ul>
-<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sortNutsAndBolts</span><span class="params">(String[] nuts, String[] bolts, NBComparator compare)</span> </span>&#123;</span><br><span class="line">        Collections.shuffle(Arrays.asList(nuts));</span><br><span class="line">        Collections.shuffle(Arrays.asList(bolts));</span><br><span class="line">        sortNutsAndBolts(nuts,bolts,<span class="number">0</span>,bolts.length - <span class="number">1</span>, compare);</span><br><span class="line">        <span class="comment">// write your code here</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// pre：nuts[lo..hi]，bolts[lo..hi]内的元素未匹配。</span></span><br><span class="line">    <span class="comment">// post：nuts[lo..hi]，bolts[lo..hi]内的元素已匹配。</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sortNutsAndBolts</span><span class="params">(String[] nuts, String[] bolts, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi, NBComparator compare)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (lo &gt;= hi) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> pivot = partition(nuts,bolts[lo],lo,hi,compare);</span><br><span class="line">        partition(bolts,nuts[pivot],lo,hi,compare);    <span class="comment">// 交替划分量数组，返回pivot下标位置</span></span><br><span class="line">        sortNutsAndBolts(nuts,bolts,lo,pivot-<span class="number">1</span>,compare);</span><br><span class="line">        sortNutsAndBolts(nuts,bolts,pivot+<span class="number">1</span>,hi,compare);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// pre: NA</span></span><br><span class="line">    <span class="comment">// post: a[]中下标i、j两元素交换位置。</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">exch</span><span class="params">(String[] a, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        String temp = a[i]; a[i] = a[j]; a[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// pre:	未划分的字符串数组</span></span><br><span class="line">    <span class="comment">// post: 对于返回值j，a中的元素满足：a[lo..j-1] &lt; a[j] &lt; a[j+1..hi]</span></span><br><span class="line">    <span class="comment">// 这个partition算法实现是基于hoare版本的简要改写，虽不够简洁，但是易于理解和纸笔模拟，也可以使用其他的版本实现。</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">partition</span><span class="params">(String[] a, String pValue, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi, NBComparator compare)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">    	<span class="comment">// 找出与pValue匹配的元素，调整到lo位置上</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = lo; i &lt;= hi; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (compare.cmp(a[i],pValue) == <span class="number">0</span> || compare.cmp(pValue,a[i]) == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                exch(a,lo,i); <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 只含有两个元素时，单独处理</span></span><br><span class="line">        <span class="keyword">if</span> (hi - lo == <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (compare.cmp(a[hi],pValue) == -<span class="number">1</span> || compare.cmp(pValue,a[hi]) == <span class="number">1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                exch(a,lo,hi); <span class="keyword">return</span> hi;</span><br><span class="line">            &#125;<span class="keyword">else</span></span><br><span class="line">                <span class="keyword">return</span> lo;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 以a[lo] 作为pivot元，划分数组</span></span><br><span class="line">        <span class="keyword">int</span> i = lo + <span class="number">1</span>, j = hi;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>)</span><br><span class="line">        &#123;	</span><br><span class="line">        	<span class="comment">// pValue与a[i]匹配，移动i下标，a[i] &gt; a[lo]时停止。</span></span><br><span class="line">            <span class="keyword">while</span> (<span class="keyword">true</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (i &gt;= hi || (compare.cmp(a[i],pValue) == <span class="number">1</span> || compare.cmp(pValue,a[i]) == -<span class="number">1</span>))</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    ++i;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// pValue与a[j]匹配，移动i下标，a[j] &lt; a[lo]时停止。</span></span><br><span class="line">            <span class="keyword">while</span> (<span class="keyword">true</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (j &lt;= lo || (compare.cmp(a[j],pValue) == -<span class="number">1</span> || compare.cmp(pValue,a[j]) == <span class="number">1</span>))</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    --j;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// i与j不交叉或相遇时，交换a[i]与a[j]</span></span><br><span class="line">            <span class="keyword">if</span> (i &gt;= j)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                exch(a,i,j);</span><br><span class="line">        &#125;</span><br><span class="line">        exch(a,lo,j);   <span class="comment">// 将a[lo]移动到中轴pivot位置，划分完成</span></span><br><span class="line">        <span class="keyword">return</span> j;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sortNutsAndBolts</span><span class="params">(String[] nuts, String[] bolts, NBComparator compare)</span> </span>&#123;</span><br><span class="line">        Collections.shuffle(Arrays.asList(nuts));</span><br><span class="line">        Collections.shuffle(Arrays.asList(bolts));</span><br><span class="line">        sortNutsAndBolts(nuts,bolts,<span class="number">0</span>,bolts.length - <span class="number">1</span>, compare);</span><br><span class="line">        <span class="comment">// write your code here</span></span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// pre：nuts[lo..hi]，bolts[lo..hi]内的元素未匹配。</span></span><br><span class="line">    <span class="comment">// post：nuts[lo..hi]，bolts[lo..hi]内的元素已匹配。</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sortNutsAndBolts</span><span class="params">(String[] nuts, String[] bolts, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi, NBComparator compare)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (lo &gt;= hi) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> pivot = partition(nuts,bolts[lo],lo,hi,compare);</span><br><span class="line">        partition(bolts,nuts[pivot],lo,hi,compare);    <span class="comment">// 交替划分量数组，返回pivot下标位置</span></span><br><span class="line">        sortNutsAndBolts(nuts,bolts,lo,pivot-<span class="number">1</span>,compare);</span><br><span class="line">        sortNutsAndBolts(nuts,bolts,pivot+<span class="number">1</span>,hi,compare);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// pre: NA</span></span><br><span class="line">    <span class="comment">// post: a[]中下标i、j两元素交换位置。</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">exch</span><span class="params">(String[] a, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        String temp = a[i]; a[i] = a[j]; a[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// pre:	未划分的字符串数组</span></span><br><span class="line">    <span class="comment">// post: 对于返回值j，a中的元素满足：a[lo..j-1] &lt; a[j] &lt; a[j+1..hi]</span></span><br><span class="line">    <span class="comment">// 这个partition算法实现是基于hoare版本的简要改写，虽不够简洁，但是易于理解和纸笔模拟，也可以使用其他的版本实现。</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">partition</span><span class="params">(String[] a, String pValue, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi, NBComparator compare)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">    	<span class="comment">// 找出与pValue匹配的元素，调整到lo位置上</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = lo; i &lt;= hi; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (compare.cmp(a[i],pValue) == <span class="number">0</span> || compare.cmp(pValue,a[i]) == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                exch(a,lo,i); <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 只含有两个元素时，单独处理</span></span><br><span class="line">        <span class="keyword">if</span> (hi - lo == <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (compare.cmp(a[hi],pValue) == -<span class="number">1</span> || compare.cmp(pValue,a[hi]) == <span class="number">1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                exch(a,lo,hi); <span class="keyword">return</span> hi;</span><br><span class="line">            &#125;<span class="keyword">else</span></span><br><span class="line">                <span class="keyword">return</span> lo;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 以a[lo] 作为pivot元，划分数组</span></span><br><span class="line">        <span class="keyword">int</span> i = lo + <span class="number">1</span>, j = hi;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>)</span><br><span class="line">        &#123;	</span><br><span class="line">        	<span class="comment">// pValue与a[i]匹配，移动i下标，a[i] &gt; a[lo]时停止。</span></span><br><span class="line">            <span class="keyword">while</span> (<span class="keyword">true</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (i &gt;= hi || (compare.cmp(a[i],pValue) == <span class="number">1</span> || compare.cmp(pValue,a[i]) == -<span class="number">1</span>))</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    ++i;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// pValue与a[j]匹配，移动i下标，a[j] &lt; a[lo]时停止。</span></span><br><span class="line">            <span class="keyword">while</span> (<span class="keyword">true</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (j &lt;= lo || (compare.cmp(a[j],pValue) == -<span class="number">1</span> || compare.cmp(pValue,a[j]) == <span class="number">1</span>))</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    --j;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// i与j不交叉或相遇时，交换a[i]与a[j]</span></span><br><span class="line">            <span class="keyword">if</span> (i &gt;= j)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                exch(a,i,j);</span><br><span class="line">        &#125;</span><br><span class="line">        exch(a,lo,j);   <span class="comment">// 将a[lo]移动到中轴pivot位置，划分完成</span></span><br><span class="line">        <span class="keyword">return</span> j;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h3 id="Complexity-1"><a href="#Complexity-1" class="headerlink" title="Complexity"></a>Complexity</h3><table>
 <thead>
 <tr>
@@ -647,9 +963,9 @@ Output: false</pre>
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-01T23:55:23+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-01T23:55:23+08:00">
                 2018-01-01
               </time>
             
@@ -848,9 +1164,9 @@ Output: false</pre>
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">发表于</span>
+                <span class="post-meta-item-text">Posted on</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-01T23:31:34+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-01T23:31:34+08:00">
                 2018-01-01
               </time>
             
@@ -1060,8 +1376,8 @@ Output: false</pre>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">4</span>
-                <span class="site-state-item-name">日志</span>
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">posts</span>
               </a>
             </div>
           
@@ -1073,8 +1389,8 @@ Output: false</pre>
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">3</span>
-                <span class="site-state-item-name">标签</span>
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">tags</span>
               </a>
             </div>
           
@@ -1124,11 +1440,11 @@ Output: false</pre>
 
 
 <div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
-  主题 -
+  Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
     NexT.Muse
   </a>
