@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Java Collections Framework,Java SE," />
+  <meta name="keywords" content="OJ,Leetcode," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="集合框架总览框架的接口与实现接口容器接口被分为两组，其中一组扩展于Collection，也就是最基础的容器，由如下接口的组成：  List Set SortedSet NavigableSet Queue BlockingQueue TransferQueue Deque BlockingDeque  另外一组接口基于Map接口，如下：  SortedMap NavigableMap Concur">
-<meta name="keywords" content="Java Collections Framework,Java SE">
+<meta name="description" content="88. Merge Sorted ArrayFrom：Leetcode: 88. Merge Sorted ArrayDescriptionGiven two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.You may assume that nums1 has enough s">
+<meta name="keywords" content="OJ,Leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java Collections Framework 01——Overview">
-<meta property="og:url" content="http://linj2n.cn/2018/01/01/Java-Collections-Framework-01——Overview/index.html">
+<meta property="og:title" content="88. Merge Sorted Array">
+<meta property="og:url" content="http://linj2n.cn/2018/01/04/88-Merge-Sorted-Array/index.html">
 <meta property="og:site_name" content="linj2n@zll">
-<meta property="og:description" content="集合框架总览框架的接口与实现接口容器接口被分为两组，其中一组扩展于Collection，也就是最基础的容器，由如下接口的组成：  List Set SortedSet NavigableSet Queue BlockingQueue TransferQueue Deque BlockingDeque  另外一组接口基于Map接口，如下：  SortedMap NavigableMap Concur">
+<meta property="og:description" content="88. Merge Sorted ArrayFrom：Leetcode: 88. Merge Sorted ArrayDescriptionGiven two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.You may assume that nums1 has enough s">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-02-23T13:59:02.000Z">
+<meta property="og:updated_time" content="2018-03-04T16:19:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java Collections Framework 01——Overview">
-<meta name="twitter:description" content="集合框架总览框架的接口与实现接口容器接口被分为两组，其中一组扩展于Collection，也就是最基础的容器，由如下接口的组成：  List Set SortedSet NavigableSet Queue BlockingQueue TransferQueue Deque BlockingDeque  另外一组接口基于Map接口，如下：  SortedMap NavigableMap Concur">
+<meta name="twitter:title" content="88. Merge Sorted Array">
+<meta name="twitter:description" content="88. Merge Sorted ArrayFrom：Leetcode: 88. Merge Sorted ArrayDescriptionGiven two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.You may assume that nums1 has enough s">
 
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://linj2n.cn/2018/01/01/Java-Collections-Framework-01——Overview/"/>
+  <link rel="canonical" href="http://linj2n.cn/2018/01/04/88-Merge-Sorted-Array/"/>
 
 
 
 
 
-  <title>Java Collections Framework 01——Overview | linj2n@zll</title>
+  <title>88. Merge Sorted Array | linj2n@zll</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/01/01/Java-Collections-Framework-01——Overview/">
+    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/01/04/88-Merge-Sorted-Array/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="linj2n">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java Collections Framework 01——Overview</h1>
+          <h1 class="post-title" itemprop="name headline">88. Merge Sorted Array</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-01T23:31:34+08:00">
-                2018-01-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-04T23:57:37+08:00">
+                2018-01-04
               </time>
             
 
@@ -330,95 +330,25 @@
       
 
       
-        <h1 id="集合框架总览"><a href="#集合框架总览" class="headerlink" title="集合框架总览"></a>集合框架总览</h1><h2 id="框架的接口与实现"><a href="#框架的接口与实现" class="headerlink" title="框架的接口与实现"></a>框架的接口与实现</h2><h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p>容器接口被分为两组，其中一组扩展于Collection，也就是最基础的容器，由如下接口的组成：</p>
-<ul>
-<li>List</li>
-<li>Set</li>
-<li>SortedSet</li>
-<li>NavigableSet</li>
-<li>Queue</li>
-<li>BlockingQueue</li>
-<li>TransferQueue</li>
-<li>Deque</li>
-<li>BlockingDeque</li>
-</ul>
-<p>另外一组接口基于Map接口，如下：</p>
-<ul>
-<li>SortedMap</li>
-<li>NavigableMap</li>
-<li>ConcurrentMap</li>
-<li>ConcurrentNavigabelMap</li>
-</ul>
-<p>Map区别于Collection接口，但集合同时也实现了Collection视图操作，可以像Collection那样操作Map。</p>
-<p>各接口关系图如下：</p>
-<p>有关接口性质的术语:</p>
-<ul>
-<li><strong>Unmodifiable 和 modifiable</strong>： 分别表示提供修改操作和不提供修改的集合，例如，含有add(),remove(),remove()的集合是可修改的。见Q1</li>
-<li><strong>Immutable 和 mutable</strong>： 见Q1</li>
-<li><strong>Fixed-size Collection 和 varible-size Collection</strong>：分别表示固定大小和可变大小容器</li>
-<li><strong>Random access 和 Sequential access</strong>： 随机访问与顺序访问两种接口，例如ArrayList和LinkedList，前者支持随机，后者只能顺序访问。泛型算法能够根据这两个接口特性分别提供不同的实现，提高效率。* </li>
-</ul>
-<h4 id="Q1：unmodifiable-collection-和-immutable-collection的区别？"><a href="#Q1：unmodifiable-collection-和-immutable-collection的区别？" class="headerlink" title="Q1：unmodifiable collection 和 immutable collection的区别？"></a>Q1：unmodifiable collection 和 immutable collection的区别？</h4><ul>
-<li>unmodifiable collection通常是其他collection的readonly-view（只读视图），即一种特定collection的装饰类。不能对其进行任何的修改操作，如add(),remove(E e),set(int index, E e)等操作。但被它装饰的容器(underlying collection)可以进行这些修改操作，并且当容器内的内容改变时，对应的视图（unmodifiable collection）也会跟着改变</li>
-<li>immutable collection中所有的修改操作都被禁止使用。真正意义上的不可修改。下面给出一个unmodifiable collection和immutable collection实现例子<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; modifiableList = <span class="keyword">new</span> ArrayList&lt;&gt;();   <span class="comment">// 被装饰的List	</span></span><br><span class="line">  modifiableList.add(<span class="string">"a"</span>);        </span><br><span class="line">  <span class="comment">// unmodifiable collection</span></span><br><span class="line">  List&lt;String&gt; unModifiableList = Collections.unmodifiableList(modifiableList);  <span class="comment">// read-only view</span></span><br><span class="line">  modifiableList.add(<span class="string">"b"</span>);    <span class="comment">// error,throw UnsupportedOperationException</span></span><br><span class="line">  <span class="comment">// immutableList </span></span><br><span class="line">  List&lt;String&gt; immutableList = Collections.unmodifiableList(<span class="keyword">new</span> ArrayList&lt;String&gt; (modifiableList));</span><br><span class="line">  immutableList.add(<span class="string">"c"</span>)    	<span class="comment">// error,throw UnsupportedOperationException</span></span><br><span class="line">  							<span class="comment">// 通过new操作，定义一个没有underlying collection的unmodifiable collection，</span></span><br><span class="line">  							<span class="comment">// 等价于immutable collection</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><h4 id="各接口的实现如下表"><a href="#各接口的实现如下表" class="headerlink" title="各接口的实现如下表"></a>各接口的实现如下表</h4><table>
+        <h1 id="88-Merge-Sorted-Array"><a href="#88-Merge-Sorted-Array" class="headerlink" title="88. Merge Sorted Array"></a>88. Merge Sorted Array</h1><h3 id="From：Leetcode-88-Merge-Sorted-Array"><a href="#From：Leetcode-88-Merge-Sorted-Array" class="headerlink" title="From：Leetcode: 88. Merge Sorted Array"></a>From：<a href="https://leetcode.com/problems/merge-sorted-array/description/" target="_blank" rel="noopener">Leetcode: 88. Merge Sorted Array</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.<br>You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additional elements from nums2. The number of elements initialized in nums1 and nums2 are m and n respectively.</p>
+<h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis"></a>Input and output analysis</h2><p>给定两个排好序的数组<code>nums1</code>和<code>nums2</code>，将<code>num2</code>数组合并到<code>nums1</code>数组，并且最后的<code>nums1</code>也是有序的。</p>
+<h2 id="Approach-1"><a href="#Approach-1" class="headerlink" title="Approach#1"></a>Approach#1</h2><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>由于合并<code>nums1</code>的大小为<code>m+n</code>，我们可以对<code>nums1</code>和<code>nums2</code>从后往前遍历，比较两数组的元素，将较大的元素依次复制到<code>nums1</code>末尾位置。</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span> m, <span class="keyword">int</span> [] nums2, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = m - <span class="number">1</span>,j = n - <span class="number">1</span>,k = m + n -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &gt;= <span class="number">0</span> &amp;&amp; j &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums1[i] &lt; nums2[j]) &#123;</span><br><span class="line">                nums1[k--] = nums2[j--];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                nums1[k--] = nums1[i--];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (i &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            nums1[k--] = nums1[i--];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (j &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            nums1[k--] = nums2[j--];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></pre>
+
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><table>
 <thead>
 <tr>
-<th>Interface</th>
-<th>Hash Table</th>
-<th>Resizable Array</th>
-<th>Balanced Tree</th>
-<th>Linked List</th>
-<th>Hash Table and Linked List</th>
+<th>Time</th>
+<th>Space  </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Set    </strong></td>
-<td>HashSet</td>
-<td></td>
-<td>TreeSet</td>
-<td></td>
-<td>LinkedHashSet</td>
-</tr>
-<tr>
-<td><strong>List</strong></td>
-<td></td>
-<td>ArrayList</td>
-<td></td>
-<td>LinkedList</td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Deque</strong></td>
-<td></td>
-<td>ArrayDeque</td>
-<td></td>
-<td>LinkedList</td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Map    </strong></td>
-<td>HashMap</td>
-<td></td>
-<td>TreeMap</td>
-<td></td>
-<td>LinkedHashMap</td>
+<td>O( n )</td>
+<td>O( 1 )</td>
 </tr>
 </tbody>
 </table>
-<p>上述的实现是unsynchronized，即不同步的，不支持多线程。但是Collections类中有一个工厂方法synchronizedCollection使得这些不同步的collection支持同步。</p>
-<h4 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h4><p>此外，Java中还定义了许多实现容器接口的抽象类，这些抽象类定义了接口中的一些最基础的、最共性的操作。这些抽象类如下：</p>
-<ul>
-<li>AbstractCollection</li>
-<li>AbstractList</li>
-<li>AbstractSequentialList</li>
-<li>AbstractSet</li>
-<li>AbstractQueue</li>
-<li>AbstractMap</li>
-</ul>
 
       
     </div>
@@ -436,9 +366,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java-Collections-Framework/" rel="tag"># Java Collections Framework</a>
+            <a href="/tags/OJ/" rel="tag"># OJ</a>
           
-            <a href="/tags/Java-SE/" rel="tag"># Java SE</a>
+            <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
           
         </div>
       
@@ -451,15 +381,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/01/03/5-Kth-Large-Element/" rel="next" title="5 Kth Large Element">
+                <i class="fa fa-chevron-left"></i> 5 Kth Large Element
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/01/Java-Collections-Framework-02——ArrayList/" rel="prev" title="Java Collections Framework 02——ArrayList">
-                Java Collections Framework 02——ArrayList <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -584,7 +514,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#集合框架总览"><span class="nav-number">1.</span> <span class="nav-text">集合框架总览</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#框架的接口与实现"><span class="nav-number">1.1.</span> <span class="nav-text">框架的接口与实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#接口"><span class="nav-number">1.1.1.</span> <span class="nav-text">接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Q1：unmodifiable-collection-和-immutable-collection的区别？"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">Q1：unmodifiable collection 和 immutable collection的区别？</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现"><span class="nav-number">1.1.2.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#各接口的实现如下表"><span class="nav-number">1.1.2.1.</span> <span class="nav-text">各接口的实现如下表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#抽象类"><span class="nav-number">1.1.2.2.</span> <span class="nav-text">抽象类</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#88-Merge-Sorted-Array"><span class="nav-number">1.</span> <span class="nav-text">88. Merge Sorted Array</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#From：Leetcode-88-Merge-Sorted-Array"><span class="nav-number">1.0.1.</span> <span class="nav-text">From：Leetcode: 88. Merge Sorted Array</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">1.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Input-and-output-analysis"><span class="nav-number">1.2.</span> <span class="nav-text">Input and output analysis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Approach-1"><span class="nav-number">1.3.</span> <span class="nav-text">Approach#1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">1.3.1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">1.3.2.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Complexity"><span class="nav-number">1.3.3.</span> <span class="nav-text">Complexity</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
