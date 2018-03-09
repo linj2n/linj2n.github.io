@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JSP,Java web," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="JSP生命周期 编译周期 初始化阶段 执行阶段 销毁阶段  一个实例123456789101112131415161718192021222324252627282930313233343536373839&amp;lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;    pageEncoding=&quot;UTF-8&quot;%&amp;gt;&amp;l">
+<meta name="keywords" content="JSP,Java web">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JSP知识小结">
+<meta property="og:url" content="http://linj2n.cn/2018/01/04/JSP知识小结/index.html">
+<meta property="og:site_name" content="linj2n@zll">
+<meta property="og:description" content="JSP生命周期 编译周期 初始化阶段 执行阶段 销毁阶段  一个实例123456789101112131415161718192021222324252627282930313233343536373839&amp;lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;    pageEncoding=&quot;UTF-8&quot;%&amp;gt;&amp;l">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-03-09T10:01:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JSP知识小结">
+<meta name="twitter:description" content="JSP生命周期 编译周期 初始化阶段 执行阶段 销毁阶段  一个实例123456789101112131415161718192021222324252627282930313233343536373839&amp;lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;    pageEncoding=&quot;UTF-8&quot;%&amp;gt;&amp;l">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://linj2n.cn/2018/01/04/JSP知识小结/"/>
+
+
+
+
+
+  <title>JSP知识小结 | linj2n@zll</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">linj2n@zll</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/01/04/JSP知识小结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linj2n">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="linj2n@zll">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JSP知识小结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-04T21:45:33+08:00">
+                2018-01-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="JSP生命周期"><a href="#JSP生命周期" class="headerlink" title="JSP生命周期"></a>JSP生命周期</h2><ul>
+<li><strong>编译周期</strong></li>
+<li><strong>初始化阶段</strong></li>
+<li><strong>执行阶段</strong></li>
+<li><strong>销毁阶段</strong></li>
+</ul>
+<h3 id="一个实例"><a href="#一个实例" class="headerlink" title="一个实例"></a>一个实例</h3><pre><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html PUBLIC <span class="string">"-//W3C//DTD HTML 4.01 Transitional//EN"</span> <span class="string">"http://www.w3.org/TR/html4/loose.dtd"</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span><br><span class="line">&lt;title&gt;life.jsp&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;%!</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> initVar = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> serviceVar = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> destroyVar = <span class="number">0</span>;</span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line">&lt;%!</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">jspInit</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		initVar ++;</span><br><span class="line">		System.out.println(<span class="string">"jspInit(): JSP 被初始化了"</span> + initVar + <span class="string">"次"</span> );</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">jspDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		destroyVar ++;</span><br><span class="line">		System.out.println(<span class="string">"jspDestroy(): JSP 被销毁了"</span> + destroyVar + <span class="string">"次"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">%&gt;</span><br><span class="line">&lt;%</span><br><span class="line">	serviceVar ++;</span><br><span class="line">	System.out.println(<span class="string">"_jspService() : JSP 共响应了"</span> + serviceVar + <span class="string">"次请求"</span>);</span><br><span class="line">	String content1 = <span class="string">"初始化次数："</span> + initVar;</span><br><span class="line">	String content2 = <span class="string">"销毁次数： "</span> + destroyVar;</span><br><span class="line">	String content3 = <span class="string">"相应次数："</span> + serviceVar;</span><br><span class="line">%&gt;</span><br><span class="line">&lt;h1&gt;JSP 测试实例&lt;/h1&gt;</span><br><span class="line">&lt;p&gt;&lt;%=content1 %&gt; &lt;/p&gt;</span><br><span class="line">&lt;p&gt;&lt;%=content2 %&gt; &lt;/p&gt;</span><br><span class="line">&lt;p&gt;&lt;%=content3 %&gt; &lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></pre>
+
+<h2 id="JSP-语法"><a href="#JSP-语法" class="headerlink" title="JSP 语法"></a>JSP 语法</h2><p><strong>一句话总结JSP语法：三大指令，七大动作，九大内置对象</strong></p>
+<h3 id="脚本程序段"><a href="#脚本程序段" class="headerlink" title="脚本程序段"></a>脚本程序段</h3><p>我们可以在JSP以下两种格式限定符中编写任意的Java语句、变量、方法或其他表达式，</p>
+<pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;% insert your code here... %&gt;</span><br></pre></td></tr></table></figure></pre>
+
+<pre><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp:scriptlet&gt;</span><br><span class="line">insert your code here...</span><br><span class="line">&lt;/jsp:scriptlet&gt;</span><br></pre></td></tr></table></figure></pre>
+
+<h3 id="JSP声明"><a href="#JSP声明" class="headerlink" title="JSP声明"></a>JSP声明</h3><p>语法格式：</p>
+<pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%! declaration...%&gt;</span><br></pre></td></tr></table></figure></pre>
+或者
+<pre><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp:declaration&gt;</span><br><span class="line">	insert your code here...</span><br><span class="line">&lt;/jsp:declaration&gt;</span><br></pre></td></tr></table></figure></pre>
+
+<p>示例：</p>
+<pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;%! <span class="keyword">int</span> i = <span class="number">0</span>; %&gt;</span><br><span class="line">&lt;%! <span class="keyword">int</span> j = <span class="number">0</span>; %&gt;</span><br></pre></td></tr></table></figure></pre>
+
+<h3 id="JSP表达式"><a href="#JSP表达式" class="headerlink" title="JSP表达式"></a>JSP表达式</h3><p>语法格式：</p>
+<pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%= insert your code here...%&gt;</span><br></pre></td></tr></table></figure></pre>
+或者
+<pre><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp:expression&gt;</span><br><span class="line">	insert your code here...</span><br><span class="line">&lt;/jsp:expression&gt;</span><br></pre></td></tr></table></figure></pre>
+
+<p>示例：显示服务器的时间</p>
+<pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;</span><br><span class="line">	Today<span class="string">'s date: &lt;%= (new java.util.Date().toString()) %&gt;</span></span><br><span class="line"><span class="string">&lt;/p&gt;</span></span><br></pre></td></tr></table></figure></pre>
+
+<h3 id="JSP注释"><a href="#JSP注释" class="headerlink" title="JSP注释"></a>JSP注释</h3><p>JSP注释主要有三种方式</p>
+<ul>
+<li><p>HTML注释，注释的内容会发送到浏览器，通过浏览器查看网页源代码可以看得到注释内容。<pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- There are some comments here... --%&gt;</span><br></pre></td></tr></table></figure></pre></p>
+</li>
+<li><p>JSP注释，不会发送到浏览器上，并且不会被编译。<pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%--There are some comments here... --%&gt;</span><br></pre></td></tr></table></figure></pre></p>
+</li>
+<li><p>脚本程序内注释，即编写Java语言注释如：<pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">	<span class="comment">// There are some Comments here..</span></span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * a lot of Comments here.. </span></span><br><span class="line"><span class="comment">	*/</span> </span><br><span class="line">	insert your code here...</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure><br></pre></p>
+</li>
+</ul>
+<h3 id="JSP三种指令元素"><a href="#JSP三种指令元素" class="headerlink" title="JSP三种指令元素"></a>JSP三种指令元素</h3><p><strong>用途：</strong>用来设置与整个JSP页面相关的属性<br><strong>语法格式：</strong><pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ directive attribute=<span class="string">"value"</span>%&gt;</span><br></pre></td></tr></table></figure></pre><br>指令可以拥有多个属性，它们以键值对的形式存在，并用逗号隔开。</p>
+<h4 id="Page指令"><a href="#Page指令" class="headerlink" title="Page指令"></a>Page指令</h4><p><strong>用途：</strong>为容器提供当前页面的使用说明，一个JSP页面可以包含多个page指令</p>
+<p><strong>语法格式：</strong><pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page attribute=<span class="string">"value"</span>%&gt;</span><br></pre></td></tr></table></figure></pre></p>
+<p><strong>page一些常用的属性：</strong></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>buffer</td>
+<td></td>
+</tr>
+<tr>
+<td>autoFlush</td>
+<td></td>
+</tr>
+<tr>
+<td>contentType</td>
+<td></td>
+</tr>
+<tr>
+<td>errorPage</td>
+<td></td>
+</tr>
+<tr>
+<td>isErrorPage</td>
+<td></td>
+</tr>
+<tr>
+<td>extends</td>
+<td></td>
+</tr>
+<tr>
+<td>import</td>
+<td></td>
+</tr>
+<tr>
+<td>info</td>
+<td></td>
+</tr>
+<tr>
+<td>isThreadSafe</td>
+<td></td>
+</tr>
+<tr>
+<td>language</td>
+<td></td>
+</tr>
+<tr>
+<td>session</td>
+<td></td>
+</tr>
+<tr>
+<td>isELIgnord</td>
+<td></td>
+</tr>
+<tr>
+<td>isScriptingEnable</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="Include指令"><a href="#Include指令" class="headerlink" title="Include指令"></a>Include指令</h4><p><strong>用途：</strong>JSP可以通过include指令来包含其他文件，文件格式可以是JSP、HTML或文本等。包含进来的文件将在编译阶段一起同时被编译。<br><strong>语法格式：</strong> <pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ include file=<span class="string">"relative url"</span>%&gt;</span><br></pre></td></tr></table></figure></pre><br>指令中的文件实际是一个相对的url，若没给文件关联一个路径，JSP编译器默认在当前路径下寻找。<br><strong>示例：</strong></p>
+<h4 id="Taglib指令"><a href="#Taglib指令" class="headerlink" title="Taglib指令"></a>Taglib指令</h4><p><strong>用途：</strong> 用户自定义标签，一个自定义标签库就是自定义标签的集合，集合定义包括库路径、自定义标签。<br><strong>语法格式：</strong><pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ taglib uri=<span class="string">"uri"</span> prefix=<span class="string">"prefixOfTag"</span> %&gt;</span><br></pre></td></tr></table></figure></pre></p>
+<h3 id="实例1：删除数组内的target元素"><a href="#实例1：删除数组内的target元素" class="headerlink" title="实例1：删除数组内的target元素"></a>实例1：删除数组内的target元素</h3><pre><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"java.util.*"</span> language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;%--设置page指令 <span class="keyword">import</span>属性导入util中的类--%&gt;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html PUBLIC <span class="string">"-//W3C//DTD HTML 4.01 Transitional//EN"</span> <span class="string">"http://www.w3.org/TR/html4/loose.dtd"</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;%--函数声明部分--%&gt;</span><br><span class="line">&lt;%!</span><br><span class="line">	<span class="comment">// 删除nums中所有的target元素</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteAllTargetElements</span><span class="params">(ArrayList&lt;Integer&gt; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        ListIterator&lt;Integer&gt; it = nums.listIterator();</span><br><span class="line">        <span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (it.next().equals(target)) &#123;</span><br><span class="line">                it.remove();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">%&gt;</span><br><span class="line">&lt;% 	</span><br><span class="line">	ArrayList&lt;Integer&gt; arr1 = <span class="keyword">new</span> ArrayList&lt;Integer&gt;(); </span><br><span class="line">	arr1.addAll(Arrays.asList(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">9</span>,<span class="number">0</span>,<span class="number">2</span>));</span><br><span class="line">	out.print(<span class="string">"Delete all 2 in array..."</span> + <span class="string">"&lt;br/&gt;"</span>);</span><br><span class="line">	out.print(<span class="string">"before:  "</span> + arr1.toString() + <span class="string">"&lt;br/&gt;"</span>);</span><br><span class="line">	deleteAllTargetElements(arr1,<span class="number">2</span>);</span><br><span class="line">	out.print(<span class="string">"after:  "</span> + arr1.toString() + <span class="string">"&lt;br/&gt;"</span>);</span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+</pre>
+
+<p><strong>实例运行结果：</strong></p>
+<h3 id="JSP七种动作元素"><a href="#JSP七种动作元素" class="headerlink" title="JSP七种动作元素"></a>JSP七种动作元素</h3><p><strong>与JSP指令元素不同，JSP动作元素是在请求处理阶段起作用。JSP动作元素是用XML语法写承德</strong><br><strong>作用：</strong> 使用XML语法结构来控制servlet引擎，例如动态插入一个文件，重用JavaBean组件，引导用户去另一个页面，为Java插件产生相关的HTML等。</p>
+<table>
+<thead>
+<tr>
+<th>语法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jsp:include</td>
+<td></td>
+</tr>
+<tr>
+<td>jsp:useBean</td>
+<td></td>
+</tr>
+<tr>
+<td>jsp:setProperty</td>
+<td></td>
+</tr>
+<tr>
+<td>jsp:getProperty</td>
+<td></td>
+</tr>
+<tr>
+<td>jsp:forward</td>
+<td></td>
+</tr>
+<tr>
+<td>jsp:plugin</td>
+<td></td>
+</tr>
+<tr>
+<td>jsp:element</td>
+<td></td>
+</tr>
+<tr>
+<td>jsp:attribute</td>
+<td></td>
+</tr>
+<tr>
+<td>jsp:body</td>
+<td></td>
+</tr>
+<tr>
+<td>jsp:text</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="lt-jsp-include-gt-动作元素"><a href="#lt-jsp-include-gt-动作元素" class="headerlink" title="&lt;jsp:include&gt;动作元素"></a><code>&lt;jsp:include&gt;</code>动作元素</h4><p><strong><code>include指令元素与&lt;jsp:include&gt;</code>动作元素相比，前者是在JSP文件被转换为Servlet的时候引入文件，而这里的include是在页面被请求时候插入文件，两个插入的时间段不一样，前者处于编译阶段，后者处于请求阶段。</strong></p>
+<p><strong>实例：</strong><br>我们定义两个文件<code>main.jsp</code>和<code>showYourIP.jsp</code>，在<code>main.jsp</code>中使用include动作导入<code>showYourIP.jsp</code></p>
+<p>main.jsp文件代码：</p>
+<pre><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html PUBLIC <span class="string">"-//W3C//DTD HTML 4.01 Transitional//EN"</span> <span class="string">"http://www.w3.org/TR/html4/loose.dtd"</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;center&gt;</span><br><span class="line">&lt;jsp:include page=<span class="string">"showYourIP.jsp"</span> flush=<span class="string">"true"</span>/&gt;</span><br><span class="line">&lt;/center&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></pre>
+
+<p>showYourIP.jsp文件代码：</p>
+<pre><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;</span><br><span class="line">	Your IP address: &lt;%=request.getRemoteAddr()%&gt;</span><br><span class="line">&lt;/p&gt;</span><br></pre></td></tr></table></figure></pre>
+
+<p><strong>结果：</strong></p>
+<h4 id="lt-jsp-useBean-gt-动作元素"><a href="#lt-jsp-useBean-gt-动作元素" class="headerlink" title="&lt;jsp:useBean&gt;动作元素"></a><code>&lt;jsp:useBean&gt;</code>动作元素</h4><p><strong>用途：</strong> 用来装载一个将在JSP页面使用的JavaBean。<br><strong>语法格式：</strong> <pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp:useBean id=<span class="string">"name"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"package.class"</span> /&gt;</span><br></pre></td></tr></table></figure></pre><br>在类载入后，我们可以通过<code>&lt;jsp:setProperty&gt;</code>和<code>&lt;jsp:getProperty&gt;</code>来修改和检索Bean的属性。</p>
+<h4 id="lt-jsp-setProperty-gt-动作元素"><a href="#lt-jsp-setProperty-gt-动作元素" class="headerlink" title="&lt;jsp:setProperty&gt;动作元素"></a><code>&lt;jsp:setProperty&gt;</code>动作元素</h4><p><strong>用途：</strong><br><strong>属性：</strong></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>表明要设置的属性是哪个Bean的，即Bean的名称</td>
+</tr>
+<tr>
+<td>property</td>
+<td>表明设置是哪个属性，即属性的名称</td>
+</tr>
+<tr>
+<td>value</td>
+<td>可选，指定对应属性的值。</td>
+</tr>
+<tr>
+<td>param</td>
+<td>可选，制定哪个请求参数作为Bean属性的值</td>
+</tr>
+</tbody>
+</table>
+<h4 id="lt-jsp-getProperty-gt-动作元素"><a href="#lt-jsp-getProperty-gt-动作元素" class="headerlink" title="&lt;jsp:getProperty&gt;动作元素"></a><code>&lt;jsp:getProperty&gt;</code>动作元素</h4><p><strong>用途：</strong><br><strong>属性：</strong></p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>表明要设置的属性是哪个Bean的，即Bean的名称</td>
+</tr>
+<tr>
+<td>property</td>
+<td>表明设置是哪个属性，即属性的名称</td>
+</tr>
+</tbody>
+</table>
+<h4 id="实例2"><a href="#实例2" class="headerlink" title="实例2"></a>实例2</h4><p><strong>定义<code>register.jsp</code>和<code>do_register.jsp</code>两个文件使用<code>UserEntity</code>Java Bean，分别实现获取用户注册信息和展示用户信息 </strong></p>
+<p><strong>UserEntity.java文件代码</strong></p>
+<pre>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> learnJSP.action;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserEntity</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String userName;</span><br><span class="line">	<span class="keyword">private</span> String password;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">UserEntity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getUserName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> userName;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUserName</span><span class="params">(String userName)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.userName = userName;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> password;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(String password)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.password = password;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</pre>
+
+<p><strong>register.jsp文件代码</strong></p>
+<pre>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html PUBLIC <span class="string">"-//W3C//DTD HTML 4.01 Transitional//EN"</span> <span class="string">"http://www.w3.org/TR/html4/loose.dtd"</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span><br><span class="line">&lt;title&gt;Register&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;form action=<span class="string">"do_register.jsp"</span> method=<span class="string">"post"</span>&gt;</span><br><span class="line">		Name: &lt;input type=<span class="string">"text"</span> name=<span class="string">"_userName"</span>&gt;</span><br><span class="line">		Password: &lt;input type=<span class="string">"password"</span> name=<span class="string">"_password"</span>&gt;</span><br><span class="line">		&lt;input type=<span class="string">"submit"</span>&gt;</span><br><span class="line">	&lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt; </span><br></pre></td></tr></table></figure>
+</pre>
+
+<p><strong>do_register.jsp文件代码</strong></p>
+<pre><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html PUBLIC <span class="string">"-//W3C//DTD HTML 4.01 Transitional//EN"</span> <span class="string">"http://www.w3.org/TR/html4/loose.dtd"</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;body&gt; </span><br><span class="line">	&lt;jsp:useBean id=<span class="string">"user"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"learnJSP.action.UserEntity"</span> /&gt;</span><br><span class="line">	&lt;jsp:setProperty name=<span class="string">"user"</span> property=<span class="string">"userName"</span> param=<span class="string">"_userName"</span> /&gt;</span><br><span class="line">	&lt;jsp:setProperty name=<span class="string">"user"</span> property=<span class="string">"password"</span> param=<span class="string">"_password"</span> /&gt;</span><br><span class="line">	&lt;p&gt;Your name: &lt;jsp:getProperty name="user" property="password" /&gt; &lt;/p&gt;</span><br><span class="line">	&lt;p&gt;Your password: &lt;jsp:getProperty name="user" property="userName" /&gt;&lt;/p&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></pre>
+
+<p><strong>结果</strong></p>
+<h4 id="lt-jsp-forward-gt-动作元素"><a href="#lt-jsp-forward-gt-动作元素" class="headerlink" title="&lt;jsp:forward&gt;动作元素"></a><code>&lt;jsp:forward&gt;</code>动作元素</h4><p><strong>用途：</strong>把请求转到另外的页面去，通过page属性。</p>
+<p><strong>语法格式：</strong><pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp:forward page=<span class="string">"Relative URL"</span>/&gt;</span><br></pre></td></tr></table></figure></pre></p>
+<h4 id="lt-jsp-plugin-gt-动作元素"><a href="#lt-jsp-plugin-gt-动作元素" class="headerlink" title="&lt;jsp:plugin&gt;动作元素"></a><code>&lt;jsp:plugin&gt;</code>动作元素</h4><p><strong>用途：</strong>根据浏览器的类型，插入通过Java插件运行Java Applet所需要的OBJECT元素。</p>
+<h4 id="lt-jsp-element-gt-、-lt-jsp-attribute-gt-、-lt-jsp-body-gt-动作元素"><a href="#lt-jsp-element-gt-、-lt-jsp-attribute-gt-、-lt-jsp-body-gt-动作元素" class="headerlink" title="&lt;jsp:element&gt;、&lt;jsp:attribute&gt;、 &lt;jsp:body&gt;动作元素"></a><code>&lt;jsp:element&gt;</code>、<code>&lt;jsp:attribute&gt;</code>、 <code>&lt;jsp:body&gt;</code>动作元素</h4><p><strong>用途：</strong>用于动态定义XML元素。</p>
+<h4 id="lt-jsp-text-gt-动作元素"><a href="#lt-jsp-text-gt-动作元素" class="headerlink" title="&lt;jsp:text&gt;动作元素"></a><code>&lt;jsp:text&gt;</code>动作元素</h4><p><strong>用途：</strong>在JSP页面和文档中使用写入文本的模板。</p>
+<h3 id="JSP九种内置对象"><a href="#JSP九种内置对象" class="headerlink" title="JSP九种内置对象"></a>JSP九种内置对象</h3><p>JSP内置对象是JSP容器为每个页面提供的Java对象，开发者可以直接使用它们而不用通过显示声明，也成预定义变量。</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>request</td>
+<td>request对象是<code>javax.servlet.http.HttpServletRequest</code>类的实例，当客户端请求一个JSP页面时，JSP引擎就会制造一个新的<code>request</code>来代表这个请求。这个对象提供一系列的方法来获取http头信息，cookied，HTTP方法等等。</td>
+</tr>
+<tr>
+<td>response</td>
+<td>response对象是<code>javax.servlet.http.HttpServletResponse</code>类的实例，JSP引擎在创建request对象同时也会同时创建用于响应这个客户端的<code>response</code>对象</td>
+</tr>
+<tr>
+<td>out</td>
+<td>out对象是<code>javax.servlet.jsp.JspWriter</code>类的实例。</td>
+</tr>
+<tr>
+<td>session</td>
+<td>session对象是<code>javax.servlet.http.HTTPSession</code>类的实例，用来跟踪各个客户端请求间的会话。</td>
+</tr>
+<tr>
+<td>application</td>
+<td>application对象直接包装了servlet的<code>ServletContext</code>类的对象，是<code>javax.servlet.ServletContext</code>类的实例。在整个JSP页面的生命周期中都代表着这个JSP页面，经历初始化、执行、销毁等时期。</td>
+</tr>
+<tr>
+<td>config</td>
+<td>不常用</td>
+</tr>
+<tr>
+<td>pageContext</td>
+<td>用来代表整个JSP页面，存储了request对象和response对象的引用。</td>
+</tr>
+<tr>
+<td>page</td>
+<td>页面实例的引用，相当于this。</td>
+</tr>
+<tr>
+<td>Exception</td>
+<td>包装了先前页面中跑出的异常信息。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request对象"><a href="#request对象" class="headerlink" title="request对象"></a>request对象</h4><h4 id="response对象"><a href="#response对象" class="headerlink" title="response对象"></a>response对象</h4><h2 id="JSP-基础应用与处理"><a href="#JSP-基础应用与处理" class="headerlink" title="JSP 基础应用与处理"></a>JSP 基础应用与处理</h2><h3 id="JSP表单处理"><a href="#JSP表单处理" class="headerlink" title="JSP表单处理"></a>JSP表单处理</h3><h3 id="JSP过滤器"><a href="#JSP过滤器" class="headerlink" title="JSP过滤器"></a>JSP过滤器</h3><h3 id="JSP-Cookies-处理"><a href="#JSP-Cookies-处理" class="headerlink" title="JSP Cookies 处理"></a>JSP Cookies 处理</h3><h3 id="JSP-Session"><a href="#JSP-Session" class="headerlink" title="JSP Session"></a>JSP Session</h3><h3 id="JSP页面重定向"><a href="#JSP页面重定向" class="headerlink" title="JSP页面重定向"></a>JSP页面重定向</h3><h3 id="JSP自动刷新"><a href="#JSP自动刷新" class="headerlink" title="JSP自动刷新"></a>JSP自动刷新</h3><h2 id="JSP-标准标签库（JSTL）"><a href="#JSP-标准标签库（JSTL）" class="headerlink" title="JSP 标准标签库（JSTL）"></a>JSP 标准标签库（JSTL）</h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JSP/" rel="tag"># JSP</a>
+          
+            <a href="/tags/Java-web/" rel="tag"># Java web</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/03/5-Kth-Large-Element/" rel="next" title="5 Kth Large Element">
+                <i class="fa fa-chevron-left"></i> 5 Kth Large Element
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/04/88-Merge-Sorted-Array/" rel="prev" title="88. Merge Sorted Array">
+                88. Merge Sorted Array <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="linj2n" />
+          <p class="site-author-name" itemprop="name">linj2n</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP生命周期"><span class="nav-number">1.</span> <span class="nav-text">JSP生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一个实例"><span class="nav-number">1.1.</span> <span class="nav-text">一个实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP-语法"><span class="nav-number">2.</span> <span class="nav-text">JSP 语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#脚本程序段"><span class="nav-number">2.1.</span> <span class="nav-text">脚本程序段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP声明"><span class="nav-number">2.2.</span> <span class="nav-text">JSP声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP表达式"><span class="nav-number">2.3.</span> <span class="nav-text">JSP表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP注释"><span class="nav-number">2.4.</span> <span class="nav-text">JSP注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP三种指令元素"><span class="nav-number">2.5.</span> <span class="nav-text">JSP三种指令元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Page指令"><span class="nav-number">2.5.1.</span> <span class="nav-text">Page指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Include指令"><span class="nav-number">2.5.2.</span> <span class="nav-text">Include指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Taglib指令"><span class="nav-number">2.5.3.</span> <span class="nav-text">Taglib指令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例1：删除数组内的target元素"><span class="nav-number">2.6.</span> <span class="nav-text">实例1：删除数组内的target元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP七种动作元素"><span class="nav-number">2.7.</span> <span class="nav-text">JSP七种动作元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-jsp-include-gt-动作元素"><span class="nav-number">2.7.1.</span> <span class="nav-text">&lt;jsp:include&gt;动作元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-jsp-useBean-gt-动作元素"><span class="nav-number">2.7.2.</span> <span class="nav-text">&lt;jsp:useBean&gt;动作元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-jsp-setProperty-gt-动作元素"><span class="nav-number">2.7.3.</span> <span class="nav-text">&lt;jsp:setProperty&gt;动作元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-jsp-getProperty-gt-动作元素"><span class="nav-number">2.7.4.</span> <span class="nav-text">&lt;jsp:getProperty&gt;动作元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例2"><span class="nav-number">2.7.5.</span> <span class="nav-text">实例2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-jsp-forward-gt-动作元素"><span class="nav-number">2.7.6.</span> <span class="nav-text">&lt;jsp:forward&gt;动作元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-jsp-plugin-gt-动作元素"><span class="nav-number">2.7.7.</span> <span class="nav-text">&lt;jsp:plugin&gt;动作元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-jsp-element-gt-、-lt-jsp-attribute-gt-、-lt-jsp-body-gt-动作元素"><span class="nav-number">2.7.8.</span> <span class="nav-text">&lt;jsp:element&gt;、&lt;jsp:attribute&gt;、 &lt;jsp:body&gt;动作元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-jsp-text-gt-动作元素"><span class="nav-number">2.7.9.</span> <span class="nav-text">&lt;jsp:text&gt;动作元素</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP九种内置对象"><span class="nav-number">2.8.</span> <span class="nav-text">JSP九种内置对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#request对象"><span class="nav-number">2.8.1.</span> <span class="nav-text">request对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#response对象"><span class="nav-number">2.8.2.</span> <span class="nav-text">response对象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP-基础应用与处理"><span class="nav-number">3.</span> <span class="nav-text">JSP 基础应用与处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP表单处理"><span class="nav-number">3.1.</span> <span class="nav-text">JSP表单处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP过滤器"><span class="nav-number">3.2.</span> <span class="nav-text">JSP过滤器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP-Cookies-处理"><span class="nav-number">3.3.</span> <span class="nav-text">JSP Cookies 处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP-Session"><span class="nav-number">3.4.</span> <span class="nav-text">JSP Session</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP页面重定向"><span class="nav-number">3.5.</span> <span class="nav-text">JSP页面重定向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP自动刷新"><span class="nav-number">3.6.</span> <span class="nav-text">JSP自动刷新</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP-标准标签库（JSTL）"><span class="nav-number">4.</span> <span class="nav-text">JSP 标准标签库（JSTL）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">linj2n</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
