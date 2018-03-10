@@ -97,14 +97,14 @@
 <meta name="description" content="JSP生命周期 编译周期 初始化阶段 执行阶段 销毁阶段  一个实例123456789101112131415161718192021222324252627282930313233343536373839&amp;lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;    pageEncoding=&quot;UTF-8&quot;%&amp;gt;&amp;l">
 <meta name="keywords" content="JSP,Java web">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JSP知识小结">
-<meta property="og:url" content="http://linj2n.cn/2018/01/04/JSP知识小结/index.html">
+<meta property="og:title" content="JSP知识小结(1)">
+<meta property="og:url" content="http://linj2n.cn/2018/01/04/JSP知识小结_1/index.html">
 <meta property="og:site_name" content="linj2n@zll">
 <meta property="og:description" content="JSP生命周期 编译周期 初始化阶段 执行阶段 销毁阶段  一个实例123456789101112131415161718192021222324252627282930313233343536373839&amp;lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;    pageEncoding=&quot;UTF-8&quot;%&amp;gt;&amp;l">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-03-09T10:01:36.000Z">
+<meta property="og:updated_time" content="2018-03-10T10:22:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JSP知识小结">
+<meta name="twitter:title" content="JSP知识小结(1)">
 <meta name="twitter:description" content="JSP生命周期 编译周期 初始化阶段 执行阶段 销毁阶段  一个实例123456789101112131415161718192021222324252627282930313233343536373839&amp;lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;    pageEncoding=&quot;UTF-8&quot;%&amp;gt;&amp;l">
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://linj2n.cn/2018/01/04/JSP知识小结/"/>
+  <link rel="canonical" href="http://linj2n.cn/2018/01/04/JSP知识小结_1/"/>
 
 
 
 
 
-  <title>JSP知识小结 | linj2n@zll</title>
+  <title>JSP知识小结(1) | linj2n@zll</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/01/04/JSP知识小结/">
+    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/01/04/JSP知识小结_1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="linj2n">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JSP知识小结</h1>
+          <h1 class="post-title" itemprop="name headline">JSP知识小结(1)</h1>
         
 
         <div class="post-meta">
@@ -435,7 +435,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="Include指令"><a href="#Include指令" class="headerlink" title="Include指令"></a>Include指令</h4><p><strong>用途：</strong>JSP可以通过include指令来包含其他文件，文件格式可以是JSP、HTML或文本等。包含进来的文件将在编译阶段一起同时被编译。<br><strong>语法格式：</strong> <pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ include file=<span class="string">"relative url"</span>%&gt;</span><br></pre></td></tr></table></figure></pre><br>指令中的文件实际是一个相对的url，若没给文件关联一个路径，JSP编译器默认在当前路径下寻找。<br><strong>示例：</strong></p>
+<h4 id="Include指令"><a href="#Include指令" class="headerlink" title="Include指令"></a>Include指令</h4><p><strong>用途：</strong>JSP可以通过include指令来包含其他文件，文件格式可以是JSP、HTML或文本等。包含进来的文件将在编译阶段一起同时被编译,属于静态包含。<br><strong>语法格式：</strong> <pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ include file=<span class="string">"relative url"</span>%&gt;</span><br></pre></td></tr></table></figure></pre><br>指令中的文件实际是一个相对的url，若没给文件关联一个路径，JSP编译器默认在当前路径下寻找。<br><strong>示例：</strong></p>
 <h4 id="Taglib指令"><a href="#Taglib指令" class="headerlink" title="Taglib指令"></a>Taglib指令</h4><p><strong>用途：</strong> 用户自定义标签，一个自定义标签库就是自定义标签的集合，集合定义包括库路径、自定义标签。<br><strong>语法格式：</strong><pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ taglib uri=<span class="string">"uri"</span> prefix=<span class="string">"prefixOfTag"</span> %&gt;</span><br></pre></td></tr></table></figure></pre></p>
 <h3 id="实例1：删除数组内的target元素"><a href="#实例1：删除数组内的target元素" class="headerlink" title="实例1：删除数组内的target元素"></a>实例1：删除数组内的target元素</h3><pre><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"java.util.*"</span> language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;%--设置page指令 <span class="keyword">import</span>属性导入util中的类--%&gt;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html PUBLIC <span class="string">"-//W3C//DTD HTML 4.01 Transitional//EN"</span> <span class="string">"http://www.w3.org/TR/html4/loose.dtd"</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;%--函数声明部分--%&gt;</span><br><span class="line">&lt;%!</span><br><span class="line">	<span class="comment">// 删除nums中所有的target元素</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteAllTargetElements</span><span class="params">(ArrayList&lt;Integer&gt; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        ListIterator&lt;Integer&gt; it = nums.listIterator();</span><br><span class="line">        <span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (it.next().equals(target)) &#123;</span><br><span class="line">                it.remove();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">%&gt;</span><br><span class="line">&lt;% 	</span><br><span class="line">	ArrayList&lt;Integer&gt; arr1 = <span class="keyword">new</span> ArrayList&lt;Integer&gt;(); </span><br><span class="line">	arr1.addAll(Arrays.asList(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">9</span>,<span class="number">0</span>,<span class="number">2</span>));</span><br><span class="line">	out.print(<span class="string">"Delete all 2 in array..."</span> + <span class="string">"&lt;br/&gt;"</span>);</span><br><span class="line">	out.print(<span class="string">"before:  "</span> + arr1.toString() + <span class="string">"&lt;br/&gt;"</span>);</span><br><span class="line">	deleteAllTargetElements(arr1,<span class="number">2</span>);</span><br><span class="line">	out.print(<span class="string">"after:  "</span> + arr1.toString() + <span class="string">"&lt;br/&gt;"</span>);</span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 </pre>
@@ -548,7 +548,7 @@
 </tr>
 </tbody>
 </table>
-<h4 id="实例2"><a href="#实例2" class="headerlink" title="实例2"></a>实例2</h4><p><strong>定义<code>register.jsp</code>和<code>do_register.jsp</code>两个文件使用<code>UserEntity</code>Java Bean，分别实现获取用户注册信息和展示用户信息 </strong></p>
+<h4 id="实例2：通过useBean实现记录注册信息"><a href="#实例2：通过useBean实现记录注册信息" class="headerlink" title="实例2：通过useBean实现记录注册信息"></a>实例2：通过useBean实现记录注册信息</h4><p><strong>定义<code>register.jsp</code>和<code>do_register.jsp</code>两个文件使用<code>UserEntity</code>Java Bean，分别实现获取用户注册信息和展示用户信息 </strong></p>
 <p><strong>UserEntity.java文件代码</strong></p>
 <pre>
 <figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> learnJSP.action;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserEntity</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String userName;</span><br><span class="line">	<span class="keyword">private</span> String password;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">UserEntity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getUserName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> userName;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUserName</span><span class="params">(String userName)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.userName = userName;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> password;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(String password)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.password = password;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -564,7 +564,12 @@
 
 <p><strong>结果</strong></p>
 <h4 id="lt-jsp-forward-gt-动作元素"><a href="#lt-jsp-forward-gt-动作元素" class="headerlink" title="&lt;jsp:forward&gt;动作元素"></a><code>&lt;jsp:forward&gt;</code>动作元素</h4><p><strong>用途：</strong>把请求转到另外的页面去，通过page属性。</p>
-<p><strong>语法格式：</strong><pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp:forward page=<span class="string">"Relative URL"</span>/&gt;</span><br></pre></td></tr></table></figure></pre></p>
+<p><strong>语法格式：</strong></p>
+<pre>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp:forward page=<span class="string">"Relative URL"</span>/&gt;</span><br></pre></td></tr></table></figure>
+</pre>
+
+
 <h4 id="lt-jsp-plugin-gt-动作元素"><a href="#lt-jsp-plugin-gt-动作元素" class="headerlink" title="&lt;jsp:plugin&gt;动作元素"></a><code>&lt;jsp:plugin&gt;</code>动作元素</h4><p><strong>用途：</strong>根据浏览器的类型，插入通过Java插件运行Java Applet所需要的OBJECT元素。</p>
 <h4 id="lt-jsp-element-gt-、-lt-jsp-attribute-gt-、-lt-jsp-body-gt-动作元素"><a href="#lt-jsp-element-gt-、-lt-jsp-attribute-gt-、-lt-jsp-body-gt-动作元素" class="headerlink" title="&lt;jsp:element&gt;、&lt;jsp:attribute&gt;、 &lt;jsp:body&gt;动作元素"></a><code>&lt;jsp:element&gt;</code>、<code>&lt;jsp:attribute&gt;</code>、 <code>&lt;jsp:body&gt;</code>动作元素</h4><p><strong>用途：</strong>用于动态定义XML元素。</p>
 <h4 id="lt-jsp-text-gt-动作元素"><a href="#lt-jsp-text-gt-动作元素" class="headerlink" title="&lt;jsp:text&gt;动作元素"></a><code>&lt;jsp:text&gt;</code>动作元素</h4><p><strong>用途：</strong>在JSP页面和文档中使用写入文本的模板。</p>
@@ -615,7 +620,129 @@
 </tr>
 </tbody>
 </table>
-<h4 id="request对象"><a href="#request对象" class="headerlink" title="request对象"></a>request对象</h4><h4 id="response对象"><a href="#response对象" class="headerlink" title="response对象"></a>response对象</h4><h2 id="JSP-基础应用与处理"><a href="#JSP-基础应用与处理" class="headerlink" title="JSP 基础应用与处理"></a>JSP 基础应用与处理</h2><h3 id="JSP表单处理"><a href="#JSP表单处理" class="headerlink" title="JSP表单处理"></a>JSP表单处理</h3><h3 id="JSP过滤器"><a href="#JSP过滤器" class="headerlink" title="JSP过滤器"></a>JSP过滤器</h3><h3 id="JSP-Cookies-处理"><a href="#JSP-Cookies-处理" class="headerlink" title="JSP Cookies 处理"></a>JSP Cookies 处理</h3><h3 id="JSP-Session"><a href="#JSP-Session" class="headerlink" title="JSP Session"></a>JSP Session</h3><h3 id="JSP页面重定向"><a href="#JSP页面重定向" class="headerlink" title="JSP页面重定向"></a>JSP页面重定向</h3><h3 id="JSP自动刷新"><a href="#JSP自动刷新" class="headerlink" title="JSP自动刷新"></a>JSP自动刷新</h3><h2 id="JSP-标准标签库（JSTL）"><a href="#JSP-标准标签库（JSTL）" class="headerlink" title="JSP 标准标签库（JSTL）"></a>JSP 标准标签库（JSTL）</h2>
+<h4 id="request对象"><a href="#request对象" class="headerlink" title="request对象"></a>request对象</h4><p>客户端所有的请求信息都封装在request对象，服务端只有通过它才能了解到客户的需求，根据需求做出响应。</p>
+<p><strong>常用的方法如下：</strong></p>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Cookie[] getCookies()</code></td>
+<td>返回客户端所有的Cookie的数组</td>
+</tr>
+<tr>
+<td><code>Enumeration getHeaderNames()</code></td>
+<td>返回所有HTTP头的名称集合</td>
+</tr>
+<tr>
+<td><code>String getHeader(String name)</code></td>
+<td>返回HTTP头中名为name参数的值</td>
+</tr>
+<tr>
+<td><code>HtppSession getSession()</code></td>
+<td>返回request对应的session对象，若没有则创建一个</td>
+</tr>
+<tr>
+<td><code>String getCharacterEncoding()</code></td>
+<td>返回request的字符编码集名称</td>
+</tr>
+<tr>
+<td><code>String getMethod()</code></td>
+<td>返回request中的HTTP方法，如GET，POST或PUT</td>
+</tr>
+<tr>
+<td><code>String getParameter(String name)</code></td>
+<td>返回request中参数名为name的值，若不存在则返回null</td>
+</tr>
+<tr>
+<td><code>String getRemoteAddr()</code></td>
+<td>返回客户端的IP地址</td>
+</tr>
+<tr>
+<td><code>String getRemoteHost()</code></td>
+<td>返回客户端的完整名称</td>
+</tr>
+<tr>
+<td><code>String getServletPath()</code></td>
+<td>返回所请求的servlet路径</td>
+</tr>
+</tbody>
+</table>
+<h5 id="实例3：通过request对象获取客户端请求的HTTP信息头"><a href="#实例3：通过request对象获取客户端请求的HTTP信息头" class="headerlink" title="实例3：通过request对象获取客户端请求的HTTP信息头"></a>实例3：通过request对象获取客户端请求的HTTP信息头</h5><p>下面我们使用request对象中的方法来获取请求HTTP信息头，通过<code>request.getHeaderNames()</code>获取<code>Enumeration</code>对象，然后遍历<code>Enumeration</code>对象，得到<code>Header</code>参数名，通过参数名使用<code>request.getHeader(String name)</code>获取信息头中对应参数值以html表格形式输出。</p>
+<pre><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> <span class="keyword">import</span>=<span class="string">"java.io.*,java.util.*"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html PUBLIC <span class="string">"-//W3C//DTD HTML 4.01 Transitional//EN"</span> <span class="string">"http://www.w3.org/TR/html4/loose.dtd"</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span><br><span class="line">&lt;title&gt;HTTP Header request Example&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;center&gt;</span><br><span class="line">	&lt;h2&gt;HTTP Header request Example&lt;/h2&gt;</span><br><span class="line">	&lt;table width=<span class="string">"100%"</span> border=<span class="string">"1"</span> aligin=<span class="string">"center"</span>&gt;</span><br><span class="line">	&lt;tr bgcolor=<span class="string">"#949494"</span>&gt;</span><br><span class="line">	&lt;th&gt;Header Name&lt;/th&gt;&lt;th&gt;Header Value(s) &lt;/th&gt;</span><br><span class="line">	&lt;/tr&gt;</span><br><span class="line">	&lt;%</span><br><span class="line">		Enumeration headerNames = request.getHeaderNames();</span><br><span class="line">		<span class="keyword">while</span> (headerNames.hasMoreElements()) &#123;</span><br><span class="line">			String parameterName = (String) headerNames.nextElement();</span><br><span class="line">			out.print(<span class="string">"&lt;tr&gt;&lt;td&gt;"</span> + parameterName + <span class="string">"&lt;/td&gt;\n"</span>);</span><br><span class="line">			String paramValue = request.getHeader(parameterName);</span><br><span class="line">			out.print(<span class="string">"&lt;td&gt; "</span> + paramValue + <span class="string">"&lt;/td&gt;&lt;/tr&gt;\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	%&gt;</span><br><span class="line">	&lt;/table&gt;</span><br><span class="line">	&lt;/center&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></pre>
+
+<h4 id="response对象"><a href="#response对象" class="headerlink" title="response对象"></a>response对象</h4><p>Response对象主要将JSP容器处理后的结果传回客户端，可以通过response变量设置HTTP的状态和对客户端发送数据，如Cookie、HTTP文件头信息。</p>
+<h5 id="实例4-模拟数字时钟"><a href="#实例4-模拟数字时钟" class="headerlink" title="实例4 模拟数字时钟"></a>实例4 模拟数字时钟</h5><p>我们可以通过给<code>request.setIntHeader(String name, int value)</code>传入<code>Refresh</code>和<code>5</code>参数，使得jsp页面每个五秒刷新一次时间值，达到模拟数字时钟的效果。</p>
+<pre><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> <span class="keyword">import</span>=<span class="string">"java.util.*,java.io.*"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html PUBLIC <span class="string">"-//W3C//DTD HTML 4.01 Transitional//EN"</span> <span class="string">"http://www.w3.org/TR/html4/loose.dtd"</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span><br><span class="line">&lt;title&gt;Auto Refresh Header Example&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;center&gt;</span><br><span class="line">	&lt;h2&gt;Auto Refresh Header Example&lt;/h2&gt;</span><br><span class="line">	&lt;%</span><br><span class="line">		response.setIntHeader(<span class="string">"Refresh"</span>, <span class="number">5</span>);</span><br><span class="line">		Calendar calendar = <span class="keyword">new</span> GregorianCalendar();</span><br><span class="line">		String am_pm = (calendar.get(Calendar.AM_PM) == <span class="number">0</span>) ? <span class="string">"AM"</span> : <span class="string">"PM"</span>; </span><br><span class="line">		<span class="keyword">int</span> hour = calendar.get(Calendar.HOUR);</span><br><span class="line">		<span class="keyword">int</span> minute = calendar.get(Calendar.MINUTE);</span><br><span class="line">		<span class="keyword">int</span> second = calendar.get(Calendar.SECOND);</span><br><span class="line">		String CT = hour + <span class="string">": "</span> + minute + <span class="string">": "</span> + second + <span class="string">" "</span> + am_pm; </span><br><span class="line">		out.println(<span class="string">"Current Time is : "</span> + CT + <span class="string">"\n"</span>);</span><br><span class="line">	%&gt;</span><br><span class="line">&lt;/center&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></pre>
+
+
+<h2 id="JSP-表单处理"><a href="#JSP-表单处理" class="headerlink" title="JSP 表单处理"></a>JSP 表单处理</h2><p>我们在浏览网页中，经常需要向服务器提交信息，如注册用户信息时，给服务器提交用户名和密码等信息；使用搜索功能时要将搜索内容提交给服务器以返回搜索结果，浏览器一般使用<code>GET</code>和<code>POST</code>两种方法向服务器提交信息。</p>
+<h3 id="GET与POST方法的区别"><a href="#GET与POST方法的区别" class="headerlink" title="GET与POST方法的区别"></a>GET与POST方法的区别</h3><ul>
+<li>GET - 从指定的资源请求数据。</li>
+<li>POST - 向指定的资源提交要被处理的数据</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>GET方法</th>
+<th>POST方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>传递信息的方式</td>
+<td>明文可见，通常将请求的编码信息添加在网址后面，网址与信息通过<code>？</code>号分隔。例如<code>/postAndGetMethodDemo/showGetMethod.jsp?key1=value1&amp;key2=value2</code></td>
+<td>封装在HTML header中，隐式</td>
+</tr>
+<tr>
+<td>可传递信息量大小</td>
+<td>最大2048字节</td>
+<td>HTTP协议并无限制，具体根据服务器规定大小，一般比GET方法大的多</td>
+</tr>
+<tr>
+<td>安全性</td>
+<td>安全性较差，因为所发送的数据是 URL 的一部分。</td>
+<td>POST 比 GET 更安全，因为参数不会被保存在浏览器历史或 web 服务器日志中。</td>
+</tr>
+<tr>
+<td>应用场景</td>
+<td>提交一些对安全性无要求的信息，如搜索信息等</td>
+<td>提交敏感信息时，如用户密码等。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="JSP读取表单数据"><a href="#JSP读取表单数据" class="headerlink" title="JSP读取表单数据"></a>JSP读取表单数据</h3><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>String getParameter(String name)</code></td>
+<td>获取表单参数名为<code>name</code>的值</td>
+</tr>
+<tr>
+<td><code>String[] getParameterValues(String name)</code></td>
+<td>获取表单参数名为<code>name</code>的所有值，此时值有多个</td>
+</tr>
+<tr>
+<td><code>Enmuration getParameterNames()</code></td>
+<td>获取表单所有参数的名称。该方法返回一个<code>Enmuration</code>对象。</td>
+</tr>
+<tr>
+<td><code>getInputStrean()</code></td>
+<td>获取来自客户端的二进制数据流。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="实例5-获取表单信息"><a href="#实例5-获取表单信息" class="headerlink" title="实例5 获取表单信息"></a>实例5 获取表单信息</h4><h2 id="JSP-过滤器"><a href="#JSP-过滤器" class="headerlink" title="JSP 过滤器"></a>JSP 过滤器</h2><h2 id="JSP-Cookies-处理"><a href="#JSP-Cookies-处理" class="headerlink" title="JSP Cookies 处理"></a>JSP Cookies 处理</h2><h2 id="JSP-Session"><a href="#JSP-Session" class="headerlink" title="JSP Session"></a>JSP Session</h2><h2 id="JSP页面重定向"><a href="#JSP页面重定向" class="headerlink" title="JSP页面重定向"></a>JSP页面重定向</h2><h2 id="JSP自动刷新"><a href="#JSP自动刷新" class="headerlink" title="JSP自动刷新"></a>JSP自动刷新</h2><h2 id="JSP-标准标签库（JSTL）"><a href="#JSP-标准标签库（JSTL）" class="headerlink" title="JSP 标准标签库（JSTL）"></a>JSP 标准标签库（JSTL）</h2>
       
     </div>
     
@@ -784,7 +911,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP生命周期"><span class="nav-number">1.</span> <span class="nav-text">JSP生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一个实例"><span class="nav-number">1.1.</span> <span class="nav-text">一个实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP-语法"><span class="nav-number">2.</span> <span class="nav-text">JSP 语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#脚本程序段"><span class="nav-number">2.1.</span> <span class="nav-text">脚本程序段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP声明"><span class="nav-number">2.2.</span> <span class="nav-text">JSP声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP表达式"><span class="nav-number">2.3.</span> <span class="nav-text">JSP表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP注释"><span class="nav-number">2.4.</span> <span class="nav-text">JSP注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP三种指令元素"><span class="nav-number">2.5.</span> <span class="nav-text">JSP三种指令元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Page指令"><span class="nav-number">2.5.1.</span> <span class="nav-text">Page指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Include指令"><span class="nav-number">2.5.2.</span> <span class="nav-text">Include指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Taglib指令"><span class="nav-number">2.5.3.</span> <span class="nav-text">Taglib指令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例1：删除数组内的target元素"><span class="nav-number">2.6.</span> <span class="nav-text">实例1：删除数组内的target元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP七种动作元素"><span class="nav-number">2.7.</span> <span class="nav-text">JSP七种动作元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-jsp-include-gt-动作元素"><span class="nav-number">2.7.1.</span> <span class="nav-text">&lt;jsp:include&gt;动作元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-jsp-useBean-gt-动作元素"><span class="nav-number">2.7.2.</span> <span class="nav-text">&lt;jsp:useBean&gt;动作元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-jsp-setProperty-gt-动作元素"><span class="nav-number">2.7.3.</span> <span class="nav-text">&lt;jsp:setProperty&gt;动作元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-jsp-getProperty-gt-动作元素"><span class="nav-number">2.7.4.</span> <span class="nav-text">&lt;jsp:getProperty&gt;动作元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例2"><span class="nav-number">2.7.5.</span> <span class="nav-text">实例2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-jsp-forward-gt-动作元素"><span class="nav-number">2.7.6.</span> <span class="nav-text">&lt;jsp:forward&gt;动作元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-jsp-plugin-gt-动作元素"><span class="nav-number">2.7.7.</span> <span class="nav-text">&lt;jsp:plugin&gt;动作元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-jsp-element-gt-、-lt-jsp-attribute-gt-、-lt-jsp-body-gt-动作元素"><span class="nav-number">2.7.8.</span> <span class="nav-text">&lt;jsp:element&gt;、&lt;jsp:attribute&gt;、 &lt;jsp:body&gt;动作元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-jsp-text-gt-动作元素"><span class="nav-number">2.7.9.</span> <span class="nav-text">&lt;jsp:text&gt;动作元素</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP九种内置对象"><span class="nav-number">2.8.</span> <span class="nav-text">JSP九种内置对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#request对象"><span class="nav-number">2.8.1.</span> <span class="nav-text">request对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#response对象"><span class="nav-number">2.8.2.</span> <span class="nav-text">response对象</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP-基础应用与处理"><span class="nav-number">3.</span> <span class="nav-text">JSP 基础应用与处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP表单处理"><span class="nav-number">3.1.</span> <span class="nav-text">JSP表单处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP过滤器"><span class="nav-number">3.2.</span> <span class="nav-text">JSP过滤器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP-Cookies-处理"><span class="nav-number">3.3.</span> <span class="nav-text">JSP Cookies 处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP-Session"><span class="nav-number">3.4.</span> <span class="nav-text">JSP Session</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP页面重定向"><span class="nav-number">3.5.</span> <span class="nav-text">JSP页面重定向</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP自动刷新"><span class="nav-number">3.6.</span> <span class="nav-text">JSP自动刷新</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP-标准标签库（JSTL）"><span class="nav-number">4.</span> <span class="nav-text">JSP 标准标签库（JSTL）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP生命周期"><span class="nav-number">1.</span> <span class="nav-text">JSP生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一个实例"><span class="nav-number">1.1.</span> <span class="nav-text">一个实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP-语法"><span class="nav-number">2.</span> <span class="nav-text">JSP 语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#脚本程序段"><span class="nav-number">2.1.</span> <span class="nav-text">脚本程序段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP声明"><span class="nav-number">2.2.</span> <span class="nav-text">JSP声明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP表达式"><span class="nav-number">2.3.</span> <span class="nav-text">JSP表达式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP注释"><span class="nav-number">2.4.</span> <span class="nav-text">JSP注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP三种指令元素"><span class="nav-number">2.5.</span> <span class="nav-text">JSP三种指令元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Page指令"><span class="nav-number">2.5.1.</span> <span class="nav-text">Page指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Include指令"><span class="nav-number">2.5.2.</span> <span class="nav-text">Include指令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Taglib指令"><span class="nav-number">2.5.3.</span> <span class="nav-text">Taglib指令</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例1：删除数组内的target元素"><span class="nav-number">2.6.</span> <span class="nav-text">实例1：删除数组内的target元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP七种动作元素"><span class="nav-number">2.7.</span> <span class="nav-text">JSP七种动作元素</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-jsp-include-gt-动作元素"><span class="nav-number">2.7.1.</span> <span class="nav-text">&lt;jsp:include&gt;动作元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-jsp-useBean-gt-动作元素"><span class="nav-number">2.7.2.</span> <span class="nav-text">&lt;jsp:useBean&gt;动作元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-jsp-setProperty-gt-动作元素"><span class="nav-number">2.7.3.</span> <span class="nav-text">&lt;jsp:setProperty&gt;动作元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-jsp-getProperty-gt-动作元素"><span class="nav-number">2.7.4.</span> <span class="nav-text">&lt;jsp:getProperty&gt;动作元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#实例2：通过useBean实现记录注册信息"><span class="nav-number">2.7.5.</span> <span class="nav-text">实例2：通过useBean实现记录注册信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-jsp-forward-gt-动作元素"><span class="nav-number">2.7.6.</span> <span class="nav-text">&lt;jsp:forward&gt;动作元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-jsp-plugin-gt-动作元素"><span class="nav-number">2.7.7.</span> <span class="nav-text">&lt;jsp:plugin&gt;动作元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-jsp-element-gt-、-lt-jsp-attribute-gt-、-lt-jsp-body-gt-动作元素"><span class="nav-number">2.7.8.</span> <span class="nav-text">&lt;jsp:element&gt;、&lt;jsp:attribute&gt;、 &lt;jsp:body&gt;动作元素</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lt-jsp-text-gt-动作元素"><span class="nav-number">2.7.9.</span> <span class="nav-text">&lt;jsp:text&gt;动作元素</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP九种内置对象"><span class="nav-number">2.8.</span> <span class="nav-text">JSP九种内置对象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#request对象"><span class="nav-number">2.8.1.</span> <span class="nav-text">request对象</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实例3：通过request对象获取客户端请求的HTTP信息头"><span class="nav-number">2.8.1.1.</span> <span class="nav-text">实例3：通过request对象获取客户端请求的HTTP信息头</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#response对象"><span class="nav-number">2.8.2.</span> <span class="nav-text">response对象</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#实例4-模拟数字时钟"><span class="nav-number">2.8.2.1.</span> <span class="nav-text">实例4 模拟数字时钟</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP-表单处理"><span class="nav-number">3.</span> <span class="nav-text">JSP 表单处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GET与POST方法的区别"><span class="nav-number">3.1.</span> <span class="nav-text">GET与POST方法的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSP读取表单数据"><span class="nav-number">3.2.</span> <span class="nav-text">JSP读取表单数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#实例5-获取表单信息"><span class="nav-number">3.2.1.</span> <span class="nav-text">实例5 获取表单信息</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP-过滤器"><span class="nav-number">4.</span> <span class="nav-text">JSP 过滤器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP-Cookies-处理"><span class="nav-number">5.</span> <span class="nav-text">JSP Cookies 处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP-Session"><span class="nav-number">6.</span> <span class="nav-text">JSP Session</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP页面重定向"><span class="nav-number">7.</span> <span class="nav-text">JSP页面重定向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP自动刷新"><span class="nav-number">8.</span> <span class="nav-text">JSP自动刷新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JSP-标准标签库（JSTL）"><span class="nav-number">9.</span> <span class="nav-text">JSP 标准标签库（JSTL）</span></a></li></ol></div>
             
 
           </div>
