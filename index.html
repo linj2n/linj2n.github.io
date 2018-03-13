@@ -260,146 +260,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/03/12/147-Insertion-Sort-List/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="linj2n">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="linj2n@zll">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/12/147-Insertion-Sort-List/" itemprop="url">[Leetcode] 147.Insertion Sort List</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-12T21:31:54+08:00">
-                2018/03/12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="147-Insertion-Sort-List"><a href="#147-Insertion-Sort-List" class="headerlink" title="147. Insertion Sort List"></a>147. Insertion Sort List</h1><h3 id="From：147-Insertion-Sort-List"><a href="#From：147-Insertion-Sort-List" class="headerlink" title="From：147.Insertion Sort List"></a>From：<a href="https://leetcode.com/problems/insertion-sort-list/description/" target="_blank" rel="noopener">147.Insertion Sort List</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Sort a linked list using insertion sort.</p>
-<h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis"></a>Input and output analysis</h2><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">insertionSortList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></pre>
-
-
-<h2 id="Approach-1"><a href="#Approach-1" class="headerlink" title="Approach#1"></a>Approach#1</h2><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>见代码。</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// Approach #1</span></span><br><span class="line"><span class="comment">// 36ms</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">insertionSortList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) <span class="keyword">return</span> head;</span><br><span class="line">        ListNode dummyHead = <span class="keyword">new</span> ListNode(-<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">while</span> (head != <span class="keyword">null</span>) &#123;</span><br><span class="line">            ListNode walkNode = dummyHead;</span><br><span class="line">            ListNode currNode = head; </span><br><span class="line">            head = head.next;</span><br><span class="line">            <span class="keyword">while</span> (walkNode != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="comment">// insert</span></span><br><span class="line">                <span class="keyword">if</span> (walkNode.next == <span class="keyword">null</span> || walkNode.next.val &gt; currNode.val) &#123;</span><br><span class="line">                    ListNode tempNode = walkNode.next;</span><br><span class="line">                    walkNode.next = currNode;</span><br><span class="line">                    currNode.next = tempNode;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                walkNode = walkNode.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummyHead.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O( n )</td>
-<td>O( 1 )</td>
-</tr>
-</tbody>
-</table>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/01/14/205-Isomorphic-Strings/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -498,9 +358,9 @@
 </tr>
 </tbody>
 </table>
-<h2 id="Approach-2-Convert-to-pattern-string-by-same-rule-II"><a href="#Approach-2-Convert-to-pattern-string-by-same-rule-II" class="headerlink" title="Approach#2 Convert to pattern string by same rule II"></a>Approach#2 Convert to pattern string by same rule II</h2><h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h3><p>设置一个<code>patternNum</code>变量，与两个映射表。从前往后遍历<code>s</code>与<code>t</code>，对于<code>s</code>和<code>t</code>相同位置上的字符做如下操作：</p>
+<h2 id="Approach-2-Convert-to-pattern-string-by-same-rule-II"><a href="#Approach-2-Convert-to-pattern-string-by-same-rule-II" class="headerlink" title="Approach#2 Convert to pattern string by same rule II"></a>Approach#2 Convert to pattern string by same rule II</h2><h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h3><p>设置一个<code>patternNum</code>变量与两个映射表。从前往后遍历<code>s</code>与<code>t</code>，对于每一次遍历在<code>s</code>和<code>t</code>相同位置上的字符做如下操作：</p>
 <ul>
-<li>若字符第一次出现则设置相同<code>patterNum</code>，分别记录在哈希表中。</li>
+<li>若字符第一次出现则设置相同<code>patterNum</code>，分别记录在两个映射表中。</li>
 <li>比较两个映射表中对应字符的<code>patternNum</code>，若不相同则返回<code>false</code>。</li>
 </ul>
 <h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Approach #2 </span></span><br><span class="line"><span class="comment">// Runtime: 6 ms</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isIsomorphic</span><span class="params">(String s, String t)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(s.length() == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span>[] charValueOfS = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">128</span>];</span><br><span class="line">        <span class="keyword">int</span>[] charValueOfT = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">128</span>];</span><br><span class="line">        <span class="keyword">boolean</span> resFlag = <span class="keyword">true</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> patternNum = <span class="number">1</span>,arrayLen = s.length();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arrayLen; i++) &#123;</span><br><span class="line">            <span class="keyword">char</span> currCharOfS = s.charAt(i);</span><br><span class="line">            <span class="keyword">char</span> currCharOfT = t.charAt(i);            </span><br><span class="line">            <span class="keyword">if</span> (charValueOfT[currCharOfT] != charValueOfS[currCharOfS]) &#123;</span><br><span class="line">                resFlag = <span class="keyword">false</span>; <span class="keyword">break</span>;</span><br><span class="line">            &#125; </span><br><span class="line">            charValueOfS[currCharOfS] = patternNum;</span><br><span class="line">            charValueOfT[currCharOfT] = patternNum;</span><br><span class="line">            patternNum ++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> resFlag;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
@@ -1113,6 +973,146 @@
 <tr>
 <td>O(  )</td>
 <td>O(  )</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/01/12/147-Insertion-Sort-List/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linj2n">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="linj2n@zll">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/12/147-Insertion-Sort-List/" itemprop="url">[Leetcode] 147.Insertion Sort List</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-12T21:31:54+08:00">
+                2018/01/12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="147-Insertion-Sort-List"><a href="#147-Insertion-Sort-List" class="headerlink" title="147. Insertion Sort List"></a>147. Insertion Sort List</h1><h3 id="From：147-Insertion-Sort-List"><a href="#From：147-Insertion-Sort-List" class="headerlink" title="From：147.Insertion Sort List"></a>From：<a href="https://leetcode.com/problems/insertion-sort-list/description/" target="_blank" rel="noopener">147.Insertion Sort List</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Sort a linked list using insertion sort.</p>
+<h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis"></a>Input and output analysis</h2><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">insertionSortList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></pre>
+
+
+<h2 id="Approach-1"><a href="#Approach-1" class="headerlink" title="Approach#1"></a>Approach#1</h2><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>见代码。</p>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// Approach #1</span></span><br><span class="line"><span class="comment">// 36ms</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">insertionSortList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) <span class="keyword">return</span> head;</span><br><span class="line">        ListNode dummyHead = <span class="keyword">new</span> ListNode(-<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">while</span> (head != <span class="keyword">null</span>) &#123;</span><br><span class="line">            ListNode walkNode = dummyHead;</span><br><span class="line">            ListNode currNode = head; </span><br><span class="line">            head = head.next;</span><br><span class="line">            <span class="keyword">while</span> (walkNode != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="comment">// insert</span></span><br><span class="line">                <span class="keyword">if</span> (walkNode.next == <span class="keyword">null</span> || walkNode.next.val &gt; currNode.val) &#123;</span><br><span class="line">                    ListNode tempNode = walkNode.next;</span><br><span class="line">                    walkNode.next = currNode;</span><br><span class="line">                    currNode.next = tempNode;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                walkNode = walkNode.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummyHead.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></pre>
+
+<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><table>
+<thead>
+<tr>
+<th>Time</th>
+<th>Space  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>O( n )</td>
+<td>O( 1 )</td>
 </tr>
 </tbody>
 </table>
