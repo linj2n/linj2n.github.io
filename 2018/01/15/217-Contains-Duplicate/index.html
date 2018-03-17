@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="#  From：DescriptionExampleInput and output analysisApproach#1SolutionCode1  Complexity   Time Space       O(  ) O(  )    Approach#2SolutionCode1  Complexity   Time Space       O(  ) O(  )">
+<meta name="description" content="217.Contains DuplicateFrom：217.Contains DuplicateDescriptionGiven an array of integers, find if the array contains any duplicates. Your function should return true if any value appears at least twice">
 <meta name="keywords" content="Leetcode,OJ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[Leetcode] 11.Container With Most Water">
-<meta property="og:url" content="http://linj2n.cn/2018/01/12/11-Container-With-Most-Water/index.html">
+<meta property="og:title" content="[Leetcode] 217.Contains Duplicate">
+<meta property="og:url" content="http://linj2n.cn/2018/01/15/217-Contains-Duplicate/index.html">
 <meta property="og:site_name" content="linj2n@zll">
-<meta property="og:description" content="#  From：DescriptionExampleInput and output analysisApproach#1SolutionCode1  Complexity   Time Space       O(  ) O(  )    Approach#2SolutionCode1  Complexity   Time Space       O(  ) O(  )">
+<meta property="og:description" content="217.Contains DuplicateFrom：217.Contains DuplicateDescriptionGiven an array of integers, find if the array contains any duplicates. Your function should return true if any value appears at least twice">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-03-12T14:37:35.000Z">
+<meta property="og:updated_time" content="2018-03-17T02:41:23.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[Leetcode] 11.Container With Most Water">
-<meta name="twitter:description" content="#  From：DescriptionExampleInput and output analysisApproach#1SolutionCode1  Complexity   Time Space       O(  ) O(  )    Approach#2SolutionCode1  Complexity   Time Space       O(  ) O(  )">
+<meta name="twitter:title" content="[Leetcode] 217.Contains Duplicate">
+<meta name="twitter:description" content="217.Contains DuplicateFrom：217.Contains DuplicateDescriptionGiven an array of integers, find if the array contains any duplicates. Your function should return true if any value appears at least twice">
 
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://linj2n.cn/2018/01/12/11-Container-With-Most-Water/"/>
+  <link rel="canonical" href="http://linj2n.cn/2018/01/15/217-Contains-Duplicate/"/>
 
 
 
 
 
-  <title>[Leetcode] 11.Container With Most Water | linj2n@zll</title>
+  <title>[Leetcode] 217.Contains Duplicate | linj2n@zll</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/01/12/11-Container-With-Most-Water/">
+    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/01/15/217-Contains-Duplicate/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="linj2n">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[Leetcode] 11.Container With Most Water</h1>
+          <h1 class="post-title" itemprop="name headline">[Leetcode] 217.Contains Duplicate</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-12T22:31:51+08:00">
-                2018/01/12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-15T09:19:28+08:00">
+                2018/01/15
               </time>
             
 
@@ -330,8 +330,10 @@
       
 
       
-        <p># </p>
-<h3 id="From："><a href="#From：" class="headerlink" title="From："></a>From：<a href=""></a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis"></a>Input and output analysis</h2><h2 id="Approach-1"><a href="#Approach-1" class="headerlink" title="Approach#1"></a>Approach#1</h2><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></pre>
+        <h1 id="217-Contains-Duplicate"><a href="#217-Contains-Duplicate" class="headerlink" title="217.Contains Duplicate"></a>217.Contains Duplicate</h1><h3 id="From：217-Contains-Duplicate"><a href="#From：217-Contains-Duplicate" class="headerlink" title="From：217.Contains Duplicate"></a>From：<a href="https://leetcode.com/problems/contains-duplicate/description/" target="_blank" rel="noopener">217.Contains Duplicate</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an array of integers, find if the array contains any duplicates. Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.</p>
+<h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis"></a>Input and output analysis</h2><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsDuplicate</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
+
+<h2 id="Approach-1-Use-HashSet"><a href="#Approach-1-Use-HashSet" class="headerlink" title="Approach#1 Use HashSet"></a>Approach#1 Use HashSet</h2><h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Approach#1 </span></span><br><span class="line"><span class="comment">// 13ms</span></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsDuplicate</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        Set&lt;Integer&gt; set = <span class="keyword">new</span> HashSet&lt;Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> e: nums) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!set.add(e))	<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
 
 <h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><table>
 <thead>
@@ -342,12 +344,13 @@
 </thead>
 <tbody>
 <tr>
-<td>O(  )</td>
-<td>O(  )</td>
+<td>O( n )</td>
+<td>O( n )</td>
 </tr>
 </tbody>
 </table>
-<h2 id="Approach-2"><a href="#Approach-2" class="headerlink" title="Approach#2"></a>Approach#2</h2><h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h3><h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></pre>
+<h2 id="Approach-2-Sorting-Array"><a href="#Approach-2-Sorting-Array" class="headerlink" title="Approach#2 Sorting Array"></a>Approach#2 Sorting Array</h2><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>对数组进行排序，遍历数组，若找到两个相邻的相同元素返回<code>true</code>,否则返回<code>false</code>。</p>
+<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Approach #2</span></span><br><span class="line"><span class="comment">// 6ms</span></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsDuplicate</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length - <span class="number">1</span>; i++) &#123; </span><br><span class="line">            <span class="keyword">if</span> (nums[i] == nums[i+<span class="number">1</span>]) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
 
 <h3 id="Complexity-1"><a href="#Complexity-1" class="headerlink" title="Complexity"></a>Complexity</h3><table>
 <thead>
@@ -358,8 +361,8 @@
 </thead>
 <tbody>
 <tr>
-<td>O(  )</td>
-<td>O(  )</td>
+<td>O( nlogn )</td>
+<td>O( 1 )</td>
 </tr>
 </tbody>
 </table>
@@ -395,8 +398,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/12/147-Insertion-Sort-List/" rel="next" title="[Leetcode] 147.Insertion Sort List">
-                <i class="fa fa-chevron-left"></i> [Leetcode] 147.Insertion Sort List
+              <a href="/2018/01/14/205-Isomorphic-Strings/" rel="next" title="[Leetcode] 205.Isomorphic Strings">
+                <i class="fa fa-chevron-left"></i> [Leetcode] 205.Isomorphic Strings
               </a>
             
           </div>
@@ -405,8 +408,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/13/167-Two-Sum-II/" rel="prev" title="[Leetcode] 167.Two Sum II">
-                [Leetcode] 167.Two Sum II <i class="fa fa-chevron-right"></i>
+              <a href="/2018/01/15/219-Contains-Duplicate-II/" rel="prev" title="[Leetcode] 219.Contains Duplicate II">
+                [Leetcode] 219.Contains Duplicate II <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -532,7 +535,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#From："><span class="nav-number">1.</span> <span class="nav-text">From：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number"></span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Example"><span class="nav-number"></span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Input-and-output-analysis"><span class="nav-number"></span> <span class="nav-text">Input and output analysis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Approach-1"><span class="nav-number"></span> <span class="nav-text">Approach#1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">2.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Complexity"><span class="nav-number">3.</span> <span class="nav-text">Complexity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Approach-2"><span class="nav-number"></span> <span class="nav-text">Approach#2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-1"><span class="nav-number">1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-1"><span class="nav-number">2.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Complexity-1"><span class="nav-number">3.</span> <span class="nav-text">Complexity</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#217-Contains-Duplicate"><span class="nav-number">1.</span> <span class="nav-text">217.Contains Duplicate</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#From：217-Contains-Duplicate"><span class="nav-number">1.0.1.</span> <span class="nav-text">From：217.Contains Duplicate</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">1.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Input-and-output-analysis"><span class="nav-number">1.2.</span> <span class="nav-text">Input and output analysis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Approach-1-Use-HashSet"><span class="nav-number">1.3.</span> <span class="nav-text">Approach#1 Use HashSet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">1.3.1.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Complexity"><span class="nav-number">1.3.2.</span> <span class="nav-text">Complexity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Approach-2-Sorting-Array"><span class="nav-number">1.4.</span> <span class="nav-text">Approach#2 Sorting Array</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">1.4.1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-1"><span class="nav-number">1.4.2.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Complexity-1"><span class="nav-number">1.4.3.</span> <span class="nav-text">Complexity</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
