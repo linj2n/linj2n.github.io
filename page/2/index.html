@@ -1110,9 +1110,43 @@
 
       
         
-          
-            
-          
+          <p><strong>为什么需要Session管理？</strong></p>
+<p>这是因为HTTP协议是无状态，也就是说默认情况下Web服务器并不知道一个HTTP请求是来自初次用户，还是之前访问过的用户。例如若在一个需要用户访问Web应用某个页面需要验证用户的账号信息，一旦用户输入正确的账号和密码后，若没有Session追踪，再访问同一个Web应用的其他页面时，那么用户又需要重新输入账号和密码，这给用户带来很大的不便。</p>
+<p>用于保持的状态的四种方法有：</p>
+<ul>
+<li>URL重写</li>
+<li>隐藏域（Hidden Fields）</li>
+<li>cookie</li>
+<li>HttpSession 对象</li>
+</ul>
+<h2 id="token-based-URL-重写"><a href="#token-based-URL-重写" class="headerlink" title="token-based URL 重写"></a>token-based URL 重写</h2><h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><p>URL重写的基本原理是直接将一个或多个<code>token</code>作为一个查询字符串（Query String）添加到一个URL中。格式如</p>
+<p><code>url?key-1=value-1&amp;key-2=value-2</code></p>
+<p>URL与token之间用一个问号<code>?</code>隔开，两个token之间则用一个<code>&amp;</code>符号。</p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li>一些Web浏览器对URL字符的大写有限制，插入的<code>token</code>是有限，能够携带的信息也是有限的。</li>
+<li>某些<code>token</code>若携带了特殊的字符，如空格、<code>&amp;</code>和<code>?</code>等。此时需要对<code>token</code>进行编码。</li>
+<li><code>token</code>中的信息完全暴露在URL中，对于一些敏感信息就不适应了。</li>
+</ul>
+<h3 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h3><p>针对上述的缺点，URL重写适合如下的使用场景：</p>
+<ul>
+<li>需要保持状态，传递信息的安全性要求不高。</li>
+<li>不需要跨越太多页面</li>
+</ul>
+<h2 id="Hidden-Fields"><a href="#Hidden-Fields" class="headerlink" title="Hidden Fields"></a>Hidden Fields</h2><h3 id="工作原理-1"><a href="#工作原理-1" class="headerlink" title="工作原理"></a>工作原理</h3><p>与URL重写方式类似，但它不是将信息添加到URL内，而是将它们放在HTML表单的隐藏域中，当用户提交表单时，隐藏域的值也传送到服务器中。</p>
+<h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><ul>
+<li>只适用于那些包含表单的页面，此时才能使用隐藏域。</li>
+<li>当需要跨越很多页面时，实现就变得困难。</li>
+<li>相对于URL重写，能携带更多的信息，并且不需要对字符进行编码。</li>
+</ul>
+<h3 id="实例1-查看、更新Customer信息"><a href="#实例1-查看、更新Customer信息" class="headerlink" title="实例1 查看、更新Customer信息"></a>实例1 查看、更新Customer信息</h3><p>这个实例要完成的工作十分简单，首先提供一个页面展示Customer的姓名、所在城市，点击编辑按钮跳转到一个编辑Customer信息的页面，最后提交信息，更新Customer信息，并返回展示页面。实例<strong>Eclipse文件结构图</strong>如下</p>
+<p><img src="http://p5twacobv.bkt.clouddn.com/demo02aFileStructureDiagram.png" alt="demo02aFileStructureDiagram">
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/06/ServletAndJSPSummary3/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1267,8 +1301,8 @@
 </ul>
 <h3 id="实例1-编写一个在浏览器输出Hello-world的Servlet程序"><a href="#实例1-编写一个在浏览器输出Hello-world的Servlet程序" class="headerlink" title="实例1 编写一个在浏览器输出Hello world的Servlet程序"></a>实例1 编写一个在浏览器输出Hello world的Servlet程序</h3><h4 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h4><h4 id="代码文件"><a href="#代码文件" class="headerlink" title="代码文件"></a>代码文件</h4><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> demo01a;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.PrintWriter;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.Servlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletConfig;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletResponse;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet</span>(name = <span class="string">"MyServlet"</span>, urlPatterns = &#123;<span class="string">"/my"</span>&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> initCount = <span class="number">0</span>; </span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> serviceCount = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> destroyCount = <span class="number">0</span>;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(ServletRequest request, ServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		serviceCount ++;</span><br><span class="line">		System.out.println(<span class="string">"第"</span>+serviceCount + <span class="string">"次调用 service()"</span>);</span><br><span class="line">		String servletName = <span class="keyword">this</span>.getServletName();</span><br><span class="line">		response.setContentType(<span class="string">"text/html"</span>);	<span class="comment">// 告诉浏览器response返回的内容的MIME类型为text/html</span></span><br><span class="line">		PrintWriter writer = response.getWriter();</span><br><span class="line">		writer.print(<span class="string">"&lt;html&gt;&lt;head&gt;&lt;/head&gt;"</span> + <span class="string">"&lt;body&gt;Hello form "</span> + servletName + <span class="string">"&lt;/body&gt;&lt;/html&gt;"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		destroyCount ++;</span><br><span class="line">		System.out.println(<span class="string">"第"</span>+destroyCount + <span class="string">"次调用 destroy()"</span>);</span><br><span class="line">		<span class="keyword">super</span>.destroy();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> ServletConfig <span class="title">getServletConfig</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">super</span>.getServletConfig();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getServletInfo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"My Servlet"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">(ServletConfig config)</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">		initCount ++;</span><br><span class="line">		System.out.println(<span class="string">"第"</span>+initCount + <span class="string">"次调用 init()"</span>);</span><br><span class="line">		<span class="keyword">super</span>.init(config);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><code>MyServlet</code>主要完成两个工作，第一，重写service方法，获取Servlet名称并向浏览器输出一行欢迎字符串与Servlet名称。第二，在该servlet的每个方法被调用时在console输出log信息。</p>
-<p>在浏览器输入<code>localhost:8080/demo01a/my</code>回车，可以看到浏览器的输出结果，表示获取到了<code>Myservlet</code>的名称，然后再次刷新两次，返回Eclipse的console栏，我们知道，第一次请求调用时，servlet容器将调用<code>init()</code>方法，并且在之后的请求请求后，只执行<code>service()</code>方法。</p>
-<h4 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h4><p>使用WebServlet注解类型声明一个Servlet,作用在于告诉Servlet容器那个URL调用这个Servlet，WebServlet注解类型位于javax.servlet.annotation包内。另外还可以使用部署描述符完成相同的工作。</p>
+<p>在浏览器输入<code>localhost:8080/demo01a/my</code>回车，可以看到浏览器的输出结果，表示获取到了<code>Myservlet</code>的名称，然后再次刷新两次，返回Eclipse的console栏，我们知道，第一次请求调用时，servlet容器将调用<code>init()</code>方法，并且在之后的请求，只执行<code>service()</code>方法。</p>
+<h4 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h4><p>我们可以通过一个URL来调用编写好的的<code>MyServlet</code>servlet程序，这里我们使用<code>@WebServlet</code>建立从<code>URL</code>到<code>MyServlet</code>的映射，告诉Servlet容器那个URL调用这个Servlet，WebServlet注解类型位于javax.servlet.annotation包内。另外还可以使用<strong>部署描述符</strong>完成相同的工作。</p>
 <h2 id="ServletRequest"><a href="#ServletRequest" class="headerlink" title="ServletRequest"></a>ServletRequest</h2><p>对于每一次HTTP请求，Servlet容器都会创建一个实现了<code>ServletRequest</code>接口的实例，并将它传给Servlet的<code>service()</code>方法。这个<code>ServletRequest</code>实例封装着所有这次HTTP请求的信息，包括<code>parameter</code>、<code>value</code>、<code>atrributes</code>和<code>inputStream</code>等。<br>下面是<code>ServletRequest</code>接口常用方法：</p>
 <ul>
 <li><code>public int getContentLength()</code>，返回请求主体中的字节数，若不知道该字节的长度，则返回-1</li>
@@ -1276,12 +1310,14 @@
 <li><code>public String getParameter(String name)</code>，返回指定参数名为name的值，通常用于获取返回一个HTML表单域的值和查询字符串的值。</li>
 <li><code>public String getProtocol()</code>，返回HTTP请求的协议名称和版本号。</li>
 </ul>
-<h2 id="ServletResponse"><a href="#ServletResponse" class="headerlink" title="ServletResponse"></a>ServletResponse</h2><p>在调用servlet的<code>service()</code>方法之前，Servlet容器会创建一<code>ServletResponse</code>实例，并作为<code>service()</code>方法的第二参数传递给<code>service()</code>方法。可以在service方法中通过对<code>ServletResponse</code>实例的编写，封装信息以响应浏览器。</p>
+<h2 id="ServletResponse-接口"><a href="#ServletResponse-接口" class="headerlink" title="ServletResponse 接口"></a>ServletResponse 接口</h2><p>在调用servlet的<code>service()</code>方法之前，Servlet容器会创建一<code>ServletResponse</code>实例，并作为<code>service()</code>方法的第二参数传递给<code>service()</code>方法。可以在service方法中通过对<code>ServletResponse</code>实例的编写，封装信息以响应浏览器。</p>
 <p>如实例1中，<code>ServletResponse</code>的<code>getWriter()</code>方法返回一个<code>java.io.PrintWriter</code>对象，通过这个对象编写响应浏览器的HTML信息。这里注意一下<code>PritWriter</code>的编码格式默认为<code>ISO-8859-1</code>，若想要向浏览器输出汉字，则要通过<code>ServletResponse.setCharacterEncoding(String charset)</code>方法将编码格式设置为<code>UTF-8</code>。</p>
 <h2 id="ServletContext"><a href="#ServletContext" class="headerlink" title="ServletContext"></a>ServletContext</h2><p><code>ServletContext</code>用来表示一个Servlet应用程序，也就是说每个Web应用程序只有一个<code>ServletContext</code>。</p>
 <p>可以通过ServletConfig调用getServletContext方法以获得ServletContext。</p>
 <p>ServletContext主要用于动态注册Web对象。</p>
-<h2 id="HTTP-Servlet"><a href="#HTTP-Servlet" class="headerlink" title="HTTP Servlet"></a>HTTP Servlet</h2><p>现实中客户端与服务端之间的交互几乎是建立在HTTP协议上，因此我们编写的Servlet程序也要使用到HTTP协议，<code>javax.servlet.http</code>包含了编写Servlet应用程序的类和接口。主要类型如下</p>
+<h2 id="GenericServlet-抽象类"><a href="#GenericServlet-抽象类" class="headerlink" title="GenericServlet 抽象类"></a>GenericServlet 抽象类</h2><p><code>GernericServlet</code>抽象类实现了<code>Servlet</code>接口与<code>ServletConfig</code>接口，为<code>Servlet</code>接口中的所有方法提供了默认实现，我们不用一一实现一些不需要重载的方法了。</p>
+<p>虽然<code>GenericServlet</code>抽象类相比与<code>Servlet</code>使用起来更加的方便，但现实的应用程序中并不常用，使用更多的是接下来要介绍的<code>HTTPServlet</code>。</p>
+<h2 id="HTTP-Servlet"><a href="#HTTP-Servlet" class="headerlink" title="HTTP Servlet"></a>HTTP Servlet</h2><p>现实中客户端与服务端之间的交互几乎是建立在HTTP协议上，因此我们编写的Servlet程序也要使用到HTTP协议，<code>javax.servlet.http</code>包含了编写Servlet应用程序的类和接口，包内主要的类型如下</p>
 <ul>
 <li>Interfaces:<ul>
 <li><code>HttpServletRequest</code> extends<code>javax.servlet.ServletRequest</code></li>
@@ -1295,7 +1331,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="HttpServlet类"><a href="#HttpServlet类" class="headerlink" title="HttpServlet类"></a>HttpServlet类</h3><p><code>Servlet</code>主要通过覆盖<code>Servlet.service()</code>方法，来处理和响应一次请求不同。<code>HttpServlet</code>通常不需要再覆盖<code>service()</code>方法，而是覆盖<code>doGet()</code>或<code>doPost()</code>方法，少数情况下还会覆盖HTTP的<code>doPut()</code>、<code>doHead()</code>等方法。</p>
+<h3 id="HttpServlet-抽象类"><a href="#HttpServlet-抽象类" class="headerlink" title="HttpServlet 抽象类"></a>HttpServlet 抽象类</h3><p><code>Servlet</code>主要通过覆盖<code>Servlet.service()</code>方法，来处理和响应一次请求不同。<code>HttpServlet</code>通常不需要再覆盖<code>service()</code>方法，而是覆盖<code>doGet()</code>或<code>doPost()</code>方法，少数情况下还会覆盖HTTP的<code>doPut()</code>、<code>doHead()</code>等方法。</p>
 <p>与<code>Servlet.service()</code>传入的参数类似，<code>doGet()</code>等其他方法，接受两个实现了<code>HttpServletRequest</code>和<code>HttpServletResponse</code>接口的对象，这两个接口是分别继承了<code>ServletRequest</code>和<code>ServletResponse</code>接口。</p>
 <h3 id="HttpServletRequest接口"><a href="#HttpServletRequest接口" class="headerlink" title="HttpServletRequest接口"></a>HttpServletRequest接口</h3><p>HttpServletRequest表示Http环境下的servlet请求。继承<code>ServletRequest</code>接口，并且添加了以下的方法。</p>
 <ul>
@@ -1312,14 +1348,27 @@
 <li>void addHeader(String name, String value)，给这个相应对象添加标头</li>
 <li>void sendRedirect(String location)，将浏览器重定向到location位置</li>
 </ul>
-<h3 id="部署描述符"><a href="#部署描述符" class="headerlink" title="部署描述符"></a>部署描述符</h3><p>客户端通过URL对服务端进行一次请求时，为了让Servlet容器能够定位到正确的servlet程序，我们需要记录URL到servlet的映射路径。除了前面实例使用<code>WebServlet</code>注解类型映射路径之外，还可以使用部署描述符。</p>
+<h2 id="部署描述符"><a href="#部署描述符" class="headerlink" title="部署描述符"></a>部署描述符</h2><p>客户端通过URL对服务端进行一次请求时，为了让Servlet容器能够定位到正确的servlet程序，我们需要记录URL到servlet的映射路径。除了前面实例使用<code>WebServlet</code>注解类型映射路径之外，还可以使用部署描述符。</p>
 <p>部署描述符总是命名为web.xml，并放在WEB-INF目录下。</p>
-<p>实例1的<code>@WebServlet(name = &quot;MyServlet&quot;, urlPatterns = {&quot;/my&quot;})</code>等价于下面的部署描述符<br><figure class="highlight plain"><figcaption><span>lang=jsp</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;web-app xmlns=&quot;http://java.sun.com/xml/ns/javaee&quot;</span><br><span class="line">    xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">    xsi:schemaLocation=&quot;http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd&quot;</span><br><span class="line">    version=&quot;3.0&quot;&gt; </span><br><span class="line">&lt;servlet&gt;</span><br><span class="line">	&lt;servlet-name&gt;MyServlet&lt;/servlet-name&gt;</span><br><span class="line">	&lt;servlet-class&gt;demo01a.MyServlet&lt;/servlet-class&gt;</span><br><span class="line">&lt;/servlet&gt;</span><br><span class="line"></span><br><span class="line">&lt;servlet-mapping&gt;</span><br><span class="line">	&lt;servlet-name&gt;MyServlet&lt;/servlet-name&gt;</span><br><span class="line">	&lt;url-pattern&gt;/my&lt;/url-pattern&gt;</span><br><span class="line">&lt;/servlet-mapping&gt;</span><br><span class="line">&lt;/web-app&gt;</span><br></pre></td></tr></table></figure></p>
+<p>实例1的<code>@WebServlet(name = &quot;MyServlet&quot;, urlPatterns = {&quot;/my&quot;})</code>等价于下面的部署描述符<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">web-app</span> <span class="attr">xmlns</span>=<span class="string">"http://java.sun.com/xml/ns/javaee"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">version</span>=<span class="string">"3.0"</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>MyServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span>demo01a.MyServlet<span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span>MyServlet<span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/my<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">web-app</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>与<code>@WebServlet</code>相比，部署描述符具有以下几个优势。</p>
 <ul>
 <li>部署描述符包含<code>@WebServlet</code>没有的元素</li>
 <li>如果需要修改配置信息，<code>@WebServlet</code>需要重新编译，部署描述符不需要</li>
 </ul>
+<h2 id="Note-1"><a href="#Note-1" class="headerlink" title="Note"></a>Note</h2><h3 id="Q1-Servlet、GenericServlet和HttpServerlet之间的关系？"><a href="#Q1-Servlet、GenericServlet和HttpServerlet之间的关系？" class="headerlink" title="Q1: Servlet、GenericServlet和HttpServerlet之间的关系？"></a>Q1: Servlet、GenericServlet和HttpServerlet之间的关系？</h3><p>从作用上看，它们都是定义一个Servlet的方式。</p>
+<ul>
+<li><code>Servlet</code>是一个接口，主要包含着三个生命周期函数<code>init()</code>、<code>service()</code>、<code>destroy()</code>。</li>
+<li><code>GenericServlet</code>是实现<code>Servlet</code>接口的抽象类。</li>
+<li><code>HttpServlet</code>继承了<code>GenericServlet</code>抽象类，功能最为强大，现实开发中一般通过继承一个<code>HttpServlet</code>抽象类来定义一个Servlet具体类。</li>
+</ul>
+<p>从处理客户端发来的请求上看，</p>
+<ul>
+<li><code>GenerServlet</code>主要通过重载<code>service()</code>方法，接受<code>ServletRequest</code>、<code>ServletResponse</code>两个参数，处理请求和发送响应。</li>
+<li><code>HttpServlet</code>不使用重载<code>service()</code>方法，而是使用do<em>Method</em>方法，这里的<em>Method</em>是HTTP协议对应的请求方式，如<code>doGet</code>、<code>doPost</code>等方法。我们通过Tomcat的<code>HttpServlet</code>源码更加深入的了解这两者的异同（注：源码基于<a href="http://mirror.linux-ia64.org/apache/tomcat/tomcat-9/v9.0.6/src/apache-tomcat-9.0.6-src.zip" target="_blank" rel="noopener">Tomcat 9.0.6</a>)</li>
+</ul>
+<p>通过源码图，我们可以发现，<code>HttpServlet</code>重载了继承<code>GenericServlet</code>抽象类的<code>service()</code>方法，首先将<code>ServletRequest</code>与<code>ServletResponse</code>转换为<code>HttpServletRequest</code>与<code>HttpServletResponse</code>，然后调用自身的protected版本的<code>service()</code>方法，并传递转换后的两个参数。</p>
+<p>在protected版本的<code>service()</code>方法内，不直接处理<code>HttpRequest</code>和<code>HttpResponse</code>对象，继续将这两个对象往下传递给相应的do<em>Method</em>方法。因此我们可以得出<code>HttpServlet</code>实际上是通过do<em>Method</em>方法处理来自客户端的请求。</p>
 
           
         
