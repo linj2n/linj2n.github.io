@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="en">
+<html class="theme-next pisces use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -108,7 +108,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Pisces',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
@@ -330,54 +330,17 @@
 
       
         
-          
-            <h1 id="242-Valid-Anagram"><a href="#242-Valid-Anagram" class="headerlink" title="242.Valid Anagram"></a>242.Valid Anagram</h1><h3 id="From：242-Valid-Anagram"><a href="#From：242-Valid-Anagram" class="headerlink" title="From：242.Valid Anagram"></a>From：<a href="https://leetcode.com/problems/valid-anagram/description/" target="_blank" rel="noopener">242.Valid Anagram</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given two strings s and t, write a function to determine if t is an anagram of s.</p>
+          <h1 id="242-Valid-Anagram"><a href="#242-Valid-Anagram" class="headerlink" title="242.Valid Anagram"></a>242.Valid Anagram</h1><h3 id="From：242-Valid-Anagram"><a href="#From：242-Valid-Anagram" class="headerlink" title="From：242.Valid Anagram"></a>From：<a href="https://leetcode.com/problems/valid-anagram/description/" target="_blank" rel="noopener">242.Valid Anagram</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given two strings s and t, write a function to determine if t is an anagram of s.</p>
 <p>For example,<br>s = <code>&quot;anagram&quot;</code>, t = <code>&quot;nagaram&quot;</code>, return true.<br>s = <code>&quot;rat&quot;</code>, t =<code>&quot;car&quot;</code>, return false.</p>
 <p><strong>Note:</strong><br>You may assume the string contains only lowercase alphabets.</p>
 <p><strong>Follow up:</strong><br>What if the inputs contain unicode characters? How would you adapt your solution to such case?</p>
-<h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis"></a>Input and output analysis</h2><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isAnagram</span><span class="params">(String s, String t)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></pre>
-
-<h2 id="Approach-1-Sorting"><a href="#Approach-1-Sorting" class="headerlink" title="Approach#1 Sorting"></a>Approach#1 Sorting</h2><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>对<code>s</code>、<code>t</code>进行排序，然后逐一检查<code>s</code>、<code>t</code>对应位置的元素是否相同，不相同则返回<code>false</code></p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Approach #1</span></span><br><span class="line"><span class="comment">// 9ms</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isAnagram</span><span class="params">(String s, String t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s.length() != t.length())  <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">char</span>[] charArrayOfS = s.toCharArray();</span><br><span class="line">        <span class="keyword">char</span>[] charArrayOfT = t.toCharArray();</span><br><span class="line">        Arrays.sort(charArrayOfS);</span><br><span class="line">        Arrays.sort(charArrayOfT);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (charArrayOfS[i] != charArrayOfT[i]) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O( nlogn )</td>
-<td>O( n )</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Approach-2-Use-Map"><a href="#Approach-2-Use-Map" class="headerlink" title="Approach#2 Use Map"></a>Approach#2 Use Map</h2><h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h3><p>由题意可知，当<code>s</code>、<code>t</code>包含的字母种类、同一个字母出现的次数相同，只是字符排列顺序不同，此时两个字符串构成Anagram。因此可以使用映射表记录字符串元素出现的个数，利用两字符串元素出现次数相同的性质很容易得出结果。</p>
-<p>这里有两种判别的处理方法，第一种处理比较简单和笨拙，第二种更灵活、效率更高（类似于<a href="http://linj2n.cn/2018/01/02/657-Juge-Route-Circle/">657. Judge Route Circle</a>中的处理）：</p>
-<ul>
-<li>分别建立两个映射表，记录两个字符串中元素出现的个数，最后逐一对比两映射表对应键的值是否一一对应。</li>
-<li>只用一个哈希表，记录<code>s</code>字符串元素出现的个数，然后遍历<code>t</code>，对哈希表内对应字符键的值做自减操作，若小于<code>0</code>，则返回<code>false</code>。</li>
-</ul>
-<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Approach #2</span></span><br><span class="line"><span class="comment">// 6ms</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isAnagram</span><span class="params">(String s, String t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s.length() != t.length()) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">int</span>[] hs = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">52</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s.length(); i++) &#123;</span><br><span class="line">            hs[s.charAt(i) - <span class="string">'a'</span>] ++;</span><br><span class="line">            hs[t.charAt(i) - <span class="string">'a'</span> + <span class="number">26</span>] ++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">26</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (hs[j] != hs[j + <span class="number">26</span>]) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Approach #2 more effective version</span></span><br><span class="line"><span class="comment">// 4ms</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isAnagram</span><span class="params">(String s, String t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s.length() != t.length()) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">int</span>[] hs = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">26</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> e1: s.toCharArray()) &#123;</span><br><span class="line">            hs[e1 - <span class="string">'a'</span>] ++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> e2: t.toCharArray()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (--hs[e2 - <span class="string">'a'</span>] &lt; <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Complexity-1"><a href="#Complexity-1" class="headerlink" title="Complexity"></a>Complexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O( n )</td>
-<td>O( n )</td>
-</tr>
-</tbody>
-</table>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/17/242-Valid-Anagram/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -494,32 +457,17 @@
 
       
         
-          
-            <h1 id="26-Remove-Duplicates-From-Sorted-Array"><a href="#26-Remove-Duplicates-From-Sorted-Array" class="headerlink" title="26.Remove Duplicates From Sorted Array"></a>26.Remove Duplicates From Sorted Array</h1><h3 id="From：26-Remove-Duplicates-From-Sorted-Array"><a href="#From：26-Remove-Duplicates-From-Sorted-Array" class="headerlink" title="From：26.Remove Duplicates From Sorted Array"></a>From：<a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/" target="_blank" rel="noopener">26.Remove Duplicates From Sorted Array</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a sorted array, remove the duplicates in-place such that each element appear only once and return the new length.</p>
+          <h1 id="26-Remove-Duplicates-From-Sorted-Array"><a href="#26-Remove-Duplicates-From-Sorted-Array" class="headerlink" title="26.Remove Duplicates From Sorted Array"></a>26.Remove Duplicates From Sorted Array</h1><h3 id="From：26-Remove-Duplicates-From-Sorted-Array"><a href="#From：26-Remove-Duplicates-From-Sorted-Array" class="headerlink" title="From：26.Remove Duplicates From Sorted Array"></a>From：<a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/" target="_blank" rel="noopener">26.Remove Duplicates From Sorted Array</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a sorted array, remove the duplicates in-place such that each element appear only once and return the new length.</p>
 <p>Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.</p>
 <h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><p>Given nums = <code>[1,1,2]</code>,</p>
 <p>Your function should return <code>length = 2</code>, with the first two elements of nums being 1 and 2 respectively.<br>It doesn’t matter what you leave beyond the new length.</p>
-<h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis"></a>Input and output analysis</h2><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<h2 id="Approach-1-Two-Pointers"><a href="#Approach-1-Two-Pointers" class="headerlink" title="Approach#1 Two Pointers"></a>Approach#1 Two Pointers</h2><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>见代码。类似的题目还有<a href="linj2n.cn/2018/01/17/27-Remove-Element/">27.Remove Element</a></p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span> || nums.length == <span class="number">1</span>) <span class="keyword">return</span> nums.length;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (j &lt; nums.length) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] != nums[j]) &#123;</span><br><span class="line">                nums[++i] = nums[j];</span><br><span class="line">            &#125;</span><br><span class="line">            j++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O( n )</td>
-<td>O( 1 )</td>
-</tr>
-</tbody>
-</table>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/17/26-Remove-Duplicates-From-Sorted-Array/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -636,49 +584,19 @@
 
       
         
-          
-            <h1 id="27-Remove-Element"><a href="#27-Remove-Element" class="headerlink" title="27.Remove Element"></a>27.Remove Element</h1><h3 id="From：27-Remove-Element"><a href="#From：27-Remove-Element" class="headerlink" title="From：27.Remove Element"></a>From：<a href="https://leetcode.com/problems/remove-element/description/" target="_blank" rel="noopener">27.Remove Element</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an array and a value, remove all instances of that value in-place and return the new length.</p>
+          <h1 id="27-Remove-Element"><a href="#27-Remove-Element" class="headerlink" title="27.Remove Element"></a>27.Remove Element</h1><h3 id="From：27-Remove-Element"><a href="#From：27-Remove-Element" class="headerlink" title="From：27.Remove Element"></a>From：<a href="https://leetcode.com/problems/remove-element/description/" target="_blank" rel="noopener">27.Remove Element</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an array and a value, remove all instances of that value in-place and return the new length.</p>
 <p>Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.</p>
 <p>The order of elements can be changed. It doesn’t matter what you leave beyond the new length.</p>
 <h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><p>Given nums = <code>[3,2,2,3]</code>, val = <code>3</code>,</p>
 <p>Your function should return length = <code>2</code>, with the first two elements of nums being <code>2</code>.</p>
 <h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis"></a>Input and output analysis</h2><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeElement</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<h2 id="Approach-1-Two-Pointers"><a href="#Approach-1-Two-Pointers" class="headerlink" title="Approach#1 Two Pointers"></a>Approach#1 Two Pointers</h2><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>见代码。</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Approach #1</span></span><br><span class="line"><span class="comment">// 9ms</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeElement</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (nums.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> i = -<span class="number">1</span>, j = i + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (j &lt; nums.length) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[j] != val) &#123;</span><br><span class="line">                nums[++i] = nums[j];</span><br><span class="line">            &#125;</span><br><span class="line">            ++j;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O( n )</td>
-<td>O( 1 )</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Approach-2"><a href="#Approach-2" class="headerlink" title="Approach#2"></a>Approach#2</h2><h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h3><h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Complexity-1"><a href="#Complexity-1" class="headerlink" title="Complexity"></a>Complexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O(  )</td>
-<td>O(  )</td>
-</tr>
-</tbody>
-</table>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/17/27-Remove-Element/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -795,48 +713,14 @@
 
       
         
-          
-            <h1 id="219-Contains-Duplicate-II"><a href="#219-Contains-Duplicate-II" class="headerlink" title="219.Contains Duplicate II"></a>219.Contains Duplicate II</h1><h3 id="From：219-Contains-Duplicate-II"><a href="#From：219-Contains-Duplicate-II" class="headerlink" title="From：219.Contains Duplicate II"></a>From：<a href="https://leetcode.com/problems/contains-duplicate-ii/description/" target="_blank" rel="noopener">219.Contains Duplicate II</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an array of integers and an integer k, find out whether there are two distinct indices i and j in the array such that nums[i] = nums[j] and the absolute difference between i and j is at most k.</p>
-<h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis"></a>Input and output analysis</h2><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsNearbyDuplicate</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-
-<h2 id="Approach-1-Use-HashMap"><a href="#Approach-1-Use-HashMap" class="headerlink" title="Approach#1 Use HashMap"></a>Approach#1 Use HashMap</h2><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>见代码。</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsNearbyDuplicate</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        Map &lt;Integer,Integer&gt; hm = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i= <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (hm.containsKey(nums[i])) &#123;</span><br><span class="line">                <span class="keyword">if</span> (i - hm.get(nums[i]) &lt;= k) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            hm.put(nums[i],i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O( n )</td>
-<td>O( n )</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Approach-2-Use-Set"><a href="#Approach-2-Use-Set" class="headerlink" title="Approach#2 Use Set"></a>Approach#2 Use Set</h2><h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h3><p>使用一个HashSet，从前往后遍历数组，每次将元素添加进HashSet中，同时删除HashSet内值为<code>nums[i - k - 1]</code>。</p>
-<p>这样HashSet中一直只存在5个元素，当添加元素失败时，即HashSet中已经存在即将要添加的这个元素。此时数组存在符合条件的两个元素，返回<code>true</code>。</p>
-<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Approach #1</span></span><br><span class="line"><span class="comment">// 14ms</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsNearbyDuplicate</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        Set&lt;Integer&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &gt; k) &#123; set.remove(nums[i - k - <span class="number">1</span>]); &#125;</span><br><span class="line">            <span class="keyword">if</span> (set.add(nums[i]) == <span class="keyword">false</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Complexity-1"><a href="#Complexity-1" class="headerlink" title="Complexity"></a>Complexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O( n )</td>
-<td>O( n )</td>
-</tr>
-</tbody>
-</table>
-
-          
+          <h1 id="219-Contains-Duplicate-II"><a href="#219-Contains-Duplicate-II" class="headerlink" title="219.Contains Duplicate II"></a>219.Contains Duplicate II</h1><h3 id="From：219-Contains-Duplicate-II"><a href="#From：219-Contains-Duplicate-II" class="headerlink" title="From：219.Contains Duplicate II"></a>From：<a href="https://leetcode.com/problems/contains-duplicate-ii/description/" target="_blank" rel="noopener">219.Contains Duplicate II</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an array of integers and an integer k, find out whether there are two distinct indices i and j in the array such that nums[i] = nums[j] and the absolute difference between i and j is at most k.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/15/219-Contains-Duplicate-II/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -953,45 +837,14 @@
 
       
         
-          
-            <h1 id="217-Contains-Duplicate"><a href="#217-Contains-Duplicate" class="headerlink" title="217.Contains Duplicate"></a>217.Contains Duplicate</h1><h3 id="From：217-Contains-Duplicate"><a href="#From：217-Contains-Duplicate" class="headerlink" title="From：217.Contains Duplicate"></a>From：<a href="https://leetcode.com/problems/contains-duplicate/description/" target="_blank" rel="noopener">217.Contains Duplicate</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an array of integers, find if the array contains any duplicates. Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.</p>
-<h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis"></a>Input and output analysis</h2><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsDuplicate</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<h2 id="Approach-1-Use-HashSet"><a href="#Approach-1-Use-HashSet" class="headerlink" title="Approach#1 Use HashSet"></a>Approach#1 Use HashSet</h2><h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Approach#1 </span></span><br><span class="line"><span class="comment">// 13ms</span></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsDuplicate</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        Set&lt;Integer&gt; set = <span class="keyword">new</span> HashSet&lt;Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> e: nums) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!set.add(e))	<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O( n )</td>
-<td>O( n )</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Approach-2-Sorting-Array"><a href="#Approach-2-Sorting-Array" class="headerlink" title="Approach#2 Sorting Array"></a>Approach#2 Sorting Array</h2><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>对数组进行排序，遍历数组，若找到两个相邻的相同元素返回<code>true</code>,否则返回<code>false</code>。</p>
-<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Approach #2</span></span><br><span class="line"><span class="comment">// 6ms</span></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsDuplicate</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length - <span class="number">1</span>; i++) &#123; </span><br><span class="line">            <span class="keyword">if</span> (nums[i] == nums[i+<span class="number">1</span>]) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Complexity-1"><a href="#Complexity-1" class="headerlink" title="Complexity"></a>Complexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O( nlogn )</td>
-<td>O( 1 )</td>
-</tr>
-</tbody>
-</table>
-
-          
+          <h1 id="217-Contains-Duplicate"><a href="#217-Contains-Duplicate" class="headerlink" title="217.Contains Duplicate"></a>217.Contains Duplicate</h1><h3 id="From：217-Contains-Duplicate"><a href="#From：217-Contains-Duplicate" class="headerlink" title="From：217.Contains Duplicate"></a>From：<a href="https://leetcode.com/problems/contains-duplicate/description/" target="_blank" rel="noopener">217.Contains Duplicate</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an array of integers, find if the array contains any duplicates. Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/15/217-Contains-Duplicate/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1108,60 +961,20 @@
 
       
         
-          
-            <h1 id="205-Isomorphic-Strings"><a href="#205-Isomorphic-Strings" class="headerlink" title="205.Isomorphic Strings"></a>205.Isomorphic Strings</h1><h3 id="From：205-Isomorphic-Strings"><a href="#From：205-Isomorphic-Strings" class="headerlink" title="From：205. Isomorphic Strings"></a>From：<a href="https://leetcode.com/problems/isomorphic-strings/description/" target="_blank" rel="noopener">205. Isomorphic Strings</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given two strings <code>s</code> and <code>t</code>, determine if they are isomorphic.</p>
+          <h1 id="205-Isomorphic-Strings"><a href="#205-Isomorphic-Strings" class="headerlink" title="205.Isomorphic Strings"></a>205.Isomorphic Strings</h1><h3 id="From：205-Isomorphic-Strings"><a href="#From：205-Isomorphic-Strings" class="headerlink" title="From：205. Isomorphic Strings"></a>From：<a href="https://leetcode.com/problems/isomorphic-strings/description/" target="_blank" rel="noopener">205. Isomorphic Strings</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given two strings <code>s</code> and <code>t</code>, determine if they are isomorphic.</p>
 <p>Two strings are isomorphic if the characters in <code>s</code> can be replaced to get <code>t</code>.</p>
 <p>All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character but a character may map to itself.</p>
 <h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><p>Given <code>&quot;egg&quot;</code>, <code>&quot;add&quot;</code>, return true.</p>
 <p>Given <code>&quot;foo&quot;</code>, <code>&quot;bar&quot;</code>, return false.</p>
 <p>Given <code>&quot;paper&quot;</code>, <code>&quot;title&quot;</code>, return true.</p>
 <p><strong>Note:</strong><br>You may assume both s and t have the same length.</p>
-<h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis"></a>Input and output analysis</h2><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isIsomorphic</span><span class="params">(String s, String t)</span> </span>&#123;</span><br><span class="line">    	<span class="comment">// </span></span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<h2 id="Approach-1-Convert-to-pattern-string-by-same-rule-I"><a href="#Approach-1-Convert-to-pattern-string-by-same-rule-I" class="headerlink" title="Approach#1 Convert to pattern string by same rule I"></a>Approach#1 Convert to pattern string by same rule I</h2><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>一个比较简单粗暴的方法，我们可以遍历<code>String</code>，按照字符出现的先后顺序对<code>String</code>内的字符进行重新编码，最后比较比较两个字符串编码内容，相同则返回<code>true</code>。</p>
-<p>例如，我们设置一个<code>patterCode</code>,按照出现顺序从<code>1</code>开始对<code>String</code>编码：<br>对于给定字符串<code>egg</code>，<code>add</code>，编码后均为<code>122</code>，返回<code>true</code>；<br>对于给定字符串<code>foo</code>，<code>bar</code>，前者编码为<code>122</code>，后者为<code>012</code>，返回<code>false</code>；<br>对于给定字符串<code>paper</code>，<code>title</code>，编码后均为<code>12134</code>，返回<code>true</code>。</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Approach #1 </span></span><br><span class="line"><span class="comment">// Runtime: 23 ms</span></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">convertToPatternStr</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">        HashMap &lt;Character,Integer&gt;sh = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">int</span> id = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c: s.toCharArray()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (!sh.containsKey(c)) &#123;</span><br><span class="line">                sh.put(c,id); sb.append(id++);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                sb.append(sh.get(c));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isIsomorphic</span><span class="params">(String s, String t)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> convertToPatternStr(s).equals(convertToPatternStr(t));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O( n )</td>
-<td>O( n )</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Approach-2-Convert-to-pattern-string-by-same-rule-II"><a href="#Approach-2-Convert-to-pattern-string-by-same-rule-II" class="headerlink" title="Approach#2 Convert to pattern string by same rule II"></a>Approach#2 Convert to pattern string by same rule II</h2><h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h3><p>设置一个<code>patternNum</code>变量与两个映射表。从前往后遍历<code>s</code>与<code>t</code>，对于每一次遍历在<code>s</code>和<code>t</code>相同位置上的字符做如下操作：</p>
-<ul>
-<li>若字符第一次出现则设置相同<code>patterNum</code>，分别记录在两个映射表中。</li>
-<li>比较两个映射表中对应字符的<code>patternNum</code>，若不相同则返回<code>false</code>。</li>
-</ul>
-<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Approach #2 </span></span><br><span class="line"><span class="comment">// Runtime: 6 ms</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution2</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isIsomorphic</span><span class="params">(String s, String t)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span>(s.length() == <span class="number">0</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span>[] charValueOfS = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">128</span>];</span><br><span class="line">        <span class="keyword">int</span>[] charValueOfT = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">128</span>];</span><br><span class="line">        <span class="keyword">boolean</span> resFlag = <span class="keyword">true</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> patternNum = <span class="number">1</span>,arrayLen = s.length();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arrayLen; i++) &#123;</span><br><span class="line">            <span class="keyword">char</span> currCharOfS = s.charAt(i);</span><br><span class="line">            <span class="keyword">char</span> currCharOfT = t.charAt(i);            </span><br><span class="line">            <span class="keyword">if</span> (charValueOfT[currCharOfT] != charValueOfS[currCharOfS]) &#123;</span><br><span class="line">                resFlag = <span class="keyword">false</span>; <span class="keyword">break</span>;</span><br><span class="line">            &#125; </span><br><span class="line">            charValueOfS[currCharOfS] = patternNum;</span><br><span class="line">            charValueOfT[currCharOfT] = patternNum;</span><br><span class="line">            patternNum ++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> resFlag;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Complexity-1"><a href="#Complexity-1" class="headerlink" title="Complexity"></a>Complexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O( n )</td>
-<td>O( n )</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h2><p><strong>1.两种<code>String</code>遍历方式</strong>：</p>
-<p><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 方式一，使用变量i遍历</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length(); i++) &#123; <span class="comment">// do something...&#125;</span></span><br><span class="line"><span class="comment">// 方式二，使用foreach循环</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">char</span> currChar: str.toCharArray()) &#123; <span class="comment">// do something...&#125;</span></span><br></pre></td></tr></table></figure></pre><br>在循环体内的代码不需要依赖数组索引的情况下，方式二遍历方法会比方式一更高效。</p>
-<p><strong>2.根据字符的ASCII码值建立映射数组，这比使用集合框架中的<code>HashMap</code>更高效。</strong></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/14/205-Isomorphic-Strings/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1278,36 +1091,20 @@
 
       
         
-          
-            <h1 id="202-Happy-Number"><a href="#202-Happy-Number" class="headerlink" title="202.Happy Number"></a>202.Happy Number</h1><h3 id="From：202-Happy-Number"><a href="#From：202-Happy-Number" class="headerlink" title="From：202.Happy Number"></a>From：<a href="https://leetcode.com/problems/happy-number/description/" target="_blank" rel="noopener">202.Happy Number</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Write an algorithm to determine if a number is “happy”.</p>
+          <h1 id="202-Happy-Number"><a href="#202-Happy-Number" class="headerlink" title="202.Happy Number"></a>202.Happy Number</h1><h3 id="From：202-Happy-Number"><a href="#From：202-Happy-Number" class="headerlink" title="From：202.Happy Number"></a>From：<a href="https://leetcode.com/problems/happy-number/description/" target="_blank" rel="noopener">202.Happy Number</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Write an algorithm to determine if a number is “happy”.</p>
 <p>A happy number is a number defined by the following process: Starting with any positive integer, replace the number by the sum of the squares of its digits, and repeat the process until the number equals 1 (where it will stay), or it loops endlessly in a cycle which does not include 1. Those numbers for which this process ends in 1 are happy numbers.</p>
 <h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><p>19 is a happy number</p>
 <p>12 + 92 = 82</p>
 <p>82 + 22 = 68</p>
 <p>62 + 82 = 100</p>
 <p>12 + 02 + 02 = 1</p>
-<h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis"></a>Input and output analysis</h2><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isHappy</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-
-<h2 id="Approach-1"><a href="#Approach-1" class="headerlink" title="Approach#1"></a>Approach#1</h2><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>解法十分简单，见代码。</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Approach #1</span></span><br><span class="line"><span class="comment">// 6ms</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isHappy</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        HashSet hs = <span class="keyword">new</span> HashSet();</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>; </span><br><span class="line">        <span class="keyword">while</span> (n != <span class="number">1</span>) &#123;</span><br><span class="line">            sum = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> (n != <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">int</span> digit = n % <span class="number">10</span>;</span><br><span class="line">                sum += digit * digit;</span><br><span class="line">                n = n / <span class="number">10</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (hs.contains(sum)) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">            <span class="keyword">else</span> hs.add(sum);</span><br><span class="line">            n = sum;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O( n )</td>
-<td>O( n )</td>
-</tr>
-</tbody>
-</table>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/14/202-Happy-Number/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1576,34 +1373,18 @@
 
       
         
-          
-            <h1 id="167-Two-Sum-II-Input-array-is-sorted"><a href="#167-Two-Sum-II-Input-array-is-sorted" class="headerlink" title="167.Two Sum II - Input array is sorted"></a>167.Two Sum II - Input array is sorted</h1><h3 id="From：-167-Two-Sum-II-Input-array-is-sorted"><a href="#From：-167-Two-Sum-II-Input-array-is-sorted" class="headerlink" title="From：[167.Two Sum II - Input array is sorted"></a>From：[167.Two Sum II - Input array is sorted</h3><p>](<a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/" target="_blank" rel="noopener">https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/</a>)</p>
+          <h1 id="167-Two-Sum-II-Input-array-is-sorted"><a href="#167-Two-Sum-II-Input-array-is-sorted" class="headerlink" title="167.Two Sum II - Input array is sorted"></a>167.Two Sum II - Input array is sorted</h1><h3 id="From：-167-Two-Sum-II-Input-array-is-sorted"><a href="#From：-167-Two-Sum-II-Input-array-is-sorted" class="headerlink" title="From：[167.Two Sum II - Input array is sorted"></a>From：[167.Two Sum II - Input array is sorted</h3><p>](<a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/" target="_blank" rel="noopener">https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/</a>)</p>
 <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number.</p>
 <p>The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2. Please note that your returned answers (both index1 and index2) are not zero-based.</p>
 <p>You may assume that each input would have exactly one solution and you may not use the same element twice.</p>
 <h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><p>Input: numbers={2, 7, 11, 15}, target=9<br>Output: index1=1, index2=2</p>
-<h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis"></a>Input and output analysis</h2><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) &#123;</span><br><span class="line">    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-
-<h2 id="Approach-1"><a href="#Approach-1" class="headerlink" title="Approach#1"></a>Approach#1</h2><h3 id="Solution-Two-Pointers"><a href="#Solution-Two-Pointers" class="headerlink" title="Solution Two Pointers"></a>Solution Two Pointers</h3><p>见代码。</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Approach#1</span></span><br><span class="line"><span class="comment">// 1ms </span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] numbers, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">int</span> index1 = <span class="number">0</span>, index2 = numbers.length - <span class="number">1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> sum = numbers[index1] + numbers[index2];</span><br><span class="line">        <span class="keyword">while</span> (sum != target) &#123;</span><br><span class="line">            <span class="keyword">if</span> (sum &gt; target) &#123;</span><br><span class="line">                index2 --;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                index1 ++;</span><br><span class="line">            &#125;</span><br><span class="line">            sum = numbers[index1] + numbers[index2];</span><br><span class="line">        &#125;</span><br><span class="line">        res[<span class="number">0</span>] = index1+<span class="number">1</span>;</span><br><span class="line">        res[<span class="number">1</span>] = index2+<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O( n )</td>
-<td>O( 1 )</td>
-</tr>
-</tbody>
-</table>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/13/167-Two-Sum-II/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1909,7 +1690,7 @@
 <div class="theme-info">
   Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Pisces
   </a>
 </div>
 
@@ -1988,6 +1769,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
 
   
     <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>

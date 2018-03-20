@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="en">
+<html class="theme-next pisces use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="linj2n@zll">
 <meta property="og:description" content="5. Kth Largest ElementFrom：LintCode 5. Kth Largest ElementDescriptionFind K-th largest element in an array. ExampleIn array [9,3,2,4,8], the 3rd largest element is 4. In array [1,2,3,4,5], the 1st lar">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-03-12T14:23:56.000Z">
+<meta property="og:updated_time" content="2018-03-20T01:43:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[Lintcode] 5.Kth Large Element">
 <meta name="twitter:description" content="5. Kth Largest ElementFrom：LintCode 5. Kth Largest ElementDescriptionFind K-th largest element in an array. ExampleIn array [9,3,2,4,8], the 3rd largest element is 4. In array [1,2,3,4,5], the 1st lar">
@@ -113,7 +113,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Pisces',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
@@ -335,6 +335,7 @@
 <p>In array <code>[1,2,3,4,5]</code>, the 1st largest element is <code>5</code>, 2nd largest element is <code>4</code>, 3rd largest element is <code>3</code> and etc.</p>
 <h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis:"></a>Input and output analysis:</h2><p>给定一个<code>int[]</code>与<code>k</code>输出第<code>k</code>个最大的数。</p>
 <h2 id="Approach-1-Sorting"><a href="#Approach-1-Sorting" class="headerlink" title="Approach#1 Sorting"></a>Approach#1 Sorting</h2><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>显然，若对<code>int[]</code>进行排序便可以很方便的根据下标找出第<code>k</code>个最大的数。当数组从小到大排好序后，第<code>k</code>个最大的数，就是<code>nums[nums.length - k]</code>。</p>
+<a id="more"></a>
 <h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">kthLargestElement</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// write your code here</span></span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        <span class="keyword">return</span> nums[nums.length - k];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></pre>
 
 <h3 id="Coplexity"><a href="#Coplexity" class="headerlink" title="Coplexity"></a>Coplexity</h3><table>
@@ -575,7 +576,7 @@
 <div class="theme-info">
   Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Pisces
   </a>
 </div>
 
@@ -654,6 +655,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>

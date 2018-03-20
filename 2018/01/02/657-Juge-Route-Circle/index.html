@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="en">
+<html class="theme-next pisces use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="linj2n@zll">
 <meta property="og:description" content="657. Judge Route CircleFrom：657. Judge Route CircleDescriptionInitially, there is a Robot at position (0, 0). Given a sequence of its moves, judge if this robot makes a circle, which means it moves ba">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-03-12T14:24:17.000Z">
+<meta property="og:updated_time" content="2018-03-20T01:43:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[Leetcode] 657.Juge Route Circle">
 <meta name="twitter:description" content="657. Judge Route CircleFrom：657. Judge Route CircleDescriptionInitially, there is a Robot at position (0, 0). Given a sequence of its moves, judge if this robot makes a circle, which means it moves ba">
@@ -113,7 +113,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Pisces',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
@@ -344,6 +344,7 @@ Output: false</pre>
 <li>使用两个变量<code>v</code>、<code>h</code>。遍历<code>String moves</code>，若<code>L</code>、<code>U</code>出现则做<code>v++</code>与<code>h++</code>操作，<code>R</code>、<code>D</code>则做<code>v--</code>与<code>h--</code>操作。最后若<code>v == 0 &amp;&amp; h == 0</code>成立则返回<code>true</code>，否则返回<code>false</code>。</li>
 </ul>
 <p>确定判别方法后，接下来就是如何遍历<code>String moves</code>与分别标记<code>L、R、U、D</code>出现次数的问题了，具体见实现代码。</p>
+<a id="more"></a>
 <h2 id="Approach-1-Using-HashMap"><a href="#Approach-1-Using-HashMap" class="headerlink" title="Approach#1 Using HashMap"></a>Approach#1 Using HashMap</h2><h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Runtime: 48ms</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">judgeCircle</span><span class="params">(String moves)</span> </span>&#123;</span><br><span class="line">        HashMap &lt;Character,Integer&gt; h = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        h.put(<span class="string">'L'</span>,<span class="number">0</span>);h.put(<span class="string">'R'</span>,<span class="number">0</span>);h.put(<span class="string">'U'</span>,<span class="number">0</span>);h.put(<span class="string">'D'</span>,<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; moves.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">char</span> currChar = moves.charAt(i);</span><br><span class="line">            <span class="keyword">int</span> temp = h.get(currChar) + <span class="number">1</span>;</span><br><span class="line">            h.put(currChar,temp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> h.get(<span class="string">'L'</span>).equals(h.get(<span class="string">'R'</span>))  &amp;&amp; h.get(<span class="string">'U'</span>).equals(h.get(<span class="string">'D'</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
 
 <h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><table>
@@ -599,7 +600,7 @@ Output: false</pre>
 <div class="theme-info">
   Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Pisces
   </a>
 </div>
 
@@ -678,6 +679,13 @@ Output: false</pre>
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>

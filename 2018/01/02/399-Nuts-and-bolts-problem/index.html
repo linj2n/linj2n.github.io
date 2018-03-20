@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="en">
+<html class="theme-next pisces use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="linj2n@zll">
 <meta property="og:description" content="399.Nuts and bolts problemFrom：lintcode 399. Nuts &amp;amp; Bolts ProblemInput and output analysis给定String[] nuts和String[] bolts分别模拟螺帽和螺丝集合，这些集合里面的元素有大小之分且没有重复的元素。nuts[]和bolts[]一一对应，即nuts[]中的任意元素一定能在bolts">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-03-12T14:27:12.000Z">
+<meta property="og:updated_time" content="2018-03-20T01:43:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="[Lintcode] 399.Nuts and bolts problem">
 <meta name="twitter:description" content="399.Nuts and bolts problemFrom：lintcode 399. Nuts &amp;amp; Bolts ProblemInput and output analysis给定String[] nuts和String[] bolts分别模拟螺帽和螺丝集合，这些集合里面的元素有大小之分且没有重复的元素。nuts[]和bolts[]一一对应，即nuts[]中的任意元素一定能在bolts">
@@ -113,7 +113,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Pisces',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
@@ -332,6 +332,7 @@
       
         <h1 id="399-Nuts-and-bolts-problem"><a href="#399-Nuts-and-bolts-problem" class="headerlink" title="399.Nuts and bolts problem"></a>399.Nuts and bolts problem</h1><h3 id="From：lintcode-399-Nuts-amp-Bolts-Problem"><a href="#From：lintcode-399-Nuts-amp-Bolts-Problem" class="headerlink" title="From：lintcode 399. Nuts &amp; Bolts Problem"></a>From：<a href="http://www.lintcode.com/en/problem/nuts-bolts-problem/" target="_blank" rel="noopener">lintcode 399. Nuts &amp; Bolts Problem</a></h3><h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis"></a>Input and output analysis</h2><p>给定<code>String[] nuts</code>和<code>String[] bolts</code>分别模拟螺帽和螺丝集合，这些集合里面的元素有大小之分且没有重复的元素。<code>nuts[]</code>和<code>bolts[]</code>一一对应，即nuts[]中的任意元素一定能在bolts[]与其匹配的元素，反之亦可。函数需要对字符串数组进行处理，使得最后两个数组满足条件：”</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对于<span class="number">0</span> &lt; i &lt;= nuts.length - <span class="number">1</span>; 都满足条件 Compaer.cmp(nuts[i],bolts[i]) == <span class="number">0</span>;  </span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>对题意的理解还需要注意一下几点：</p>
 <ul>
 <li>满足输出条件不一定要求两数组有序，只要同样下标的元素一一对应即可。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如nuts[] = &#123;N1,N2,N3,N4&#125;; bolts[] = &#123;B1,B2,B3,B4&#125;; <span class="comment">// 满足要求</span></span><br><span class="line">又如nuts[] = &#123;N2,N1,N4,N3&#125;;bolts[] = &#123;B2,B1,B4,B3&#125;; <span class="comment">// 满足要求</span></span><br></pre></td></tr></table></figure></li>
@@ -595,7 +596,7 @@
 <div class="theme-info">
   Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Pisces
   </a>
 </div>
 
@@ -674,6 +675,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>

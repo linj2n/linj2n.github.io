@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="en">
+<html class="theme-next pisces use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -108,7 +108,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Pisces',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
@@ -330,47 +330,18 @@
 
       
         
-          
-            <h1 id="5-Kth-Largest-Element"><a href="#5-Kth-Largest-Element" class="headerlink" title="5. Kth Largest Element"></a>5. Kth Largest Element</h1><h3 id="From：LintCode-5-Kth-Largest-Element"><a href="#From：LintCode-5-Kth-Largest-Element" class="headerlink" title="From：LintCode 5. Kth Largest Element"></a>From：<a href="http://www.lintcode.com/en/problem/kth-largest-element/" target="_blank" rel="noopener">LintCode 5. Kth Largest Element</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Find K-th largest element in an array.</p>
+          <h1 id="5-Kth-Largest-Element"><a href="#5-Kth-Largest-Element" class="headerlink" title="5. Kth Largest Element"></a>5. Kth Largest Element</h1><h3 id="From：LintCode-5-Kth-Largest-Element"><a href="#From：LintCode-5-Kth-Largest-Element" class="headerlink" title="From：LintCode 5. Kth Largest Element"></a>From：<a href="http://www.lintcode.com/en/problem/kth-largest-element/" target="_blank" rel="noopener">LintCode 5. Kth Largest Element</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Find K-th largest element in an array.</p>
 <h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><p>In array <code>[9,3,2,4,8]</code>, the 3rd largest element is <code>4</code>.</p>
 <p>In array <code>[1,2,3,4,5]</code>, the 1st largest element is <code>5</code>, 2nd largest element is <code>4</code>, 3rd largest element is <code>3</code> and etc.</p>
 <h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis:"></a>Input and output analysis:</h2><p>给定一个<code>int[]</code>与<code>k</code>输出第<code>k</code>个最大的数。</p>
 <h2 id="Approach-1-Sorting"><a href="#Approach-1-Sorting" class="headerlink" title="Approach#1 Sorting"></a>Approach#1 Sorting</h2><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>显然，若对<code>int[]</code>进行排序便可以很方便的根据下标找出第<code>k</code>个最大的数。当数组从小到大排好序后，第<code>k</code>个最大的数，就是<code>nums[nums.length - k]</code>。</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">kthLargestElement</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// write your code here</span></span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        <span class="keyword">return</span> nums[nums.length - k];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Coplexity"><a href="#Coplexity" class="headerlink" title="Coplexity"></a>Coplexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O( nlogn )</td>
-<td>O(1 )</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Approach-2-Quick-selection"><a href="#Approach-2-Quick-selection" class="headerlink" title="Approach#2 Quick selection"></a>Approach#2 Quick selection</h2><h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h3><p>我们只需要找出第<code>k</code>个最大的数，若对整个数组进行排序未免有点浪费时间。这里可以采用用划分的思路，假设数组已经是有序的，求出第<code>k</code>个最大的数在排好序的数组中的最终位置，即<code>kIndex = nums.length - k;</code>。在数组随机选取一个<code>p</code>，根据<code>p</code>的值对数组进行整理，使得<code>p</code>的左边部分的元素全部<code>&lt; p</code>，右边部分的元素<code>&gt;= p</code>。然后比较<code>kIndex</code>与<code>p</code>，若<code>p</code>大了，则在<code>p</code>左边部分继续划分，<code>p</code>小了，则在右边部分划分。更新<code>p</code>值，继续比较，知道<code>kIndex == p</code>，此时<code>nums[kIndex]</code>就是第<code>k</code>个最大数。</p>
-<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">exch</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = nums[i]; nums[i] = nums[j]; nums[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">lomutoPartition</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span></span>&#123;</span><br><span class="line">        Random r = <span class="keyword">new</span> Random();</span><br><span class="line">        <span class="keyword">int</span> p = lo + r.nextInt(hi - lo + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">int</span> pivotValue = nums[p];</span><br><span class="line">        exch(nums,lo,p);</span><br><span class="line">        <span class="keyword">int</span> i = lo, j = lo + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (j &lt;= hi)&#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[j] &lt; pivotValue)</span><br><span class="line">                exch(nums,++i,j);</span><br><span class="line">            ++j;</span><br><span class="line">        &#125;</span><br><span class="line">        exch(nums,i,lo);</span><br><span class="line">        <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">kthLargestElement</span><span class="params">(<span class="keyword">int</span> k, <span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// write your code here</span></span><br><span class="line">        <span class="keyword">int</span> seqKIndex = nums.length - k, lo = <span class="number">0</span>, hi = nums.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> pivot = lomutoPartition(nums,lo,hi);</span><br><span class="line">        <span class="keyword">while</span> (pivot != seqKIndex)&#123;</span><br><span class="line">            <span class="keyword">if</span> (pivot &gt; seqKIndex)&#123;</span><br><span class="line">                hi = pivot - <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                lo = pivot + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            pivot = lomutoPartition(nums,lo,hi);        </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums[seqKIndex];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O( n )</td>
-<td>O( 1 )</td>
-</tr>
-</tbody>
-</table>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/03/5-Kth-Large-Element/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -487,49 +458,19 @@
 
       
         
-          
-            <h1 id="80-Median"><a href="#80-Median" class="headerlink" title="80. Median"></a>80. Median</h1><h3 id="From：LintCode-80-Median"><a href="#From：LintCode-80-Median" class="headerlink" title="From：LintCode 80. Median"></a>From：<a href="http://www.lintcode.com/en/problem/median/" target="_blank" rel="noopener">LintCode 80. Median</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a unsorted array with integers, find the median of it.</p>
+          <h1 id="80-Median"><a href="#80-Median" class="headerlink" title="80. Median"></a>80. Median</h1><h3 id="From：LintCode-80-Median"><a href="#From：LintCode-80-Median" class="headerlink" title="From：LintCode 80. Median"></a>From：<a href="http://www.lintcode.com/en/problem/median/" target="_blank" rel="noopener">LintCode 80. Median</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a unsorted array with integers, find the median of it.</p>
 <p>A median is the middle number of the array after it is sorted.</p>
 <p>If there are even numbers in the array, return the N/2-th number after sorted.</p>
 <h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><p>Given <code>[4, 5, 1, 2, 3]</code>, return <code>3</code>.</p>
 <p>Given <code>[7, 9, 4, 5]</code>, return <code>5</code>.</p>
 <h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis"></a>Input and output analysis</h2><p>给定一个<code>size</code>为<code>n</code>的数组<code>nums[0...n-1]</code>，返回按照从小到大顺数第<code>n/2</code>的元素，转换成下标表示即第<code>(n-1)/2</code>的元素。</p>
-<h2 id="Approach-1-库函数排序"><a href="#Approach-1-库函数排序" class="headerlink" title="Approach#1 库函数排序"></a>Approach#1 库函数排序</h2><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>对数组进行排序，拍完序后该数组中位数为<code>nums[(nums.length -1) / 2]</code></p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * @param : A list of integers</span></span><br><span class="line"><span class="comment">     * @return: An integer denotes the middle number of the array</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">median</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// write your code here</span></span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        <span class="keyword">return</span> nums[(nums.length - <span class="number">1</span>) / <span class="number">2</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O( nlogn )</td>
-<td>O( ? )</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Approach-2-Quick-Selection"><a href="#Approach-2-Quick-Selection" class="headerlink" title="Approach#2 Quick Selection"></a>Approach#2 Quick Selection</h2><h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h3><p>使用<code>quickSelection</code>算法选择第<code>(nums.length -1) / 2</code>个数。详见<a href="http://www.lintcode.com/en/problem/kth-largest-element/" target="_blank" rel="noopener">LintCode 5. Kth Largest Element</a></p>
-<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">exch</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = nums[i]; nums[i] = nums[j]; nums[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">lomutoPartition</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> pivotValue = nums[lo];</span><br><span class="line">        <span class="keyword">int</span> i = lo, j = lo + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (j &lt;= hi)&#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[j] &lt; pivotValue)</span><br><span class="line">                exch(nums,++i,j);</span><br><span class="line">            ++j;</span><br><span class="line">        &#125;</span><br><span class="line">        exch(nums,i,lo);</span><br><span class="line">        <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">median</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// write your code here</span></span><br><span class="line">        <span class="keyword">int</span> m = (nums.length-<span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">int</span> lo = <span class="number">0</span>, hi = nums.length - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">int</span> pivot = lomutoPartition(nums,lo,hi);</span><br><span class="line">        <span class="keyword">while</span> (pivot != m)&#123;</span><br><span class="line">            <span class="keyword">if</span> (pivot &gt; m)&#123;</span><br><span class="line">                hi = pivot - <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                lo = pivot + <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            pivot = lomutoPartition(nums,lo,hi);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> nums[m];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Complexity-1"><a href="#Complexity-1" class="headerlink" title="Complexity"></a>Complexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O( n )</td>
-<td>O( 1 )</td>
-</tr>
-</tbody>
-</table>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/03/80-Median/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -646,8 +587,7 @@
 
       
         
-          
-            <h1 id="657-Judge-Route-Circle"><a href="#657-Judge-Route-Circle" class="headerlink" title="657. Judge Route Circle"></a>657. Judge Route Circle</h1><h4 id="From：657-Judge-Route-Circle"><a href="#From：657-Judge-Route-Circle" class="headerlink" title="From：657. Judge Route Circle"></a>From：<a href="https://leetcode.com/problems/judge-route-circle/description/" target="_blank" rel="noopener">657. Judge Route Circle</a></h4><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Initially, there is a Robot at position (0, 0). Given a sequence of its moves, judge if this robot makes a circle, which means it moves back to the original place.</p>
+          <h1 id="657-Judge-Route-Circle"><a href="#657-Judge-Route-Circle" class="headerlink" title="657. Judge Route Circle"></a>657. Judge Route Circle</h1><h4 id="From：657-Judge-Route-Circle"><a href="#From：657-Judge-Route-Circle" class="headerlink" title="From：657. Judge Route Circle"></a>From：<a href="https://leetcode.com/problems/judge-route-circle/description/" target="_blank" rel="noopener">657. Judge Route Circle</a></h4><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Initially, there is a Robot at position (0, 0). Given a sequence of its moves, judge if this robot makes a circle, which means it moves back to the original place.</p>
 <p>The move sequence is represented by a string. And each move is represent by a character. The valid robot moves are R (Right), L (Left), U (Up) and D (down). The output should be true or false representing whether the robot makes a circle.</p>
 <h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><pre>Input: "UD"
 Output: true
@@ -661,56 +601,13 @@ Output: false</pre>
 <li>使用两个变量<code>v</code>、<code>h</code>。遍历<code>String moves</code>，若<code>L</code>、<code>U</code>出现则做<code>v++</code>与<code>h++</code>操作，<code>R</code>、<code>D</code>则做<code>v--</code>与<code>h--</code>操作。最后若<code>v == 0 &amp;&amp; h == 0</code>成立则返回<code>true</code>，否则返回<code>false</code>。</li>
 </ul>
 <p>确定判别方法后，接下来就是如何遍历<code>String moves</code>与分别标记<code>L、R、U、D</code>出现次数的问题了，具体见实现代码。</p>
-<h2 id="Approach-1-Using-HashMap"><a href="#Approach-1-Using-HashMap" class="headerlink" title="Approach#1 Using HashMap"></a>Approach#1 Using HashMap</h2><h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Runtime: 48ms</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">judgeCircle</span><span class="params">(String moves)</span> </span>&#123;</span><br><span class="line">        HashMap &lt;Character,Integer&gt; h = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        h.put(<span class="string">'L'</span>,<span class="number">0</span>);h.put(<span class="string">'R'</span>,<span class="number">0</span>);h.put(<span class="string">'U'</span>,<span class="number">0</span>);h.put(<span class="string">'D'</span>,<span class="number">0</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; moves.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">char</span> currChar = moves.charAt(i);</span><br><span class="line">            <span class="keyword">int</span> temp = h.get(currChar) + <span class="number">1</span>;</span><br><span class="line">            h.put(currChar,temp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> h.get(<span class="string">'L'</span>).equals(h.get(<span class="string">'R'</span>))  &amp;&amp; h.get(<span class="string">'U'</span>).equals(h.get(<span class="string">'D'</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O( n )</td>
-<td>O( 1 )</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Approach-2-Convert-the-String-to-a-new-char-array"><a href="#Approach-2-Convert-the-String-to-a-new-char-array" class="headerlink" title="Approach#2 Convert the String to a new char array."></a>Approach#2 Convert the String to a new char array.</h2><h3 id="Solution-and-Code"><a href="#Solution-and-Code" class="headerlink" title="Solution and Code"></a>Solution and Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Runtime: 15ms</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">judgeCircle</span><span class="params">(String moves)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">char</span> [] strArr = moves.toCharArray();   </span><br><span class="line">        <span class="keyword">int</span> v = <span class="number">0</span>, h = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; strArr.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (strArr[i] == <span class="string">'L'</span>) &#123;</span><br><span class="line">                h ++;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span> (strArr[i] == <span class="string">'R'</span>) &#123;</span><br><span class="line">                h --;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span> (strArr[i] == <span class="string">'U'</span>) &#123;</span><br><span class="line">                v ++;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span> (strArr[i] == <span class="string">'D'</span>) &#123;</span><br><span class="line">                v --;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> v == <span class="number">0</span> &amp;&amp; h == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Complexity-1"><a href="#Complexity-1" class="headerlink" title="Complexity"></a>Complexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O( n )</td>
-<td>O( 1 )</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Approach-3-Use-extra-array-that-storing-the-ocurr-times"><a href="#Approach-3-Use-extra-array-that-storing-the-ocurr-times" class="headerlink" title="Approach#3 Use extra array that storing the ocurr times."></a>Approach#3 Use extra array that storing the ocurr times.</h2><h2 id="Solution-and-Code-1"><a href="#Solution-and-Code-1" class="headerlink" title="Solution and Code"></a>Solution and Code</h2><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Runtime: 9ms</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">judgeCircle</span><span class="params">(String moves)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> [] temp = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">128</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">char</span> c: moves.toCharArray()) &#123;</span><br><span class="line">            temp[c] ++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> temp[<span class="string">'L'</span>] == temp[<span class="string">'R'</span>] &amp;&amp; temp[<span class="string">'U'</span>] == temp[<span class="string">'D'</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Complexity-2"><a href="#Complexity-2" class="headerlink" title="Complexity"></a>Complexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O( n )</td>
-<td>O( 1 )</td>
-</tr>
-</tbody>
-</table>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/02/657-Juge-Route-Circle/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -827,67 +724,15 @@ Output: false</pre>
 
       
         
-          
-            <h1 id="399-Nuts-and-bolts-problem"><a href="#399-Nuts-and-bolts-problem" class="headerlink" title="399.Nuts and bolts problem"></a>399.Nuts and bolts problem</h1><h3 id="From：lintcode-399-Nuts-amp-Bolts-Problem"><a href="#From：lintcode-399-Nuts-amp-Bolts-Problem" class="headerlink" title="From：lintcode 399. Nuts &amp; Bolts Problem"></a>From：<a href="http://www.lintcode.com/en/problem/nuts-bolts-problem/" target="_blank" rel="noopener">lintcode 399. Nuts &amp; Bolts Problem</a></h3><h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis"></a>Input and output analysis</h2><p>给定<code>String[] nuts</code>和<code>String[] bolts</code>分别模拟螺帽和螺丝集合，这些集合里面的元素有大小之分且没有重复的元素。<code>nuts[]</code>和<code>bolts[]</code>一一对应，即nuts[]中的任意元素一定能在bolts[]与其匹配的元素，反之亦可。函数需要对字符串数组进行处理，使得最后两个数组满足条件：”</p>
+          <h1 id="399-Nuts-and-bolts-problem"><a href="#399-Nuts-and-bolts-problem" class="headerlink" title="399.Nuts and bolts problem"></a>399.Nuts and bolts problem</h1><h3 id="From：lintcode-399-Nuts-amp-Bolts-Problem"><a href="#From：lintcode-399-Nuts-amp-Bolts-Problem" class="headerlink" title="From：lintcode 399. Nuts &amp; Bolts Problem"></a>From：<a href="http://www.lintcode.com/en/problem/nuts-bolts-problem/" target="_blank" rel="noopener">lintcode 399. Nuts &amp; Bolts Problem</a></h3><h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis"></a>Input and output analysis</h2><p>给定<code>String[] nuts</code>和<code>String[] bolts</code>分别模拟螺帽和螺丝集合，这些集合里面的元素有大小之分且没有重复的元素。<code>nuts[]</code>和<code>bolts[]</code>一一对应，即nuts[]中的任意元素一定能在bolts[]与其匹配的元素，反之亦可。函数需要对字符串数组进行处理，使得最后两个数组满足条件：”</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">对于<span class="number">0</span> &lt; i &lt;= nuts.length - <span class="number">1</span>; 都满足条件 Compaer.cmp(nuts[i],bolts[i]) == <span class="number">0</span>;  </span><br></pre></td></tr></table></figure>
-<p>对题意的理解还需要注意一下几点：</p>
-<ul>
-<li>满足输出条件不一定要求两数组有序，只要同样下标的元素一一对应即可。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">如nuts[] = &#123;N1,N2,N3,N4&#125;; bolts[] = &#123;B1,B2,B3,B4&#125;; <span class="comment">// 满足要求</span></span><br><span class="line">又如nuts[] = &#123;N2,N1,N4,N3&#125;;bolts[] = &#123;B2,B1,B4,B3&#125;; <span class="comment">// 满足要求</span></span><br></pre></td></tr></table></figure></li>
-<li>nuts和bolts中字符串元素是否匹配，与字符串的值无关、与ASCII码无关。也就是说对nuts或bolts按照字符串面值大小排序是无意义的。</li>
-<li>nuts和bolts中的元素是有大小的之分的，但不可以通过比较两个螺丝得到这两个螺丝的大小，同样也不能通过比较两个螺帽得到这两个螺帽的大小，这也对应着上一条的限制。</li>
-<li>Compare.cmp(String a, String b)函数的参数顺序不能颠倒，即a只能是nuts数组的元素，b只能是bolts数组的元素，参数顺序不一致会返回2。</li>
-</ul>
-<h2 id="Approach-1-Brute-force"><a href="#Approach-1-Brute-force" class="headerlink" title="Approach#1 Brute force"></a>Approach#1 Brute force</h2><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>暴力破解法是我们很自然而然想到的方法。算法过程也很简单，利用两层循环，外层遍历nuts[]数组每一个元素，内层循环遍历bolts[]为每一个nuts[]找到与其匹配的元素，并把它放在相应的位置上，具体看代码。</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sortNutsAndBolts</span><span class="params">(String[] nuts, String[] bolts, NBComparator compare)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// write your code here</span></span><br><span class="line">        <span class="keyword">int</span> n = nuts.length;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)&#123;</span><br><span class="line">            String currNut = nuts[i];</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt; n; j++ )&#123;</span><br><span class="line">                <span class="keyword">if</span> (compare.cmp(currNut,bolts[j]) == <span class="number">0</span>)&#123;</span><br><span class="line">                    exch(bolts,i,j); <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">exch</span><span class="params">(String[] a, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span>&#123;</span><br><span class="line">        String temp = a[i]; a[i] = a[j]; a[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O( n^2 )</td>
-<td>O( 1 )</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Approach-2-Customized-Quicksort-algorithm"><a href="#Approach-2-Customized-Quicksort-algorithm" class="headerlink" title="Approach#2 Customized Quicksort algorithm."></a>Approach#2 Customized Quicksort algorithm.</h2><h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h3><p>通过题意我们可以知道，两数组的元素一一对应，并且有大小之分，当nuts和bolts按照升序或者降序排列时，同一个位置i，nuts[i]和bolts[i]是一一匹配的，即满足Compare.cmp(nuts[i],bolts[i]) == 0;。自然地，我们想到若能对nuts[]和bolts[]排序，问题便可以得到解决，并且使用一些良好的排序也可以在O(nlogn)内解决问题。</p>
-<p>由于不能直接对数组nuts[]或bolts[]里面的元素相互比较排序，只能使用比较器拿出一个nuts[]元素与bolts[]元素比较（反之亦可）。所以归并排序、插入排序并不是很适用，剩下只能考虑快速排序。</p>
-<p>这里复习一下快速排序，快速排序中的partition算法有一个很好的优点：</p>
-<ul>
-<li>每次通过选择一个pivot元素将数组划分两部分：<pre>a[0..pivot] &lt;= a[pivot] &lt;= a[pivot+1..n] </pre>一次partition结束后，a[pivot]被分配到了正确的位置，即a[pivot]的元素在之后的partition中不再移动。</li>
-</ul>
-<p>给我们的启示是，使用partition算法，在bolts[]中取出一个元素Bi与nuts[]元素一一进行匹配、比较大小和划分。划分完成后，用nuts[]中找到元素Ni反过来再对bolts[]进行匹配划分。例如：</p>
-<p><pre><br>对于两个数组进行一次partition:<br>    nuts[]: N5,N8,N7,N4,N3<br>    bolts[]:B4,B7,B3,B5,B8<br>1.以B5作为要匹配的pivot元素，对nuts[]进行划分，一次划分之后：<br>    nuts[]: N4,N3,<strong>N5</strong>,N7,N8<br>    bolts[]:B5,B7,B3,B4,B8    // 比N5小的元素排在了N5的前半部分，N5的后半部分均比N5大，完成对nuts的一次划分<br>2.反过来取出N5，对bolts[]进行划分<br>    nuts[]: N4,N3,<strong>N5</strong>,N7,N8<br>    bolts[]:B3,B4,<strong>B5</strong>,B8,B7    // 完成对bolts的一次划分<br></pre><br>从例子可以看出，当进行完两次的partition后，一个pivot元素就匹配完成，接下来再对左右两边的子数组递归处理完成两个数组的排序工作，排序完成后，两个数组的所有元素便一一对应了。</p>
-<h3 id="Note"><a href="#Note" class="headerlink" title="Note"></a>Note</h3><ul>
-<li><p>使用compare.cmp(String a,Stringb)进行元素匹配时注意：从nuts[]取出一个元素划分bolts[]和从bolts[]取出一个元素划分nuts[]两种情况下需要调整cmp(..)参数顺序，并且要注意compare.cmp(..)的返回值对划分数组的影响。</p>
-<ul>
-<li><p>partition(nuts,bolts[lo],lo,hi,compare);</p>
-</li>
-<li><p>partition(bolts,nuts[pivot],lo,hi,compare);</p>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sortNutsAndBolts</span><span class="params">(String[] nuts, String[] bolts, NBComparator compare)</span> </span>&#123;</span><br><span class="line">        Collections.shuffle(Arrays.asList(nuts));</span><br><span class="line">        Collections.shuffle(Arrays.asList(bolts));</span><br><span class="line">        sortNutsAndBolts(nuts,bolts,<span class="number">0</span>,bolts.length - <span class="number">1</span>, compare);</span><br><span class="line">        <span class="comment">// write your code here</span></span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="comment">// pre：nuts[lo..hi]，bolts[lo..hi]内的元素未匹配。</span></span><br><span class="line">    <span class="comment">// post：nuts[lo..hi]，bolts[lo..hi]内的元素已匹配。</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sortNutsAndBolts</span><span class="params">(String[] nuts, String[] bolts, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi, NBComparator compare)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (lo &gt;= hi) <span class="keyword">return</span>;</span><br><span class="line">        <span class="keyword">int</span> pivot = partition(nuts,bolts[lo],lo,hi,compare);</span><br><span class="line">        partition(bolts,nuts[pivot],lo,hi,compare);    <span class="comment">// 交替划分量数组，返回pivot下标位置</span></span><br><span class="line">        sortNutsAndBolts(nuts,bolts,lo,pivot-<span class="number">1</span>,compare);</span><br><span class="line">        sortNutsAndBolts(nuts,bolts,pivot+<span class="number">1</span>,hi,compare);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// pre: NA</span></span><br><span class="line">    <span class="comment">// post: a[]中下标i、j两元素交换位置。</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">exch</span><span class="params">(String[] a, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        String temp = a[i]; a[i] = a[j]; a[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// pre:	未划分的字符串数组</span></span><br><span class="line">    <span class="comment">// post: 对于返回值j，a中的元素满足：a[lo..j-1] &lt; a[j] &lt; a[j+1..hi]</span></span><br><span class="line">    <span class="comment">// 这个partition算法实现是基于hoare版本的简要改写，虽不够简洁，但是易于理解和纸笔模拟，也可以使用其他的版本实现。</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">partition</span><span class="params">(String[] a, String pValue, <span class="keyword">int</span> lo, <span class="keyword">int</span> hi, NBComparator compare)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">    	<span class="comment">// 找出与pValue匹配的元素，调整到lo位置上</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = lo; i &lt;= hi; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (compare.cmp(a[i],pValue) == <span class="number">0</span> || compare.cmp(pValue,a[i]) == <span class="number">0</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                exch(a,lo,i); <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 只含有两个元素时，单独处理</span></span><br><span class="line">        <span class="keyword">if</span> (hi - lo == <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (compare.cmp(a[hi],pValue) == -<span class="number">1</span> || compare.cmp(pValue,a[hi]) == <span class="number">1</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                exch(a,lo,hi); <span class="keyword">return</span> hi;</span><br><span class="line">            &#125;<span class="keyword">else</span></span><br><span class="line">                <span class="keyword">return</span> lo;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 以a[lo] 作为pivot元，划分数组</span></span><br><span class="line">        <span class="keyword">int</span> i = lo + <span class="number">1</span>, j = hi;</span><br><span class="line">        <span class="keyword">while</span> (<span class="keyword">true</span>)</span><br><span class="line">        &#123;	</span><br><span class="line">        	<span class="comment">// pValue与a[i]匹配，移动i下标，a[i] &gt; a[lo]时停止。</span></span><br><span class="line">            <span class="keyword">while</span> (<span class="keyword">true</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (i &gt;= hi || (compare.cmp(a[i],pValue) == <span class="number">1</span> || compare.cmp(pValue,a[i]) == -<span class="number">1</span>))</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    ++i;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="comment">// pValue与a[j]匹配，移动i下标，a[j] &lt; a[lo]时停止。</span></span><br><span class="line">            <span class="keyword">while</span> (<span class="keyword">true</span>)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (j &lt;= lo || (compare.cmp(a[j],pValue) == -<span class="number">1</span> || compare.cmp(pValue,a[j]) == <span class="number">1</span>))</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    --j;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// i与j不交叉或相遇时，交换a[i]与a[j]</span></span><br><span class="line">            <span class="keyword">if</span> (i &gt;= j)</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                exch(a,i,j);</span><br><span class="line">        &#125;</span><br><span class="line">        exch(a,lo,j);   <span class="comment">// 将a[lo]移动到中轴pivot位置，划分完成</span></span><br><span class="line">        <span class="keyword">return</span> j;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h3 id="Complexity-1"><a href="#Complexity-1" class="headerlink" title="Complexity"></a>Complexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O( nlogn )</td>
-<td>O( 1 )</td>
-</tr>
-</tbody>
-</table>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/02/399-Nuts-and-bolts-problem/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1004,8 +849,7 @@ Output: false</pre>
 
       
         
-          
-            <h1 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h1><h2 id="OverView"><a href="#OverView" class="headerlink" title="OverView"></a>OverView</h2><h3 id="常用方法分类"><a href="#常用方法分类" class="headerlink" title="常用方法分类"></a>常用方法分类</h3><p>根据操作是否改变ArrayList状态，我们可以把ArrayList常用方法分为两类：</p>
+          <h2 id="OverView"><a href="#OverView" class="headerlink" title="OverView"></a>OverView</h2><h3 id="常用方法分类"><a href="#常用方法分类" class="headerlink" title="常用方法分类"></a>常用方法分类</h3><p>根据操作是否改变ArrayList状态，我们可以把ArrayList常用方法分为两类：</p>
 <ul>
 <li>该变ArrayList状态的方法<ul>
 <li>增加操作：<code>add(E e),add(int index,E element),addAll()</code></li>
@@ -1024,71 +868,13 @@ Output: false</pre>
 <li><code>isEmpty() , get(int index), set(int index), size()</code></li>
 <li><code>listIterator()</code> 各种操作</li>
 </ul>
-<h4 id="线性时间操作"><a href="#线性时间操作" class="headerlink" title="线性时间操作"></a>线性时间操作</h4><p>除了上述常数时间操作之外的其他操作，但同样的操作，相对于<code>LinkedList</code>的线性时间而言，常数因子要小。</p>
-<h3 id="listIterator"><a href="#listIterator" class="headerlink" title="listIterator"></a>listIterator</h3><p><code>Collection</code>接口支持迭代器方法，<code>List</code>接口扩展了<code>Collection</code>接口，自然也支持迭代器方法，<code>List</code>接口使用一个名为<code>listIterator</code>的迭代器。<code>ListIterator</code>在抽象类<code>AbstractList</code>作为一个内部类实现，通过<code>listIterator()</code>方法返回。</p>
-<h3 id="改写计数器"><a href="#改写计数器" class="headerlink" title="改写计数器"></a>改写计数器</h3><p>实现<code>Collection</code>接口的容器类都支持迭代器方法，因此实现<code>ArrayList</code>也支持迭代器方法。为了避免在使用迭代器过程中因<code>ArrayList</code>状态改变可能出现的异常。迭代器要有能检测集合状态是否被修改的能力，这种修改变可能来自其他的迭代器或集合自身的，当迭代器检测到了这种修改，便会抛出<code>ConcurrentModificationException</code>异常。</p>
-<p>为了支持<code>Iterator</code>检测机制，<code>ArrayList</code>和<code>Iterator</code>都分别独立维护一个改写计数器，当<code>ArrayList</code>类对象调用可能修改集合状态的方法时，会更新自己的<code>modCount</code>改写计数器。同样每次调用<code>Iterator</code>具有对集合有着修改能力的方法时，会检查自己的<code>expectedModCount</code>与集合的<code>modCount</code>是否相等，若不相等，则会抛出异常。</p>
-<h2 id="Instance-fields"><a href="#Instance-fields" class="headerlink" title="Instance fields"></a>Instance fields</h2><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractList</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class">        <span class="keyword">implements</span> <span class="title">List</span>&lt;<span class="title">E</span>&gt;, <span class="title">RandomAccess</span>, <span class="title">Cloneable</span>, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// instance fields</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> DEFAULT_CAPACITY = <span class="number">10</span>; <span class="comment">// 默认的初始容量</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 共享空实例，ArrayList类所有empty对象都指向这这两个共享空间。</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Object[] EMPTY_ELEMENTDATA = &#123;&#125;;   </span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Object[] DEFAULTCAPACITY_EMPTY_ELEMENTDATA = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 底层fixed-size数组</span></span><br><span class="line">    <span class="keyword">transient</span> Object[] elementData; </span><br><span class="line"></span><br><span class="line">    <span class="comment">// ArrayList 包含元素的数量</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> size;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></pre>
-
-<h2 id="Constructors"><a href="#Constructors" class="headerlink" title="Constructors"></a>Constructors</h2><p>ArrayList一共支持三种初始化方式。<br>先来看第一种与第二种，分别是无参构造器和带有初始容量参数的构造器，十分简单。特别地，为了避免创建多个空的对象，这里将所有空的对象指向<code>DEFAULTCAPACITY_EMPTY_ELEMENTDATA</code>与<code>EMPTY_ELEMENTDATA</code>。</p>
-<pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ArrayList</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-<pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ArrayList</span><span class="params">(<span class="keyword">int</span> initialCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (initialCapacity &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.elementData = <span class="keyword">new</span> Object[initialCapacity];</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (initialCapacity == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">this</span>.elementData = EMPTY_ELEMENTDATA;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Illegal Capacity: "</span>+</span><br><span class="line">                                           initialCapacity);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<p>第三中构造器，接受一个<code>Collection</code>初始化。</p>
-<pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ArrayList</span><span class="params">(Collection &lt; ? extends E&gt; c)</span> </span>&#123; </span><br><span class="line">    elementData = c.toArray();  <span class="comment">// 修改底层数组引用，使其指向包含c所有元素的一个数组，该数组独立于c</span></span><br><span class="line">    <span class="keyword">if</span> ((size = elementData.length) != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// c.toArray might (incorrectly) not return Object[] (see 6260652)</span></span><br><span class="line">        <span class="keyword">if</span> (elementData.getClass() != Object[].class)</span><br><span class="line">            <span class="comment">// 若elementData不是Object数组，调用一次copyOf方法,以Object类型</span></span><br><span class="line">            elementData = Arrays.copyOf(elementData, size, Object[].class);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 若c为空，仍然指向EMPTY_ELEMENTDATA</span></span><br><span class="line">        <span class="keyword">this</span>.elementData = EMPTY_ELEMENTDATA;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<h2 id="add-方法"><a href="#add-方法" class="headerlink" title="add()方法"></a>add()方法</h2><p>ArrayList支持使用两种不同形式的add方法添加加一个元素。</p>
-<pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> index, E element)</span></span>;	<span class="comment">// 在index位置上插入一个元素，无返回值</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span></span>;	<span class="comment">// 在ArrayList末尾位置插入一个元素，返回一个布尔值结果</span></span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="public-void-add-int-index-E-element"><a href="#public-void-add-int-index-E-element" class="headerlink" title="public void add(int index, E element)"></a>public void add(int index, E element)</h3><p>ArrayList没有insert方法，插入操作由add方法完成，add方法接受一个index参数，实现在index位置上插入一个元素。因为添加一个元素可能会导致capacity不足，因此使用一个私有方法ensureCapacityInternal()方法检查容量并完成动态扩容。当维护capacity操作完成后，通过对底层数组的copy操作将index及之后的元素整体往后挪一个单位，在空出的位置插入element元素。</p>
-<pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> index, E element)</span> </span>&#123;</span><br><span class="line">    rangeCheckForAdd(index);    <span class="comment">// 检查 index 合法性，不合法则会抛出边界异常</span></span><br><span class="line">    ensureCapacityInternal(size + <span class="number">1</span>);  <span class="comment">// 检查容量、动态扩容</span></span><br><span class="line">    System.arraycopy(elementData, index, elementData, index + <span class="number">1</span>,</span><br><span class="line">                     size - index);		<span class="comment">// [index..size-1] 元素整体往后移动一个单位，空出一个位置</span></span><br><span class="line">    elementData[index] = element;		<span class="comment">// 在空出的位置index上插入元素element</span></span><br><span class="line">    size++;		<span class="comment">// 更新元素个数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<p>私有方法<code>ensureCapacityInternal()</code>主要做了两个操作</p>
-<ul>
-<li>更新ArrayList改写计数器<code>modCount</code></li>
-<li>capacity不足时调用<code>grow()</code>进行扩容<pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">calculateCapacity</span><span class="params">(Object[] elementData, <span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 若 elementData 是empty arrayList，返回miniCapacity 与 10 中较大的一个</span></span><br><span class="line">    <span class="keyword">if</span> (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) &#123;</span><br><span class="line">        <span class="keyword">return</span> Math.max(DEFAULT_CAPACITY, minCapacity);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> minCapacity;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureCapacityInternal</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 传入需要最小Capacity </span></span><br><span class="line">    ensureExplicitCapacity(calculateCapacity(elementData, minCapacity));</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">ensureExplicitCapacity</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 无论是否扩容，都更新改写计数器</span></span><br><span class="line">    modCount++;</span><br><span class="line">    <span class="comment">// 容量不足，进行扩容操作</span></span><br><span class="line">    <span class="keyword">if</span> (minCapacity - elementData.length &gt; <span class="number">0</span>)</span><br><span class="line">        grow(minCapacity);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-</li>
-</ul>
-<pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">grow</span><span class="params">(<span class="keyword">int</span> minCapacity)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// overflow-conscious code</span></span><br><span class="line">    <span class="keyword">int</span> oldCapacity = elementData.length;</span><br><span class="line">    <span class="keyword">int</span> newCapacity = oldCapacity + (oldCapacity &gt;&gt; <span class="number">1</span>);	<span class="comment">// 计划扩大后的容量是原来的Capacity的1.5倍</span></span><br><span class="line">    <span class="keyword">if</span> (newCapacity - minCapacity &lt; <span class="number">0</span>)	<span class="comment">//若计划扩大后的容量仍不能满足要求，则将计划容量修改至minCapacity</span></span><br><span class="line">        newCapacity = minCapacity;</span><br><span class="line">    <span class="keyword">if</span> (newCapacity - MAX_ARRAY_SIZE &gt; <span class="number">0</span>	<span class="comment">// 计划容量大于默认的最大量，进行hugeCapcity操作</span></span><br><span class="line">        newCapacity = hugeCapacity(minCapacity);</span><br><span class="line">    <span class="comment">// minCapacity is usually close to size, so this is a win:</span></span><br><span class="line">    elementData = Arrays.copyOf(elementData, newCapacity);	<span class="comment">// 底层数组引用指向Arrays的copyOf()方法的返回值</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<p>在grow方法的最后<code>elementData</code>指向一个新的容量大小的数组，这个数组是如何得到的呢？为了得到答案我们可以查看<code>copyOf()</code>方法的内部发生了什么？</p>
-<pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; T[] copyOf(T[] original, <span class="keyword">int</span> newLength) &#123;</span><br><span class="line">    <span class="keyword">return</span> (T[]) copyOf(original, newLength, original.getClass());</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T,U&gt; T[] copyOf(U[] original, <span class="keyword">int</span> newLength, Class&lt;? extends T[]&gt; newType) &#123;</span><br><span class="line">    <span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line">    <span class="comment">// </span></span><br><span class="line">    T[] copy = ((Object)newType == (Object)Object[].class)</span><br><span class="line">        ? (T[]) <span class="keyword">new</span> Object[newLength]</span><br><span class="line">        : (T[]) Array.newInstance(newType.getComponentType(), newLength);</span><br><span class="line">    System.arraycopy(original, <span class="number">0</span>, copy, <span class="number">0</span>,</span><br><span class="line">                     Math.min(original.length, newLength));</span><br><span class="line">    <span class="keyword">return</span> copy;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<p>可以看到<code>copyOf()</code>方法实际是开辟了一个新的capacity容量的数组，然后调用<code>system.arraycopy()</code>方法将原来的数组中所有元素拷贝到新数组中。</p>
-<p>至此我们可以知道向ArrayList添加一个元素最坏的情况：需要扩容操作、并且在在第一个位置插入元素，此时<code>add(int index, E e)</code>在线性时间内。</p>
-<h3 id="public-boolean-add-E-e"><a href="#public-boolean-add-E-e" class="headerlink" title="public boolean add(E e)"></a>public boolean add(E e)</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    ensureCapacityInternal(size + <span class="number">1</span>);  <span class="comment">// Increments modCount!!</span></span><br><span class="line">    elementData[size++] = e;    <span class="comment">// 将 e 插入ArrayList的末尾，更新 size</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<p>与上一个形式的<code>add(int index,E element)</code>方法类似，均调用了<code>ensureCapacityInternal()</code>方法，不同的是插入的位置固定在了最后，类似于C++容器的<code>push_back()</code>操作。</p>
-<h2 id="remove-和clear-retainAll-方法"><a href="#remove-和clear-retainAll-方法" class="headerlink" title="remove()和clear(),retainAll()方法"></a>remove()和clear(),retainAll()方法</h2><p><code>ArrayList</code>提供以下<code>remove</code>方法：</p>
-<ul>
-<li>单个删除：<ul>
-<li>根据索引删除：<code>public E remove(int index); // 删除index位置上的元素</code></li>
-<li>根据元素值删除：<code>public boolean remove(object o); // 从位置0开始遍历，删除第一个与o相等的元素</code></li>
-</ul>
-</li>
-<li>批量删除：<ul>
-<li>删除所有元素：<code>public void clear(); // 删除ArrayList对象中所有的元素</code></li>
-<li>删除符合某条件的所有元素：<ul>
-<li><code>public boolean removeAll(Collection&lt;?&gt; c); // 给定Collection c，删除ArrayList中所有属于c的元素，即删除与c交集的元素</code></li>
-<li><code>public boolean retainAll(Collection&lt;?&gt; c); // 给定Colelction c，保留与c相交的部分，其余元素删除，即在ArrayList中保留与c的交集</code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="remove-int-index"><a href="#remove-int-index" class="headerlink" title="remove(int index)"></a>remove(int index)</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">remove</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">    rangeCheck(index);  <span class="comment">// 检查index合法性</span></span><br><span class="line"></span><br><span class="line">    modCount++; <span class="comment">// 更新修改计数器</span></span><br><span class="line">    E oldValue = elementData(index);    <span class="comment">// 保留要删除元素以返回</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> numMoved = size - index - <span class="number">1</span>;    <span class="comment">// 计算删除该元素后，所有要往前移动的元素个数</span></span><br><span class="line">    <span class="keyword">if</span> (numMoved &gt; <span class="number">0</span>)</span><br><span class="line">        System.arraycopy(elementData, index+<span class="number">1</span>, elementData, index,</span><br><span class="line">                         numMoved); <span class="comment">// [index+1..size]的元素往前移动一个位置</span></span><br><span class="line">    elementData[--size] = <span class="keyword">null</span>; <span class="comment">// 更新size，赋值最后一个元素空指针，交给GC回收</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> oldValue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="remove-Objcet-o"><a href="#remove-Objcet-o" class="headerlink" title="remove(Objcet o)"></a>remove(Objcet o)</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">remove</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (o == <span class="keyword">null</span>) &#123;    <span class="comment">// 空指针情况，单独处理</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> index = <span class="number">0</span>; index &lt; size; index++)</span><br><span class="line">            <span class="keyword">if</span> (elementData[index] == <span class="keyword">null</span>) &#123;</span><br><span class="line">                fastRemove(index);</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;    <span class="comment">// 调用equals方法，查找与o相等的元素的索引，根据索引删除该元素</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> index = <span class="number">0</span>; index &lt; size; index++)</span><br><span class="line">            <span class="keyword">if</span> (o.equals(elementData[index])) &#123;</span><br><span class="line">                fastRemove(index);</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// auxiliary function</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">fastRemove</span><span class="params">(<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">    modCount++; <span class="comment">// 更新修改计数器</span></span><br><span class="line">    <span class="keyword">int</span> numMoved = size - index - <span class="number">1</span>;    <span class="comment">// 计算删除该元素后，所有要往前移动的元素个数</span></span><br><span class="line">    <span class="keyword">if</span> (numMoved &gt; <span class="number">0</span>)</span><br><span class="line">        System.arraycopy(elementData, index+<span class="number">1</span>, elementData, index,</span><br><span class="line">                         numMoved);</span><br><span class="line">    elementData[--size] = <span class="keyword">null</span>; <span class="comment">// 更新size，赋值最后一个元素空指针，交给GC回收</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="clear"><a href="#clear" class="headerlink" title="clear( )"></a>clear( )</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">clear</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    modCount++; <span class="comment">// 更新修改计数器</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将底层数组所有的元素置为空指针，交给GC回收</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++)</span><br><span class="line">        elementData[i] = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    size = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="removeAll-Collection-lt-gt-c-和-retainAll-Collection-lt-gt-c"><a href="#removeAll-Collection-lt-gt-c-和-retainAll-Collection-lt-gt-c" class="headerlink" title="removeAll(Collection&lt;?&gt; c) 和 retainAll(Collection&lt;?&gt; c)"></a>removeAll(Collection&lt;?&gt; c) 和 retainAll(Collection&lt;?&gt; c)</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 删除(this) ∩ (c)的元素</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">removeAll</span><span class="params">(Collection&lt;?&gt; c)</span> </span>&#123;</span><br><span class="line">    Objects.requireNonNull(c);</span><br><span class="line">    <span class="keyword">return</span> batchRemove(c, <span class="keyword">false</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 保留(this) ∩ (c)的元素</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">retainAll</span><span class="params">(Collection&lt;?&gt; c)</span> </span>&#123;</span><br><span class="line">    Objects.requireNonNull(c);</span><br><span class="line">    <span class="keyword">return</span> batchRemove(c, <span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">batchRemove</span><span class="params">(Collection&lt;?&gt; c, <span class="keyword">boolean</span> complement)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> Object[] elementData = <span class="keyword">this</span>.elementData;</span><br><span class="line">    <span class="keyword">int</span> r = <span class="number">0</span>, w = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">boolean</span> modified = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (; r &lt; size; r++)</span><br><span class="line">            <span class="keyword">if</span> (c.contains(elementData[r]) == complement)</span><br><span class="line">                elementData[w++] = elementData[r];</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (r != size) &#123;    <span class="comment">// try 抛出异常时，依旧保留发生异常前的操作</span></span><br><span class="line">            System.arraycopy(elementData, r,</span><br><span class="line">                             elementData, w,</span><br><span class="line">                             size - r);</span><br><span class="line">            w += size - r;  <span class="comment">// 更新 w 指针</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (w != size) &#123;    <span class="comment">// 当对ArrayList做了删除操作时，对所有删除的元素置空指针，交给GC回收 </span></span><br><span class="line">            <span class="comment">// clear to let GC do its work</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = w; i &lt; size; i++)</span><br><span class="line">                elementData[i] = <span class="keyword">null</span>;</span><br><span class="line">            modCount += size - w;   <span class="comment">// 更新修改计数器，修改次数为删除的元素</span></span><br><span class="line">            size = w;               <span class="comment">// 更新元素个数</span></span><br><span class="line">            modified = <span class="keyword">true</span>;        <span class="comment">// 修改成功</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> modified;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="set-方法"><a href="#set-方法" class="headerlink" title="set()方法"></a>set()方法</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> E <span class="title">set</span><span class="params">(<span class="keyword">int</span> index, E element)</span> </span>&#123;</span><br><span class="line">    rangeCheck(index);  <span class="comment">// 检查index合法性</span></span><br><span class="line">    E oldValue = elementData(index);    <span class="comment">// 保留原来的值以便返回</span></span><br><span class="line">    elementData[index] = element;   <span class="comment">// 替换元素</span></span><br><span class="line">    <span class="keyword">return</span> oldValue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="indexOf-Object-o-与-lastIndexOf-Object-o"><a href="#indexOf-Object-o-与-lastIndexOf-Object-o" class="headerlink" title="indexOf(Object o) 与 lastIndexOf(Object o)"></a>indexOf(Object o) 与 lastIndexOf(Object o)</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 返回第一个与o相等的元素的索引：从第一个元素往后开始遍历底层数组，返回值为o的索引</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">indexOf</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (o == <span class="keyword">null</span>) &#123;    <span class="comment">// 单独处理查找null的情况</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++)</span><br><span class="line">            <span class="keyword">if</span> (elementData[i]==<span class="keyword">null</span>)</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;            <span class="comment">// </span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++)</span><br><span class="line">            <span class="keyword">if</span> (o.equals(elementData[i]))</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 返回最后一个与o相等的元素的索引：从最后一个元素开始遍历底层数组，返回值为o的索引</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">lastIndexOf</span><span class="params">(Object o)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (o == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = size-<span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">            <span class="keyword">if</span> (elementData[i]==<span class="keyword">null</span>)</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = size-<span class="number">1</span>; i &gt;= <span class="number">0</span>; i--)</span><br><span class="line">            <span class="keyword">if</span> (o.equals(elementData[i]))</span><br><span class="line">                <span class="keyword">return</span> i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/01/Java-Collections-Framework-02——ArrayList/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1205,8 +991,7 @@ Output: false</pre>
 
       
         
-          
-            <h1 id="集合框架总览"><a href="#集合框架总览" class="headerlink" title="集合框架总览"></a>集合框架总览</h1><h2 id="框架的接口与实现"><a href="#框架的接口与实现" class="headerlink" title="框架的接口与实现"></a>框架的接口与实现</h2><h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p>容器接口被分为两组，其中一组扩展于Collection，也就是最基础的容器，由如下接口的组成：</p>
+          <h1 id="集合框架总览"><a href="#集合框架总览" class="headerlink" title="集合框架总览"></a>集合框架总览</h1><h2 id="框架的接口与实现"><a href="#框架的接口与实现" class="headerlink" title="框架的接口与实现"></a>框架的接口与实现</h2><h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p>容器接口被分为两组，其中一组扩展于Collection，也就是最基础的容器，由如下接口的组成：</p>
 <ul>
 <li>List</li>
 <li>Set</li>
@@ -1226,77 +1011,13 @@ Output: false</pre>
 <li>ConcurrentNavigabelMap</li>
 </ul>
 <p>Map区别于Collection接口，但集合同时也实现了Collection视图操作，可以像Collection那样操作Map。</p>
-<p>各接口关系图如下：</p>
-<p>有关接口性质的术语:</p>
-<ul>
-<li><strong>Unmodifiable 和 modifiable</strong>： 分别表示提供修改操作和不提供修改的集合，例如，含有add(),remove(),remove()的集合是可修改的。见Q1</li>
-<li><strong>Immutable 和 mutable</strong>： 见Q1</li>
-<li><strong>Fixed-size Collection 和 varible-size Collection</strong>：分别表示固定大小和可变大小容器</li>
-<li><strong>Random access 和 Sequential access</strong>： 随机访问与顺序访问两种接口，例如ArrayList和LinkedList，前者支持随机，后者只能顺序访问。泛型算法能够根据这两个接口特性分别提供不同的实现，提高效率。* </li>
-</ul>
-<h4 id="Q1：unmodifiable-collection-和-immutable-collection的区别？"><a href="#Q1：unmodifiable-collection-和-immutable-collection的区别？" class="headerlink" title="Q1：unmodifiable collection 和 immutable collection的区别？"></a>Q1：unmodifiable collection 和 immutable collection的区别？</h4><ul>
-<li>unmodifiable collection通常是其他collection的readonly-view（只读视图），即一种特定collection的装饰类。不能对其进行任何的修改操作，如add(),remove(E e),set(int index, E e)等操作。但被它装饰的容器(underlying collection)可以进行这些修改操作，并且当容器内的内容改变时，对应的视图（unmodifiable collection）也会跟着改变</li>
-<li>immutable collection中所有的修改操作都被禁止使用。真正意义上的不可修改。下面给出一个unmodifiable collection和immutable collection实现例子<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; modifiableList = <span class="keyword">new</span> ArrayList&lt;&gt;();   <span class="comment">// 被装饰的List	</span></span><br><span class="line">  modifiableList.add(<span class="string">"a"</span>);        </span><br><span class="line">  <span class="comment">// unmodifiable collection</span></span><br><span class="line">  List&lt;String&gt; unModifiableList = Collections.unmodifiableList(modifiableList);  <span class="comment">// read-only view</span></span><br><span class="line">  modifiableList.add(<span class="string">"b"</span>);    <span class="comment">// error,throw UnsupportedOperationException</span></span><br><span class="line">  <span class="comment">// immutableList </span></span><br><span class="line">  List&lt;String&gt; immutableList = Collections.unmodifiableList(<span class="keyword">new</span> ArrayList&lt;String&gt; (modifiableList));</span><br><span class="line">  immutableList.add(<span class="string">"c"</span>)    	<span class="comment">// error,throw UnsupportedOperationException</span></span><br><span class="line">  							<span class="comment">// 通过new操作，定义一个没有underlying collection的unmodifiable collection，</span></span><br><span class="line">  							<span class="comment">// 等价于immutable collection</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><h4 id="各接口的实现如下表"><a href="#各接口的实现如下表" class="headerlink" title="各接口的实现如下表"></a>各接口的实现如下表</h4><table>
-<thead>
-<tr>
-<th>Interface</th>
-<th>Hash Table</th>
-<th>Resizable Array</th>
-<th>Balanced Tree</th>
-<th>Linked List</th>
-<th>Hash Table and Linked List</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Set    </strong></td>
-<td>HashSet</td>
-<td></td>
-<td>TreeSet</td>
-<td></td>
-<td>LinkedHashSet</td>
-</tr>
-<tr>
-<td><strong>List</strong></td>
-<td></td>
-<td>ArrayList</td>
-<td></td>
-<td>LinkedList</td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Deque</strong></td>
-<td></td>
-<td>ArrayDeque</td>
-<td></td>
-<td>LinkedList</td>
-<td></td>
-</tr>
-<tr>
-<td><strong>Map    </strong></td>
-<td>HashMap</td>
-<td></td>
-<td>TreeMap</td>
-<td></td>
-<td>LinkedHashMap</td>
-</tr>
-</tbody>
-</table>
-<p>上述的实现是unsynchronized，即不同步的，不支持多线程。但是Collections类中有一个工厂方法synchronizedCollection使得这些不同步的collection支持同步。</p>
-<h4 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h4><p>此外，Java中还定义了许多实现容器接口的抽象类，这些抽象类定义了接口中的一些最基础的、最共性的操作。这些抽象类如下：</p>
-<ul>
-<li>AbstractCollection</li>
-<li>AbstractList</li>
-<li>AbstractSequentialList</li>
-<li>AbstractSet</li>
-<li>AbstractQueue</li>
-<li>AbstractMap</li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/01/Java-Collections-Framework-01——Overview/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1450,7 +1171,7 @@ Output: false</pre>
 <div class="theme-info">
   Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Pisces
   </a>
 </div>
 
@@ -1529,6 +1250,13 @@ Output: false</pre>
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
 
   
     <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>

@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="en">
+<html class="theme-next pisces use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -108,7 +108,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Pisces',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
@@ -330,30 +330,15 @@
 
       
         
-          
-            <h1 id="147-Insertion-Sort-List"><a href="#147-Insertion-Sort-List" class="headerlink" title="147. Insertion Sort List"></a>147. Insertion Sort List</h1><h3 id="From：147-Insertion-Sort-List"><a href="#From：147-Insertion-Sort-List" class="headerlink" title="From：147.Insertion Sort List"></a>From：<a href="https://leetcode.com/problems/insertion-sort-list/description/" target="_blank" rel="noopener">147.Insertion Sort List</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Sort a linked list using insertion sort.</p>
+          <h1 id="147-Insertion-Sort-List"><a href="#147-Insertion-Sort-List" class="headerlink" title="147. Insertion Sort List"></a>147. Insertion Sort List</h1><h3 id="From：147-Insertion-Sort-List"><a href="#From：147-Insertion-Sort-List" class="headerlink" title="From：147.Insertion Sort List"></a>From：<a href="https://leetcode.com/problems/insertion-sort-list/description/" target="_blank" rel="noopener">147.Insertion Sort List</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Sort a linked list using insertion sort.</p>
 <h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis"></a>Input and output analysis</h2><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">insertionSortList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></pre>
-
-
-<h2 id="Approach-1"><a href="#Approach-1" class="headerlink" title="Approach#1"></a>Approach#1</h2><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>见代码。</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * public class ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode next;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) &#123; val = x; &#125;</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">// Approach #1</span></span><br><span class="line"><span class="comment">// 36ms</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">insertionSortList</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) <span class="keyword">return</span> head;</span><br><span class="line">        ListNode dummyHead = <span class="keyword">new</span> ListNode(-<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">while</span> (head != <span class="keyword">null</span>) &#123;</span><br><span class="line">            ListNode walkNode = dummyHead;</span><br><span class="line">            ListNode currNode = head; </span><br><span class="line">            head = head.next;</span><br><span class="line">            <span class="keyword">while</span> (walkNode != <span class="keyword">null</span>) &#123;</span><br><span class="line">                <span class="comment">// insert</span></span><br><span class="line">                <span class="keyword">if</span> (walkNode.next == <span class="keyword">null</span> || walkNode.next.val &gt; currNode.val) &#123;</span><br><span class="line">                    ListNode tempNode = walkNode.next;</span><br><span class="line">                    walkNode.next = currNode;</span><br><span class="line">                    currNode.next = tempNode;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                walkNode = walkNode.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummyHead.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O( n )</td>
-<td>O( 1 )</td>
-</tr>
-</tbody>
-</table>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/12/147-Insertion-Sort-List/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -470,54 +455,15 @@
 
       
         
-          
-            <h1 id="136-Single-Number"><a href="#136-Single-Number" class="headerlink" title="136.Single Number"></a>136.Single Number</h1><h3 id="From：136-Single-Number"><a href="#From：136-Single-Number" class="headerlink" title="From：136.Single Number"></a>From：<a href="https://leetcode.com/problems/single-number/description/" target="_blank" rel="noopener">136.Single Number</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an array of integers, every element appears twice except for one. Find that single one.</p>
+          <h1 id="136-Single-Number"><a href="#136-Single-Number" class="headerlink" title="136.Single Number"></a>136.Single Number</h1><h3 id="From：136-Single-Number"><a href="#From：136-Single-Number" class="headerlink" title="From：136.Single Number"></a>From：<a href="https://leetcode.com/problems/single-number/description/" target="_blank" rel="noopener">136.Single Number</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an array of integers, every element appears twice except for one. Find that single one.</p>
 <p>Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?</p>
-<h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis"></a>Input and output analysis</h2><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-
-<h2 id="Approach-1-Use-HashSet"><a href="#Approach-1-Use-HashSet" class="headerlink" title="Approach#1 Use HashSet"></a>Approach#1 Use HashSet</h2><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>使用<code>HashSet</code>集合，遍历数组添加数组元素，当元素出现第二次时将此元素移除。最后集合保留的唯一的元素即返回值。</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Approach #1</span></span><br><span class="line"><span class="comment">// 18 ms</span></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        Set&lt;Integer&gt; set = <span class="keyword">new</span> HashSet();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (set.contains(nums[i])) &#123;</span><br><span class="line">                set.remove(nums[i]);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                set.add(nums[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (Integer e: set) &#123;</span><br><span class="line">            res = e;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O( n )</td>
-<td>O( n )</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Approach-2-Bit-Manipulation"><a href="#Approach-2-Bit-Manipulation" class="headerlink" title="Approach#2 Bit Manipulation"></a>Approach#2 Bit Manipulation</h2><h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h3><p>根据以下异或运算性质：</p>
-<ul>
-<li>两个相同的数进行异或运算结果为0</li>
-<li>一个数与0进行异或运算结果为其本身</li>
-<li>异或运算具有交换律</li>
-</ul>
-<p>可以知道数组内所有元素一起进行异或运算的结果就是只出现的一次的那个元素。</p>
-<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Approach #2</span></span><br><span class="line"><span class="comment">// 1ms</span></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> e: nums) &#123;</span><br><span class="line">            res ^= e;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Complexity-1"><a href="#Complexity-1" class="headerlink" title="Complexity"></a>Complexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O( n )</td>
-<td>O( 1 )</td>
-</tr>
-</tbody>
-</table>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/12/136-Single-Number/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1111,35 +1057,14 @@
       
         
           <p><strong>为什么需要Session管理？</strong></p>
-<p>这是因为HTTP协议是无状态，也就是说默认情况下Web服务器并不知道一个HTTP请求是来自初次用户，还是之前访问过的用户。例如若在一个需要用户访问Web应用某个页面需要验证用户的账号信息，一旦用户输入正确的账号和密码后，若没有Session追踪，再访问同一个Web应用的其他页面时，那么用户又需要重新输入账号和密码，这给用户带来很大的不便。</p>
-<p>用于保持的状态的四种方法有：</p>
+<p>HTTP协议是无状态，也就是说默认情况下Web服务器并不知道一个HTTP请求是来自初次用户，还是之前访问过的用户。例如若在一个需要用户访问Web应用某个页面需要验证用户的账号信息，一旦用户输入正确的账号和密码，再访问同一个Web应用的其他页面时，那么用户又需要重新输入账号和密码。此时需要一个Session管理技术避免这种情况出现。</p>
+<p>用于保持状态的四种方法有：</p>
 <ul>
 <li>URL重写</li>
 <li>隐藏域（Hidden Fields）</li>
 <li>cookie</li>
 <li>HttpSession 对象</li>
 </ul>
-<h2 id="token-based-URL-重写"><a href="#token-based-URL-重写" class="headerlink" title="token-based URL 重写"></a>token-based URL 重写</h2><h3 id="工作原理"><a href="#工作原理" class="headerlink" title="工作原理"></a>工作原理</h3><p>URL重写的基本原理是直接将一个或多个<code>token</code>作为一个查询字符串（Query String）添加到一个URL中。格式如</p>
-<p><code>url?key-1=value-1&amp;key-2=value-2</code></p>
-<p>URL与token之间用一个问号<code>?</code>隔开，两个token之间则用一个<code>&amp;</code>符号。</p>
-<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
-<li>一些Web浏览器对URL字符的大写有限制，插入的<code>token</code>是有限，能够携带的信息也是有限的。</li>
-<li>某些<code>token</code>若携带了特殊的字符，如空格、<code>&amp;</code>和<code>?</code>等。此时需要对<code>token</code>进行编码。</li>
-<li><code>token</code>中的信息完全暴露在URL中，对于一些敏感信息就不适应了。</li>
-</ul>
-<h3 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h3><p>针对上述的缺点，URL重写适合如下的使用场景：</p>
-<ul>
-<li>需要保持状态，传递信息的安全性要求不高。</li>
-<li>不需要跨越太多页面</li>
-</ul>
-<h2 id="Hidden-Fields"><a href="#Hidden-Fields" class="headerlink" title="Hidden Fields"></a>Hidden Fields</h2><h3 id="工作原理-1"><a href="#工作原理-1" class="headerlink" title="工作原理"></a>工作原理</h3><p>与URL重写方式类似，但它不是将信息添加到URL内，而是将它们放在HTML表单的隐藏域中，当用户提交表单时，隐藏域的值也传送到服务器中。</p>
-<h3 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h3><ul>
-<li>只适用于那些包含表单的页面，此时才能使用隐藏域。</li>
-<li>当需要跨越很多页面时，实现就变得困难。</li>
-<li>相对于URL重写，能携带更多的信息，并且不需要对字符进行编码。</li>
-</ul>
-<h3 id="实例1-查看、更新Customer信息"><a href="#实例1-查看、更新Customer信息" class="headerlink" title="实例1 查看、更新Customer信息"></a>实例1 查看、更新Customer信息</h3><p>这个实例要完成的工作十分简单，首先提供一个页面展示Customer的姓名、所在城市，点击编辑按钮跳转到一个编辑Customer信息的页面，最后提交信息，更新Customer信息，并返回展示页面。实例<strong>Eclipse文件结构图</strong>如下</p>
-<p><img src="http://p5twacobv.bkt.clouddn.com/demo02aFileStructureDiagram.png" alt="demo02aFileStructureDiagram">
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/01/06/ServletAndJSPSummary3/#more" rel="contents">
@@ -1487,28 +1412,16 @@
 
       
         
-          
-            <h1 id="88-Merge-Sorted-Array"><a href="#88-Merge-Sorted-Array" class="headerlink" title="88. Merge Sorted Array"></a>88. Merge Sorted Array</h1><h3 id="From：Leetcode-88-Merge-Sorted-Array"><a href="#From：Leetcode-88-Merge-Sorted-Array" class="headerlink" title="From：Leetcode: 88. Merge Sorted Array"></a>From：<a href="https://leetcode.com/problems/merge-sorted-array/description/" target="_blank" rel="noopener">Leetcode: 88. Merge Sorted Array</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.<br>You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additional elements from nums2. The number of elements initialized in nums1 and nums2 are m and n respectively.</p>
+          <h1 id="88-Merge-Sorted-Array"><a href="#88-Merge-Sorted-Array" class="headerlink" title="88. Merge Sorted Array"></a>88. Merge Sorted Array</h1><h3 id="From：Leetcode-88-Merge-Sorted-Array"><a href="#From：Leetcode-88-Merge-Sorted-Array" class="headerlink" title="From：Leetcode: 88. Merge Sorted Array"></a>From：<a href="https://leetcode.com/problems/merge-sorted-array/description/" target="_blank" rel="noopener">Leetcode: 88. Merge Sorted Array</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.<br>You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additional elements from nums2. The number of elements initialized in nums1 and nums2 are m and n respectively.</p>
 <h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis"></a>Input and output analysis</h2><p>给定两个排好序的数组<code>nums1</code>和<code>nums2</code>，将<code>num2</code>数组合并到<code>nums1</code>数组，并且最后的<code>nums1</code>也是有序的。</p>
 <h2 id="Approach-1"><a href="#Approach-1" class="headerlink" title="Approach#1"></a>Approach#1</h2><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>由于合并<code>nums1</code>的大小为<code>m+n</code>，我们可以对<code>nums1</code>和<code>nums2</code>从后往前遍历，比较两数组的元素，将较大的元素依次复制到<code>nums1</code>末尾位置。</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span> m, <span class="keyword">int</span> [] nums2, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = m - <span class="number">1</span>,j = n - <span class="number">1</span>,k = m + n -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &gt;= <span class="number">0</span> &amp;&amp; j &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums1[i] &lt; nums2[j]) &#123;</span><br><span class="line">                nums1[k--] = nums2[j--];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                nums1[k--] = nums1[i--];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (i &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            nums1[k--] = nums1[i--];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (j &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            nums1[k--] = nums2[j--];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O( n )</td>
-<td>O( 1 )</td>
-</tr>
-</tbody>
-</table>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/04/88-Merge-Sorted-Array/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1625,364 +1538,19 @@
 
       
         
-          
-            <h2 id="JSP生命周期"><a href="#JSP生命周期" class="headerlink" title="JSP生命周期"></a>JSP生命周期</h2><ul>
+          <h2 id="JSP生命周期"><a href="#JSP生命周期" class="headerlink" title="JSP生命周期"></a>JSP生命周期</h2><ul>
 <li><strong>编译周期</strong></li>
 <li><strong>初始化阶段</strong></li>
 <li><strong>执行阶段</strong></li>
 <li><strong>销毁阶段</strong></li>
 </ul>
-<h3 id="一个实例"><a href="#一个实例" class="headerlink" title="一个实例"></a>一个实例</h3><pre><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html PUBLIC <span class="string">"-//W3C//DTD HTML 4.01 Transitional//EN"</span> <span class="string">"http://www.w3.org/TR/html4/loose.dtd"</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span><br><span class="line">&lt;title&gt;life.jsp&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;%!</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> initVar = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> serviceVar = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> destroyVar = <span class="number">0</span>;</span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line">&lt;%!</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">jspInit</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		initVar ++;</span><br><span class="line">		System.out.println(<span class="string">"jspInit(): JSP 被初始化了"</span> + initVar + <span class="string">"次"</span> );</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">jspDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		destroyVar ++;</span><br><span class="line">		System.out.println(<span class="string">"jspDestroy(): JSP 被销毁了"</span> + destroyVar + <span class="string">"次"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">%&gt;</span><br><span class="line">&lt;%</span><br><span class="line">	serviceVar ++;</span><br><span class="line">	System.out.println(<span class="string">"_jspService() : JSP 共响应了"</span> + serviceVar + <span class="string">"次请求"</span>);</span><br><span class="line">	String content1 = <span class="string">"初始化次数："</span> + initVar;</span><br><span class="line">	String content2 = <span class="string">"销毁次数： "</span> + destroyVar;</span><br><span class="line">	String content3 = <span class="string">"相应次数："</span> + serviceVar;</span><br><span class="line">%&gt;</span><br><span class="line">&lt;h1&gt;JSP 测试实例&lt;/h1&gt;</span><br><span class="line">&lt;p&gt;&lt;%=content1 %&gt; &lt;/p&gt;</span><br><span class="line">&lt;p&gt;&lt;%=content2 %&gt; &lt;/p&gt;</span><br><span class="line">&lt;p&gt;&lt;%=content3 %&gt; &lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></pre>
-
-<h2 id="JSP-语法"><a href="#JSP-语法" class="headerlink" title="JSP 语法"></a>JSP 语法</h2><p><strong>一句话总结JSP语法：三大指令，七大动作，九大内置对象</strong></p>
-<h3 id="脚本程序段"><a href="#脚本程序段" class="headerlink" title="脚本程序段"></a>脚本程序段</h3><p>我们可以在JSP以下两种格式限定符中编写任意的Java语句、变量、方法或其他表达式，</p>
-<pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;% insert your code here... %&gt;</span><br></pre></td></tr></table></figure></pre>
-
-<pre><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp:scriptlet&gt;</span><br><span class="line">insert your code here...</span><br><span class="line">&lt;/jsp:scriptlet&gt;</span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="JSP声明"><a href="#JSP声明" class="headerlink" title="JSP声明"></a>JSP声明</h3><p>语法格式：</p>
-<pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%! declaration...%&gt;</span><br></pre></td></tr></table></figure></pre>
-或者
-<pre><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp:declaration&gt;</span><br><span class="line">	insert your code here...</span><br><span class="line">&lt;/jsp:declaration&gt;</span><br></pre></td></tr></table></figure></pre>
-
-<p>示例：</p>
-<pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;%! <span class="keyword">int</span> i = <span class="number">0</span>; %&gt;</span><br><span class="line">&lt;%! <span class="keyword">int</span> j = <span class="number">0</span>; %&gt;</span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="JSP表达式"><a href="#JSP表达式" class="headerlink" title="JSP表达式"></a>JSP表达式</h3><p>语法格式：</p>
-<pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%= insert your code here...%&gt;</span><br></pre></td></tr></table></figure></pre>
-或者
-<pre><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp:expression&gt;</span><br><span class="line">	insert your code here...</span><br><span class="line">&lt;/jsp:expression&gt;</span><br></pre></td></tr></table></figure></pre>
-
-<p>示例：显示服务器的时间</p>
-<pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;</span><br><span class="line">	Today<span class="string">'s date: &lt;%= (new java.util.Date().toString()) %&gt;</span></span><br><span class="line"><span class="string">&lt;/p&gt;</span></span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="JSP注释"><a href="#JSP注释" class="headerlink" title="JSP注释"></a>JSP注释</h3><p>JSP注释主要有三种方式</p>
-<ul>
-<li><p>HTML注释，注释的内容会发送到浏览器，通过浏览器查看网页源代码可以看得到注释内容。<pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- There are some comments here... --%&gt;</span><br></pre></td></tr></table></figure></pre></p>
-</li>
-<li><p>JSP注释，不会发送到浏览器上，并且不会被编译。<pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%--There are some comments here... --%&gt;</span><br></pre></td></tr></table></figure></pre></p>
-</li>
-<li><p>脚本程序内注释，即编写Java语言注释如：<pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">	<span class="comment">// There are some Comments here..</span></span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * a lot of Comments here.. </span></span><br><span class="line"><span class="comment">	*/</span> </span><br><span class="line">	insert your code here...</span><br><span class="line">%&gt;</span><br></pre></td></tr></table></figure><br></pre></p>
-</li>
-</ul>
-<h4 id="实例1：删除数组内的target元素"><a href="#实例1：删除数组内的target元素" class="headerlink" title="实例1：删除数组内的target元素"></a>实例1：删除数组内的target元素</h4><pre><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page <span class="keyword">import</span>=<span class="string">"java.util.*"</span> language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;%--设置page指令 <span class="keyword">import</span>属性导入util中的类--%&gt;</span><br><span class="line"></span><br><span class="line">&lt;!DOCTYPE html PUBLIC <span class="string">"-//W3C//DTD HTML 4.01 Transitional//EN"</span> <span class="string">"http://www.w3.org/TR/html4/loose.dtd"</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;%--函数声明部分--%&gt;</span><br><span class="line">&lt;%!</span><br><span class="line">	<span class="comment">// 删除nums中所有的target元素</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteAllTargetElements</span><span class="params">(ArrayList&lt;Integer&gt; nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        ListIterator&lt;Integer&gt; it = nums.listIterator();</span><br><span class="line">        <span class="keyword">while</span> (it.hasNext()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (it.next().equals(target)) &#123;</span><br><span class="line">                it.remove();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">%&gt;</span><br><span class="line">&lt;% 	</span><br><span class="line">	ArrayList&lt;Integer&gt; arr1 = <span class="keyword">new</span> ArrayList&lt;Integer&gt;(); </span><br><span class="line">	arr1.addAll(Arrays.asList(<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">9</span>,<span class="number">0</span>,<span class="number">2</span>));</span><br><span class="line">	out.print(<span class="string">"Delete all 2 in array..."</span> + <span class="string">"&lt;br/&gt;"</span>);</span><br><span class="line">	out.print(<span class="string">"before:  "</span> + arr1.toString() + <span class="string">"&lt;br/&gt;"</span>);</span><br><span class="line">	deleteAllTargetElements(arr1,<span class="number">2</span>);</span><br><span class="line">	out.print(<span class="string">"after:  "</span> + arr1.toString() + <span class="string">"&lt;br/&gt;"</span>);</span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-</pre>
-
-<p><strong>实例运行结果：</strong></p>
-<h3 id="JSP三种指令元素"><a href="#JSP三种指令元素" class="headerlink" title="JSP三种指令元素"></a>JSP三种指令元素</h3><p><strong>用途：</strong>用来设置与整个JSP页面相关的属性<br><strong>语法格式：</strong><pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ directive attribute=<span class="string">"value"</span>%&gt;</span><br></pre></td></tr></table></figure></pre><br>指令可以拥有多个属性，它们以键值对的形式存在，并用逗号隔开。</p>
-<h4 id="Page指令"><a href="#Page指令" class="headerlink" title="Page指令"></a>Page指令</h4><p><strong>用途：</strong>为容器提供当前页面的使用说明，一个JSP页面可以包含多个page指令</p>
-<p><strong>语法格式：</strong><pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page attribute=<span class="string">"value"</span>%&gt;</span><br></pre></td></tr></table></figure></pre></p>
-<p><strong>page一些常用的属性：</strong></p>
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>buffer</td>
-<td></td>
-</tr>
-<tr>
-<td>autoFlush</td>
-<td></td>
-</tr>
-<tr>
-<td>contentType</td>
-<td></td>
-</tr>
-<tr>
-<td>errorPage</td>
-<td></td>
-</tr>
-<tr>
-<td>isErrorPage</td>
-<td></td>
-</tr>
-<tr>
-<td>extends</td>
-<td></td>
-</tr>
-<tr>
-<td>import</td>
-<td></td>
-</tr>
-<tr>
-<td>info</td>
-<td></td>
-</tr>
-<tr>
-<td>isThreadSafe</td>
-<td></td>
-</tr>
-<tr>
-<td>language</td>
-<td></td>
-</tr>
-<tr>
-<td>session</td>
-<td></td>
-</tr>
-<tr>
-<td>isELIgnord</td>
-<td></td>
-</tr>
-<tr>
-<td>isScriptingEnable</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="Include指令"><a href="#Include指令" class="headerlink" title="Include指令"></a>Include指令</h4><p><strong>用途：</strong>JSP可以通过include指令来包含其他文件，文件格式可以是JSP、HTML或文本等。包含进来的文件将在编译阶段一起同时被编译,属于静态包含。<br><strong>语法格式：</strong> <pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ include file=<span class="string">"relative url"</span>%&gt;</span><br></pre></td></tr></table></figure></pre><br>指令中的文件实际是一个相对的url，若没给文件关联一个路径，JSP编译器默认在当前路径下寻找。<br><strong>示例：</strong></p>
-<h4 id="Taglib指令"><a href="#Taglib指令" class="headerlink" title="Taglib指令"></a>Taglib指令</h4><p><strong>用途：</strong> 用户自定义标签，一个自定义标签库就是自定义标签的集合，集合定义包括库路径、自定义标签。<br><strong>语法格式：</strong><pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ taglib uri=<span class="string">"uri"</span> prefix=<span class="string">"prefixOfTag"</span> %&gt;</span><br></pre></td></tr></table></figure></pre></p>
-<h3 id="JSP七种动作元素"><a href="#JSP七种动作元素" class="headerlink" title="JSP七种动作元素"></a>JSP七种动作元素</h3><p><strong>与JSP指令元素不同，JSP动作元素是在请求处理阶段起作用。JSP动作元素是用XML语法写承德</strong><br><strong>作用：</strong> 使用XML语法结构来控制servlet引擎，例如动态插入一个文件，重用JavaBean组件，引导用户去另一个页面，为Java插件产生相关的HTML等。</p>
-<table>
-<thead>
-<tr>
-<th>语法</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>jsp:include</td>
-<td></td>
-</tr>
-<tr>
-<td>jsp:useBean</td>
-<td></td>
-</tr>
-<tr>
-<td>jsp:setProperty</td>
-<td></td>
-</tr>
-<tr>
-<td>jsp:getProperty</td>
-<td></td>
-</tr>
-<tr>
-<td>jsp:forward</td>
-<td></td>
-</tr>
-<tr>
-<td>jsp:plugin</td>
-<td></td>
-</tr>
-<tr>
-<td>jsp:element</td>
-<td></td>
-</tr>
-<tr>
-<td>jsp:attribute</td>
-<td></td>
-</tr>
-<tr>
-<td>jsp:body</td>
-<td></td>
-</tr>
-<tr>
-<td>jsp:text</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="lt-jsp-include-gt-动作元素"><a href="#lt-jsp-include-gt-动作元素" class="headerlink" title="&lt;jsp:include&gt;动作元素"></a><code>&lt;jsp:include&gt;</code>动作元素</h4><p><strong><code>include指令元素与&lt;jsp:include&gt;</code>动作元素相比，前者是在JSP文件被转换为Servlet的时候引入文件，而这里的include是在页面被请求时候插入文件，两个插入的时间段不一样，前者处于编译阶段，后者处于请求阶段。</strong></p>
-<p><strong>实例：</strong><br>我们定义两个文件<code>main.jsp</code>和<code>showYourIP.jsp</code>，在<code>main.jsp</code>中使用include动作导入<code>showYourIP.jsp</code></p>
-<p>main.jsp文件代码：</p>
-<pre><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html PUBLIC <span class="string">"-//W3C//DTD HTML 4.01 Transitional//EN"</span> <span class="string">"http://www.w3.org/TR/html4/loose.dtd"</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span><br><span class="line">&lt;title&gt;Insert title here&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;center&gt;</span><br><span class="line">&lt;jsp:include page=<span class="string">"showYourIP.jsp"</span> flush=<span class="string">"true"</span>/&gt;</span><br><span class="line">&lt;/center&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></pre>
-
-<p>showYourIP.jsp文件代码：</p>
-<pre><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;</span><br><span class="line">	Your IP address: &lt;%=request.getRemoteAddr()%&gt;</span><br><span class="line">&lt;/p&gt;</span><br></pre></td></tr></table></figure></pre>
-
-<p><strong>结果：</strong></p>
-<h4 id="lt-jsp-useBean-gt-动作元素"><a href="#lt-jsp-useBean-gt-动作元素" class="headerlink" title="&lt;jsp:useBean&gt;动作元素"></a><code>&lt;jsp:useBean&gt;</code>动作元素</h4><p><strong>用途：</strong> 用来装载一个将在JSP页面使用的JavaBean。<br><strong>语法格式：</strong> <pre><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp:useBean id=<span class="string">"name"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"package.class"</span> /&gt;</span><br></pre></td></tr></table></figure></pre><br>在类载入后，我们可以通过<code>&lt;jsp:setProperty&gt;</code>和<code>&lt;jsp:getProperty&gt;</code>来修改和检索Bean的属性。</p>
-<h4 id="lt-jsp-setProperty-gt-动作元素"><a href="#lt-jsp-setProperty-gt-动作元素" class="headerlink" title="&lt;jsp:setProperty&gt;动作元素"></a><code>&lt;jsp:setProperty&gt;</code>动作元素</h4><p><strong>用途：</strong><br><strong>属性：</strong></p>
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>name</td>
-<td>表明要设置的属性是哪个Bean的，即Bean的名称</td>
-</tr>
-<tr>
-<td>property</td>
-<td>表明设置是哪个属性，即属性的名称</td>
-</tr>
-<tr>
-<td>value</td>
-<td>可选，指定对应属性的值。</td>
-</tr>
-<tr>
-<td>param</td>
-<td>可选，制定哪个请求参数作为Bean属性的值</td>
-</tr>
-</tbody>
-</table>
-<h4 id="lt-jsp-getProperty-gt-动作元素"><a href="#lt-jsp-getProperty-gt-动作元素" class="headerlink" title="&lt;jsp:getProperty&gt;动作元素"></a><code>&lt;jsp:getProperty&gt;</code>动作元素</h4><p><strong>用途：</strong><br><strong>属性：</strong></p>
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>name</td>
-<td>表明要设置的属性是哪个Bean的，即Bean的名称</td>
-</tr>
-<tr>
-<td>property</td>
-<td>表明设置是哪个属性，即属性的名称</td>
-</tr>
-</tbody>
-</table>
-<h4 id="实例2：通过useBean实现记录注册信息"><a href="#实例2：通过useBean实现记录注册信息" class="headerlink" title="实例2：通过useBean实现记录注册信息"></a>实例2：通过useBean实现记录注册信息</h4><p><strong>定义<code>register.jsp</code>和<code>do_register.jsp</code>两个文件使用<code>UserEntity</code>Java Bean，分别实现获取用户注册信息和展示用户信息 </strong></p>
-<p><strong>UserEntity.java文件代码</strong></p>
-<pre>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> learnJSP.action;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.Serializable;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserEntity</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String userName;</span><br><span class="line">	<span class="keyword">private</span> String password;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">UserEntity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getUserName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> userName;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUserName</span><span class="params">(String userName)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.userName = userName;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> password;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(String password)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.password = password;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-</pre>
-
-<p><strong>register.jsp文件代码</strong></p>
-<pre>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html PUBLIC <span class="string">"-//W3C//DTD HTML 4.01 Transitional//EN"</span> <span class="string">"http://www.w3.org/TR/html4/loose.dtd"</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span><br><span class="line">&lt;title&gt;Register&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;form action=<span class="string">"do_register.jsp"</span> method=<span class="string">"post"</span>&gt;</span><br><span class="line">		Name: &lt;input type=<span class="string">"text"</span> name=<span class="string">"_userName"</span>&gt;</span><br><span class="line">		Password: &lt;input type=<span class="string">"password"</span> name=<span class="string">"_password"</span>&gt;</span><br><span class="line">		&lt;input type=<span class="string">"submit"</span>&gt;</span><br><span class="line">	&lt;/form&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt; </span><br></pre></td></tr></table></figure>
-</pre>
-
-<p><strong>do_register.jsp文件代码</strong></p>
-<pre><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html PUBLIC <span class="string">"-//W3C//DTD HTML 4.01 Transitional//EN"</span> <span class="string">"http://www.w3.org/TR/html4/loose.dtd"</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;body&gt; </span><br><span class="line">	&lt;jsp:useBean id=<span class="string">"user"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"learnJSP.action.UserEntity"</span> /&gt;</span><br><span class="line">	&lt;jsp:setProperty name=<span class="string">"user"</span> property=<span class="string">"userName"</span> param=<span class="string">"_userName"</span> /&gt;</span><br><span class="line">	&lt;jsp:setProperty name=<span class="string">"user"</span> property=<span class="string">"password"</span> param=<span class="string">"_password"</span> /&gt;</span><br><span class="line">	&lt;p&gt;Your name: &lt;jsp:getProperty name="user" property="password" /&gt; &lt;/p&gt;</span><br><span class="line">	&lt;p&gt;Your password: &lt;jsp:getProperty name="user" property="userName" /&gt;&lt;/p&gt;</span><br><span class="line">  &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></pre>
-
-<p><strong>结果</strong></p>
-<h4 id="lt-jsp-forward-gt-动作元素"><a href="#lt-jsp-forward-gt-动作元素" class="headerlink" title="&lt;jsp:forward&gt;动作元素"></a><code>&lt;jsp:forward&gt;</code>动作元素</h4><p><strong>用途：</strong>把请求转到另外的页面去，通过page属性。</p>
-<p><strong>语法格式：</strong></p>
-<pre>
-<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp:forward page=<span class="string">"Relative URL"</span>/&gt;</span><br></pre></td></tr></table></figure>
-</pre>
-
-
-<h4 id="lt-jsp-plugin-gt-动作元素"><a href="#lt-jsp-plugin-gt-动作元素" class="headerlink" title="&lt;jsp:plugin&gt;动作元素"></a><code>&lt;jsp:plugin&gt;</code>动作元素</h4><p><strong>用途：</strong>根据浏览器的类型，插入通过Java插件运行Java Applet所需要的OBJECT元素。</p>
-<h4 id="lt-jsp-element-gt-、-lt-jsp-attribute-gt-、-lt-jsp-body-gt-动作元素"><a href="#lt-jsp-element-gt-、-lt-jsp-attribute-gt-、-lt-jsp-body-gt-动作元素" class="headerlink" title="&lt;jsp:element&gt;、&lt;jsp:attribute&gt;、 &lt;jsp:body&gt;动作元素"></a><code>&lt;jsp:element&gt;</code>、<code>&lt;jsp:attribute&gt;</code>、 <code>&lt;jsp:body&gt;</code>动作元素</h4><p><strong>用途：</strong>用于动态定义XML元素。</p>
-<h4 id="lt-jsp-text-gt-动作元素"><a href="#lt-jsp-text-gt-动作元素" class="headerlink" title="&lt;jsp:text&gt;动作元素"></a><code>&lt;jsp:text&gt;</code>动作元素</h4><p><strong>用途：</strong>在JSP页面和文档中使用写入文本的模板。</p>
-<h3 id="JSP九种内置对象"><a href="#JSP九种内置对象" class="headerlink" title="JSP九种内置对象"></a>JSP九种内置对象</h3><p>JSP内置对象是JSP容器为每个页面提供的Java对象，开发者可以直接使用它们而不用通过显示声明，也成预定义变量。</p>
-<table>
-<thead>
-<tr>
-<th>属性</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>request</td>
-<td>request对象是<code>javax.servlet.http.HttpServletRequest</code>类的实例，当客户端请求一个JSP页面时，JSP引擎就会制造一个新的<code>request</code>来代表这个请求。这个对象提供一系列的方法来获取http头信息，cookied，HTTP方法等等。</td>
-</tr>
-<tr>
-<td>response</td>
-<td>response对象是<code>javax.servlet.http.HttpServletResponse</code>类的实例，JSP引擎在创建request对象同时也会同时创建用于响应这个客户端的<code>response</code>对象</td>
-</tr>
-<tr>
-<td>out</td>
-<td>out对象是<code>javax.servlet.jsp.JspWriter</code>类的实例。</td>
-</tr>
-<tr>
-<td>session</td>
-<td>session对象是<code>javax.servlet.http.HTTPSession</code>类的实例，用来跟踪各个客户端请求间的会话。</td>
-</tr>
-<tr>
-<td>application</td>
-<td>application对象直接包装了servlet的<code>ServletContext</code>类的对象，是<code>javax.servlet.ServletContext</code>类的实例。在整个JSP页面的生命周期中都代表着这个JSP页面，经历初始化、执行、销毁等时期。</td>
-</tr>
-<tr>
-<td>config</td>
-<td>不常用</td>
-</tr>
-<tr>
-<td>pageContext</td>
-<td>用来代表整个JSP页面，存储了request对象和response对象的引用。</td>
-</tr>
-<tr>
-<td>page</td>
-<td>页面实例的引用，相当于this。</td>
-</tr>
-<tr>
-<td>Exception</td>
-<td>包装了先前页面中跑出的异常信息。</td>
-</tr>
-</tbody>
-</table>
-<h4 id="request对象"><a href="#request对象" class="headerlink" title="request对象"></a>request对象</h4><p>客户端所有的请求信息都封装在request对象，服务端只有通过它才能了解到客户的需求，根据需求做出响应。</p>
-<p><strong>常用的方法如下：</strong></p>
-<table>
-<thead>
-<tr>
-<th>方法名</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>Cookie[] getCookies()</code></td>
-<td>返回客户端所有的Cookie的数组</td>
-</tr>
-<tr>
-<td><code>Enumeration getHeaderNames()</code></td>
-<td>返回所有HTTP头的名称集合</td>
-</tr>
-<tr>
-<td><code>String getHeader(String name)</code></td>
-<td>返回HTTP头中名为name参数的值</td>
-</tr>
-<tr>
-<td><code>HtppSession getSession()</code></td>
-<td>返回request对应的session对象，若没有则创建一个</td>
-</tr>
-<tr>
-<td><code>String getCharacterEncoding()</code></td>
-<td>返回request的字符编码集名称</td>
-</tr>
-<tr>
-<td><code>String getMethod()</code></td>
-<td>返回request中的HTTP方法，如GET，POST或PUT</td>
-</tr>
-<tr>
-<td><code>String getParameter(String name)</code></td>
-<td>返回request中参数名为name的值，若不存在则返回null</td>
-</tr>
-<tr>
-<td><code>String getRemoteAddr()</code></td>
-<td>返回客户端的IP地址</td>
-</tr>
-<tr>
-<td><code>String getRemoteHost()</code></td>
-<td>返回客户端的完整名称</td>
-</tr>
-<tr>
-<td><code>String getServletPath()</code></td>
-<td>返回所请求的servlet路径</td>
-</tr>
-</tbody>
-</table>
-<h5 id="实例3：通过request对象获取客户端请求的HTTP信息头"><a href="#实例3：通过request对象获取客户端请求的HTTP信息头" class="headerlink" title="实例3：通过request对象获取客户端请求的HTTP信息头"></a>实例3：通过request对象获取客户端请求的HTTP信息头</h5><p>下面我们使用request对象中的方法来获取请求HTTP信息头，通过<code>request.getHeaderNames()</code>获取<code>Enumeration</code>对象，然后遍历<code>Enumeration</code>对象，得到<code>Header</code>参数名，通过参数名使用<code>request.getHeader(String name)</code>获取信息头中对应参数值以html表格形式输出。</p>
-<pre><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> <span class="keyword">import</span>=<span class="string">"java.io.*,java.util.*"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html PUBLIC <span class="string">"-//W3C//DTD HTML 4.01 Transitional//EN"</span> <span class="string">"http://www.w3.org/TR/html4/loose.dtd"</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span><br><span class="line">&lt;title&gt;HTTP Header request Example&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;center&gt;</span><br><span class="line">	&lt;h2&gt;HTTP Header request Example&lt;/h2&gt;</span><br><span class="line">	&lt;table width=<span class="string">"100%"</span> border=<span class="string">"1"</span> aligin=<span class="string">"center"</span>&gt;</span><br><span class="line">	&lt;tr bgcolor=<span class="string">"#949494"</span>&gt;</span><br><span class="line">	&lt;th&gt;Header Name&lt;/th&gt;&lt;th&gt;Header Value(s) &lt;/th&gt;</span><br><span class="line">	&lt;/tr&gt;</span><br><span class="line">	&lt;%</span><br><span class="line">		Enumeration headerNames = request.getHeaderNames();</span><br><span class="line">		<span class="keyword">while</span> (headerNames.hasMoreElements()) &#123;</span><br><span class="line">			String parameterName = (String) headerNames.nextElement();</span><br><span class="line">			out.print(<span class="string">"&lt;tr&gt;&lt;td&gt;"</span> + parameterName + <span class="string">"&lt;/td&gt;\n"</span>);</span><br><span class="line">			String paramValue = request.getHeader(parameterName);</span><br><span class="line">			out.print(<span class="string">"&lt;td&gt; "</span> + paramValue + <span class="string">"&lt;/td&gt;&lt;/tr&gt;\n"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	%&gt;</span><br><span class="line">	&lt;/table&gt;</span><br><span class="line">	&lt;/center&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></pre>
-
-<h4 id="response对象"><a href="#response对象" class="headerlink" title="response对象"></a>response对象</h4><p>Response对象主要将JSP容器处理后的结果传回客户端，可以通过response变量设置HTTP的状态和对客户端发送数据，如Cookie、HTTP文件头信息。</p>
-<h5 id="实例4-模拟数字时钟"><a href="#实例4-模拟数字时钟" class="headerlink" title="实例4 模拟数字时钟"></a>实例4 模拟数字时钟</h5><p>我们可以通过给<code>request.setIntHeader(String name, int value)</code>传入<code>Refresh</code>和<code>5</code>参数，使得jsp页面每个五秒刷新一次时间值，达到模拟数字时钟的效果。</p>
-<pre><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> <span class="keyword">import</span>=<span class="string">"java.util.*,java.io.*"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html PUBLIC <span class="string">"-//W3C//DTD HTML 4.01 Transitional//EN"</span> <span class="string">"http://www.w3.org/TR/html4/loose.dtd"</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span><br><span class="line">&lt;title&gt;Auto Refresh Header Example&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;center&gt;</span><br><span class="line">	&lt;h2&gt;Auto Refresh Header Example&lt;/h2&gt;</span><br><span class="line">	&lt;%</span><br><span class="line">		response.setIntHeader(<span class="string">"Refresh"</span>, <span class="number">5</span>);</span><br><span class="line">		Calendar calendar = <span class="keyword">new</span> GregorianCalendar();</span><br><span class="line">		String am_pm = (calendar.get(Calendar.AM_PM) == <span class="number">0</span>) ? <span class="string">"AM"</span> : <span class="string">"PM"</span>; </span><br><span class="line">		<span class="keyword">int</span> hour = calendar.get(Calendar.HOUR);</span><br><span class="line">		<span class="keyword">int</span> minute = calendar.get(Calendar.MINUTE);</span><br><span class="line">		<span class="keyword">int</span> second = calendar.get(Calendar.SECOND);</span><br><span class="line">		String CT = hour + <span class="string">": "</span> + minute + <span class="string">": "</span> + second + <span class="string">" "</span> + am_pm; </span><br><span class="line">		out.println(<span class="string">"Current Time is : "</span> + CT + <span class="string">"\n"</span>);</span><br><span class="line">	%&gt;</span><br><span class="line">&lt;/center&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></pre>
-
-
-
-
-
-
-
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/04/ServletAndJSPSummary1/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2136,7 +1704,7 @@
 <div class="theme-info">
   Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Pisces
   </a>
 </div>
 
@@ -2215,6 +1783,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
 
   
     <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>

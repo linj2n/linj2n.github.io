@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="en">
+<html class="theme-next pisces use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Java web,JSP/Servlet," />
+  <meta name="keywords" content="JSP/Servlet,Java web," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="JSP生命周期 编译周期 初始化阶段 执行阶段 销毁阶段  一个实例123456789101112131415161718192021222324252627282930313233343536373839&amp;lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;    pageEncoding=&quot;UTF-8&quot;%&amp;gt;&amp;l">
-<meta name="keywords" content="Java web,JSP&#x2F;Servlet">
+<meta name="description" content="JSP生命周期 编译周期 初始化阶段 执行阶段 销毁阶段">
+<meta name="keywords" content="JSP&#x2F;Servlet,Java web">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Servle&#x2F;JSP知识小结（1） JSP基本语法">
 <meta property="og:url" content="http://linj2n.cn/2018/01/04/ServletAndJSPSummary1/index.html">
 <meta property="og:site_name" content="linj2n@zll">
-<meta property="og:description" content="JSP生命周期 编译周期 初始化阶段 执行阶段 销毁阶段  一个实例123456789101112131415161718192021222324252627282930313233343536373839&amp;lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;    pageEncoding=&quot;UTF-8&quot;%&amp;gt;&amp;l">
+<meta property="og:description" content="JSP生命周期 编译周期 初始化阶段 执行阶段 销毁阶段">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-03-12T13:43:32.000Z">
+<meta property="og:updated_time" content="2018-03-20T01:40:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Servle&#x2F;JSP知识小结（1） JSP基本语法">
-<meta name="twitter:description" content="JSP生命周期 编译周期 初始化阶段 执行阶段 销毁阶段  一个实例123456789101112131415161718192021222324252627282930313233343536373839&amp;lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot;    pageEncoding=&quot;UTF-8&quot;%&amp;gt;&amp;l">
+<meta name="twitter:description" content="JSP生命周期 编译周期 初始化阶段 执行阶段 销毁阶段">
 
 
 
@@ -113,7 +113,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Muse',
+    scheme: 'Pisces',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
@@ -336,6 +336,7 @@
 <li><strong>执行阶段</strong></li>
 <li><strong>销毁阶段</strong></li>
 </ul>
+<a id="more"></a>
 <h3 id="一个实例"><a href="#一个实例" class="headerlink" title="一个实例"></a>一个实例</h3><pre><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html PUBLIC <span class="string">"-//W3C//DTD HTML 4.01 Transitional//EN"</span> <span class="string">"http://www.w3.org/TR/html4/loose.dtd"</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span><br><span class="line">&lt;title&gt;life.jsp&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;%!</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> initVar = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> serviceVar = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> destroyVar = <span class="number">0</span>;</span><br><span class="line">%&gt;</span><br><span class="line"></span><br><span class="line">&lt;%!</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">jspInit</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		initVar ++;</span><br><span class="line">		System.out.println(<span class="string">"jspInit(): JSP 被初始化了"</span> + initVar + <span class="string">"次"</span> );</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">jspDestroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		destroyVar ++;</span><br><span class="line">		System.out.println(<span class="string">"jspDestroy(): JSP 被销毁了"</span> + destroyVar + <span class="string">"次"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">%&gt;</span><br><span class="line">&lt;%</span><br><span class="line">	serviceVar ++;</span><br><span class="line">	System.out.println(<span class="string">"_jspService() : JSP 共响应了"</span> + serviceVar + <span class="string">"次请求"</span>);</span><br><span class="line">	String content1 = <span class="string">"初始化次数："</span> + initVar;</span><br><span class="line">	String content2 = <span class="string">"销毁次数： "</span> + destroyVar;</span><br><span class="line">	String content3 = <span class="string">"相应次数："</span> + serviceVar;</span><br><span class="line">%&gt;</span><br><span class="line">&lt;h1&gt;JSP 测试实例&lt;/h1&gt;</span><br><span class="line">&lt;p&gt;&lt;%=content1 %&gt; &lt;/p&gt;</span><br><span class="line">&lt;p&gt;&lt;%=content2 %&gt; &lt;/p&gt;</span><br><span class="line">&lt;p&gt;&lt;%=content3 %&gt; &lt;/p&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></pre>
 
 <h2 id="JSP-语法"><a href="#JSP-语法" class="headerlink" title="JSP 语法"></a>JSP 语法</h2><p><strong>一句话总结JSP语法：三大指令，七大动作，九大内置对象</strong></p>
@@ -702,9 +703,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java-web/" rel="tag"># Java web</a>
-          
             <a href="/tags/JSP-Servlet/" rel="tag"># JSP/Servlet</a>
+          
+            <a href="/tags/Java-web/" rel="tag"># Java web</a>
           
         </div>
       
@@ -892,7 +893,7 @@
 <div class="theme-info">
   Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Muse
+    NexT.Pisces
   </a>
 </div>
 
@@ -971,6 +972,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
