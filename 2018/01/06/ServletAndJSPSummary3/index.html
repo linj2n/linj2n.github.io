@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Servlet/JSP,Java web," />
+  <meta name="keywords" content="Java web,Servlet/JSP," />
 
 
 
@@ -95,7 +95,7 @@
 
 
 <meta name="description" content="为什么需要Session管理？ HTTP协议是无状态，也就是说默认情况下Web服务器并不知道一个HTTP请求是来自初次用户，还是之前访问过的用户。例如若在一个需要用户访问Web应用某个页面需要验证用户的账号信息，一旦用户输入正确的账号和密码，再访问同一个Web应用的其他页面时，那么用户又需要重新输入账号和密码。此时需要一个Session管理技术避免这种情况出现。 用于保持状态的四种方法有：  UR">
-<meta name="keywords" content="Servlet&#x2F;JSP,Java web">
+<meta name="keywords" content="Java web,Servlet&#x2F;JSP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Servlet&#x2F;JSP知识小结（3）Seesion 管理">
 <meta property="og:url" content="http://linj2n.cn/2018/01/06/ServletAndJSPSummary3/index.html">
@@ -107,7 +107,9 @@
 <meta property="og:image" content="http://p5twacobv.bkt.clouddn.com/editCustomer.png">
 <meta property="og:image" content="http://p5twacobv.bkt.clouddn.com/showUpdateInfo.png">
 <meta property="og:image" content="http://p5twacobv.bkt.clouddn.com/sequenceDiagram1.png">
-<meta property="og:updated_time" content="2018-03-21T07:02:14.000Z">
+<meta property="og:image" content="http://p5twacobv.bkt.clouddn.com/image/jpg/ServletAndJSPSummary3/WelcomAbroadPic.png">
+<meta property="og:image" content="http://p5twacobv.bkt.clouddn.com/image/jpg/ServletAndJSPSummary3/welcomeBackPic.png">
+<meta property="og:updated_time" content="2018-03-21T15:24:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Servlet&#x2F;JSP知识小结（3）Seesion 管理">
 <meta name="twitter:description" content="为什么需要Session管理？ HTTP协议是无状态，也就是说默认情况下Web服务器并不知道一个HTTP请求是来自初次用户，还是之前访问过的用户。例如若在一个需要用户访问Web应用某个页面需要验证用户的账号信息，一旦用户输入正确的账号和密码，再访问同一个Web应用的其他页面时，那么用户又需要重新输入账号和密码。此时需要一个Session管理技术避免这种情况出现。 用于保持状态的四种方法有：  UR">
@@ -380,25 +382,55 @@
 <p><img src="http://p5twacobv.bkt.clouddn.com/showUpdateInfo.png" alt="showUpdate"></p>
 <p>整个调用过程的时序图</p>
 <p><img src="http://p5twacobv.bkt.clouddn.com/sequenceDiagram1.png" alt="sequenceDiagram1"></p>
-<h2 id="Client-based-Cookies"><a href="#Client-based-Cookies" class="headerlink" title="Client-based Cookies"></a>Client-based Cookies</h2><p>Cookie 是自动地在Web服务器和浏览器之间来回传递的一小块信息。适用于那些需要跨越许多页面的信息。</p>
-<p>Cookie 嵌入在HTTP Header信息中，传输过程中由HTTP协议处理。</p>
-<p>对于浏览器而言，每台Web服务器最多可以支持20个Cookie，用户可以在浏览器内拒绝接受cookie</p>
+<h2 id="Cookies"><a href="#Cookies" class="headerlink" title="Cookies"></a>Cookies</h2><p>Cookie 是自动地在Web服务器和浏览器之间来回传递的一小块信息。适用于那些需要跨越许多页面的信息。</p>
+<p>Cookie 嵌入在HTTP Header信息中，是HTTP头中的一个字段，传输过程中由HTTP协议处理。</p>
+<p>浏览器对Cookie的存储有限制，例如Chrome浏览器对每个域名最多只支持50个Cookie，FirFox最多支持4097个字的Cookie。</p>
+<p>用户可以在浏览器内拒绝接受cookie。</p>
+<p>每次客户端的访问都必须传回Cookie，后面<strong>Session的出现解决了这个问题</strong>。</p>
 <h3 id="向客户端发送Cookie"><a href="#向客户端发送Cookie" class="headerlink" title="向客户端发送Cookie"></a>向客户端发送Cookie</h3><p><strong>一般过程：</strong></p>
 <p>Servlet使用Cookie的构造函数，传入指定的名称和值，创建一个或多个Cookie。通过<code>Cookie.setXxx()</code>方法为每个Cookie设置属性值。最后使用<code>HttpServletResponse.addCookie(Cookie c)</code>方法将cookie插入HTTP响应Header中。</p>
 <p>下面是一个具体的例子：</p>
 <h4 id="1-创建Cookie对象"><a href="#1-创建Cookie对象" class="headerlink" title="1. 创建Cookie对象"></a>1. 创建Cookie对象</h4><p>创建一个用户ID的cookie。</p>
-<p><code>Cookie c = new Cookie(&quot;userId&quot;,&quot;1234&quot;);</code></p>
+<p><code>Cookie userCookie = new Cookie(&quot;userId&quot;,&quot;1234&quot;);</code></p>
 <p>注： 构造方法接受两个字符串：cookie的名称和值。两个字符串不可包含空格和<code>[]</code>,<code>?</code>,<code>=</code>,<code>@</code>,<code>:</code>,<code>;</code>字符。</p>
 <h4 id="2-为Cookie设置MaxAge"><a href="#2-为Cookie设置MaxAge" class="headerlink" title="2. 为Cookie设置MaxAge"></a>2. 为Cookie设置MaxAge</h4><p>设置<code>c</code>的时效为24小时，服务端将保留这个<code>cookie</code>24小时。</p>
-<p><code>c.setMaxAge(60*60*24);</code></p>
+<p><code>userCookie.setMaxAge(60*60*24);</code></p>
 <p><code>setMaxAge()</code>接受一个<code>int</code>值表示cookie的时效，单位为秒。若不设置<code>MaxAge</code>属性，默认情况下为<code>-1</code></p>
-<h4 id="3-使用HttpResponse-添加Cookie"><a href="#3-使用HttpResponse-添加Cookie" class="headerlink" title="3. 使用HttpResponse 添加Cookie"></a>3. 使用HttpResponse 添加Cookie</h4><h3 id="接收来自客户端的Cookie"><a href="#接收来自客户端的Cookie" class="headerlink" title="接收来自客户端的Cookie"></a>接收来自客户端的Cookie</h3><h3 id="Cookie的相关属性"><a href="#Cookie的相关属性" class="headerlink" title="Cookie的相关属性"></a>Cookie的相关属性</h3><h3 id="Cookie存在的问题"><a href="#Cookie存在的问题" class="headerlink" title="Cookie存在的问题"></a>Cookie存在的问题</h3><h3 id="实例2-对于第一次访问和第二次访问的用户分别输出不同的欢迎界面"><a href="#实例2-对于第一次访问和第二次访问的用户分别输出不同的欢迎界面" class="headerlink" title="实例2 对于第一次访问和第二次访问的用户分别输出不同的欢迎界面"></a>实例2 对于第一次访问和第二次访问的用户分别输出不同的欢迎界面</h3><p>来自客户端的Cookie并设置属性</p>
-<h2 id="Server-based-HttpSession"><a href="#Server-based-HttpSession" class="headerlink" title="Server-based HttpSession"></a>Server-based HttpSession</h2><p>在Servlet中使用Seesion一般涉及以下4个<strong>操作：</strong></p>
+<h4 id="3-使用HttpResponse-添加Cookie"><a href="#3-使用HttpResponse-添加Cookie" class="headerlink" title="3. 使用HttpResponse 添加Cookie"></a>3. 使用HttpResponse 添加Cookie</h4><p>为了将以个Cookie发送到浏览器，需要在<code>HttpResponse</code>上调用<code>add</code>方法：</p>
+<p><code>response.addCookie(userCookie);</code></p>
+<h3 id="读取来自客户端的Cookie"><a href="#读取来自客户端的Cookie" class="headerlink" title="读取来自客户端的Cookie"></a>读取来自客户端的Cookie</h3><p>读取来自客户端的Cookie主要操作有：</p>
 <ul>
-<li><strong>获取当前请求的HttpSession对象：</strong>调用<code>HttpServletRequest.getSession()</code>得到当前请求的HttpSession对象，HttpSession对象是一个<code>Hash table</code>，存放着属于当前请求的用户信息。</li>
-<li><strong>在HttpSession查找和获取信息：</strong>调用<code>httpSession.getAtrribute()</code>，得到返回值并将返回值转换为特定的对象。这里的返回值不一定是<code>String</code>，可以是任意Java对象，因此需要对返回值做转换。</li>
-<li><strong>为HttpSession添加信息：</strong>调用<code>HttpSession.addAtrribute(String name,Object value)</code>，添加一个名称<code>name</code>,类型为<code>value</code>的信息。其中<code>Object value</code>需要实现<code>Serializable</code>接口。</li>
-<li><strong>删除HttpSession中的信息或一个HttpSession：</strong>分别调用<code>HttpSession.removeAttribute(String name)</code>、<code>HttpSession.invalidate()</code>删除HttpSession中的某个用户信息或其本身。</li>
+<li>在<code>HttpRequest</code>上调用<code>getCookies()</code>方法，得到一个<code>Cookie[]</code>.</li>
+<li>对<code>Cookie[]</code>进行遍历，调用每个<code>cookie</code>的<code>getName()</code>方法，直到找到目标<code>cookie</code>为止。然后一般调用<code>getValue()</code>得到目标值。</li>
+</ul>
+<p>例如：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">String cookieName = <span class="string">"userCookie"</span>;</span><br><span class="line">Cookie[] cookies = request.getCookies();</span><br><span class="line"><span class="keyword">if</span> (cookies != <span class="keyword">null</span>) &#123;</span><br><span class="line">	<span class="keyword">for</span> (Cookie e: cookies) &#123;</span><br><span class="line">		<span class="keyword">if</span> (cookieName.equals(e.getName())) &#123;</span><br><span class="line">			doSomethingWith(e.getValue());</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Cookie的相关属性"><a href="#Cookie的相关属性" class="headerlink" title="Cookie的相关属性"></a>Cookie的相关属性</h3><p>在将<code>cookie</code>添加到<code>HttpResponse</code>前，可以使用<code>setXxx</code>方法设置<code>cookie</code>的各种属性，<code>Xxx</code>是希望设置的属性名称。</p>
+<p>属性是从服务器发送到浏览器的报头的一部分，它不属于由浏览器返回服务器的报头，也就是说来自于浏览器的cookie并没有设置这些属性。</p>
+<p>下面是常用的cookie属性方法：</p>
+<ul>
+<li><p><strong><code>public String getName()</code></strong><br>该方法读取cookie的名称，通常与<code>public String getValue()</code>搭配使用。</p>
+</li>
+<li><p><strong><code>public String getValue()</code>，<code>public void setValue(String cookieValue)</code></strong><br>前着读取与该Cookie相关的值，后者设置该Cookie的值。</p>
+</li>
+<li><p><strong><code>public void setMaxAge(int lifetime)</code>，<code>public int maxAge()</code></strong><br>前者设置Cookie的最大时效，<code>lifetime</code>单位为秒，默认值为负值，表示仅仅用于与当前浏览器的会话，当用户退出浏览器时Cookie失效。后者返回该Cookie的最大时效。<strong>Cookie不提供删除方法，只能使用<code>setMaxAge()</code>设置<code>maxAge</code>为<code>0</code>，然后添加到<code>response</code>中，达到删除的效果。</strong></p>
+</li>
+<li><p><strong><code>public String getPath()</code></strong><br>设置或取得Cookie所使用的路径，若没有指定路径，浏览器只会将该Cookie返回给发送Cookie的页面所在目录或之下的URL。例如，若服务器从<br><code>http://localhost/toys/Cars/showCar.html</code>发送Cookie，那么浏览器连接到<code>http://localhost/toys/bikes/showBikes.html</code>时会返回Cookie给服务器，而访问<code>http://localhost/cds/index.html</code>时不会返回Cookie。</p>
+</li>
+</ul>
+<h3 id="实例2-对于第一次访问和第二次访问的用户分别输出不同的欢迎界面"><a href="#实例2-对于第一次访问和第二次访问的用户分别输出不同的欢迎界面" class="headerlink" title="实例2 对于第一次访问和第二次访问的用户分别输出不同的欢迎界面"></a>实例2 对于第一次访问和第二次访问的用户分别输出不同的欢迎界面</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"> </span><br><span class="line"><span class="keyword">package</span> demo02a;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.PrintWriter;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.Cookie;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/RepeatVisitor"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RepeatVisitor</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1L</span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		<span class="keyword">boolean</span> newbie = <span class="keyword">true</span>;</span><br><span class="line">		Cookie[] cookies = request.getCookies();</span><br><span class="line">		<span class="keyword">if</span> (cookies != <span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; cookies.length; i++) &#123;</span><br><span class="line">				<span class="keyword">if</span> (cookies[i].getName().equals(<span class="string">"repeatVisitor"</span>)  &amp;&amp; </span><br><span class="line">						cookies[i].getValue().equals(<span class="string">"yes"</span>)) &#123;</span><br><span class="line">					newbie = <span class="keyword">false</span>;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		String sayHi;</span><br><span class="line">		<span class="keyword">if</span> (newbie) &#123;</span><br><span class="line">			Cookie returnVisitorCookie = <span class="keyword">new</span> Cookie(<span class="string">"repeatVisitor"</span>, <span class="string">"yes"</span>);</span><br><span class="line">			returnVisitorCookie.setMaxAge(<span class="number">60</span>*<span class="number">60</span>*<span class="number">24</span>*<span class="number">7</span>);</span><br><span class="line">			response.addCookie(returnVisitorCookie);</span><br><span class="line">			sayHi = <span class="string">"Welcome Aboard!"</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			sayHi = <span class="string">"Welcome back!"</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		response.setContentType(<span class="string">"text/html"</span>);</span><br><span class="line">		PrintWriter writer = response.getWriter();</span><br><span class="line">		writer.println(<span class="string">"&lt;html&gt;&lt;head&gt;&lt;title&gt;"</span>+sayHi+<span class="string">"&lt;/title&gt;&lt;/head&gt;"</span></span><br><span class="line">				+ <span class="string">"&lt;body&gt;&lt;center&gt;&lt;h2&gt;"</span>+sayHi+<span class="string">"&lt;/h2&gt;&lt;/center&gt;&lt;/body&gt;&lt;/html&gt;"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>将<code>RepeatVistor</code>映射到<code>/RepeatVistor</code>模式，在浏览器第一次输入<code>http://localhost/RepeatVisor</code>时，会提示<code>Welcome abroad！</code>字符串，如下图<br><img src="http://p5twacobv.bkt.clouddn.com/image/jpg/ServletAndJSPSummary3/WelcomAbroadPic.png" alt="welcomAbroad"><br>刷新页面时，服务端读取到<code>Cookie[]</code>中的名称为<code>repeatVisitor</code>的值，发现用户不是第一次访问，此时提示<code>Welcome back</code>页面。如下图<br><img src="http://p5twacobv.bkt.clouddn.com/image/jpg/ServletAndJSPSummary3/welcomeBackPic.png" alt="welcomeBack"></p>
+<h2 id="HttpSession"><a href="#HttpSession" class="headerlink" title="HttpSession"></a>HttpSession</h2><p>在Servlet中使用Seesion一般涉及以下4个<strong>操作：</strong></p>
+<ul>
+<li><strong>获取当前请求的HttpSession对象：</strong><br>调用<code>HttpServletRequest.getSession()</code>得到当前请求的HttpSession对象，HttpSession对象是一个<code>Hash table</code>，存放着属于当前请求的用户信息。</li>
+</ul>
+<ul>
+<li><strong>在HttpSession查找和获取信息：</strong><br>调用<code>httpSession.getAtrribute()</code>，得到返回值并将返回值转换为特定的对象。这里的返回值不一定是<code>String</code>，可以是任意Java对象，因此需要对返回值做转换。</li>
+</ul>
+<ul>
+<li><strong>为HttpSession添加信息：</strong><br>调用<code>HttpSession.addAtrribute(String name,Object value)</code>，添加一个名称<code>name</code>,类型为<code>value</code>的信息。其中<code>Object value</code>需要实现<code>Serializable</code>接口。</li>
+</ul>
+<ul>
+<li><strong>删除HttpSession中的信息或一个HttpSession：</strong><br>分别调用<code>HttpSession.removeAttribute(String name)</code>、<code>HttpSession.invalidate()</code>删除HttpSession中的某个用户信息或其本身。</li>
 </ul>
 
       
@@ -417,9 +449,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Servlet-JSP/" rel="tag"># Servlet/JSP</a>
-          
             <a href="/tags/Java-web/" rel="tag"># Java web</a>
+          
+            <a href="/tags/Servlet-JSP/" rel="tag"># Servlet/JSP</a>
           
         </div>
       
@@ -569,7 +601,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#token-based-URL-重写"><span class="nav-number">1.</span> <span class="nav-text">token-based URL 重写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#工作原理"><span class="nav-number">1.1.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">1.2.</span> <span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#适用场景"><span class="nav-number">1.3.</span> <span class="nav-text">适用场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hidden-Fields"><span class="nav-number">2.</span> <span class="nav-text">Hidden Fields</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#工作原理-1"><span class="nav-number">2.1.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优缺点"><span class="nav-number">2.2.</span> <span class="nav-text">优缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例1-查看、更新Customer信息"><span class="nav-number">2.3.</span> <span class="nav-text">实例1 查看、更新Customer信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Client-based-Cookies"><span class="nav-number">3.</span> <span class="nav-text">Client-based Cookies</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#向客户端发送Cookie"><span class="nav-number">3.1.</span> <span class="nav-text">向客户端发送Cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-创建Cookie对象"><span class="nav-number">3.1.1.</span> <span class="nav-text">1. 创建Cookie对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-为Cookie设置MaxAge"><span class="nav-number">3.1.2.</span> <span class="nav-text">2. 为Cookie设置MaxAge</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-使用HttpResponse-添加Cookie"><span class="nav-number">3.1.3.</span> <span class="nav-text">3. 使用HttpResponse 添加Cookie</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接收来自客户端的Cookie"><span class="nav-number">3.2.</span> <span class="nav-text">接收来自客户端的Cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cookie的相关属性"><span class="nav-number">3.3.</span> <span class="nav-text">Cookie的相关属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cookie存在的问题"><span class="nav-number">3.4.</span> <span class="nav-text">Cookie存在的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例2-对于第一次访问和第二次访问的用户分别输出不同的欢迎界面"><span class="nav-number">3.5.</span> <span class="nav-text">实例2 对于第一次访问和第二次访问的用户分别输出不同的欢迎界面</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Server-based-HttpSession"><span class="nav-number">4.</span> <span class="nav-text">Server-based HttpSession</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#token-based-URL-重写"><span class="nav-number">1.</span> <span class="nav-text">token-based URL 重写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#工作原理"><span class="nav-number">1.1.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">1.2.</span> <span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#适用场景"><span class="nav-number">1.3.</span> <span class="nav-text">适用场景</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hidden-Fields"><span class="nav-number">2.</span> <span class="nav-text">Hidden Fields</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#工作原理-1"><span class="nav-number">2.1.</span> <span class="nav-text">工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优缺点"><span class="nav-number">2.2.</span> <span class="nav-text">优缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例1-查看、更新Customer信息"><span class="nav-number">2.3.</span> <span class="nav-text">实例1 查看、更新Customer信息</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cookies"><span class="nav-number">3.</span> <span class="nav-text">Cookies</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#向客户端发送Cookie"><span class="nav-number">3.1.</span> <span class="nav-text">向客户端发送Cookie</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-创建Cookie对象"><span class="nav-number">3.1.1.</span> <span class="nav-text">1. 创建Cookie对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-为Cookie设置MaxAge"><span class="nav-number">3.1.2.</span> <span class="nav-text">2. 为Cookie设置MaxAge</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-使用HttpResponse-添加Cookie"><span class="nav-number">3.1.3.</span> <span class="nav-text">3. 使用HttpResponse 添加Cookie</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读取来自客户端的Cookie"><span class="nav-number">3.2.</span> <span class="nav-text">读取来自客户端的Cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cookie的相关属性"><span class="nav-number">3.3.</span> <span class="nav-text">Cookie的相关属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例2-对于第一次访问和第二次访问的用户分别输出不同的欢迎界面"><span class="nav-number">3.4.</span> <span class="nav-text">实例2 对于第一次访问和第二次访问的用户分别输出不同的欢迎界面</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HttpSession"><span class="nav-number">4.</span> <span class="nav-text">HttpSession</span></a></li></ol></div>
             
 
           </div>
