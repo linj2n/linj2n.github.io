@@ -260,6 +260,164 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/01/22/SortingAlgorithmsSummary/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linj2n">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="linj2n@zll">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/22/SortingAlgorithmsSummary/" itemprop="url">排序算法小结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-22T12:41:28+08:00">
+                2018/01/22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>排序在计算机技术中最基础的算法，了解这一重要、经典算法的基本原理与思想，对于每个程序员是再基本不过的要求。最近花了一些时间又复习了几大排序算法，这里做一下总结，方便以后的回顾。总结主要按照分类，介绍了几大排序的算法思想、使用场景以及相关特点，最后贴上实现代码。</p>
+<h2 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h2><h3 id="排序分类"><a href="#排序分类" class="headerlink" title="排序分类"></a><strong>排序分类</strong></h3><p>虽然排序的分类方式有很多，这里我们还是采用《算法导论》中的一般的分类方法，根据排序是否需要<strong>比较操作</strong>，分为基于比较操作和基于非比较操作的排序算法。<br>对于基于比较的排序算法，又进一步细分为：<strong>插入排序</strong>、<strong>交换排序</strong>、<strong>选择排序</strong>和<strong>归并排序</strong>，比较排序算法最优的时间复杂度为<code>O(NlogN)</code>。<br>基于非比较的排序分为：<strong>基数排序、桶排序与计数排序，</strong>最优时间复杂度为<code>O(logN)</code>。</p>
+<h3 id="稳定性"><a href="#稳定性" class="headerlink" title="稳定性"></a><strong>稳定性</strong></h3><blockquote><p><strong>稳定排序算法</strong>会让原本有相等键值的纪录维持相对次序。也就是如果一个排序算法是稳定的，当有两个相等键值的纪录 <code>R</code> 和 <code>S</code>，且在原本的列表中 <code>R</code> 出现在 <code>S</code> 之前，在排序过的列表中 <code>R</code> 也将会是在 <code>S</code> 之前。</p>
+</blockquote>
+<p>举个例子说明稳定排序与不稳定排序的差别。对于一个存放着(分数，姓名)键值对数组<code>[(100,&quot;张三&quot;),(60,&quot;李四&quot;),(99,&quot;王五&quot;),(60,&quot;赵六&quot;)]</code>，根据分数有小到大进行排序。<br>稳定排序后的结果为</p>
+<p><strong><code>[(60,&quot;李四&quot;),(60,&quot;赵六&quot;),(99,&quot;王五&quot;),(100,&quot;张三&quot;),]</code></strong></p>
+<p>排序后与排序前对比，它们的相对位置不变，虽然赵六和李四的分数相同，李四依旧排在了赵六的前面。<br>而非稳定排序的结果可能为</p>
+<p><strong><code>[(60,&quot;赵六&quot;),(60,&quot;李四&quot;),(99,&quot;王五&quot;),(100,&quot;张三&quot;),]</code></strong></p>
+<p>排序后与排序前对比，它们的相对位置发生了改变，赵六排在了李四的前面。</p>
+<p><strong>稳定的排序算法有：</strong></p>
+<ul>
+<li>直接插入排序、冒泡排序、<strong>归并排序</strong>、<strong>桶排序</strong>、<strong>计数排序</strong></li>
+</ul>
+<p><strong>非稳定的排序算法有：</strong></p>
+<ul>
+<li>希尔排序、快速排序、简单选择排序、</li>
+</ul>
+<h3 id="原地排序"><a href="#原地排序" class="headerlink" title="原地排序"></a><strong>原地排序</strong></h3><blockquote><p>在计算机科学中，一个原地算法（in-place algorithm）基本上不需要额外辅助的数据结构,然而,允许少量额外的辅助变量来转换数据的算法。当算法运行时，输入的数据通常会被要输出的部分覆盖掉。</p>
+</blockquote>
+<p><strong>原地排序算法有：</strong></p>
+<ul>
+<li>直接插入排序、希尔排序、选择排序</li>
+</ul>
+<p><strong>非原地排序算法有：</strong></p>
+<ul>
+<li>归并排序、快速排序、所有的非基于比较的排序</li>
+</ul>
+<p>值得注意的是，虽然快速排序核心操作<code>Partition</code>不需要申请额外的数据结构，但是实现快速排序是需要O(NlogN)的栈空间去支持它的分治法递归，从这个角度上看，快速排序是非原地排序算法，</p>
+<h2 id="基于比较的排序算法"><a href="#基于比较的排序算法" class="headerlink" title="基于比较的排序算法"></a>基于比较的排序算法</h2><h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><h4 id="直接插入排序"><a href="#直接插入排序" class="headerlink" title="直接插入排序"></a>直接插入排序</h4><h5 id="主要思想"><a href="#主要思想" class="headerlink" title="主要思想"></a>主要思想</h5><p>将需要待排序的序列划分为两个子序列：已排序的子序列 <code>S</code> 与待排序子序列 <code>U</code> 。初始值分别为空与整个序列，遍历 <code>U</code> 序列，依次将 <code>U</code> 中的元素插入到 <code>S</code> 序列合适的位置上，直到 <code>U</code> 序列为空。</p>
+<h5 id="效率与特点"><a href="#效率与特点" class="headerlink" title="效率与特点"></a>效率与特点</h5><ul>
+<li>原地排序，稳定排序</li>
+<li>空间复杂度：O(N^2)，平均时间复杂度：O(1)</li>
+</ul>
+<h5 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h5><ul>
+<li>插入排序对于部分有序的数组十分高效。</li>
+<li>适合小规模数组。常常作为一些高级排序算法的中间过程，提高这些排序算法的效率。例如在一些库排序函数算法中，当数组小到一定规模时，则使用插入排序。</li>
+</ul>
+<h5 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h5><h6 id="数组版本"><a href="#数组版本" class="headerlink" title="数组版本"></a>数组版本</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayInsertionSort</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">less</span><span class="params">(Comparable v, Comparable w)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> v.compareTo(w) &lt; <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">exch</span><span class="params">(Comparable[] a, <span class="keyword">int</span> i, <span class="keyword">int</span> j)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (i == j) <span class="keyword">return</span> ;</span><br><span class="line">		Comparable temp = a[i]; a[i] = a[j]; a[j] = temp;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(Comparable[] a)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> size = a.length;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; size; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &gt; <span class="number">0</span> &amp;&amp; less(a[j],a[j - <span class="number">1</span>]); j--) &#123;</span><br><span class="line">				exch(a,j-<span class="number">1</span>,j);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="链表版本"><a href="#链表版本" class="headerlink" title="链表版本"></a>链表版本</h6><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LinkedListInsertionSort</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">less</span><span class="params">(Comparable v, Comparable w)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> v.compareTo(w) &lt; <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> LinkedListNode <span class="title">sort</span><span class="params">(LinkedListNode head)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) <span class="keyword">return</span> head;</span><br><span class="line"></span><br><span class="line">        LinkedListNode dummyHead = <span class="keyword">new</span> LinkedListNode(<span class="keyword">null</span>);</span><br><span class="line">        dummyHead.next = head;</span><br><span class="line">        LinkedListNode prevUnsortedHead = head;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (prevUnsortedHead != <span class="keyword">null</span> &amp;&amp; prevUnsortedHead.next != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (less(prevUnsortedHead.val, prevUnsortedHead.next.val)) &#123;</span><br><span class="line">                prevUnsortedHead = prevUnsortedHead.next;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                LinkedListNode unsortedHead = prevUnsortedHead.next;</span><br><span class="line">                prevUnsortedHead.next = prevUnsortedHead.next.next;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// find insertion location</span></span><br><span class="line">                LinkedListNode walkNode = dummyHead; </span><br><span class="line">                <span class="keyword">while</span> (walkNode.next != <span class="keyword">null</span> &amp;&amp; less(walkNode.next.val,unsortedHead.val)) </span><br><span class="line">                    walkNode = walkNode.next;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// insert node</span></span><br><span class="line">                unsortedHead.next = walkNode.next;</span><br><span class="line">                walkNode.next = unsortedHead;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dummyHead.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h4><h5 id="主要思想-1"><a href="#主要思想-1" class="headerlink" title="主要思想"></a>主要思想</h5><h5 id="效率与特点-1"><a href="#效率与特点-1" class="headerlink" title="效率与特点"></a>效率与特点</h5><h5 id="使用场景-1"><a href="#使用场景-1" class="headerlink" title="使用场景"></a>使用场景</h5><h5 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h5><h3 id="交换排序"><a href="#交换排序" class="headerlink" title="交换排序"></a>交换排序</h3><h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><h5 id="主要思想-2"><a href="#主要思想-2" class="headerlink" title="主要思想"></a>主要思想</h5><h5 id="效率与特点-2"><a href="#效率与特点-2" class="headerlink" title="效率与特点"></a>效率与特点</h5><h5 id="使用场景-2"><a href="#使用场景-2" class="headerlink" title="使用场景"></a>使用场景</h5><h5 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h5><h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><h5 id="主要思想-3"><a href="#主要思想-3" class="headerlink" title="主要思想"></a>主要思想</h5><h5 id="效率与特点-3"><a href="#效率与特点-3" class="headerlink" title="效率与特点"></a>效率与特点</h5><h5 id="使用场景-3"><a href="#使用场景-3" class="headerlink" title="使用场景"></a>使用场景</h5><h5 id="代码-3"><a href="#代码-3" class="headerlink" title="代码"></a>代码</h5><h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><h4 id="简单排序"><a href="#简单排序" class="headerlink" title="简单排序"></a>简单排序</h4><h5 id="主要思想-4"><a href="#主要思想-4" class="headerlink" title="主要思想"></a>主要思想</h5><h5 id="效率与特点-4"><a href="#效率与特点-4" class="headerlink" title="效率与特点"></a>效率与特点</h5><h5 id="使用场景-4"><a href="#使用场景-4" class="headerlink" title="使用场景"></a>使用场景</h5><h5 id="代码-4"><a href="#代码-4" class="headerlink" title="代码"></a>代码</h5><h4 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h4><h5 id="主要思想-5"><a href="#主要思想-5" class="headerlink" title="主要思想"></a>主要思想</h5><h5 id="效率与特点-5"><a href="#效率与特点-5" class="headerlink" title="效率与特点"></a>效率与特点</h5><h5 id="使用场景-5"><a href="#使用场景-5" class="headerlink" title="使用场景"></a>使用场景</h5><h5 id="代码-5"><a href="#代码-5" class="headerlink" title="代码"></a>代码</h5><h3 id="其他排序"><a href="#其他排序" class="headerlink" title="其他排序"></a>其他排序</h3><h4 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h4><h5 id="主要思想-6"><a href="#主要思想-6" class="headerlink" title="主要思想"></a>主要思想</h5><h5 id="效率与特点-6"><a href="#效率与特点-6" class="headerlink" title="效率与特点"></a>效率与特点</h5><h5 id="使用场景-6"><a href="#使用场景-6" class="headerlink" title="使用场景"></a>使用场景</h5><h5 id="代码-6"><a href="#代码-6" class="headerlink" title="代码"></a>代码</h5><h2 id="非基于比较的排序算法"><a href="#非基于比较的排序算法" class="headerlink" title="非基于比较的排序算法"></a>非基于比较的排序算法</h2><h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><h3 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h3><h3 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h3><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/01/17/242-Valid-Anagram/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1418,158 +1576,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/01/12/11-Container-With-Most-Water/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="linj2n">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="linj2n@zll">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/12/11-Container-With-Most-Water/" itemprop="url">[Leetcode] 11.Container With Most Water</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-12T22:31:51+08:00">
-                2018/01/12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p># </p>
-<h3 id="From："><a href="#From：" class="headerlink" title="From："></a>From：<a href=""></a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis"></a>Input and output analysis</h2><h2 id="Approach-1"><a href="#Approach-1" class="headerlink" title="Approach#1"></a>Approach#1</h2><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O(  )</td>
-<td>O(  )</td>
-</tr>
-</tbody>
-</table>
-<h2 id="Approach-2"><a href="#Approach-2" class="headerlink" title="Approach#2"></a>Approach#2</h2><h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h3><h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Complexity-1"><a href="#Complexity-1" class="headerlink" title="Complexity"></a>Complexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O(  )</td>
-<td>O(  )</td>
-</tr>
-</tbody>
-</table>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1620,7 +1626,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-count">27</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1633,7 +1639,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
