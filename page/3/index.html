@@ -279,7 +279,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/01/04/ServletAndJSPSummary1/" itemprop="url">Servle/JSP知识小结（1） JSP基本语法</a></h1>
+                <a class="post-title-link" href="/2018/01/04/ServletAndJSPSummary1/" itemprop="url">Servle/JSP知识小结（1） Servlet</a></h1>
         
 
         <div class="post-meta">
@@ -330,11 +330,12 @@
 
       
         
-          <h2 id="JSP生命周期"><a href="#JSP生命周期" class="headerlink" title="JSP生命周期"></a>JSP生命周期</h2><ul>
-<li><strong>编译周期</strong></li>
-<li><strong>初始化阶段</strong></li>
-<li><strong>执行阶段</strong></li>
-<li><strong>销毁阶段</strong></li>
+          <h2 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h2><h3 id="什么是-Servlet？"><a href="#什么是-Servlet？" class="headerlink" title="什么是 Servlet？"></a>什么是 Servlet？</h3><p><strong>Servlet是Server applet 的缩写，意思是运行在服务端的Java程序。</strong></p>
+<p><strong>从作用上看</strong>，Servlet是一个中间层，负责接受来自Web浏览器或其他HTTP客户程序的请求，连接HTTP服务器上的数据库或应用程序，处理这些请求并返回响应。更具体一点：</p>
+<ul>
+<li><strong>读取客户端发送的显式数据和隐式数据</strong>：显式数据有可能来自用户提交的HTML表单信息。隐式数据通常指的是HTTP信息，包括Cookie、浏览器所能识别的媒体类型等。</li>
+<li><strong>生成结果</strong>：生成结果的过程可能需要访问服务端的数据库，也有可能需要调用Web服务。</li>
+<li><strong>给客户端发送显式数据和隐式数据</strong>：这里的显式数据通常指文档，文档的格式是多样的，包括文本（HTML或XML）、二进制图（GIF图）等，最常用的格式是HTML</li>
 </ul>
           <!--noindex-->
           <div class="post-button text-center">
