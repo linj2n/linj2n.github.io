@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="linj2n@zll">
 <meta property="og:description" content="位运算在Java中，涉及到的位运算符如下    操作符 功能 例子     ~ 按位求反 ~val   &amp;gt;&amp;gt; 带符号右移，相对与小数点整体向右移；正数高位补0，负数高位补1 val &amp;gt;&amp;gt; position，相当于val / (2^position)   &amp;lt;&amp;lt; 带符号左移，相对于小数点整体向左移；无论正负数，空出来的比特位都补0 val &amp;lt;&amp;lt; posi">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-03-25T15:16:52.000Z">
+<meta property="og:updated_time" content="2018-03-25T15:55:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="位运算操作与其应用小结">
 <meta name="twitter:description" content="位运算在Java中，涉及到的位运算符如下    操作符 功能 例子     ~ 按位求反 ~val   &amp;gt;&amp;gt; 带符号右移，相对与小数点整体向右移；正数高位补0，负数高位补1 val &amp;gt;&amp;gt; position，相当于val / (2^position)   &amp;lt;&amp;lt; 带符号左移，相对于小数点整体向左移；无论正负数，空出来的比特位都补0 val &amp;lt;&amp;lt; posi">
@@ -377,6 +377,7 @@
 </tr>
 </tbody>
 </table>
+<a id="more"></a>
 <p>这里需要注意的是所有的位运算只适用于<code>int</code>、<code>long</code>、<code>char</code>、<code>short</code>型。</p>
 <h3 id="移位操作"><a href="#移位操作" class="headerlink" title="移位操作"></a>移位操作</h3><h4 id="判别一个数是否为2的n次幂"><a href="#判别一个数是否为2的n次幂" class="headerlink" title="判别一个数是否为2的n次幂"></a>判别一个数是否为2的n次幂</h4><h4 id="乘或除以一个2的n次幂数"><a href="#乘或除以一个2的n次幂数" class="headerlink" title="乘或除以一个2的n次幂数"></a>乘或除以一个2的n次幂数</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = x &gt;&gt; n;	<span class="comment">//x除以2^n</span></span><br><span class="line">x = x &lt;&lt; n;	<span class="comment">//x乘以2^n</span></span><br></pre></td></tr></table></figure>
 <h3 id="单个位操作"><a href="#单个位操作" class="headerlink" title="单个位操作"></a>单个位操作</h3><h4 id="获取第n个比特位"><a href="#获取第n个比特位" class="headerlink" title="获取第n个比特位"></a>获取第n个比特位</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 若x上第n个比特位为1返回true，0返回false</span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">getBit</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (x &amp; (<span class="number">1</span> &lt;&lt; n)) != <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
