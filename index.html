@@ -260,6 +260,183 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/01/25/BitManipulationSummary/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linj2n">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="linj2n@zll">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/25/BitManipulationSummary/" itemprop="url">位运算操作与其应用小结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-25T22:15:02+08:00">
+                2018/01/25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h3><p>在Java中，涉及到的位运算符如下</p>
+<table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>功能</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>~</code></td>
+<td>按位求反</td>
+<td><code>~val</code></td>
+</tr>
+<tr>
+<td><code>&gt;&gt;</code></td>
+<td>带符号右移，相对与小数点整体向右移；正数高位补0，负数高位补1</td>
+<td><code>val &gt;&gt; position</code>，相当于<code>val / (2^position)</code></td>
+</tr>
+<tr>
+<td><code>&lt;&lt;</code></td>
+<td>带符号左移，相对于小数点整体向左移；无论正负数，空出来的比特位都补0</td>
+<td><code>val &lt;&lt; position</code>，相当于<code>val * (2^position)</code></td>
+</tr>
+<tr>
+<td><code>&gt;&gt;&gt;</code></td>
+<td>无符号右移，相对于小数点右移；无论正负数，高位补0</td>
+<td></td>
+</tr>
+<tr>
+<td><code>&amp;</code></td>
+<td>按位与</td>
+<td><code>var1 &amp; var2</code></td>
+</tr>
+<tr>
+<td>竖线</td>
+<td>按位或</td>
+<td><code>var1 竖线 var2</code></td>
+</tr>
+<tr>
+<td><code>^</code></td>
+<td>按位异或</td>
+<td><code>var1 ^ var2</code></td>
+</tr>
+</tbody>
+</table>
+<p>这里需要注意的是所有的位运算只适用于<code>int</code>、<code>long</code>、<code>char</code>、<code>short</code>型。</p>
+<h3 id="移位操作"><a href="#移位操作" class="headerlink" title="移位操作"></a>移位操作</h3><h4 id="判别一个数是否为2的n次幂"><a href="#判别一个数是否为2的n次幂" class="headerlink" title="判别一个数是否为2的n次幂"></a>判别一个数是否为2的n次幂</h4><h4 id="乘或除以一个2的n次幂数"><a href="#乘或除以一个2的n次幂数" class="headerlink" title="乘或除以一个2的n次幂数"></a>乘或除以一个2的n次幂数</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = x &gt;&gt; n;	<span class="comment">//x除以2^n</span></span><br><span class="line">x = x &lt;&lt; n;	<span class="comment">//x乘以2^n</span></span><br></pre></td></tr></table></figure>
+<h3 id="单个位操作"><a href="#单个位操作" class="headerlink" title="单个位操作"></a>单个位操作</h3><h4 id="获取第n个比特位"><a href="#获取第n个比特位" class="headerlink" title="获取第n个比特位"></a>获取第n个比特位</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 若x上第n个比特位为1返回true，0返回false</span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">getBit</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (x &amp; (<span class="number">1</span> &lt;&lt; n)) != <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="将第n个比特位置0"><a href="#将第n个比特位置0" class="headerlink" title="将第n个比特位置0"></a>将第n个比特位置<code>0</code></h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">clearBit</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x &amp; ~(<span class="number">1</span> &lt;&lt; n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="将第n个比特位置1"><a href="#将第n个比特位置1" class="headerlink" title="将第n个比特位置1"></a>将第n个比特位置<code>1</code></h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">setBit</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x | (<span class="number">1</span> &lt;&lt; n);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="判别奇偶"><a href="#判别奇偶" class="headerlink" title="判别奇偶"></a>判别奇偶</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">isOdd</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (x &amp; <span class="number">1</span>) == <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="统计二进制中1的个数"><a href="#统计二进制中1的个数" class="headerlink" title="统计二进制中1的个数"></a>统计二进制中1的个数</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">get1NumInBinary</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>; </span><br><span class="line">    <span class="keyword">while</span> (x != <span class="number">0</span>) &#123;</span><br><span class="line">        ++ count; </span><br><span class="line">        x &amp;= (x-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> count;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="多个位操作"><a href="#多个位操作" class="headerlink" title="多个位操作"></a>多个位操作</h3><p>使用掩码（Bit Mask）与原来的数进行与（或）操作，可以对某个数的多个位进行操作。下面举个例子</p>
+<h4 id="取出x上的n个位的值"><a href="#取出x上的n个位的值" class="headerlink" title="取出x上的n个位的值"></a>取出<code>x</code>上的n个位的值</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getBits</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> from, <span class="keyword">int</span> to)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> shift = from;</span><br><span class="line">    <span class="keyword">int</span> mask = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; to - from + <span class="number">1</span>; i++) &#123;</span><br><span class="line">        mask = ((mask &lt;&lt; <span class="number">1</span>) + <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (x &gt;&gt; shift) &amp; mask;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 
+<h4 id="将最高位（最低位）至第n位置0"><a href="#将最高位（最低位）至第n位置0" class="headerlink" title="将最高位（最低位）至第n位置0"></a>将最高位（最低位）至第<code>n</code>位置<code>0</code></h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = x &amp; ((<span class="number">1</span> &lt;&lt; n) - <span class="number">1</span>); <span class="comment">// 将x最高位至第n位(含)清零</span></span><br><span class="line">x = x &amp; (~((<span class="number">1</span> &lt;&lt; (n + <span class="number">1</span>)) - <span class="number">1</span>));    <span class="comment">// 将第n位至第0位(含)清零</span></span><br></pre></td></tr></table></figure>
+<h3 id="异或操作"><a href="#异或操作" class="headerlink" title="异或操作"></a>异或操作</h3><h4 id="不使用临时变量交换两个数"><a href="#不使用临时变量交换两个数" class="headerlink" title="不使用临时变量交换两个数"></a>不使用临时变量交换两个数</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">1</span>,j = <span class="number">2</span>;</span><br><span class="line">    i ^= j; </span><br><span class="line">    j ^= i; <span class="comment">// 实际上 j = i ^ j ^ j, 结果为 j = i;</span></span><br><span class="line">    i ^= j; <span class="comment">// 实际上 i = i ^ j ^ i, 结果为 i = j;</span></span><br><span class="line">    System.out.println(<span class="string">"i= "</span> + i + <span class="string">",j= "</span> + j);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/01/22/SortingAlgorithmsSummary/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1491,134 +1668,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/01/13/167-Two-Sum-II/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="linj2n">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="linj2n@zll">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/13/167-Two-Sum-II/" itemprop="url">[Leetcode] 167.Two Sum II</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-13T12:04:31+08:00">
-                2018/01/13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="167-Two-Sum-II-Input-array-is-sorted"><a href="#167-Two-Sum-II-Input-array-is-sorted" class="headerlink" title="167.Two Sum II - Input array is sorted"></a>167.Two Sum II - Input array is sorted</h1><h3 id="From：-167-Two-Sum-II-Input-array-is-sorted"><a href="#From：-167-Two-Sum-II-Input-array-is-sorted" class="headerlink" title="From：[167.Two Sum II - Input array is sorted"></a>From：[167.Two Sum II - Input array is sorted</h3><p>](<a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/" target="_blank" rel="noopener">https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/description/</a>)</p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number.</p>
-<p>The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2. Please note that your returned answers (both index1 and index2) are not zero-based.</p>
-<p>You may assume that each input would have exactly one solution and you may not use the same element twice.</p>
-<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><p>Input: numbers={2, 7, 11, 15}, target=9<br>Output: index1=1, index2=2</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/13/167-Two-Sum-II/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1669,7 +1718,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-count">28</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1682,7 +1731,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
