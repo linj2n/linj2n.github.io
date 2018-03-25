@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="排序在计算机技术中最基础的算法，了解这些经典算法的基本原理，对于每个程序员是再基本不过的要求。最近花了一些时间又复习了几大排序算法，这里做一下总结，方便以后的回顾。总结分类介绍了几大排序的算法思想、使用场景以及相关特点，最后提供排序算法的Java实现。 相关概念排序分类虽然排序的分类方式有很多，这里我们还是采用《算法导论》中的一般的分类方法，根据排序是否需要比较操作，分为基于比较操作和基于非比较操">
+<meta name="description" content="排序在计算机技术中最基础的算法，了解这些经典算法的基本原理，对于每个程序员是再基本不过的要求。最近花了一些时间又复习了几大排序算法，这里做一下总结，方便以后的回顾。总结分类介绍了几大排序的算法思想、使用场景以及相关特点，最后提供排序算法的Java实现。">
 <meta name="keywords" content="Algorithms,Sort">
 <meta property="og:type" content="article">
 <meta property="og:title" content="排序算法小结">
 <meta property="og:url" content="http://linj2n.cn/2018/01/22/SortingAlgorithmsSummary/index.html">
 <meta property="og:site_name" content="linj2n@zll">
-<meta property="og:description" content="排序在计算机技术中最基础的算法，了解这些经典算法的基本原理，对于每个程序员是再基本不过的要求。最近花了一些时间又复习了几大排序算法，这里做一下总结，方便以后的回顾。总结分类介绍了几大排序的算法思想、使用场景以及相关特点，最后提供排序算法的Java实现。 相关概念排序分类虽然排序的分类方式有很多，这里我们还是采用《算法导论》中的一般的分类方法，根据排序是否需要比较操作，分为基于比较操作和基于非比较操">
+<meta property="og:description" content="排序在计算机技术中最基础的算法，了解这些经典算法的基本原理，对于每个程序员是再基本不过的要求。最近花了一些时间又复习了几大排序算法，这里做一下总结，方便以后的回顾。总结分类介绍了几大排序的算法思想、使用场景以及相关特点，最后提供排序算法的Java实现。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-03-23T12:59:09.000Z">
+<meta property="og:updated_time" content="2018-03-25T15:52:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法小结">
-<meta name="twitter:description" content="排序在计算机技术中最基础的算法，了解这些经典算法的基本原理，对于每个程序员是再基本不过的要求。最近花了一些时间又复习了几大排序算法，这里做一下总结，方便以后的回顾。总结分类介绍了几大排序的算法思想、使用场景以及相关特点，最后提供排序算法的Java实现。 相关概念排序分类虽然排序的分类方式有很多，这里我们还是采用《算法导论》中的一般的分类方法，根据排序是否需要比较操作，分为基于比较操作和基于非比较操">
+<meta name="twitter:description" content="排序在计算机技术中最基础的算法，了解这些经典算法的基本原理，对于每个程序员是再基本不过的要求。最近花了一些时间又复习了几大排序算法，这里做一下总结，方便以后的回顾。总结分类介绍了几大排序的算法思想、使用场景以及相关特点，最后提供排序算法的Java实现。">
 
 
 
@@ -331,6 +331,7 @@
 
       
         <p>排序在计算机技术中最基础的算法，了解这些经典算法的基本原理，对于每个程序员是再基本不过的要求。最近花了一些时间又复习了几大排序算法，这里做一下总结，方便以后的回顾。总结分类介绍了几大排序的算法思想、使用场景以及相关特点，最后提供排序算法的Java实现。</p>
+<a id="more"></a>
 <h2 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h2><h3 id="排序分类"><a href="#排序分类" class="headerlink" title="排序分类"></a><strong>排序分类</strong></h3><p>虽然排序的分类方式有很多，这里我们还是采用《算法导论》中的一般的分类方法，根据排序是否需要<strong>比较操作</strong>，分为基于比较操作和基于非比较操作的排序算法。<br>对于基于比较的排序算法，又进一步细分为：<strong>插入排序</strong>、<strong>交换排序</strong>、<strong>选择排序</strong>和<strong>归并排序</strong>，比较排序算法最优的平均时间复杂度为<code>O(NlogN)</code>。<br>基于非比较的排序分为：<strong>基数排序、桶排序与计数排序，</strong>最优平均时间复杂度为<code>O(logN)</code>。</p>
 <h3 id="稳定性"><a href="#稳定性" class="headerlink" title="稳定性"></a><strong>稳定性</strong></h3><blockquote><p><strong>稳定排序算法</strong>会让原本有相等键值的纪录维持相对次序。也就是如果一个排序算法是稳定的，当有两个相等键值的纪录 <code>R</code> 和 <code>S</code>，且在原本的列表中 <code>R</code> 出现在 <code>S</code> 之前，在排序过的列表中 <code>R</code> 也将会是在 <code>S</code> 之前。</p>
 </blockquote>
