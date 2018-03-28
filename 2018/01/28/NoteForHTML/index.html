@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="HTML/CSS,JavaWeb," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="概念   名称 解释 示例     标签 HTML是由一套标记标签 （markup tag）组成，通常就叫标签，标签由开始标签和结束标签组成    元素 元素指的是从开始标签到结束标签之间所有的代码，属性用来修饰标签的 &amp;lt;h1 align=&amp;quot;center&amp;quot;&amp;gt;居中标题&amp;lt;/h1&amp;gt;   标题 标题会自动粗体，大写其中的内容，并且带有换行效果 &amp;lt;h1&amp;gt">
+<meta name="keywords" content="HTML&#x2F;CSS,JavaWeb">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML 知识小结">
+<meta property="og:url" content="http://linj2n.cn/2018/01/28/NoteForHTML/index.html">
+<meta property="og:site_name" content="linj2n@zll">
+<meta property="og:description" content="概念   名称 解释 示例     标签 HTML是由一套标记标签 （markup tag）组成，通常就叫标签，标签由开始标签和结束标签组成    元素 元素指的是从开始标签到结束标签之间所有的代码，属性用来修饰标签的 &amp;lt;h1 align=&amp;quot;center&amp;quot;&amp;gt;居中标题&amp;lt;/h1&amp;gt;   标题 标题会自动粗体，大写其中的内容，并且带有换行效果 &amp;lt;h1&amp;gt">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-03-28T09:23:14.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML 知识小结">
+<meta name="twitter:description" content="概念   名称 解释 示例     标签 HTML是由一套标记标签 （markup tag）组成，通常就叫标签，标签由开始标签和结束标签组成    元素 元素指的是从开始标签到结束标签之间所有的代码，属性用来修饰标签的 &amp;lt;h1 align=&amp;quot;center&amp;quot;&amp;gt;居中标题&amp;lt;/h1&amp;gt;   标题 标题会自动粗体，大写其中的内容，并且带有换行效果 &amp;lt;h1&amp;gt">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://linj2n.cn/2018/01/28/NoteForHTML/"/>
+
+
+
+
+
+  <title>HTML 知识小结 | linj2n@zll</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">linj2n@zll</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/01/28/NoteForHTML/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linj2n">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="linj2n@zll">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">HTML 知识小结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-28T17:10:00+08:00">
+                2018/01/28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>解释</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>标签</td>
+<td>HTML是由一套标记标签 （markup tag）组成，通常就叫标签，标签由开始标签和结束标签组成</td>
+<td></td>
+</tr>
+<tr>
+<td>元素</td>
+<td>元素指的是从开始标签到结束标签之间所有的代码，属性用来修饰标签的</td>
+<td><code>&lt;h1 align=&quot;center&quot;&gt;居中标题&lt;/h1&gt;</code></td>
+</tr>
+<tr>
+<td>标题</td>
+<td>标题会自动粗体，大写其中的内容，并且带有换行效果</td>
+<td><code>&lt;h1&gt;标题1&lt;/h1&gt;</code> </td>
+</tr>
+<tr>
+<td>段落</td>
+<td><code>&lt;p&gt;</code>标签即表示段落是paragraph的缩写，自带换行效果</td>
+<td><code>&lt;p&gt;段落4 &lt;/p&gt;</code></td>
+</tr>
+<tr>
+<td>粗体</td>
+<td><code>&lt;b&gt; &lt;strong&gt;</code>b是bold的缩写，仅仅表示该文本是粗体的，并不暗示这段文字的重要性。strong虽然也是粗体，但是更多的是强调语义上的加重，提醒用户该文本的重要性。在SEO（搜索引擎优化）的时候，也更加容易帮助用户找到重点的内容</td>
+<td><code>&lt;b&gt;</code>，<code>&lt;strong&gt;</code></td>
+</tr>
+<tr>
+<td>斜体</td>
+<td><code>&lt;i&gt;</code>和<code>&lt;em&gt;</code>都可以表示斜体效果，<code>i</code>是italic的缩写，仅仅表示该文本是斜体的，并不暗示这段文字的重要性，<code>em</code> 是 Emphasized的缩写，虽然也是斜体，但是更多的是强调语义上的加重，提醒用户该文本的重要性。 常常用于引入新的术语的时候使用。</td>
+<td></td>
+</tr>
+<tr>
+<td>预格式</td>
+<td>有时候，需要在网页上显示代码，比如java代码就需要用到<code>&lt;pre&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>下划线</td>
+<td><code>&lt;ins&gt;</code>即下划线标签，但是通常来讲，不要给普通文本加下划线，因为用户会误以为是一个超链</td>
+<td></td>
+</tr>
+<tr>
+<td>删除线</td>
+<td><code>&lt;del&gt;</code>即删除标签，delete的缩写</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<a id="more"></a>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><h3 id="图像"><a href="#图像" class="headerlink" title="图像"></a>图像</h3><p><strong><img> 即图像标签，需要设置其属性 src指定图像的路径。</strong></p>
+<table>
+<thead>
+<tr>
+<th><code>/</code></th>
+<th>示例</th>
+<th>备注 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>绝对路径</td>
+<td><code>&lt;img src=&quot;file://c:/example.png&quot;/&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>相对路径</td>
+<td><code>&lt;img src=&quot;../../example.png&quot;&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>链接</td>
+<td><code>&lt;img src=&quot;www.example.com/example.png&quot;/&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>设置图片大小</td>
+<td><code>&lt;img width=&quot;200&quot; height=&quot;200&quot; src=&quot;linj2n&quot;/&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>图像居中</td>
+<td><code>&lt;div align=&quot;right&quot;&gt;&lt;img src=&quot;../../example.png&quot;&gt;&lt;/div&gt;</code> img不能够自己居中，需要放在其他能够居中的标签中实现这个效果，比如h1标签,p标签. 经常采用的手段是放在div中居中</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="超链"><a href="#超链" class="headerlink" title="超链"></a>超链</h3><table>
+<thead>
+<tr>
+<th><code>/</code></th>
+<th>示例</th>
+<th>备注 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;a&gt;</code>显示超链</td>
+<td>完整元素： <code>&lt;a href=&quot;跳转到的页面地址&quot;&gt;超链显示文本&lt;/a&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>在新的页面打开超链</td>
+<td><code>&lt;a href=&quot;http://linj2n.cn&quot; target=&quot;_blank&quot;&gt;linj2n.cn&lt;/a&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>超链上的提示文字</td>
+<td><code>&lt;a href=&quot;http://linj2n.cn&quot; title=&quot;跳转到&quot;打开linj2n.cn&quot; target=&quot;_blank&quot;&gt;linj2n.cn&lt;/a&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>使用图片作为超链</td>
+<td><code>&lt;a href=&quot;http://www.example.com&quot;&gt;&lt;img src=&quot;www.example.com/example.png&quot;/&gt;&lt;/a&gt;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><p><code>&lt;tr&gt;</code>(table row)表示行，td(table data)表示列</p>
+<h4 id="3行2列表格，不带边框"><a href="#3行2列表格，不带边框" class="headerlink" title="3行2列表格，不带边框"></a>3行2列表格，不带边框</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>3<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>4<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>a<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>b<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="3行2列表格，带边框"><a href="#3行2列表格，带边框" class="headerlink" title="3行2列表格，带边框"></a>3行2列表格，带边框</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"1"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>3<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>4<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>a<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>b<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="设置table宽度"><a href="#设置table宽度" class="headerlink" title="设置table宽度"></a>设置table宽度</h4><p><strong>设置table的属性 width，px即像素的意思。例如你的分辨率是1024X768,则你的屏幕横向就有1024个像素。</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"1"</span> <span class="attr">width</span>=<span class="string">"200px"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>3<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>4<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>a<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>b<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="单元格宽度绝对值"><a href="#单元格宽度绝对值" class="headerlink" title="单元格宽度绝对值"></a>单元格宽度绝对值</h4><p>设置td的属性width，在示例里，1单元格设置了宽度，那么3，和a单元格，自动继承该宽度，2单元格的宽度由table宽度和1单元格的宽度决定<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;table border=<span class="string">"1"</span> width=<span class="string">"200px"</span>&gt;</span><br><span class="line">  &lt;tr&gt;</span><br><span class="line">      &lt;td width="50px"&gt;1&lt;/td&gt;</span><br><span class="line">      &lt;td&gt;2&lt;/td&gt;</span><br><span class="line">  &lt;/tr&gt;</span><br><span class="line"> </span><br><span class="line">  &lt;tr&gt;</span><br><span class="line">      &lt;td&gt;3&lt;/td&gt;</span><br><span class="line">      &lt;td&gt;4&lt;/td&gt;</span><br><span class="line">  &lt;/tr&gt;</span><br><span class="line"> </span><br><span class="line">  &lt;tr&gt;</span><br><span class="line">      &lt;td&gt;a&lt;/td&gt;</span><br><span class="line">      &lt;td&gt;b&lt;/td&gt;</span><br><span class="line">  &lt;/tr&gt;</span><br><span class="line"> </span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure></p>
+<h4 id="单元格宽度相对值"><a href="#单元格宽度相对值" class="headerlink" title="单元格宽度相对值"></a>单元格宽度相对值</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"1"</span> <span class="attr">width</span>=<span class="string">"200px"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span> <span class="attr">width</span>=<span class="string">"80%"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>3<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>4<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>a<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>b<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="单元格水平对齐"><a href="#单元格水平对齐" class="headerlink" title="单元格水平对齐"></a>单元格水平对齐</h4><p><strong>属性<code>align</code>,值<code>[left, center, right]</code></strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"1"</span> <span class="attr">width</span>=<span class="string">"200px"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span> <span class="attr">width</span>=<span class="string">"80%"</span> <span class="attr">align</span>=<span class="string">"left"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"center"</span>&gt;</span>3<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>4<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span> <span class="attr">align</span>=<span class="string">"right"</span>&gt;</span>a<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>b<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="单元格垂直对齐"><a href="#单元格垂直对齐" class="headerlink" title="单元格垂直对齐"></a>单元格垂直对齐</h4><p><strong>属性<code>valign</code>,值<code>[top,middle,bottom]</code></strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"1"</span> <span class="attr">width</span>=<span class="string">"200px"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span> <span class="attr">width</span>=<span class="string">"50%"</span> <span class="attr">valign</span>=<span class="string">"top"</span> &gt;</span>1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">             2   <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">             2   <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">             2   <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span> <span class="attr">valign</span>=<span class="string">"middle"</span>  &gt;</span>3<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">             4   <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">             4   <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">             4   <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">  </span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span> <span class="attr">valign</span>=<span class="string">"bottom"</span> &gt;</span>a<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">             b   <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">             b   <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">             b   <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">  </span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h4><table>
+<thead>
+<tr>
+<th><code>/</code></th>
+<th>解释  </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>横跨两列, 水平合并</strong></td>
+<td><strong>属性<code>colspan</code>,值<code>1，2，3..</code></strong> </td>
+</tr>
+<tr>
+<td><strong>横跨两行, 垂直合并</strong></td>
+<td><strong>属性<code>rowspan</code>,值<code>1，2，3..</code></strong> </td>
+</tr>
+</tbody>
+</table>
+<p><strong>垂直合并示例</strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"1"</span> <span class="attr">width</span>=<span class="string">"200px"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span> <span class="attr">rowspan</span>=<span class="string">"2"</span>&gt;</span>1,3<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>4<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>a<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>b<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="背景色"><a href="#背景色" class="headerlink" title="背景色"></a>背景色</h4><p><strong>属性<code>bgcolor</code></strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">border</span>=<span class="string">"1"</span> <span class="attr">width</span>=<span class="string">"200px"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span> <span class="attr">bgcolor</span>=<span class="string">"gray"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span> <span class="attr">width</span>=<span class="string">"50%"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>2<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>3<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>4<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"> </span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>&gt;</span>a<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">td</span>  <span class="attr">bgcolor</span>=<span class="string">"pink"</span>&gt;</span>b<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p><strong>列表分无序列表和有序列表,分别用<code>&lt;ul&gt;</code>标签和<code>&lt;ol&gt;</code>标签表示</strong></p>
+<h3 id="块"><a href="#块" class="headerlink" title="块"></a>块</h3><p><code>&lt;div&gt;</code> ,<code>&lt;span&gt;</code>这两种标签都是布局用的,本身没有任何显示效果,通常是用来结合css进行页面布局.</p>
+<p><strong>区别：</strong></p>
+<ul>
+<li><code>&lt;div&gt;</code>是块元素，即<strong>自动换行</strong>，常见的块元素还有<code>&lt;h1&gt;,&lt;table&gt;,&lt;p&gt;</code></li>
+<li><code>&lt;span&gt;</code>是内联元素，即<strong>不会换行</strong>，常见的内联元素还有<code>&lt;img&gt;,&lt;a&gt;,&lt;b&gt;,&lt;srtong&gt;</code></li>
+</ul>
+<h3 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h3><p>使用<code>&lt;font&gt;</code>标签表示字体，<code>&lt;font&gt;</code>常用的属性有<code>color,size</code>，颜色表示方法有两种：</p>
+<ul>
+<li>颜色名,如<code>black，green</code></li>
+<li>颜色对应的16进制，<a href="http://www.w3school.com.cn/cssref/css_colorsfull.asp" target="_blank" rel="noopener">颜色速查表</a></li>
+</ul>
+<h3 id="内联框架"><a href="#内联框架" class="headerlink" title="内联框架"></a>内联框架</h3><p><code>&lt;iframe&gt;</code> 即内联框架,通过内联框架 可以实现在网页中“插入”网页<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">iframe</span> <span class="attr">src</span>=<span class="string">"http://how2j.cn/"</span> <span class="attr">width</span>=<span class="string">"600px"</span> <span class="attr">height</span>=<span class="string">"400px"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">iframe</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="表单元素"><a href="#表单元素" class="headerlink" title="表单元素"></a>表单元素</h2><table>
+<thead>
+<tr>
+<th><code>/</code></th>
+<th>示例</th>
+<th>备注 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>最简单的文本框</td>
+<td><code>&lt;input type=&quot;text&quot;&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>设置文本框的长度</td>
+<td><code>&lt;input type=&quot;text&quot; size=&quot;10&quot;&gt;</code></td>
+<td><code>size</code></td>
+</tr>
+<tr>
+<td>为文本框设置初始值</td>
+<td><code>&lt;input type=&quot;text&quot; value=&quot;有初始值的文本框&quot;&gt;双击选中所有代码</code></td>
+<td><code>value</code></td>
+</tr>
+<tr>
+<td>设置背景文字的文本框</td>
+<td><code>&lt;input type=&quot;text&quot; placeholder=&quot;请输入账号&quot;&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>密码框</td>
+<td><code>&lt;input type=&quot;password&quot;&gt;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="单选框"><a href="#单选框" class="headerlink" title="单选框"></a>单选框</h3><table>
+<thead>
+<tr>
+<th><code>/</code></th>
+<th>示例</th>
+<th>备注 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单选框</td>
+<td><code>单选1 &lt;input type=&quot;radio&quot; &gt; 单选2 &lt;input type=&quot;radio&quot; &gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>默认选中</td>
+<td><code>默认选中 &lt;input type=&quot;radio&quot; checked=&quot;checked&quot; &gt;</code></td>
+<td><code>checked=&quot;checked&quot;</code> </td>
+</tr>
+</tbody>
+</table>
+<h4 id="对单选框进行分组"><a href="#对单选框进行分组" class="headerlink" title="对单选框进行分组"></a>对单选框进行分组</h4><p>分组即，多个单选框都在一个分组里，同一时间，只能选中一个单选框，设置name属性相同即可</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>今天晚上做什么？<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">Sleeping<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"activity"</span> <span class="attr">value</span>=<span class="string">"sleep"</span> &gt;</span> <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">Learning<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">checked</span>=<span class="string">"checked"</span>  <span class="attr">name</span>=<span class="string">"activity"</span> <span class="attr">value</span>=<span class="string">"learning"</span> &gt;</span> <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">Coding<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"activity"</span>  <span class="attr">value</span>=<span class="string">"coding"</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="复选框"><a href="#复选框" class="headerlink" title="复选框"></a>复选框</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>今天晚上做什么？<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">Sleeping<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"activity"</span> <span class="attr">value</span>=<span class="string">"sleep"</span> &gt;</span> <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">Learning<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">checked</span>=<span class="string">"checked"</span>  <span class="attr">name</span>=<span class="string">"activity"</span> <span class="attr">value</span>=<span class="string">"learning"</span> &gt;</span> <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">Coding<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"activity"</span>  <span class="attr">value</span>=<span class="string">"coding"</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="下拉列表"><a href="#下拉列表" class="headerlink" title="下拉列表"></a>下拉列表</h3><p><code>&lt;select&gt;</code>即下拉列表，需要配合<code>&lt;option&gt;</code>使用</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> &gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">option</span> &gt;</span>Coding<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">option</span> &gt;</span>Sleeping<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">option</span> &gt;</span>Learning<span class="tag">&lt;/<span class="name">option</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th><code>/</code></th>
+<th>示例</th>
+<th>备注 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>设置高度</td>
+<td><code>&lt;select  size=&quot;2&quot;&gt;&lt;/select&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>设置可以多选</td>
+<td><code>&lt;select size=&quot;3&quot; multiple=&quot;multiple&quot;&gt;&lt;/select&gt;</code></td>
+<td>使用ctrl或者shift进行多选 </td>
+</tr>
+<tr>
+<td>默认选中</td>
+<td><code>&lt;option selected=&quot;selected&quot;&gt;Coding&lt;/option&gt;&lt;option</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="文本域"><a href="#文本域" class="headerlink" title="文本域"></a>文本域</h3><p><code>&lt;textarea&gt;</code>即文本域与文本框不同的是，文本域可以有多行，并且可以有滚动条，使用属性cols和rows设置宽度与行数。</p>
+<h3 id="按钮"><a href="#按钮" class="headerlink" title="按钮"></a>按钮</h3><table>
+<thead>
+<tr>
+<th><code>/</code></th>
+<th>示例</th>
+<th>备注 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>普通按钮</td>
+<td><code>&lt;input type=&quot;button&quot; value=&quot;一个按钮&quot;&gt;</code></td>
+<td>不可以提交表单</td>
+</tr>
+<tr>
+<td>提交按钮</td>
+<td><code>&lt;input type=&quot;submit&quot; value=&quot;登陆&quot;&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>重置按钮</td>
+<td><code>&lt;input type=&quot;reset&quot; value=&quot;重置&quot;&gt;</code></td>
+<td></td>
+</tr>
+<tr>
+<td>使用图像按钮</td>
+<td><code>&lt;input type=&quot;image&quot; src=&quot;http://example.com/example.gif&quot;&gt;</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Q: <code>&lt;input type=&quot;submit&quot;&gt;</code>与<code>&lt;button&gt;</code>的区别：</strong><br>A: 只是个单纯的按钮，触发一些画面动作，请使用<code>&lt;button&gt;</code>；反之，会把画面的数据提交给Server的，一般用<code>&lt;input type=&quot;submit&quot; /&gt;</code>，当然<code>&lt;button&gt;</code>+JS也完全可以取代。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HTML-CSS/" rel="tag"># HTML/CSS</a>
+          
+            <a href="/tags/JavaWeb/" rel="tag"># JavaWeb</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/25/BitManipulationSummary/" rel="next" title="位运算操作与其应用小结">
+                <i class="fa fa-chevron-left"></i> 位运算操作与其应用小结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="linj2n" />
+          <p class="site-author-name" itemprop="name">linj2n</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标签"><span class="nav-number">2.</span> <span class="nav-text">标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#图像"><span class="nav-number">2.1.</span> <span class="nav-text">图像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#超链"><span class="nav-number">2.2.</span> <span class="nav-text">超链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表格"><span class="nav-number">2.3.</span> <span class="nav-text">表格</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3行2列表格，不带边框"><span class="nav-number">2.3.1.</span> <span class="nav-text">3行2列表格，不带边框</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3行2列表格，带边框"><span class="nav-number">2.3.2.</span> <span class="nav-text">3行2列表格，带边框</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置table宽度"><span class="nav-number">2.3.3.</span> <span class="nav-text">设置table宽度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单元格宽度绝对值"><span class="nav-number">2.3.4.</span> <span class="nav-text">单元格宽度绝对值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单元格宽度相对值"><span class="nav-number">2.3.5.</span> <span class="nav-text">单元格宽度相对值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单元格水平对齐"><span class="nav-number">2.3.6.</span> <span class="nav-text">单元格水平对齐</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单元格垂直对齐"><span class="nav-number">2.3.7.</span> <span class="nav-text">单元格垂直对齐</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#合并"><span class="nav-number">2.3.8.</span> <span class="nav-text">合并</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#背景色"><span class="nav-number">2.3.9.</span> <span class="nav-text">背景色</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表"><span class="nav-number">2.4.</span> <span class="nav-text">列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#块"><span class="nav-number">2.5.</span> <span class="nav-text">块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字体"><span class="nav-number">2.6.</span> <span class="nav-text">字体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内联框架"><span class="nav-number">2.7.</span> <span class="nav-text">内联框架</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表单元素"><span class="nav-number">3.</span> <span class="nav-text">表单元素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单选框"><span class="nav-number">3.1.</span> <span class="nav-text">单选框</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#对单选框进行分组"><span class="nav-number">3.1.1.</span> <span class="nav-text">对单选框进行分组</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#复选框"><span class="nav-number">3.2.</span> <span class="nav-text">复选框</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下拉列表"><span class="nav-number">3.3.</span> <span class="nav-text">下拉列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文本域"><span class="nav-number">3.4.</span> <span class="nav-text">文本域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#按钮"><span class="nav-number">3.5.</span> <span class="nav-text">按钮</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">linj2n</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
