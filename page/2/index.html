@@ -95,12 +95,12 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="linj2n@zll">
+<meta property="og:title" content="万丈高楼平地起，勿在浮沙筑高台">
 <meta property="og:url" content="http://linj2n.cn/page/2/index.html">
-<meta property="og:site_name" content="linj2n@zll">
+<meta property="og:site_name" content="万丈高楼平地起，勿在浮沙筑高台">
 <meta property="og:locale" content="en">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="linj2n@zll">
+<meta name="twitter:title" content="万丈高楼平地起，勿在浮沙筑高台">
 
 
 
@@ -135,7 +135,7 @@
 
 
 
-  <title>linj2n@zll</title>
+  <title>万丈高楼平地起，勿在浮沙筑高台</title>
   
 
 
@@ -173,12 +173,12 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">linj2n@zll</span>
+        <span class="site-title">万丈高楼平地起，勿在浮沙筑高台</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">linj2n@zll</p>
       
   </div>
 
@@ -269,7 +269,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="linj2n@zll">
+      <meta itemprop="name" content="万丈高楼平地起，勿在浮沙筑高台">
     </span>
 
     
@@ -421,7 +421,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="linj2n@zll">
+      <meta itemprop="name" content="万丈高楼平地起，勿在浮沙筑高台">
     </span>
 
     
@@ -549,7 +549,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="linj2n@zll">
+      <meta itemprop="name" content="万丈高楼平地起，勿在浮沙筑高台">
     </span>
 
     
@@ -701,7 +701,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="linj2n@zll">
+      <meta itemprop="name" content="万丈高楼平地起，勿在浮沙筑高台">
     </span>
 
     
@@ -826,7 +826,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="linj2n@zll">
+      <meta itemprop="name" content="万丈高楼平地起，勿在浮沙筑高台">
     </span>
 
     
@@ -951,7 +951,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="linj2n@zll">
+      <meta itemprop="name" content="万丈高楼平地起，勿在浮沙筑高台">
     </span>
 
     
@@ -1070,7 +1070,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="linj2n@zll">
+      <meta itemprop="name" content="万丈高楼平地起，勿在浮沙筑高台">
     </span>
 
     
@@ -1189,7 +1189,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="linj2n@zll">
+      <meta itemprop="name" content="万丈高楼平地起，勿在浮沙筑高台">
     </span>
 
     
@@ -1308,7 +1308,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="linj2n@zll">
+      <meta itemprop="name" content="万丈高楼平地起，勿在浮沙筑高台">
     </span>
 
     
@@ -1427,7 +1427,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="linj2n@zll">
+      <meta itemprop="name" content="万丈高楼平地起，勿在浮沙筑高台">
     </span>
 
     
@@ -1489,7 +1489,8 @@
       
         
           <p><strong>为什么需要Session管理？</strong></p>
-<p>HTTP协议是无状态，也就是说默认情况下Web服务器并不知道一个HTTP请求是来自初次用户，还是之前访问过的用户。例如若在一个需要用户访问Web应用某个页面需要验证用户的账号信息，一旦用户输入正确的账号和密码，再访问同一个Web应用的其他页面时，那么用户又需要重新输入账号和密码，十分麻烦。此时需要一个Session管理技术避免这种情况出现。</p>
+<p>HTTP 其实是无状态的，即不同的请求没有上下文关系，但是很多时候页面上的操作是需要依赖上下文的，比方说登录注册购物车。这时候就是 Cookies 与 Sessions 登场的时候了。</p>
+<p>HTTP协议是无状态，即不同的请求没有上下文关系，而在Web页面上操作一般是需要依赖上下文的，例如购物车记录商品，登录与注册。此时 Session 管理技术就出现了。</p>
 <p>用于保持状态的四种方法有：</p>
 <ul>
 <li>URL重写</li>
