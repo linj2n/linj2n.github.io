@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="en">
+<html class="theme-next muse use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="千里之行，始于足下">
 <meta property="og:description" content="环境搭建安装 mysql 更新Homebrew并安装mysql12brew updatebrew install mysql 若出现Warning: mysql-5.7.10 already installed, it&amp;#39;s just not linked错误解决方法：12sudo chown -R &apos;user-name&apos; /usr/local  # user-name 是自己的用户名bre">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-04-09T13:10:07.000Z">
+<meta property="og:updated_time" content="2018-04-09T13:59:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JDBC 编程入门">
 <meta name="twitter:description" content="环境搭建安装 mysql 更新Homebrew并安装mysql12brew updatebrew install mysql 若出现Warning: mysql-5.7.10 already installed, it&amp;#39;s just not linked错误解决方法：12sudo chown -R &apos;user-name&apos; /usr/local  # user-name 是自己的用户名bre">
@@ -113,7 +113,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
@@ -123,9 +123,9 @@
       author: 'Author'
     },
     algolia: {
-      applicationID: '',
+      applicationID: 'K1Q1DQ07MZ',
       apiKey: '',
-      indexName: '',
+      indexName: 'linj2n-Blog',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
@@ -232,9 +232,47 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
   
 </nav>
 
@@ -334,6 +372,7 @@
 <li>更新<code>Homebrew</code>并安装<code>mysql</code><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew update</span><br><span class="line">brew install mysql</span><br></pre></td></tr></table></figure></li>
 <li>若出现<code>Warning: mysql-5.7.10 already installed, it&#39;s just not linked</code>错误解决方法：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R 'user-name' /usr/local  # user-name 是自己的用户名</span><br><span class="line">brew link --overwrite mysql</span><br></pre></td></tr></table></figure></li>
 </ul>
+<a id="more"></a>
 <h3 id="启动-mysql"><a href="#启动-mysql" class="headerlink" title="启动 mysql"></a>启动 mysql</h3><ul>
 <li>使用<code>cd</code>命令进入<code>support-files</code>文件目录，路径为：<code>/usr/local/Cellar/mysql/5.x.x/support-files</code>，执行<code>mysql.server</code>。<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/Cellar/mysql/5.x.x/support-files</span><br><span class="line">sudo ./mysql.server start</span><br></pre></td></tr></table></figure></li>
 <li>可能会出现以下错误<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Starting MySQL</span><br><span class="line">. ERROR! The server quit without updating PID file (/usr/local/var/mysql/xxxxx.local.pid).</span><br></pre></td></tr></table></figure></li>
@@ -508,6 +547,30 @@
 
         <div class="links-of-author motion-element">
           
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/linj2n" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/p/1005055919829882" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
         </div>
 
         
@@ -569,7 +632,7 @@
 <div class="theme-info">
   Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 
@@ -692,6 +755,19 @@
   
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.2"></script>
 
 
 
