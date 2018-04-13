@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Leetcode,OJ," />
+  <meta name="keywords" content="Java Web,Servlet/JSP," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="219.Contains Duplicate IIFrom：219.Contains Duplicate IIDescriptionGiven an array of integers and an integer k, find out whether there are two distinct indices i and j in the array such that nums[i] =">
-<meta name="keywords" content="Leetcode,OJ">
+<meta name="description" content="什么是 EL维护 JSP 页面中的 Java 代码 (Scriptlet) 是十分的不方便的，因此 Expressing Language (EL) 被设计成能够轻松地编写无脚本或不包含 Java 代码的 JSP 页面。也就是说使用 EL 编写的 JSP 页面可以不使用（包含）JSP 声明、 表达式或 Scriptlet。 1 EL 语法以一个${开头，$}结束，表达式运算顺序从左向右，结果的类型">
+<meta name="keywords" content="Java Web,Servlet&#x2F;JSP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[Leetcode] 219.Contains Duplicate II">
-<meta property="og:url" content="http://linj2n.cn/2018/01/15/219-Contains-Duplicate-II/index.html">
+<meta property="og:title" content="Servlet&#x2F;JSP 知识小结（4） EL">
+<meta property="og:url" content="http://linj2n.cn/2018/02/07/ServletAndJSPSummary4/index.html">
 <meta property="og:site_name" content="千里之行，始于足下">
-<meta property="og:description" content="219.Contains Duplicate IIFrom：219.Contains Duplicate IIDescriptionGiven an array of integers and an integer k, find out whether there are two distinct indices i and j in the array such that nums[i] =">
+<meta property="og:description" content="什么是 EL维护 JSP 页面中的 Java 代码 (Scriptlet) 是十分的不方便的，因此 Expressing Language (EL) 被设计成能够轻松地编写无脚本或不包含 Java 代码的 JSP 页面。也就是说使用 EL 编写的 JSP 页面可以不使用（包含）JSP 声明、 表达式或 Scriptlet。 1 EL 语法以一个${开头，$}结束，表达式运算顺序从左向右，结果的类型">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-03-20T01:44:33.000Z">
+<meta property="og:updated_time" content="2018-04-13T14:53:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[Leetcode] 219.Contains Duplicate II">
-<meta name="twitter:description" content="219.Contains Duplicate IIFrom：219.Contains Duplicate IIDescriptionGiven an array of integers and an integer k, find out whether there are two distinct indices i and j in the array such that nums[i] =">
+<meta name="twitter:title" content="Servlet&#x2F;JSP 知识小结（4） EL">
+<meta name="twitter:description" content="什么是 EL维护 JSP 页面中的 Java 代码 (Scriptlet) 是十分的不方便的，因此 Expressing Language (EL) 被设计成能够轻松地编写无脚本或不包含 Java 代码的 JSP 页面。也就是说使用 EL 编写的 JSP 页面可以不使用（包含）JSP 声明、 表达式或 Scriptlet。 1 EL 语法以一个${开头，$}结束，表达式运算顺序从左向右，结果的类型">
 
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://linj2n.cn/2018/01/15/219-Contains-Duplicate-II/"/>
+  <link rel="canonical" href="http://linj2n.cn/2018/02/07/ServletAndJSPSummary4/"/>
 
 
 
 
 
-  <title>[Leetcode] 219.Contains Duplicate II | 千里之行，始于足下</title>
+  <title>Servlet/JSP 知识小结（4） EL | 千里之行，始于足下</title>
   
 
 
@@ -301,7 +301,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/01/15/219-Contains-Duplicate-II/">
+    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/02/07/ServletAndJSPSummary4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="linj2n">
@@ -318,7 +318,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[Leetcode] 219.Contains Duplicate II</h1>
+          <h1 class="post-title" itemprop="name headline">Servlet/JSP 知识小结（4） EL</h1>
         
 
         <div class="post-meta">
@@ -330,8 +330,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-15T09:25:57+08:00">
-                2018/01/15
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-07T09:17:08+08:00">
+                2018/02/07
               </time>
             
 
@@ -368,43 +368,78 @@
       
 
       
-        <h1 id="219-Contains-Duplicate-II"><a href="#219-Contains-Duplicate-II" class="headerlink" title="219.Contains Duplicate II"></a>219.Contains Duplicate II</h1><h3 id="From：219-Contains-Duplicate-II"><a href="#From：219-Contains-Duplicate-II" class="headerlink" title="From：219.Contains Duplicate II"></a>From：<a href="https://leetcode.com/problems/contains-duplicate-ii/description/" target="_blank" rel="noopener">219.Contains Duplicate II</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given an array of integers and an integer k, find out whether there are two distinct indices i and j in the array such that nums[i] = nums[j] and the absolute difference between i and j is at most k.</p>
-<a id="more"></a>
-<h2 id="Approach-1-Use-HashMap"><a href="#Approach-1-Use-HashMap" class="headerlink" title="Approach#1 Use HashMap"></a>Approach#1 Use HashMap</h2><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>见代码。</p>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsNearbyDuplicate</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        Map &lt;Integer,Integer&gt; hm = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i= <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (hm.containsKey(nums[i])) &#123;</span><br><span class="line">                <span class="keyword">if</span> (i - hm.get(nums[i]) &lt;= k) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            hm.put(nums[i],i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><table>
+        <h2 id="什么是-EL"><a href="#什么是-EL" class="headerlink" title="什么是 EL"></a>什么是 EL</h2><p>维护 JSP 页面中的 Java 代码 (Scriptlet) 是十分的不方便的，因此 Expressing Language (EL) 被设计成能够轻松地编写<strong>无脚本</strong>或<strong>不包含</strong> Java 代码的 JSP 页面。也就是说使用 EL 编写的 JSP 页面可以不使用（包含）JSP 声明、 表达式或 Scriptlet。</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="EL-语法"><a href="#EL-语法" class="headerlink" title="EL 语法"></a>EL 语法</h2><p>以一个<code>${</code>开头，<code>$}</code>结束，表达式运算顺序从左向右，结果的类型强制为<code>String</code>，然后连接在一起。<br><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;expression&#125; 	<span class="comment">//</span></span><br></pre></td></tr></table></figure><br>EL 表达式若用于某个定制标签的属性值内，那么将会运算这个表达式，并强制结果字符串为该属性想要的类型。<br><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123; x + y&#125;$&#123;z + k&#125;	<span class="comment">// 若 x + y = 1, z + k = 2,则返回字符串 12</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="EL-运算符"><a href="#EL-运算符" class="headerlink" title="EL 运算符"></a>EL 运算符</h2><h3 id="与-运算符"><a href="#与-运算符" class="headerlink" title="[]与.运算符"></a><code>[]</code>与<code>.</code>运算符</h3><p>EL 中使用<code>[]</code>和<code>.</code>运算符访问对象中的属性，例如：<br><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$&#123;object[<span class="string">"propertyName"</span>]&#125;</span><br><span class="line">$&#123;object.propertyName&#125;</span><br></pre></td></tr></table></figure><br>上面两种方式都可以访问对象中的属性，等价的。但如果<code>propertyName</code>不是有效的 Java 变量名称，则只能使用<code>[]</code>运算符。可以说<code>[]</code>适用的条件的更广。下面输出<code>servletPath</code>属性值的三条语句都是等价的。<br><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$&#123;pageContext[<span class="string">"request"</span>][<span class="string">"servletPath"</span>]&#125;</span><br><span class="line">$&#123;pageContext.request[<span class="string">"servletPath"</span>]&#125;</span><br><span class="line">$&#123;pageContext.request.servletPath&#125;</span><br><span class="line">$&#123;pageContext[<span class="string">"request"</span>].servletPath&#125;</span><br></pre></td></tr></table></figure></p>
+<p>对于<code>expr-a[expr-b]</code>的表达式，运算规则如下：</p>
+<ul>
+<li>从左向右，先运算 <code>expr-a</code>得到<code>value-a</code> <ul>
+<li>若<code>value-a</code>为<code>null</code>，则返回<code>null</code>。</li>
+</ul>
+</li>
+<li>运算<code>expr-b</code>得到<code>value-b</code><ul>
+<li>若<code>value-b</code>为<code>null</code>，则返回<code>null</code>。</li>
+</ul>
+</li>
+</ul>
+<p><strong>根据<code>value-a</code>的类型，分别进行如下处理：</strong></p>
+<ul>
+<li>若<code>value-a</code>的类型为<code>java.util.Map</code>，则检查<code>value-b</code>是否为<code>Map</code>中的一个键。<ul>
+<li>若是，则返回<code>value-a.get(value-b)</code></li>
+<li>若不是，则返回<code>null</code></li>
+</ul>
+</li>
+<li>若<code>value-a</code>的类型为<code>java.util.List</code>或数组，则强制<code>value-b</code>转换为一个<code>int</code>类型，强制失败会抛出异常。<ul>
+<li><code>Array</code>类型，返回<code>Array.get(value-a,value-b)</code></li>
+<li><code>List</code>类型，返回<code>value-a.get(value-b)</code></li>
+</ul>
+</li>
+<li>最后<code>value-a</code>只能是一个<code>JavaBran</code>，这种情况强制<code>value-b</code>为<code>String</code>。调用<code>getter</code>方法，返回结果。</li>
+</ul>
+<h3 id="其他-EL-运算符"><a href="#其他-EL-运算符" class="headerlink" title="其他 EL 运算符"></a>其他 EL 运算符</h3><p>除了<code>[]</code>和<code>.</code>运算符，EL 还提供几个其他的运算符：</p>
+<ul>
+<li>算术运算符</li>
+<li>关系运算符</li>
+<li>逻辑运算符</li>
+<li>条件运算符</li>
+<li><code>empty</code>运算符</li>
+</ul>
+<p>其中除了条件运算符与<code>empty</code>运算符，其他的运算用的比较少，因此我们只介绍最后两种运算符。</p>
+<p><strong>条件运算符</strong><br>语法如下：<br><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 若statement的运算结果为true，则这个表达式为A，否则为B</span></span><br><span class="line">$&#123;statement ? A:B&#125;</span><br><span class="line"><span class="comment">// 使用条件运算符根据登录情况输出信息	</span></span><br><span class="line">$&#123;(sessionScope.loggedIn==<span class="keyword">null</span>)?<span class="string">"You have not logged in"</span> : <span class="string">"You have logge in"</span>&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong><code>Empty</code>运算符</strong><br>语法如下：<br><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;empty X&#125;	<span class="comment">// X 是长度为0字符串，Map，空数组或空的集合，返回true</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="EL-隐式对象"><a href="#EL-隐式对象" class="headerlink" title="EL 隐式对象"></a>EL 隐式对象</h2><p>EL 通过一组隐式对象以访问各种对象。</p>
+<table>
 <thead>
 <tr>
-<th>Time</th>
-<th>Space  </th>
+<th>对象</th>
+<th>描述 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>O( n )</td>
-<td>O( n )</td>
+<td>pageContext</td>
+<td>当前JSP页面的<code>javax.servlet.jsp.PagetContext</code>以获取<code>request</code>、<code>response</code>等隐式对象。 </td>
+</tr>
+<tr>
+<td>header</td>
+<td>包含所有请求标头以标头为名称作为键的 Map </td>
+</tr>
+<tr>
+<td>cookie</td>
+<td>包含当前请求对象中所有<code>Cookie</code>对象的 Map  </td>
+</tr>
+<tr>
+<td>applicaScope</td>
+<td>包含<code>ServletContext</code>对象中的所有属性并以属性名称作为键的 Map </td>
+</tr>
+<tr>
+<td>sessionScope</td>
+<td>包含<code>HttpSession</code>对象中所有属性并此属性名称作为键的 Map </td>
 </tr>
 </tbody>
 </table>
-<h2 id="Approach-2-Use-Set"><a href="#Approach-2-Use-Set" class="headerlink" title="Approach#2 Use Set"></a>Approach#2 Use Set</h2><h3 id="Solution-1"><a href="#Solution-1" class="headerlink" title="Solution"></a>Solution</h3><p>使用一个HashSet，从前往后遍历数组，每次将元素添加进HashSet中，同时删除HashSet内值为<code>nums[i - k - 1]</code>。</p>
-<p>这样HashSet中一直只存在5个元素，当添加元素失败时，即HashSet中已经存在即将要添加的这个元素。此时数组存在符合条件的两个元素，返回<code>true</code>。</p>
-<h3 id="Code-1"><a href="#Code-1" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Approach #1</span></span><br><span class="line"><span class="comment">// 14ms</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsNearbyDuplicate</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        Set&lt;Integer&gt; set = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &gt; k) &#123; set.remove(nums[i - k - <span class="number">1</span>]); &#125;</span><br><span class="line">            <span class="keyword">if</span> (set.add(nums[i]) == <span class="keyword">false</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Complexity-1"><a href="#Complexity-1" class="headerlink" title="Complexity"></a>Complexity</h3><table>
-<thead>
-<tr>
-<th>Time</th>
-<th>Space  </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>O( n )</td>
-<td>O( n )</td>
-</tr>
-</tbody>
-</table>
+<h2 id="一个-EL-demo-实例"><a href="#一个-EL-demo-实例" class="headerlink" title="一个 EL demo 实例"></a>一个 EL demo 实例</h2><p>具体见 <a href="https://github.com/linj2n/J2EE-Demo/tree/master/EL" target="_blank" rel="noopener">J2EE-Demo-EL</a></p>
 
       
     </div>
@@ -422,9 +457,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
+            <a href="/tags/Java-Web/" rel="tag"># Java Web</a>
           
-            <a href="/tags/OJ/" rel="tag"># OJ</a>
+            <a href="/tags/Servlet-JSP/" rel="tag"># Servlet/JSP</a>
           
         </div>
       
@@ -437,8 +472,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/15/217-Contains-Duplicate/" rel="next" title="[Leetcode] 217.Contains Duplicate">
-                <i class="fa fa-chevron-left"></i> [Leetcode] 217.Contains Duplicate
+              <a href="/2018/01/28/NoteForHTML/" rel="next" title="HTML 知识小结">
+                <i class="fa fa-chevron-left"></i> HTML 知识小结
               </a>
             
           </div>
@@ -447,8 +482,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/17/27-Remove-Element/" rel="prev" title="[Leetcode] 27.Remove Element">
-                [Leetcode] 27.Remove Element <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/01/JDBC-Notes/" rel="prev" title="JDBC 编程入门">
+                JDBC 编程入门 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -598,7 +633,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#219-Contains-Duplicate-II"><span class="nav-number">1.</span> <span class="nav-text">219.Contains Duplicate II</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#From：219-Contains-Duplicate-II"><span class="nav-number">1.0.1.</span> <span class="nav-text">From：219.Contains Duplicate II</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">1.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Approach-1-Use-HashMap"><span class="nav-number">1.2.</span> <span class="nav-text">Approach#1 Use HashMap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">1.2.1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">1.2.2.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Complexity"><span class="nav-number">1.2.3.</span> <span class="nav-text">Complexity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Approach-2-Use-Set"><span class="nav-number">1.3.</span> <span class="nav-text">Approach#2 Use Set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code-1"><span class="nav-number">1.3.2.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Complexity-1"><span class="nav-number">1.3.3.</span> <span class="nav-text">Complexity</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是-EL"><span class="nav-number">1.</span> <span class="nav-text">什么是 EL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EL-语法"><span class="nav-number">2.</span> <span class="nav-text">EL 语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EL-运算符"><span class="nav-number">3.</span> <span class="nav-text">EL 运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#与-运算符"><span class="nav-number">3.1.</span> <span class="nav-text">[]与.运算符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他-EL-运算符"><span class="nav-number">3.2.</span> <span class="nav-text">其他 EL 运算符</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EL-隐式对象"><span class="nav-number">4.</span> <span class="nav-text">EL 隐式对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个-EL-demo-实例"><span class="nav-number">5.</span> <span class="nav-text">一个 EL demo 实例</span></a></li></ol></div>
             
 
           </div>

@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="en">
+<html class="theme-next muse use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -108,7 +108,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Muse',
     sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
     fancybox: true,
     tabs: true,
@@ -379,6 +379,197 @@
             </a>
           </div>
           <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/02/07/ServletAndJSPSummary4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linj2n">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="千里之行，始于足下">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/07/ServletAndJSPSummary4/" itemprop="url">Servlet/JSP 知识小结（4） EL</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-07T09:17:08+08:00">
+                2018/02/07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="什么是-EL"><a href="#什么是-EL" class="headerlink" title="什么是 EL"></a>什么是 EL</h2><p>维护 JSP 页面中的 Java 代码 (Scriptlet) 是十分的不方便的，因此 Expressing Language (EL) 被设计成能够轻松地编写<strong>无脚本</strong>或<strong>不包含</strong> Java 代码的 JSP 页面。也就是说使用 EL 编写的 JSP 页面可以不使用（包含）JSP 声明、 表达式或 Scriptlet。</p>
+<figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="EL-语法"><a href="#EL-语法" class="headerlink" title="EL 语法"></a>EL 语法</h2><p>以一个<code>${</code>开头，<code>$}</code>结束，表达式运算顺序从左向右，结果的类型强制为<code>String</code>，然后连接在一起。<br><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;expression&#125; 	<span class="comment">//</span></span><br></pre></td></tr></table></figure><br>EL 表达式若用于某个定制标签的属性值内，那么将会运算这个表达式，并强制结果字符串为该属性想要的类型。<br><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123; x + y&#125;$&#123;z + k&#125;	<span class="comment">// 若 x + y = 1, z + k = 2,则返回字符串 12</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="EL-运算符"><a href="#EL-运算符" class="headerlink" title="EL 运算符"></a>EL 运算符</h2><h3 id="与-运算符"><a href="#与-运算符" class="headerlink" title="[]与.运算符"></a><code>[]</code>与<code>.</code>运算符</h3><p>EL 中使用<code>[]</code>和<code>.</code>运算符访问对象中的属性，例如：<br><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$&#123;object[<span class="string">"propertyName"</span>]&#125;</span><br><span class="line">$&#123;object.propertyName&#125;</span><br></pre></td></tr></table></figure><br>上面两种方式都可以访问对象中的属性，等价的。但如果<code>propertyName</code>不是有效的 Java 变量名称，则只能使用<code>[]</code>运算符。可以说<code>[]</code>适用的条件的更广。下面输出<code>servletPath</code>属性值的三条语句都是等价的。<br><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$&#123;pageContext[<span class="string">"request"</span>][<span class="string">"servletPath"</span>]&#125;</span><br><span class="line">$&#123;pageContext.request[<span class="string">"servletPath"</span>]&#125;</span><br><span class="line">$&#123;pageContext.request.servletPath&#125;</span><br><span class="line">$&#123;pageContext[<span class="string">"request"</span>].servletPath&#125;</span><br></pre></td></tr></table></figure></p>
+<p>对于<code>expr-a[expr-b]</code>的表达式，运算规则如下：</p>
+<ul>
+<li>从左向右，先运算 <code>expr-a</code>得到<code>value-a</code> <ul>
+<li>若<code>value-a</code>为<code>null</code>，则返回<code>null</code>。</li>
+</ul>
+</li>
+<li>运算<code>expr-b</code>得到<code>value-b</code><ul>
+<li>若<code>value-b</code>为<code>null</code>，则返回<code>null</code>。</li>
+</ul>
+</li>
+</ul>
+<p><strong>根据<code>value-a</code>的类型，分别进行如下处理：</strong></p>
+<ul>
+<li>若<code>value-a</code>的类型为<code>java.util.Map</code>，则检查<code>value-b</code>是否为<code>Map</code>中的一个键。<ul>
+<li>若是，则返回<code>value-a.get(value-b)</code></li>
+<li>若不是，则返回<code>null</code></li>
+</ul>
+</li>
+<li>若<code>value-a</code>的类型为<code>java.util.List</code>或数组，则强制<code>value-b</code>转换为一个<code>int</code>类型，强制失败会抛出异常。<ul>
+<li><code>Array</code>类型，返回<code>Array.get(value-a,value-b)</code></li>
+<li><code>List</code>类型，返回<code>value-a.get(value-b)</code></li>
+</ul>
+</li>
+<li>最后<code>value-a</code>只能是一个<code>JavaBran</code>，这种情况强制<code>value-b</code>为<code>String</code>。调用<code>getter</code>方法，返回结果。</li>
+</ul>
+<h3 id="其他-EL-运算符"><a href="#其他-EL-运算符" class="headerlink" title="其他 EL 运算符"></a>其他 EL 运算符</h3><p>除了<code>[]</code>和<code>.</code>运算符，EL 还提供几个其他的运算符：</p>
+<ul>
+<li>算术运算符</li>
+<li>关系运算符</li>
+<li>逻辑运算符</li>
+<li>条件运算符</li>
+<li><code>empty</code>运算符</li>
+</ul>
+<p>其中除了条件运算符与<code>empty</code>运算符，其他的运算用的比较少，因此我们只介绍最后两种运算符。</p>
+<p><strong>条件运算符</strong><br>语法如下：<br><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 若statement的运算结果为true，则这个表达式为A，否则为B</span></span><br><span class="line">$&#123;statement ? A:B&#125;</span><br><span class="line"><span class="comment">// 使用条件运算符根据登录情况输出信息	</span></span><br><span class="line">$&#123;(sessionScope.loggedIn==<span class="keyword">null</span>)?<span class="string">"You have not logged in"</span> : <span class="string">"You have logge in"</span>&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong><code>Empty</code>运算符</strong><br>语法如下：<br><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;empty X&#125;	<span class="comment">// X 是长度为0字符串，Map，空数组或空的集合，返回true</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="EL-隐式对象"><a href="#EL-隐式对象" class="headerlink" title="EL 隐式对象"></a>EL 隐式对象</h2><p>EL 通过一组隐式对象以访问各种对象。</p>
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th>描述 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pageContext</td>
+<td>当前JSP页面的<code>javax.servlet.jsp.PagetContext</code>以获取<code>request</code>、<code>response</code>等隐式对象。 </td>
+</tr>
+<tr>
+<td>header</td>
+<td>包含所有请求标头以标头为名称作为键的 Map </td>
+</tr>
+<tr>
+<td>cookie</td>
+<td>包含当前请求对象中所有<code>Cookie</code>对象的 Map  </td>
+</tr>
+<tr>
+<td>applicaScope</td>
+<td>包含<code>ServletContext</code>对象中的所有属性并以属性名称作为键的 Map </td>
+</tr>
+<tr>
+<td>sessionScope</td>
+<td>包含<code>HttpSession</code>对象中所有属性并此属性名称作为键的 Map </td>
+</tr>
+</tbody>
+</table>
+<h2 id="一个-EL-demo-实例"><a href="#一个-EL-demo-实例" class="headerlink" title="一个 EL demo 实例"></a>一个 EL demo 实例</h2><p>具体见 <a href="https://github.com/linj2n/J2EE-Demo/tree/master/EL" target="_blank" rel="noopener">J2EE-Demo-EL</a></p>
+
+          
         
       
     </div>
@@ -1516,136 +1707,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/01/14/205-Isomorphic-Strings/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="linj2n">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="千里之行，始于足下">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/14/205-Isomorphic-Strings/" itemprop="url">[Leetcode] 205.Isomorphic Strings</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-14T20:31:12+08:00">
-                2018/01/14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="205-Isomorphic-Strings"><a href="#205-Isomorphic-Strings" class="headerlink" title="205.Isomorphic Strings"></a>205.Isomorphic Strings</h1><h3 id="From：205-Isomorphic-Strings"><a href="#From：205-Isomorphic-Strings" class="headerlink" title="From：205. Isomorphic Strings"></a>From：<a href="https://leetcode.com/problems/isomorphic-strings/description/" target="_blank" rel="noopener">205. Isomorphic Strings</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given two strings <code>s</code> and <code>t</code>, determine if they are isomorphic.</p>
-<p>Two strings are isomorphic if the characters in <code>s</code> can be replaced to get <code>t</code>.</p>
-<p>All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character but a character may map to itself.</p>
-<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><p>Given <code>&quot;egg&quot;</code>, <code>&quot;add&quot;</code>, return true.</p>
-<p>Given <code>&quot;foo&quot;</code>, <code>&quot;bar&quot;</code>, return false.</p>
-<p>Given <code>&quot;paper&quot;</code>, <code>&quot;title&quot;</code>, return true.</p>
-<p><strong>Note:</strong><br>You may assume both s and t have the same length.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/14/205-Isomorphic-Strings/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1790,7 +1851,7 @@
 <div class="theme-info">
   Theme -
   <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
+    NexT.Muse
   </a>
 </div>
 
