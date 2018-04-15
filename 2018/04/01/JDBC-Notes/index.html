@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="1 &#x2F; 0 == ∞">
 <meta property="og:description" content="环境搭建安装 mysql 更新Homebrew并安装mysql12brew updatebrew install mysql 若出现Warning: mysql-5.7.10 already installed, it&amp;#39;s just not linked错误解决方法：12sudo chown -R &apos;user-name&apos; /usr/local  # user-name 是自己的用户名bre">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-04-10T15:05:14.000Z">
+<meta property="og:updated_time" content="2018-04-14T21:33:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JDBC 编程入门">
 <meta name="twitter:description" content="环境搭建安装 mysql 更新Homebrew并安装mysql12brew updatebrew install mysql 若出现Warning: mysql-5.7.10 already installed, it&amp;#39;s just not linked错误解决方法：12sudo chown -R &apos;user-name&apos; /usr/local  # user-name 是自己的用户名bre">
@@ -382,8 +382,7 @@
 <h3 id="登录-mysql"><a href="#登录-mysql" class="headerlink" title="登录 mysql"></a>登录 mysql</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
 <h3 id="关闭-mysql"><a href="#关闭-mysql" class="headerlink" title="关闭 mysql"></a>关闭 mysql</h3><p>查找 mysql 的进程号，为查询结果的第二列中的数字。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep mysql</span><br></pre></td></tr></table></figure></p>
 <p>使用 kill 命令结束 mysql，如 mysql 的进程号为 xxxx<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -9 xxxx</span><br></pre></td></tr></table></figure></p>
-<h3 id="导入-mysql-connector-jar包到-eclipse中"><a href="#导入-mysql-connector-jar包到-eclipse中" class="headerlink" title="导入 mysql-connector jar包到 eclipse中"></a>导入 mysql-connector jar包到 eclipse中</h3><p>前往<code>https://dev.mysql.com/downloads/file/?id=476198</code>下载并解压缩</p>
-<p>复制<code>mysql-connector-java-5.x.xx.-bin.jar</code>到相应 porject 的<code>WebContent/WEB-INF/lib</code>目录下</p>
+<h3 id="导入-mysql-connector-jar包到-eclipse中"><a href="#导入-mysql-connector-jar包到-eclipse中" class="headerlink" title="导入 mysql-connector jar包到 eclipse中"></a>导入 mysql-connector jar包到 eclipse中</h3><p>前往<br><a href="https://dev.mysql.com/downloads/file/?id=476198" target="_blank" rel="noopener">https://dev.mysql.com/downloads/file/?id=476198</a><br>并解压缩，复制<code>mysql-connector-java-5.x.xx.-bin.jar</code>到相应 porject 的<code>WebContent/WEB-INF/lib</code>目录下</p>
 <p>右键打开 project 的 properties 属性 -&gt; Java Build Path -&gt; Libraries -&gt; add JARs</p>
 <p>选择之前复制的路径 <code>WebContent/WEB-INF/lib</code> 下的 <code>mysql-connector-java-5.x.xx.-bin.jar</code>，点击 OK。</p>
 <h2 id="什么是-JDBC"><a href="#什么是-JDBC" class="headerlink" title="什么是 JDBC"></a>什么是 JDBC</h2><p>JDBC 提供了一个灵活的框架来编写操作数据库的独立的应用程序，该程序能够运行在不同的平台上且不需修改，能够与不同的 DBMS 进行交互。</p>
@@ -426,11 +425,7 @@
 <li>Enterprise JavaBean(EJB)</li>
 <li>Data Access Object (DAO)</li>
 <li>Hibernate</li>
-<li>myBaits<ul>
-<li style="list-style: none"><input type="checkbox" checked> Chapter 2 Introduction to OpenCV</li>
-<li style="list-style: none"><input type="checkbox"> Chapter 3 Getting to Know OpenCV Data Types</li>
-</ul>
-</li>
+<li>myBaits</li>
 </ul>
 <h2 id="DAO"><a href="#DAO" class="headerlink" title="DAO"></a>DAO</h2>
       
