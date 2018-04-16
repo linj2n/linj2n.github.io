@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="1 &#x2F; 0 == ∞">
 <meta property="og:description" content="环境搭建安装 mysql 更新Homebrew并安装mysql12brew updatebrew install mysql 若出现Warning: mysql-5.7.10 already installed, it&amp;#39;s just not linked错误解决方法：12sudo chown -R &apos;user-name&apos; /usr/local  # user-name 是自己的用户名bre">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-04-14T21:33:01.000Z">
+<meta property="og:updated_time" content="2018-04-15T12:36:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JDBC 编程入门">
 <meta name="twitter:description" content="环境搭建安装 mysql 更新Homebrew并安装mysql12brew updatebrew install mysql 若出现Warning: mysql-5.7.10 already installed, it&amp;#39;s just not linked错误解决方法：12sudo chown -R &apos;user-name&apos; /usr/local  # user-name 是自己的用户名bre">
@@ -369,8 +369,8 @@
 
       
         <h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><h3 id="安装-mysql"><a href="#安装-mysql" class="headerlink" title="安装 mysql"></a>安装 mysql</h3><ul>
-<li>更新<code>Homebrew</code>并安装<code>mysql</code><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew update</span><br><span class="line">brew install mysql</span><br></pre></td></tr></table></figure></li>
-<li>若出现<code>Warning: mysql-5.7.10 already installed, it&#39;s just not linked</code>错误解决方法：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R 'user-name' /usr/local  # user-name 是自己的用户名</span><br><span class="line">brew link --overwrite mysql</span><br></pre></td></tr></table></figure></li>
+<li>更新<code>Homebrew</code>并安装<code>mysql</code><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">brew update</span><br><span class="line">brew install mysql</span><br></pre></td></tr></table></figure></li>
+<li>若出现<code>Warning: mysql-5.7.10 already installed, it&#39;s just not linked</code>错误解决方法：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R <span class="string">'user-name'</span> /usr/<span class="built_in">local</span>  <span class="comment"># user-name 是自己的用户名</span></span><br><span class="line">brew link --overwrite mysql</span><br></pre></td></tr></table></figure></li>
 </ul>
 <a id="more"></a>
 <h3 id="启动-mysql"><a href="#启动-mysql" class="headerlink" title="启动 mysql"></a>启动 mysql</h3><ul>
@@ -378,9 +378,9 @@
 <li>可能会出现以下错误<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Starting MySQL</span><br><span class="line">. ERROR! The server quit without updating PID file (/usr/local/var/mysql/xxxxx.local.pid).</span><br></pre></td></tr></table></figure></li>
 <li>这是由于权限问题造成的，解决办法<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R 'user-name' /usr/local  # user-name 是自己的用户名</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="配置-mysql"><a href="#配置-mysql" class="headerlink" title="配置 mysql"></a>配置 mysql</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./usr/local/Cellar/mysql/5.x.x/bin/mysql_secure_installation</span><br></pre></td></tr></table></figure>
-<h3 id="登录-mysql"><a href="#登录-mysql" class="headerlink" title="登录 mysql"></a>登录 mysql</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
-<h3 id="关闭-mysql"><a href="#关闭-mysql" class="headerlink" title="关闭 mysql"></a>关闭 mysql</h3><p>查找 mysql 的进程号，为查询结果的第二列中的数字。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep mysql</span><br></pre></td></tr></table></figure></p>
+<h3 id="配置-mysql"><a href="#配置-mysql" class="headerlink" title="配置 mysql"></a>配置 mysql</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./usr/<span class="built_in">local</span>/Cellar/mysql/5.x.x/bin/mysql_secure_installation</span><br></pre></td></tr></table></figure>
+<h3 id="登录-mysql"><a href="#登录-mysql" class="headerlink" title="登录 mysql"></a>登录 mysql</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+<h3 id="关闭-mysql"><a href="#关闭-mysql" class="headerlink" title="关闭 mysql"></a>关闭 mysql</h3><p>查找 mysql 的进程号，为查询结果的第二列中的数字。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef | grep mysql</span><br></pre></td></tr></table></figure></p>
 <p>使用 kill 命令结束 mysql，如 mysql 的进程号为 xxxx<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -9 xxxx</span><br></pre></td></tr></table></figure></p>
 <h3 id="导入-mysql-connector-jar包到-eclipse中"><a href="#导入-mysql-connector-jar包到-eclipse中" class="headerlink" title="导入 mysql-connector jar包到 eclipse中"></a>导入 mysql-connector jar包到 eclipse中</h3><p>前往<br><a href="https://dev.mysql.com/downloads/file/?id=476198" target="_blank" rel="noopener">https://dev.mysql.com/downloads/file/?id=476198</a><br>并解压缩，复制<code>mysql-connector-java-5.x.xx.-bin.jar</code>到相应 porject 的<code>WebContent/WEB-INF/lib</code>目录下</p>
 <p>右键打开 project 的 properties 属性 -&gt; Java Build Path -&gt; Libraries -&gt; add JARs</p>
@@ -461,8 +461,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/08/ServletAndJSPSummary5/" rel="next" title="Servlet/JSP知识小结（5） JSTL 库核心标签">
-                <i class="fa fa-chevron-left"></i> Servlet/JSP知识小结（5） JSTL 库核心标签
+              <a href="/2018/02/09/ServletAndJSPSummary6/" rel="next" title="Servlet/JSP知识小结（6）Filter 基本知识">
+                <i class="fa fa-chevron-left"></i> Servlet/JSP知识小结（6）Filter 基本知识
               </a>
             
           </div>

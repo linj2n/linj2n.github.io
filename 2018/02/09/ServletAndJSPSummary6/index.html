@@ -94,15 +94,18 @@
 
 
 
+<meta name="description" content="Filter 工作原理Filter 开发步骤开发 Filter 一般有两个步骤：  编写一个实现了Filter接口的 Java 类，重写 doFilter() 方法 在 web.xml 文件配置编写好的 Filter。  Filter APIFilter 生命周期Filter 配置注册 Filter映射 Filter">
 <meta name="keywords" content="Java Web,Servlet&#x2F;JSP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Servlet&#x2F;JSP知识小结（7）过滤器">
-<meta property="og:url" content="http://linj2n.cn/2018/01/10/ServletAndJSPSummary7/index.html">
+<meta property="og:title" content="Servlet&#x2F;JSP知识小结（6）Filter 基本知识">
+<meta property="og:url" content="http://linj2n.cn/2018/02/09/ServletAndJSPSummary6/index.html">
 <meta property="og:site_name" content="1 &#x2F; 0 == ∞">
+<meta property="og:description" content="Filter 工作原理Filter 开发步骤开发 Filter 一般有两个步骤：  编写一个实现了Filter接口的 Java 类，重写 doFilter() 方法 在 web.xml 文件配置编写好的 Filter。  Filter APIFilter 生命周期Filter 配置注册 Filter映射 Filter">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-04-09T04:35:49.000Z">
+<meta property="og:updated_time" content="2018-04-16T03:29:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Servlet&#x2F;JSP知识小结（7）过滤器">
+<meta name="twitter:title" content="Servlet&#x2F;JSP知识小结（6）Filter 基本知识">
+<meta name="twitter:description" content="Filter 工作原理Filter 开发步骤开发 Filter 一般有两个步骤：  编写一个实现了Filter接口的 Java 类，重写 doFilter() 方法 在 web.xml 文件配置编写好的 Filter。  Filter APIFilter 生命周期Filter 配置注册 Filter映射 Filter">
 
 
 
@@ -131,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://linj2n.cn/2018/01/10/ServletAndJSPSummary7/"/>
+  <link rel="canonical" href="http://linj2n.cn/2018/02/09/ServletAndJSPSummary6/"/>
 
 
 
 
 
-  <title>Servlet/JSP知识小结（7）过滤器 | 1 / 0 == ∞</title>
+  <title>Servlet/JSP知识小结（6）Filter 基本知识 | 1 / 0 == ∞</title>
   
 
 
@@ -298,7 +301,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/01/10/ServletAndJSPSummary7/">
+    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/02/09/ServletAndJSPSummary6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="linj2n">
@@ -315,7 +318,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Servlet/JSP知识小结（7）过滤器</h1>
+          <h1 class="post-title" itemprop="name headline">Servlet/JSP知识小结（6）Filter 基本知识</h1>
         
 
         <div class="post-meta">
@@ -327,8 +330,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-10T07:01:14+08:00">
-                2018/01/10
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-09T22:01:11+08:00">
+                2018/02/09
               </time>
             
 
@@ -365,7 +368,12 @@
       
 
       
-        
+        <h1 id="Filter-工作原理"><a href="#Filter-工作原理" class="headerlink" title="Filter 工作原理"></a>Filter 工作原理</h1><h1 id="Filter-开发步骤"><a href="#Filter-开发步骤" class="headerlink" title="Filter 开发步骤"></a>Filter 开发步骤</h1><p>开发 Filter 一般有两个步骤：</p>
+<ol>
+<li>编写一个实现了<code>Filter</code>接口的 Java 类，重写 <code>doFilter()</code> 方法</li>
+<li>在 web.xml 文件配置编写好的 <code>Filter</code>。</li>
+</ol>
+<h1 id="Filter-API"><a href="#Filter-API" class="headerlink" title="Filter API"></a>Filter API</h1><h2 id="Filter-生命周期"><a href="#Filter-生命周期" class="headerlink" title="Filter 生命周期"></a>Filter 生命周期</h2><h1 id="Filter-配置"><a href="#Filter-配置" class="headerlink" title="Filter 配置"></a>Filter 配置</h1><h2 id="注册-Filter"><a href="#注册-Filter" class="headerlink" title="注册 Filter"></a>注册 Filter</h2><h2 id="映射-Filter"><a href="#映射-Filter" class="headerlink" title="映射 Filter"></a>映射 Filter</h2>
       
     </div>
     
@@ -397,8 +405,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/09/ServletAndJSPSummary6/" rel="next" title="Servlet/JSP知识小结（6）监听器">
-                <i class="fa fa-chevron-left"></i> Servlet/JSP知识小结（6）监听器
+              <a href="/2018/02/09/ServletAndJSPSummary7/" rel="next" title="Servlet/JSP知识小结（7）Listener 监听器">
+                <i class="fa fa-chevron-left"></i> Servlet/JSP知识小结（7）Listener 监听器
               </a>
             
           </div>
@@ -407,8 +415,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/01/12/136-Single-Number/" rel="prev" title="[Leetcode] 136.Single Number">
-                [Leetcode] 136.Single Number <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/01/JDBC-Notes/" rel="prev" title="JDBC 编程入门">
+                JDBC 编程入门 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -461,8 +469,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -539,6 +556,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Filter-工作原理"><span class="nav-number">1.</span> <span class="nav-text">Filter 工作原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Filter-开发步骤"><span class="nav-number">2.</span> <span class="nav-text">Filter 开发步骤</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Filter-API"><span class="nav-number">3.</span> <span class="nav-text">Filter API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Filter-生命周期"><span class="nav-number">3.1.</span> <span class="nav-text">Filter 生命周期</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Filter-配置"><span class="nav-number">4.</span> <span class="nav-text">Filter 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#注册-Filter"><span class="nav-number">4.1.</span> <span class="nav-text">注册 Filter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#映射-Filter"><span class="nav-number">4.2.</span> <span class="nav-text">映射 Filter</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

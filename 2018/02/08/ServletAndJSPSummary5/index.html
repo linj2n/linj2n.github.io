@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="1 &#x2F; 0 == ∞">
 <meta property="og:description" content="JSP 页面中使用 JSTL 目的是为了不希望出现 Java 业务代码，同时弥补 Html 标签的不足。JSTL 是指JSP标准标签库，通过多个标签库来规定其动作指令，其中包括：Core、XML、i18n、Sql、functions 五种标签库，但是除了 Core 标签库，其他的标签库都很少用了，因此我们只关注 JSTL 中的 Core 标签库。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-04-14T21:26:11.000Z">
+<meta property="og:updated_time" content="2018-04-16T02:58:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Servlet&#x2F;JSP知识小结（5） JSTL 库核心标签">
 <meta name="twitter:description" content="JSP 页面中使用 JSTL 目的是为了不希望出现 Java 业务代码，同时弥补 Html 标签的不足。JSTL 是指JSP标准标签库，通过多个标签库来规定其动作指令，其中包括：Core、XML、i18n、Sql、functions 五种标签库，但是除了 Core 标签库，其他的标签库都很少用了，因此我们只关注 JSTL 中的 Core 标签库。">
@@ -370,14 +370,15 @@
       
         <p>JSP 页面中使用 JSTL 目的是为了不希望出现 Java 业务代码，同时弥补 Html 标签的不足。JSTL 是指<strong>JSP标准标签库</strong>，通过多个标签库来规定其动作指令，其中包括：Core、XML、i18n、Sql、functions 五种标签库，但是除了 Core 标签库，其他的标签库都很少用了，因此我们只关注 JSTL 中的 Core 标签库。</p>
 <a id="more"></a>
-<h1 id="使用前准备"><a href="#使用前准备" class="headerlink" title="使用前准备"></a>使用前准备</h1><ol>
+<h1 id="使用环境"><a href="#使用环境" class="headerlink" title="使用环境"></a>使用环境</h1><ol>
 <li><p>前往下面的网址<br><a href="http://archive.apache.org/dist/jakarta/taglibs/standard/binaries/" target="_blank" rel="noopener">http://archive.apache.org/dist/jakarta/taglibs/standard/binaries/</a><br>选择最新版本的 zip 包下载并解压，到解压后的 lib 文件夹将 <code>jstl.jar</code>和<code>standard.jar</code>复制到项目 WEB-INF/lib 目录下。</p>
 </li>
 <li><p>在需要使用 JSTL 的 JSP 页面头部中插入一下代码，引入 Core 标签库。</p>
 <figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> taglib prefix=<span class="string">"c"</span> %&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h1 id="Core-标签库分类"><a href="#Core-标签库分类" class="headerlink" title="Core 标签库分类"></a>Core 标签库分类</h1><p>Core 标签库根据功能可以分为以下几类</p>
+<h1 id="Core-标签库分类"><a href="#Core-标签库分类" class="headerlink" title="Core 标签库分类"></a>Core 标签库分类</h1><p><strong>两种格式：</strong> 所有的标签都有两种语法形式，一种包含主体，另一种不包含主体。<br><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一种，包含主体</span></span><br><span class="line">&lt;c:tagName &gt; </span><br><span class="line">	body content</span><br><span class="line">&lt;/c:tagName&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二种，不包含主体</span></span><br><span class="line">&lt;c:tagName /&gt;</span><br></pre></td></tr></table></figure></p>
+<p>下面重点关注 Core 库中比较重要的几类标签</p>
 <table>
 <thead>
 <tr>
@@ -389,23 +390,18 @@
 <tbody>
 <tr>
 <td><strong>通用动作指令：</strong></td>
-<td>out 标签、set 标签、remove 标签</td>
+<td>out 、set 、remove 标签</td>
 <td>主要用于操作各种域变量。</td>
 </tr>
 <tr>
 <td><strong>条件动作指令：</strong></td>
-<td>if 标签、choose 标签、when 标签、otherwise 标签</td>
+<td>if 、choose 、when 、otherwise 标签</td>
 <td>用于控制流程处理。</td>
 </tr>
 <tr>
 <td><strong>iterator 动作指令：</strong></td>
-<td>forEach 标签、forTokens 标签</td>
+<td>forEach 、forTokens 标签</td>
 <td>用于迭代各种对象或集合。</td>
-</tr>
-<tr>
-<td><strong>格式化动作指令：</strong></td>
-<td>fromatNumber 标签、</td>
-<td>用于格式化和解析数字或日期。</td>
 </tr>
 </tbody>
 </table>
@@ -413,7 +409,7 @@
 <h3 id="语法格式："><a href="#语法格式：" class="headerlink" title="语法格式："></a><strong>语法格式：</strong></h3><p>out 的语法有一下两种形式，一种有主体内容，另外一种没有，<code>[]</code>为可选属性，可以省略。<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一种形式，没有主体内容</span></span><br><span class="line">&lt;c:out value=<span class="string">"value"</span> [escapeXml=<span class="string">"&#123;true|false&#125;"</span>] [<span class="keyword">default</span>=<span class="string">"defaultValue"</span>] /&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 第二种形式，有主体内容</span></span><br><span class="line">&lt;c:out value=<span class="string">"value"</span> [escapeXml=<span class="string">"&#123;true|false&#125;"</span>]&gt;</span><br><span class="line">	<span class="keyword">default</span> value</span><br><span class="line">&lt;/c&gt;</span><br></pre></td></tr></table></figure></p>
 <p>使用第一种形式输出<code>Session</code>中的<code>myVar</code>变量的值，其中 EL 表达式获取<code>myVar</code>变量的值。</p>
 <figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第一种形式，没有主体内容，若在 sessionScope 找不到 myVar，则前往 application 域中找</span></span><br><span class="line"><span class="comment">// 若找不到，则输出一个空字符串</span></span><br><span class="line">&lt;c:out value=<span class="string">"$&#123;sessionScope.myVar&#125;"</span>  <span class="keyword">default</span>=<span class="string">"$&#123;applicationScope.myVar&#125;"</span> /&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="out-标签相关属性"><a href="#out-标签相关属性" class="headerlink" title="**out 标签相关属性"></a>**out 标签相关属性</h3><table>
+<h3 id="out-标签相关属性"><a href="#out-标签相关属性" class="headerlink" title="out 标签相关属性"></a>out 标签相关属性</h3><table>
 <thead>
 <tr>
 <th>属性</th>
@@ -565,19 +561,19 @@
 <tr>
 <td>begin</td>
 <td>int</td>
-<td>值大小必须大于或等于 0</td>
+<td>遍历的开始位置，值大小必须大于或等于 0</td>
 <td>支持</td>
 </tr>
 <tr>
 <td>end</td>
 <td>int</td>
-<td>值大小必须大于或等于1</td>
+<td>遍历的结束位置，值大小必须大于或等于1</td>
 <td>支持</td>
 </tr>
 <tr>
 <td>step</td>
 <td>int</td>
-<td>循环的步长</td>
+<td>遍历的步长，循环的步长</td>
 <td>支持</td>
 </tr>
 </tbody>
@@ -614,16 +610,73 @@
 </tr>
 </tbody>
 </table>
-<h3 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h3><h1 id="图片1TODO"><a href="#图片1TODO" class="headerlink" title="图片1TODO"></a>图片1TODO</h1><p>如上图，该实例输出北京、上海、广州和深圳四个一线城市的主要的行政区。实例项目包含一个<code>ListDistrictsServlet.java</code> 与 <code>listDistricts.jsp</code>，前者重载<code>doGet</code>方法，初始化一个<code>java.util.Map</code>，键为四个城市，值分别为对应的行政区，传递给<code>HttpRequest</code>对象，然后跳转至<code>listDistricts</code>。</p>
+<h3 id="实例-2"><a href="#实例-2" class="headerlink" title="实例"></a>实例</h3><p><img src="" alt="listDistrictsPic"></p>
+<p>如上图，该实例输出北京、上海、广州和深圳四个一线城市的主要的行政区。实例项目包含一个<code>ListDistrictsServlet.java</code> 与 <code>listDistricts.jsp</code>，前者重载<code>doGet</code>方法，初始化一个<code>java.util.Map</code>，<code>Map.key</code>为四个城市，<code>Map.value</code>值行政区<code>String</code>数组，存放对应城市的行政区名传递给<code>HttpRequest</code>对象，然后跳转至<code>listDistricts.jsp</code>。</p>
 <p><strong>ListDistrictsServlet.java</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> JSTL.servlet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.RequestDispatcher;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet</span>(urlPatterns = &#123;<span class="string">"/listDistricts"</span>&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ListDistrictsServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">6954101244545361647L</span>;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		Map&lt;String, String[]&gt; districts = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">		districts.put(<span class="string">"上海"</span>, <span class="keyword">new</span> String[]</span><br><span class="line">				&#123;<span class="string">"黄浦区"</span>,<span class="string">"徐汇区"</span>,<span class="string">"静安区"</span>,<span class="string">"长宁区"</span>,<span class="string">"普陀区"</span>,</span><br><span class="line">				<span class="string">"虹口区"</span>,<span class="string">"南浦区"</span>,<span class="string">"闵行区"</span>,<span class="string">"宝山区"</span>,<span class="string">"嘉定区等"</span>&#125;);</span><br><span class="line">		districts.put(<span class="string">"北京"</span>, <span class="keyword">new</span> String[] </span><br><span class="line">				&#123;<span class="string">"东城区"</span>,<span class="string">"西城区"</span>,<span class="string">"朝阳区"</span>,<span class="string">"海淀区"</span>,<span class="string">"丰台区"</span>,</span><br><span class="line">				<span class="string">"石景山区"</span>,<span class="string">"顺义区"</span>,<span class="string">"通州区"</span>,<span class="string">"大兴区"</span>,<span class="string">"房山区"</span>,<span class="string">"门头沟区"</span>,<span class="string">"昌平区等"</span>&#125;);</span><br><span class="line">		districts.put(<span class="string">"广州"</span>, <span class="keyword">new</span> String[] </span><br><span class="line">				&#123;<span class="string">"番禺区"</span>,<span class="string">"天河区"</span>,<span class="string">"海珠区"</span>,<span class="string">"越秀区"</span>,<span class="string">"黄埔区"</span>,</span><br><span class="line">				<span class="string">"花都区"</span>,<span class="string">"荔湾区"</span>,<span class="string">"从化区"</span>,<span class="string">"增城区"</span>,<span class="string">"南沙区"</span>&#125;);</span><br><span class="line">		districts.put(<span class="string">"深圳"</span>, <span class="keyword">new</span> String[] </span><br><span class="line">				&#123;<span class="string">"宝安区"</span>,<span class="string">"龙华区"</span>,<span class="string">"罗湖区"</span>,<span class="string">"福田区"</span>,<span class="string">"南山区"</span>,</span><br><span class="line">				<span class="string">"盐田区"</span>,<span class="string">"龙岗区"</span>,<span class="string">"坪山区"</span>,<span class="string">"光明新区"</span>,<span class="string">"大鹏新区"</span>&#125;);</span><br><span class="line">		</span><br><span class="line">		req.setAttribute(<span class="string">"districts"</span>, districts);</span><br><span class="line">		RequestDispatcher rDispatcher = req.getRequestDispatcher(<span class="string">"/listDistricts.jsp"</span>);</span><br><span class="line">		rDispatcher.forward(req, resp);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-<p><code>listDistricts.jsp</code> 两个地方使用到<code>&lt;c:if&gt;</code></p>
-<ol>
-<li>通过<code>varStatus.count</code>判断奇偶，使得列表内容奇数列背景加深，偶数不变</li>
-<li>遍历<code>String[] districts</code>输出行政区名时，为每两个行政区之间加上<code>,</code>符号，最后一个元素后面不用加<code>,</code>。</li>
+<p><strong><code>listDistricts.jsp</code> 使用到两个 JSTL 标签，作用如下：</strong></p>
+<ul>
+<li><code>&lt;c:if&gt;</code><ol>
+<li>根据循环内<code>varStatus.count</code>的值，控制<code>table</code>每行的背景颜色，达到奇数行加深，偶数不变的效果。</li>
+<li>同样遍历元素时判断<code>varStatus.last</code>，在两个元素之间输出<code>,</code>符号。</li>
 </ol>
-<p>使用内外两层<code>&lt;c:forEach&gt;</code>第一层输出城市名，第二层输出对应行政区名。</p>
+</li>
+<li><code>&lt;c:forEach&gt;</code>，使用内外两层<code>&lt;c:forEach&gt;</code>第一层输出城市名，第二层输出对应行政区名。</li>
+</ul>
 <p><strong>listDistricts.jsp</strong></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ page language=<span class="string">"java"</span> contentType=<span class="string">"text/html; charset=UTF-8"</span></span><br><span class="line">    pageEncoding=<span class="string">"UTF-8"</span> %&gt;</span><br><span class="line">&lt;%@ taglib uri=<span class="string">"http://java.sun.com/jsp/jstl/core"</span> prefix=<span class="string">"c"</span>%&gt;</span><br><span class="line">&lt;!DOCTYPE html PUBLIC <span class="string">"-//W3C//DTD HTML 4.01 Transitional//EN"</span> <span class="string">"http://www.w3.org/TR/html4/loose.dtd"</span>&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta http-equiv=<span class="string">"Content-Type"</span> content=<span class="string">"text/html; charset=UTF-8"</span>&gt;</span><br><span class="line">&lt;style&gt;</span><br><span class="line">table, tr, td &#123;</span><br><span class="line">border: 1px solid #aaee77;</span><br><span class="line">padding: <span class="number">3</span>px; &#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;title&gt;Districts&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">Districts <span class="keyword">for</span> big city in China.&lt;br&gt;</span><br><span class="line">&lt;table&gt;</span><br><span class="line">	&lt;tr style=<span class="string">"background:#448755;color:white;font-weight:bold"</span>&gt;</span><br><span class="line">		&lt;td&gt;City&lt;/td&gt;</span><br><span class="line">		&lt;td&gt;Districts&lt;/td&gt;</span><br><span class="line">	&lt;/tr&gt;</span><br><span class="line">	&lt;%-- 使用内外两层`&lt;c:forEach&gt;`第一层输出城市名，第二层输出对应行政区名。 --%&gt;&gt;</span><br><span class="line">	&lt;c:forEach items=<span class="string">"$&#123;requestScope.districts&#125;"</span> var=<span class="string">"city"</span> varStatus=<span class="string">"status1"</span>&gt;</span><br><span class="line">		&lt;%-- 通过varStatus.count判断奇偶，使得列表中的奇数列背景加深，偶数不变 --%&gt;</span><br><span class="line">		&lt;c:<span class="keyword">if</span> test=<span class="string">"$&#123;status1.count%2 == 0&#125;"</span>&gt;</span><br><span class="line">			&lt;tr style=<span class="string">"background:#eeeeff"</span>&gt;</span><br><span class="line">		&lt;/c:if&gt;</span><br><span class="line">		&lt;c:<span class="keyword">if</span> test=<span class="string">"$&#123;status1.count%2 != 0&#125;"</span>&gt;</span><br><span class="line">			&lt;tr &gt;</span><br><span class="line">		&lt;/c:if&gt;</span><br><span class="line">		&lt;td&gt;$&#123;city.key&#125;&lt;/td&gt;</span><br><span class="line">		&lt;td&gt;</span><br><span class="line">			&lt;c:forEach items=<span class="string">"$&#123;city.value&#125;"</span> var=<span class="string">"district"</span> varStatus=<span class="string">"statu2"</span>&gt;</span><br><span class="line">				$&#123;district&#125;&lt;c:if test="$&#123;!status2.last&#125;"&gt;,&lt;/c:if&gt;</span><br><span class="line">			&lt;/c:forEach&gt;</span><br><span class="line">		&lt;/td&gt;</span><br><span class="line">	&lt;/tr&gt;</span><br><span class="line">	&lt;/c:forEach&gt;</span><br><span class="line">&lt;/table&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="forTokens-标签"><a href="#forTokens-标签" class="headerlink" title="forTokens 标签"></a>forTokens 标签</h2><p><strong>功能：</strong> 可以用于迭代以特定<strong>分界符</strong>的<code>token</code>。</p>
+<h3 id="语法格式-4"><a href="#语法格式-4" class="headerlink" title="语法格式"></a>语法格式</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:forTokens items=<span class="string">"StringOfTokens"</span> delims=<span class="string">"delimiters"</span></span><br><span class="line">		[var=<span class="string">"varName"</span>] [varStatus=<span class="string">"varStatusName"</span>]</span><br><span class="line">		[begin=<span class="string">"begin"</span>] [end=<span class="string">"end"</span>] [step=<span class="string">"step"</span>]</span><br><span class="line">&gt;</span><br><span class="line">	body content</span><br><span class="line">&lt;/c:forTokens&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="属性-1"><a href="#属性-1" class="headerlink" title="属性"></a>属性</h3><table>
+<thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>描述 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>var</td>
+<td>String</td>
+<td>集合或对象内元素的迭代变量</td>
+</tr>
+<tr>
+<td>items</td>
+<td>String</td>
+<td>需要迭代的对象或集合的名称</td>
+</tr>
+<tr>
+<td>varStatus</td>
+<td>String</td>
+<td>计数状态对象，类型为<code>javax.servlet.jsp.jstl.core.LoopTagStatus</code>(同<code>forEach</code>标签的<code>varStatus</code>)</td>
+</tr>
+<tr>
+<td>begin</td>
+<td>int</td>
+<td>遍历的开始位置，值大小必须大于或等于 0 </td>
+</tr>
+<tr>
+<td>end</td>
+<td>int</td>
+<td>遍历的结束位置，值大小必须大于或等于1 </td>
+</tr>
+<tr>
+<td>step</td>
+<td>int</td>
+<td>遍历的步长，循环的步长</td>
+</tr>
+<tr>
+<td>delims</td>
+<td>String</td>
+<td>分界符 </td>
+</tr>
+</tbody>
+</table>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;c:out value=<span class="string">"省份："</span>/&gt; &lt;br&gt;</span><br><span class="line">&lt;c:forTokens var=<span class="string">"province"</span> </span><br><span class="line">		items=<span class="string">"广东省,福建省,浙江省"</span></span><br><span class="line">		delims=<span class="string">","</span></span><br><span class="line">&gt;</span><br><span class="line">	&lt;c:out value=<span class="string">"$&#123;province&#125;"</span>/&gt; &lt;br&gt;</span><br><span class="line">&lt;/c:forTokens&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>输出</strong><br><img src="" alt="forTokensPic1"></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://book.douban.com/subject/22994746/" target="_blank" rel="noopener">Servlet和JSP学习指南
+</a></p>
+<p><a href="http://www.cnblogs.com/xdp-gacl/p/3943390.html" target="_blank" rel="noopener">http://www.cnblogs.com/xdp-gacl/p/3943390.html</a></p>
 
       
     </div>
@@ -666,8 +719,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/01/JDBC-Notes/" rel="prev" title="JDBC 编程入门">
-                JDBC 编程入门 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/02/09/ServletAndJSPSummary7/" rel="prev" title="Servlet/JSP知识小结（7）Listener 监听器">
+                Servlet/JSP知识小结（7）Listener 监听器 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -817,7 +870,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用前准备"><span class="nav-number">1.</span> <span class="nav-text">使用前准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Core-标签库分类"><span class="nav-number">2.</span> <span class="nav-text">Core 标签库分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通用动作指令"><span class="nav-number">3.</span> <span class="nav-text">通用动作指令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#out-标签"><span class="nav-number">3.1.</span> <span class="nav-text">out 标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法格式："><span class="nav-number">3.1.1.</span> <span class="nav-text">语法格式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#out-标签相关属性"><span class="nav-number">3.1.2.</span> <span class="nav-text">**out 标签相关属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#set-标签"><span class="nav-number">3.2.</span> <span class="nav-text">set 标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法格式与作用"><span class="nav-number">3.2.1.</span> <span class="nav-text">语法格式与作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#set-标签的相关属性"><span class="nav-number">3.2.2.</span> <span class="nav-text">set 标签的相关属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#remove-标签"><span class="nav-number">3.3.</span> <span class="nav-text">remove 标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法格式"><span class="nav-number">3.3.1.</span> <span class="nav-text">语法格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#remove-标签属性"><span class="nav-number">3.3.2.</span> <span class="nav-text">remove 标签属性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#条件动作指令"><span class="nav-number">4.</span> <span class="nav-text">条件动作指令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#if-标签"><span class="nav-number">4.1.</span> <span class="nav-text">if 标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法格式-1"><span class="nav-number">4.1.1.</span> <span class="nav-text">语法格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#if-标签相关属性"><span class="nav-number">4.1.2.</span> <span class="nav-text">if 标签相关属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例"><span class="nav-number">4.1.3.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#choose-when-otherwise-标签"><span class="nav-number">4.2.</span> <span class="nav-text">choose, when, otherwise 标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法格式-2"><span class="nav-number">4.2.1.</span> <span class="nav-text">语法格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例-1"><span class="nav-number">4.2.2.</span> <span class="nav-text">实例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iterator-动作指令"><span class="nav-number">5.</span> <span class="nav-text">iterator 动作指令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#forEach-标签"><span class="nav-number">5.1.</span> <span class="nav-text">forEach 标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法格式-3"><span class="nav-number">5.1.1.</span> <span class="nav-text">语法格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性"><span class="nav-number">5.1.2.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例-2"><span class="nav-number">5.1.3.</span> <span class="nav-text">实例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#图片1TODO"><span class="nav-number">6.</span> <span class="nav-text">图片1TODO</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用环境"><span class="nav-number">1.</span> <span class="nav-text">使用环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Core-标签库分类"><span class="nav-number">2.</span> <span class="nav-text">Core 标签库分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#通用动作指令"><span class="nav-number">3.</span> <span class="nav-text">通用动作指令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#out-标签"><span class="nav-number">3.1.</span> <span class="nav-text">out 标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法格式："><span class="nav-number">3.1.1.</span> <span class="nav-text">语法格式：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#out-标签相关属性"><span class="nav-number">3.1.2.</span> <span class="nav-text">out 标签相关属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#set-标签"><span class="nav-number">3.2.</span> <span class="nav-text">set 标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法格式与作用"><span class="nav-number">3.2.1.</span> <span class="nav-text">语法格式与作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#set-标签的相关属性"><span class="nav-number">3.2.2.</span> <span class="nav-text">set 标签的相关属性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#remove-标签"><span class="nav-number">3.3.</span> <span class="nav-text">remove 标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法格式"><span class="nav-number">3.3.1.</span> <span class="nav-text">语法格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#remove-标签属性"><span class="nav-number">3.3.2.</span> <span class="nav-text">remove 标签属性</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#条件动作指令"><span class="nav-number">4.</span> <span class="nav-text">条件动作指令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#if-标签"><span class="nav-number">4.1.</span> <span class="nav-text">if 标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法格式-1"><span class="nav-number">4.1.1.</span> <span class="nav-text">语法格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#if-标签相关属性"><span class="nav-number">4.1.2.</span> <span class="nav-text">if 标签相关属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例"><span class="nav-number">4.1.3.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#choose-when-otherwise-标签"><span class="nav-number">4.2.</span> <span class="nav-text">choose, when, otherwise 标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法格式-2"><span class="nav-number">4.2.1.</span> <span class="nav-text">语法格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例-1"><span class="nav-number">4.2.2.</span> <span class="nav-text">实例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#iterator-动作指令"><span class="nav-number">5.</span> <span class="nav-text">iterator 动作指令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#forEach-标签"><span class="nav-number">5.1.</span> <span class="nav-text">forEach 标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法格式-3"><span class="nav-number">5.1.1.</span> <span class="nav-text">语法格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性"><span class="nav-number">5.1.2.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实例-2"><span class="nav-number">5.1.3.</span> <span class="nav-text">实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#forTokens-标签"><span class="nav-number">5.2.</span> <span class="nav-text">forTokens 标签</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法格式-4"><span class="nav-number">5.2.1.</span> <span class="nav-text">语法格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#属性-1"><span class="nav-number">5.2.2.</span> <span class="nav-text">属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例"><span class="nav-number">5.2.3.</span> <span class="nav-text">示例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>
