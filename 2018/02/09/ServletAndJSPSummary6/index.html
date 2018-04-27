@@ -94,18 +94,20 @@
 
 
 
-<meta name="description" content="Filter 工作原理Filter 开发开发 Filter 一般有两个步骤：  编写一个实现了Filter接口的 Java 类，重写 doFilter() 方法 在 web.xml 文件配置编写好的 Filter。  Filter 生命周期Filter 配置注册 Filter映射 Filter">
+<meta name="description" content="Filter 顾名思义为过滤器，无论客户端向服务端通过 URI 请求资源（JSP、Servlet、静态图片等），还是服务端响应客户端的请求，都必须经过实现了 Filter 接口的 filter 实例。 例如，在 filter 对象中通过HttpRequest.setCharacterEncoding()方法修改请求信息的编码方式。又如可以对请求的 URI 信息判别，使得请求转向其他的 JSP 页">
 <meta name="keywords" content="Java Web,Servlet&#x2F;JSP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Servlet&#x2F;JSP知识小结（6）Filter 基本知识">
+<meta property="og:title" content="Servlet&#x2F;JSP知识小结（6）Filter 过滤器">
 <meta property="og:url" content="http://linj2n.cn/2018/02/09/ServletAndJSPSummary6/index.html">
 <meta property="og:site_name" content="1 &#x2F; 0 == ∞">
-<meta property="og:description" content="Filter 工作原理Filter 开发开发 Filter 一般有两个步骤：  编写一个实现了Filter接口的 Java 类，重写 doFilter() 方法 在 web.xml 文件配置编写好的 Filter。  Filter 生命周期Filter 配置注册 Filter映射 Filter">
+<meta property="og:description" content="Filter 顾名思义为过滤器，无论客户端向服务端通过 URI 请求资源（JSP、Servlet、静态图片等），还是服务端响应客户端的请求，都必须经过实现了 Filter 接口的 filter 实例。 例如，在 filter 对象中通过HttpRequest.setCharacterEncoding()方法修改请求信息的编码方式。又如可以对请求的 URI 信息判别，使得请求转向其他的 JSP 页">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-04-26T13:00:24.000Z">
+<meta property="og:image" content="http://p5twacobv.bkt.clouddn.com/filter_01.png">
+<meta property="og:updated_time" content="2018-04-27T03:55:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Servlet&#x2F;JSP知识小结（6）Filter 基本知识">
-<meta name="twitter:description" content="Filter 工作原理Filter 开发开发 Filter 一般有两个步骤：  编写一个实现了Filter接口的 Java 类，重写 doFilter() 方法 在 web.xml 文件配置编写好的 Filter。  Filter 生命周期Filter 配置注册 Filter映射 Filter">
+<meta name="twitter:title" content="Servlet&#x2F;JSP知识小结（6）Filter 过滤器">
+<meta name="twitter:description" content="Filter 顾名思义为过滤器，无论客户端向服务端通过 URI 请求资源（JSP、Servlet、静态图片等），还是服务端响应客户端的请求，都必须经过实现了 Filter 接口的 filter 实例。 例如，在 filter 对象中通过HttpRequest.setCharacterEncoding()方法修改请求信息的编码方式。又如可以对请求的 URI 信息判别，使得请求转向其他的 JSP 页">
+<meta name="twitter:image" content="http://p5twacobv.bkt.clouddn.com/filter_01.png">
 
 
 
@@ -140,7 +142,7 @@
 
 
 
-  <title>Servlet/JSP知识小结（6）Filter 基本知识 | 1 / 0 == ∞</title>
+  <title>Servlet/JSP知识小结（6）Filter 过滤器 | 1 / 0 == ∞</title>
   
 
 
@@ -181,7 +183,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">Atzll</p>
+        <p class="site-subtitle">To learn without thinking is blindness, to think without learning is idleness .</p>
       
   </div>
 
@@ -318,7 +320,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Servlet/JSP知识小结（6）Filter 基本知识</h1>
+          <h1 class="post-title" itemprop="name headline">Servlet/JSP知识小结（6）Filter 过滤器</h1>
         
 
         <div class="post-meta">
@@ -368,12 +370,31 @@
       
 
       
-        <h1 id="Filter-工作原理"><a href="#Filter-工作原理" class="headerlink" title="Filter 工作原理"></a>Filter 工作原理</h1><h1 id="Filter-开发"><a href="#Filter-开发" class="headerlink" title="Filter 开发"></a>Filter 开发</h1><p>开发 Filter 一般有两个步骤：</p>
+        <blockquote>
+<p>Filter 顾名思义为过滤器，无论客户端向服务端通过 URI 请求资源（JSP、Servlet、静态图片等），还是服务端响应客户端的请求，都必须经过实现了 <code>Filter</code> 接口的 filter 实例。</p>
+<p>例如，在 filter 对象中通过<code>HttpRequest.setCharacterEncoding()</code>方法修改请求信息的编码方式。又如可以对请求的 URI 信息判别，使得请求转向其他的 JSP 页面，框架Struct 2 的控制器就是通过过滤器实现的。</p>
+<p>总的来说，Filter 技术使得管理 Web 资源变得十分便利。不少 Java Web 高级技术都是建立在 Filter 之上，因此了解 Filter 这一种重要技术是十分必要的。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="Filter-工作原理"><a href="#Filter-工作原理" class="headerlink" title="Filter 工作原理"></a>Filter 工作原理</h1><h2 id="Filter-所在的位置"><a href="#Filter-所在的位置" class="headerlink" title="Filter 所在的位置"></a>Filter 所在的位置</h2><p><img src="http://p5twacobv.bkt.clouddn.com/filter_01.png" alt="filter_01"><br>一个简单典型的过滤器工作所出的位置如上图所示。在浏览器地址栏中输入 page1 的 URL 回车，向服务器请求 page1 资源，经过两个过滤器 filter1、filter2。以 page1 资源分界点，可以看出过滤器的作用分别在请求资源前、请求资源后两个结点。</p>
+<h2 id="Filter-如何实现过滤"><a href="#Filter-如何实现过滤" class="headerlink" title="Filter 如何实现过滤"></a>Filter 如何实现过滤</h2><blockquote>
+<p>Filter接口中有一个doFilter方法，当我们编写好Filter，并配置对哪个web资源进行拦截后，WEB服务器每次在调用web资源的service方法之前，都会先调用一下filter的doFilter方法，因此，在该方法内编写代码可达到如下目的：</p>
+</blockquote>
+<ul>
+<li>调用目标资源之前，让一段代码执行。</li>
+<li>是否调用目标资源（即是否让用户访问web资源）。</li>
+<li>调用目标资源之后，让一段代码执行。</li>
+</ul>
+<p>web服务器在调用 <code>doFilter()</code> 方法时，会传递一个 filterChain 对象进来， filterChain 对象是filter接口中最重要的一个对 象，它也提供了一个 <code>doFilter()</code> 方法，开发人员可以根据需求决定是否调用此方法，调用该方法，则 web 服务器就会调用 web 资源的 <code>service()</code> 方法，即 Web 资源就会被访问，否则 Web 资源不会被访问。</p>
+<h1 id="Filter-开发"><a href="#Filter-开发" class="headerlink" title="Filter 开发"></a>Filter 开发</h1><p><strong>开发 Filter 一般有两个步骤：</strong></p>
 <ol>
 <li>编写一个实现了<code>Filter</code>接口的 Java 类，重写 <code>doFilter()</code> 方法</li>
 <li>在 web.xml 文件配置编写好的 <code>Filter</code>。</li>
 </ol>
-<h1 id="Filter-生命周期"><a href="#Filter-生命周期" class="headerlink" title="Filter 生命周期"></a>Filter 生命周期</h1><h1 id="Filter-配置"><a href="#Filter-配置" class="headerlink" title="Filter 配置"></a>Filter 配置</h1><h2 id="注册-Filter"><a href="#注册-Filter" class="headerlink" title="注册 Filter"></a>注册 Filter</h2><h2 id="映射-Filter"><a href="#映射-Filter" class="headerlink" title="映射 Filter"></a>映射 Filter</h2>
+<p>下面通过实现一个用于处理中文乱码的过滤器 CharacterEncodingFilter ，具体讲解如何开发一个过滤器。</p>
+<h2 id="编写-filter-类"><a href="#编写-filter-类" class="headerlink" title="编写 filter 类"></a>编写 filter 类</h2><h2 id="配置-filter"><a href="#配置-filter" class="headerlink" title="配置 filter"></a>配置 filter</h2><h1 id="Filter-生命周期"><a href="#Filter-生命周期" class="headerlink" title="Filter 生命周期"></a>Filter 生命周期</h1><h1 id="Filter-配置"><a href="#Filter-配置" class="headerlink" title="Filter 配置"></a>Filter 配置</h1><h2 id="注册-Filter"><a href="#注册-Filter" class="headerlink" title="注册 Filter"></a>注册 Filter</h2><h2 id="映射-Filter"><a href="#映射-Filter" class="headerlink" title="映射 Filter"></a>映射 Filter</h2><h1 id="Filter-常见应用"><a href="#Filter-常见应用" class="headerlink" title="Filter 常见应用"></a>Filter 常见应用</h1><h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="http://www.cnblogs.com/xdp-gacl/p/3948353.html" target="_blank" rel="noopener">http://www.cnblogs.com/xdp-gacl/p/3948353.html</a></p>
+<p><a href="https://o7planning.org/en/10395/java-servlet-filter-tutorial" target="_blank" rel="noopener">https://o7planning.org/en/10395/java-servlet-filter-tutorial</a></p>
+
       
     </div>
     
@@ -566,7 +587,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Filter-工作原理"><span class="nav-number">1.</span> <span class="nav-text">Filter 工作原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Filter-开发"><span class="nav-number">2.</span> <span class="nav-text">Filter 开发</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Filter-生命周期"><span class="nav-number">3.</span> <span class="nav-text">Filter 生命周期</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Filter-配置"><span class="nav-number">4.</span> <span class="nav-text">Filter 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#注册-Filter"><span class="nav-number">4.1.</span> <span class="nav-text">注册 Filter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#映射-Filter"><span class="nav-number">4.2.</span> <span class="nav-text">映射 Filter</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Filter-工作原理"><span class="nav-number">1.</span> <span class="nav-text">Filter 工作原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Filter-所在的位置"><span class="nav-number">1.1.</span> <span class="nav-text">Filter 所在的位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Filter-如何实现过滤"><span class="nav-number">1.2.</span> <span class="nav-text">Filter 如何实现过滤</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Filter-开发"><span class="nav-number">2.</span> <span class="nav-text">Filter 开发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#编写-filter-类"><span class="nav-number">2.1.</span> <span class="nav-text">编写 filter 类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置-filter"><span class="nav-number">2.2.</span> <span class="nav-text">配置 filter</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Filter-生命周期"><span class="nav-number">3.</span> <span class="nav-text">Filter 生命周期</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Filter-配置"><span class="nav-number">4.</span> <span class="nav-text">Filter 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#注册-Filter"><span class="nav-number">4.1.</span> <span class="nav-text">注册 Filter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#映射-Filter"><span class="nav-number">4.2.</span> <span class="nav-text">映射 Filter</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Filter-常见应用"><span class="nav-number">5.</span> <span class="nav-text">Filter 常见应用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">6.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>
