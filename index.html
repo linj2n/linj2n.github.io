@@ -298,6 +298,260 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/04/28/ServletAndJSPSummary9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linj2n">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="1 / 0 == ∞">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/28/ServletAndJSPSummary9/" itemprop="url">Servlet/JSP学习总结（9）使用Servlet+JSP+JavaBean实现一个登陆注册实例</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-28T16:13:14+08:00">
+                2018/04/28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Servlet、JSP、JavaBean </p>
+<h1 id="分层结构"><a href="#分层结构" class="headerlink" title="分层结构"></a>分层结构</h1><p>上一篇提到一个 MVC 模式有三个模块组成，分别是模型 Model、视图 View 、控制器 Controller</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/04/28/ServletAndJSPSummary8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linj2n">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="1 / 0 == ∞">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/28/ServletAndJSPSummary8/" itemprop="url">Servlet/JSP学习总结（8） MVC 框架模式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-28T16:01:26+08:00">
+                2018/04/28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>实现 MVC 模式的应用程序由三个模块组成</p>
+<ul>
+<li><strong>模型 Model：</strong> 负责数据和业务逻辑。</li>
+<li><strong>视图 View：</strong> 负责应用程序的显式</li>
+<li><strong>控制器 Controller：</strong> 负责接收用户的输入，并控制 Model 和 View 做出相应的改变</li>
+</ul>
+<h1 id="控制器-Controller"><a href="#控制器-Controller" class="headerlink" title="控制器 Controller"></a>控制器 Controller</h1><p>在 MVC 框架中，控制器 Controller 是由一个 <strong>Servlet</strong> 或者<strong>过滤器</strong>实现的，例如常用的 Web 框架 Struct 1 与 Spring MVC 在它们的 MVC 架构中使用一个 Servlet Controller， 而另一个流行的框架 Structs 2，则是使用过滤器。</p>
+<h1 id="视图-View"><a href="#视图-View" class="headerlink" title="视图 View"></a>视图 View</h1><p>视图 View 层一般由 JSP 技术实现，例如 Spring MVC 支持许多类型的视图用于不同的表示技术，其中最常用就是 JSP 技术。</p>
+<h1 id="模型-Model"><a href="#模型-Model" class="headerlink" title="模型 Model"></a>模型 Model</h1><p>模型 Model 可以由 JavaBean、 EJB、 POJO(Plain Old Java Object)实现，其中 POJO 与 JavaBean 比较流行。</p>
+<p>在 MVC 模式中的应用程序，每一个 HTTP 请求都必须被定向到控制器中，请求的 URI 告诉控制器要调用那一个 Action，Action 指的是 Web 程序能够执行的一箱操作，与 Action 相关的 Java 对象被称为 Action 对象，一个 Action 类可以服务几个不同的 Action，例如 Structs 2 和 Spring MVC ，或单个 Action ，例如 Struct 1。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/28/ServletAndJSPSummary8/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/04/26/Mysql-Notes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -317,7 +571,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/04/26/Mysql-Notes/" itemprop="url">『Mysql』学习总结</a></h1>
+                <a class="post-title-link" href="/2018/04/26/Mysql-Notes/" itemprop="url">Mysql 使用指南</a></h1>
         
 
         <div class="post-meta">
@@ -425,167 +679,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/04/01/JDBC-Notes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="linj2n">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="1 / 0 == ∞">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/01/JDBC-Notes/" itemprop="url">『JDBC 编程』学习总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-01T20:45:46+08:00">
-                2018/04/01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="什么是-JDBC"><a href="#什么是-JDBC" class="headerlink" title="什么是 JDBC"></a>什么是 JDBC</h2><p>JDBC 提供了一个灵活的框架来编写操作数据库的独立的应用程序，该程序能够运行在不同的平台上且不需修改，能够与不同的 DBMS 进行交互。</p>
-<h2 id="JDBC-相关的接口与方法"><a href="#JDBC-相关的接口与方法" class="headerlink" title="JDBC 相关的接口与方法"></a>JDBC 相关的接口与方法</h2><h3 id="JDBC-接口"><a href="#JDBC-接口" class="headerlink" title="JDBC 接口"></a>JDBC 接口</h3><h3 id="JDBC-异常"><a href="#JDBC-异常" class="headerlink" title="JDBC 异常"></a>JDBC 异常</h3><h2 id="JDBC-编程流程"><a href="#JDBC-编程流程" class="headerlink" title="JDBC 编程流程"></a>JDBC 编程流程</h2><ol>
-<li><strong>初始化驱动</strong><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class.forName(<span class="string">"xxx.xxx.xxxx.xxx"</span>);	<span class="comment">// 类名通常为jdbc的Dirver；</span></span><br><span class="line">Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>)	<span class="comment">// 注册 mysql 的驱动程序</span></span><br></pre></td></tr></table></figure></li>
-<li><strong>建立与数据库的连接</strong><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Connection conn = DriverManager.getConnection(String url,String user,String password);</span><br><span class="line">Coonnection conn = DriverManager.getConnection(<span class="string">"jdbc:mysql://127.0.0.1:3306/your-database"</span>, <span class="string">"root"</span>, <span class="string">"your-db-password"</span>);	<span class="comment">// 一个例子</span></span><br></pre></td></tr></table></figure></li>
-<li><strong>创建 <code>java.sql.Statement</code>对象</strong><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Statement statement = connection.createStatement();</span><br></pre></td></tr></table></figure></li>
-<li><strong>使用 <code>java.sql.Statement.executeQuery()</code>执行 SQL 查询语句,处理返回结果</strong><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String sql = <span class="string">"your-SQL-statement"</span>;</span><br><span class="line">ResultSet resultSet = statement.executeQuery(sql);</span><br><span class="line"><span class="keyword">while</span> (resultSet.next()) &#123;</span><br><span class="line">	<span class="comment">// do something for result</span></span><br><span class="line">&#125;			</span><br></pre></td></tr></table></figure></li>
-<li><strong>依次关闭连接</strong><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">finally</span>&#123;</span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(rs != <span class="keyword">null</span>)</span><br><span class="line">            rs.close();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(stmt != <span class="keyword">null</span>)</span><br><span class="line">            stmt.close();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(conn != <span class="keyword">null</span>)</span><br><span class="line">            conn.close();</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="keyword">catch</span>(SQLException)&#123;</span><br><span class="line">      <span class="comment">//ignore</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>示例<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//STEP 1. Import required packages</span></span><br><span class="line"><span class="keyword">import</span> java.sql.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Example</span> </span>&#123;</span><br><span class="line">   <span class="comment">// JDBC driver name and database URL</span></span><br><span class="line">   <span class="keyword">static</span> <span class="keyword">final</span> String JDBC_DRIVER = <span class="string">"com.mysql.jdbc.Driver"</span>;  </span><br><span class="line">   <span class="keyword">static</span> <span class="keyword">final</span> String DB_URL = <span class="string">"jdbc:mysql://localhost/emp"</span>;</span><br><span class="line"></span><br><span class="line">   <span class="comment">//  Database credentials</span></span><br><span class="line">   <span class="keyword">static</span> <span class="keyword">final</span> String USER = <span class="string">"root"</span>;</span><br><span class="line">   <span class="keyword">static</span> <span class="keyword">final</span> String PASS = <span class="string">"123456"</span>;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">   Connection conn = <span class="keyword">null</span>;</span><br><span class="line">   Statement stmt = <span class="keyword">null</span>;</span><br><span class="line">   <span class="keyword">try</span>&#123;</span><br><span class="line">      <span class="comment">//STEP 2: Register JDBC driver</span></span><br><span class="line">      Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>);</span><br><span class="line"></span><br><span class="line">      <span class="comment">//STEP 3: Open a connection</span></span><br><span class="line">      System.out.println(<span class="string">"Connecting to database..."</span>);</span><br><span class="line">      conn = DriverManager.getConnection(DB_URL,USER,PASS);</span><br><span class="line"></span><br><span class="line">      <span class="comment">//STEP 4: Execute a query</span></span><br><span class="line">      System.out.println(<span class="string">"Creating statement..."</span>);</span><br><span class="line">      stmt = conn.createStatement();</span><br><span class="line">      String sql;</span><br><span class="line">      sql = <span class="string">"SELECT xx, xxx, xxxx, FROM xxxx"</span>;</span><br><span class="line">      ResultSet rs = stmt.executeQuery(sql);</span><br><span class="line"></span><br><span class="line">      <span class="comment">//STEP 5: Extract data from result set</span></span><br><span class="line">      <span class="keyword">while</span>(rs.next())&#123;</span><br><span class="line">         <span class="comment">//Retrieve by column name</span></span><br><span class="line"></span><br><span class="line">         <span class="comment">//Display values</span></span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//STEP 6: Clean-up environment</span></span><br><span class="line">      rs.close();</span><br><span class="line">      stmt.close();</span><br><span class="line">      conn.close();</span><br><span class="line">   &#125;<span class="keyword">catch</span>(SQLException se)&#123;</span><br><span class="line">      <span class="comment">//Handle errors for JDBC</span></span><br><span class="line">      se.printStackTrace();</span><br><span class="line">   &#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">      <span class="comment">//Handle errors for Class.forName</span></span><br><span class="line">      e.printStackTrace();</span><br><span class="line">   &#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">      <span class="comment">//finally block used to close resources</span></span><br><span class="line">      <span class="keyword">try</span>&#123;</span><br><span class="line">         <span class="keyword">if</span>(stmt!=<span class="keyword">null</span>)</span><br><span class="line">            stmt.close();</span><br><span class="line">      &#125;<span class="keyword">catch</span>(SQLException se2)&#123;</span><br><span class="line">      &#125;<span class="comment">// nothing we can do</span></span><br><span class="line">      <span class="keyword">try</span>&#123;</span><br><span class="line">         <span class="keyword">if</span>(conn!=<span class="keyword">null</span>)</span><br><span class="line">            conn.close();</span><br><span class="line">      &#125;<span class="keyword">catch</span>(SQLException se)&#123;</span><br><span class="line">         se.printStackTrace();</span><br><span class="line">      &#125;<span class="comment">//end finally try</span></span><br><span class="line">   &#125;<span class="comment">//end try</span></span><br><span class="line">&#125;<span class="comment">//end main</span></span><br><span class="line">&#125;<span class="comment">//end FirstExample</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<h2 id="PreparedStatement"><a href="#PreparedStatement" class="headerlink" title="PreparedStatement"></a>PreparedStatement</h2><p><strong><code>java.sql.PreparedStatement</code>的优点：</strong></p>
-<ul>
-<li><code>Statement</code>需要进行字符串拼接，可读性和维护性比较差；<code>PreparedStatement</code>使用参数设置，可读性好，不易犯错。</li>
-<li><code>PreparedStatement</code>有预编译机制，性能比<code>Statement</code>更快。</li>
-<li><code>PreparedStatement</code>防止SQL注入式攻击。</li>
-<li><code>PreparedStatement</code>避免重复编写<code>SQL</code>查询语句。</li>
-</ul>
-<p><strong>示例：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.PreparedStatement;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InsertStatementTest</span> </span>&#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">final</span> String JDBC_DRIVER = <span class="string">"com.mysql.jdbc.Driver"</span>;  </span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">final</span> String DB_URL = <span class="string">"jdbc:mysql://localhost:3306/mall"</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">final</span> String USER = <span class="string">"root"</span>;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">final</span> String PASSWORD = <span class="string">"your-password"</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span> String cust_name = <span class="string">"Wascals"</span>;</span><br><span class="line">	<span class="keyword">static</span> String cust_address = <span class="string">"1 Sunny Place"</span>;</span><br><span class="line">	<span class="keyword">static</span> String cust_city = <span class="string">"Muncie"</span>;</span><br><span class="line">	<span class="keyword">static</span> String cust_state = <span class="string">"IN"</span>;</span><br><span class="line">	<span class="keyword">static</span> String cust_zip = <span class="string">"42222"</span>;</span><br><span class="line">	<span class="keyword">static</span> String cust_country = <span class="string">"USA"</span>;</span><br><span class="line">	<span class="keyword">static</span> String cust_contact = <span class="string">"Jim Jones"</span>;</span><br><span class="line">	<span class="keyword">static</span> String cust_email = <span class="string">"rabbit@wascally.com"</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Connection connection = <span class="keyword">null</span>;</span><br><span class="line">		PreparedStatement preparedStatement = <span class="keyword">null</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Class.forName(JDBC_DRIVER);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			String sql = <span class="string">"insert into customers values(null,?,?,?,?,?,?,?,?)"</span>;</span><br><span class="line">			connection = DriverManager.getConnection(DB_URL,USER,PASSWORD);</span><br><span class="line">			preparedStatement = connection.prepareStatement(sql);</span><br><span class="line">			preparedStatement.setString(<span class="number">1</span>, cust_name);</span><br><span class="line">			preparedStatement.setString(<span class="number">2</span>, cust_address);</span><br><span class="line">			preparedStatement.setString(<span class="number">3</span>, cust_city);</span><br><span class="line">			preparedStatement.setString(<span class="number">4</span>, cust_state);</span><br><span class="line">			preparedStatement.setString(<span class="number">5</span>, cust_zip);</span><br><span class="line">			preparedStatement.setString(<span class="number">6</span>, cust_country);</span><br><span class="line">			preparedStatement.setString(<span class="number">7</span>, cust_contact);</span><br><span class="line">			preparedStatement.setString(<span class="number">8</span>, cust_email);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">// 执行 preparedStatement</span></span><br><span class="line">			preparedStatement.execute();</span><br><span class="line">			</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">	      <span class="keyword">try</span>&#123;</span><br><span class="line">	          <span class="keyword">if</span>(preparedStatement!=<span class="keyword">null</span>)</span><br><span class="line">	             preparedStatement.close();</span><br><span class="line">	       &#125;<span class="keyword">catch</span>(SQLException se2)&#123;</span><br><span class="line">	    	   		se2.printStackTrace();</span><br><span class="line">	       &#125;</span><br><span class="line">	       <span class="keyword">try</span>&#123;</span><br><span class="line">	          <span class="keyword">if</span>(connection!=<span class="keyword">null</span>)</span><br><span class="line">	        	  	connection.close();</span><br><span class="line">	       &#125;<span class="keyword">catch</span>(SQLException se)&#123;</span><br><span class="line">	          se.printStackTrace();</span><br><span class="line">	       &#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="JDBC-获取自增类型字段与表的元数据"><a href="#JDBC-获取自增类型字段与表的元数据" class="headerlink" title="JDBC 获取自增类型字段与表的元数据"></a>JDBC 获取自增类型字段与表的元数据</h2><h3 id="获取自增类型字段"><a href="#获取自增类型字段" class="headerlink" title="获取自增类型字段"></a>获取自增类型字段</h3><p>若表中的字段是自增类型(<code>auto_increment</code>)，可以通过<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PreparedStatement ps = c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);</span><br></pre></td></tr></table></figure><br>返回自增字段。</p>
-<h3 id="获取数据库的元数据"><a href="#获取数据库的元数据" class="headerlink" title="获取数据库的元数据"></a>获取数据库的元数据</h3><p>数据库的元数据是指：数据库的版本号、数据库表名称、表的字段名等。通过<code>Connection.getMetaData()</code>方法返回包含元数据的<code>DatabaseMetaData</code>对象。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DatabaseMetaData dbmd = conn.getMetaData();</span><br></pre></td></tr></table></figure></p>
-<h2 id="JDBC-事务"><a href="#JDBC-事务" class="headerlink" title="JDBC 事务"></a>JDBC 事务</h2><h3 id="提交与回滚"><a href="#提交与回滚" class="headerlink" title="提交与回滚"></a>提交与回滚</h3><h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><h2 id="JDBC-批量处理"><a href="#JDBC-批量处理" class="headerlink" title="JDBC 批量处理"></a>JDBC 批量处理</h2><h3 id="Statement-批量处理"><a href="#Statement-批量处理" class="headerlink" title="Statement 批量处理"></a>Statement 批量处理</h3><h3 id="PreparedStatement-批量处理"><a href="#PreparedStatement-批量处理" class="headerlink" title="PreparedStatement 批量处理"></a>PreparedStatement 批量处理</h3><h2 id="ORM"><a href="#ORM" class="headerlink" title="ORM"></a>ORM</h2><blockquote><p>对象关系映射（<strong>O</strong>bject <strong>R</strong>elational <strong>M</strong>apping，简称ORM，或O/RM，或O/R mapping），是一种程序设计技术，用于实现面向对象编程语言里不同类型系统的数据之间的转换。</p>
-</blockquote>
-<p>相比普通的JDBC编程，ORM有以下优点</p>
-<ul>
-<li>使用业务代码访问对象而不是数据库中的表</li>
-<li>从面向对象逻辑中隐藏 SQL 查询的细节</li>
-<li>实体是基于业务的概念而不是数据库的结构</li>
-</ul>
-<p><strong>ORM 一般包含四个实体</strong></p>
-<ul>
-<li>一个 API 来在持久类的对象上实现基本的 CRUD 操作</li>
-<li>一个语言或 API 来指定引用类和属性的查询</li>
-<li>一个可配置的服务用来指定映射元数据</li>
-<li>一个技术和事务对象交互来执行 dirty checking, lazy association fetching 和其它优化的功能</li>
-</ul>
-<p><strong>Java 相关的 ORM 框架</strong></p>
-<ul>
-<li>Enterprise JavaBean(EJB)</li>
-<li>Data Access Object (DAO)</li>
-<li>Hibernate</li>
-<li>myBaits</li>
-</ul>
-<h2 id="DAO"><a href="#DAO" class="headerlink" title="DAO"></a>DAO</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/02/09/ServletAndJSPSummary6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -605,7 +698,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/09/ServletAndJSPSummary6/" itemprop="url">Servlet/JSP知识小结（6）Filter 过滤器</a></h1>
+                <a class="post-title-link" href="/2018/02/09/ServletAndJSPSummary6/" itemprop="url">Servlet/JSP学习总结（6）Filter 过滤器</a></h1>
         
 
         <div class="post-meta">
@@ -733,7 +826,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/09/ServletAndJSPSummary7/" itemprop="url">Servlet/JSP知识小结（7）Listener 监听器</a></h1>
+                <a class="post-title-link" href="/2018/02/09/ServletAndJSPSummary7/" itemprop="url">Servlet/JSP学习总结（7）Listener 监听器</a></h1>
         
 
         <div class="post-meta">
@@ -852,7 +945,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/08/ServletAndJSPSummary5/" itemprop="url">Servlet/JSP知识小结（5） JSTL 库核心标签</a></h1>
+                <a class="post-title-link" href="/2018/02/08/ServletAndJSPSummary5/" itemprop="url">Servlet/JSP学习总结（5） JSTL 库核心标签</a></h1>
         
 
         <div class="post-meta">
@@ -976,7 +1069,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/02/07/ServletAndJSPSummary4/" itemprop="url">Servlet/JSP 知识小结（4） EL表达式</a></h1>
+                <a class="post-title-link" href="/2018/02/07/ServletAndJSPSummary4/" itemprop="url">Servlet/JSP学习总结（4）EL表达式</a></h1>
         
 
         <div class="post-meta">
@@ -1037,6 +1130,130 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/02/07/ServletAndJSPSummary4/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/02/01/JDBC-Notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linj2n">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="1 / 0 == ∞">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/01/JDBC-Notes/" itemprop="url">JDBC 使用指南</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-01T20:45:46+08:00">
+                2018/02/01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>JDBC 提供了一个灵活的框架来编写操作数据库的独立的应用程序，该程序能够运行在不同的平台上且不需修改，能够与不同的 DBMS 进行交互。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/02/01/JDBC-Notes/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1423,257 +1640,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/01/22/SortingAlgorithmsSummary/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="linj2n">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="1 / 0 == ∞">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/22/SortingAlgorithmsSummary/" itemprop="url">排序算法小结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-22T12:41:28+08:00">
-                2018/01/22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>排序在计算机技术中最基础的算法，了解这些经典算法的基本原理，对于每个程序员是再基本不过的要求。最近花了一些时间又复习了几大排序算法，这里做一下总结，方便以后的回顾。总结分类介绍了几大排序的算法思想、使用场景以及相关特点，最后提供排序算法的Java实现。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/22/SortingAlgorithmsSummary/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/01/17/242-Valid-Anagram/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="linj2n">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="1 / 0 == ∞">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/17/242-Valid-Anagram/" itemprop="url">[Leetcode] 242.Valid Anagram</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-17T11:00:25+08:00">
-                2018/01/17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="242-Valid-Anagram"><a href="#242-Valid-Anagram" class="headerlink" title="242.Valid Anagram"></a>242.Valid Anagram</h1><h3 id="From：242-Valid-Anagram"><a href="#From：242-Valid-Anagram" class="headerlink" title="From：242.Valid Anagram"></a>From：<a href="https://leetcode.com/problems/valid-anagram/description/" target="_blank" rel="noopener">242.Valid Anagram</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given two strings s and t, write a function to determine if t is an anagram of s.</p>
-<p>For example,<br>s = <code>&quot;anagram&quot;</code>, t = <code>&quot;nagaram&quot;</code>, return true.<br>s = <code>&quot;rat&quot;</code>, t =<code>&quot;car&quot;</code>, return false.</p>
-<p><strong>Note:</strong><br>You may assume the string contains only lowercase alphabets.</p>
-<p><strong>Follow up:</strong><br>What if the inputs contain unicode characters? How would you adapt your solution to such case?</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/17/242-Valid-Anagram/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1724,7 +1690,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>

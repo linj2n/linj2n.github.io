@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="什么是 JDBCJDBC 提供了一个灵活的框架来编写操作数据库的独立的应用程序，该程序能够运行在不同的平台上且不需修改，能够与不同的 DBMS 进行交互。 JDBC 相关的接口与方法JDBC 接口JDBC 异常JDBC 编程流程 初始化驱动12Class.forName(&quot;xxx.xxx.xxxx.xxx&quot;);	// 类名通常为jdbc的Dirver；Class.forName(&quot;com.mysq">
+<meta name="description" content="JDBC 提供了一个灵活的框架来编写操作数据库的独立的应用程序，该程序能够运行在不同的平台上且不需修改，能够与不同的 DBMS 进行交互。">
 <meta name="keywords" content="JDBC,Java Web">
 <meta property="og:type" content="article">
-<meta property="og:title" content="『JDBC 编程』学习总结">
-<meta property="og:url" content="http://linj2n.cn/2018/04/01/JDBC-Notes/index.html">
+<meta property="og:title" content="JDBC 使用指南">
+<meta property="og:url" content="http://linj2n.cn/2018/02/01/JDBC-Notes/index.html">
 <meta property="og:site_name" content="1 &#x2F; 0 == ∞">
-<meta property="og:description" content="什么是 JDBCJDBC 提供了一个灵活的框架来编写操作数据库的独立的应用程序，该程序能够运行在不同的平台上且不需修改，能够与不同的 DBMS 进行交互。 JDBC 相关的接口与方法JDBC 接口JDBC 异常JDBC 编程流程 初始化驱动12Class.forName(&quot;xxx.xxx.xxxx.xxx&quot;);	// 类名通常为jdbc的Dirver；Class.forName(&quot;com.mysq">
+<meta property="og:description" content="JDBC 提供了一个灵活的框架来编写操作数据库的独立的应用程序，该程序能够运行在不同的平台上且不需修改，能够与不同的 DBMS 进行交互。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-04-26T07:46:35.000Z">
+<meta property="og:updated_time" content="2018-04-28T06:55:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="『JDBC 编程』学习总结">
-<meta name="twitter:description" content="什么是 JDBCJDBC 提供了一个灵活的框架来编写操作数据库的独立的应用程序，该程序能够运行在不同的平台上且不需修改，能够与不同的 DBMS 进行交互。 JDBC 相关的接口与方法JDBC 接口JDBC 异常JDBC 编程流程 初始化驱动12Class.forName(&quot;xxx.xxx.xxxx.xxx&quot;);	// 类名通常为jdbc的Dirver；Class.forName(&quot;com.mysq">
+<meta name="twitter:title" content="JDBC 使用指南">
+<meta name="twitter:description" content="JDBC 提供了一个灵活的框架来编写操作数据库的独立的应用程序，该程序能够运行在不同的平台上且不需修改，能够与不同的 DBMS 进行交互。">
 
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://linj2n.cn/2018/04/01/JDBC-Notes/"/>
+  <link rel="canonical" href="http://linj2n.cn/2018/02/01/JDBC-Notes/"/>
 
 
 
 
 
-  <title>『JDBC 编程』学习总结 | 1 / 0 == ∞</title>
+  <title>JDBC 使用指南 | 1 / 0 == ∞</title>
   
 
 
@@ -301,7 +301,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/04/01/JDBC-Notes/">
+    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/02/01/JDBC-Notes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="linj2n">
@@ -318,7 +318,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">『JDBC 编程』学习总结</h1>
+          <h1 class="post-title" itemprop="name headline">JDBC 使用指南</h1>
         
 
         <div class="post-meta">
@@ -330,8 +330,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-01T20:45:46+08:00">
-                2018/04/01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-01T20:45:46+08:00">
+                2018/02/01
               </time>
             
 
@@ -368,8 +368,9 @@
       
 
       
-        <h2 id="什么是-JDBC"><a href="#什么是-JDBC" class="headerlink" title="什么是 JDBC"></a>什么是 JDBC</h2><p>JDBC 提供了一个灵活的框架来编写操作数据库的独立的应用程序，该程序能够运行在不同的平台上且不需修改，能够与不同的 DBMS 进行交互。</p>
-<h2 id="JDBC-相关的接口与方法"><a href="#JDBC-相关的接口与方法" class="headerlink" title="JDBC 相关的接口与方法"></a>JDBC 相关的接口与方法</h2><h3 id="JDBC-接口"><a href="#JDBC-接口" class="headerlink" title="JDBC 接口"></a>JDBC 接口</h3><h3 id="JDBC-异常"><a href="#JDBC-异常" class="headerlink" title="JDBC 异常"></a>JDBC 异常</h3><h2 id="JDBC-编程流程"><a href="#JDBC-编程流程" class="headerlink" title="JDBC 编程流程"></a>JDBC 编程流程</h2><ol>
+        <p>JDBC 提供了一个灵活的框架来编写操作数据库的独立的应用程序，该程序能够运行在不同的平台上且不需修改，能够与不同的 DBMS 进行交互。</p>
+<a id="more"></a>
+<h1 id="JDBC-编程流程"><a href="#JDBC-编程流程" class="headerlink" title="JDBC 编程流程"></a>JDBC 编程流程</h1><ol>
 <li><strong>初始化驱动</strong><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class.forName(<span class="string">"xxx.xxx.xxxx.xxx"</span>);	<span class="comment">// 类名通常为jdbc的Dirver；</span></span><br><span class="line">Class.forName(<span class="string">"com.mysql.jdbc.Driver"</span>)	<span class="comment">// 注册 mysql 的驱动程序</span></span><br></pre></td></tr></table></figure></li>
 <li><strong>建立与数据库的连接</strong><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Connection conn = DriverManager.getConnection(String url,String user,String password);</span><br><span class="line">Coonnection conn = DriverManager.getConnection(<span class="string">"jdbc:mysql://127.0.0.1:3306/your-database"</span>, <span class="string">"root"</span>, <span class="string">"your-db-password"</span>);	<span class="comment">// 一个例子</span></span><br></pre></td></tr></table></figure></li>
 <li><strong>创建 <code>java.sql.Statement</code>对象</strong><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Statement statement = connection.createStatement();</span><br></pre></td></tr></table></figure></li>
@@ -386,9 +387,9 @@
 </ul>
 <p><strong>示例：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.DriverManager;</span><br><span class="line"><span class="keyword">import</span> java.sql.PreparedStatement;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InsertStatementTest</span> </span>&#123;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">final</span> String JDBC_DRIVER = <span class="string">"com.mysql.jdbc.Driver"</span>;  </span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">final</span> String DB_URL = <span class="string">"jdbc:mysql://localhost:3306/mall"</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">final</span> String USER = <span class="string">"root"</span>;</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">final</span> String PASSWORD = <span class="string">"your-password"</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">static</span> String cust_name = <span class="string">"Wascals"</span>;</span><br><span class="line">	<span class="keyword">static</span> String cust_address = <span class="string">"1 Sunny Place"</span>;</span><br><span class="line">	<span class="keyword">static</span> String cust_city = <span class="string">"Muncie"</span>;</span><br><span class="line">	<span class="keyword">static</span> String cust_state = <span class="string">"IN"</span>;</span><br><span class="line">	<span class="keyword">static</span> String cust_zip = <span class="string">"42222"</span>;</span><br><span class="line">	<span class="keyword">static</span> String cust_country = <span class="string">"USA"</span>;</span><br><span class="line">	<span class="keyword">static</span> String cust_contact = <span class="string">"Jim Jones"</span>;</span><br><span class="line">	<span class="keyword">static</span> String cust_email = <span class="string">"rabbit@wascally.com"</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Connection connection = <span class="keyword">null</span>;</span><br><span class="line">		PreparedStatement preparedStatement = <span class="keyword">null</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			Class.forName(JDBC_DRIVER);</span><br><span class="line">		&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">			String sql = <span class="string">"insert into customers values(null,?,?,?,?,?,?,?,?)"</span>;</span><br><span class="line">			connection = DriverManager.getConnection(DB_URL,USER,PASSWORD);</span><br><span class="line">			preparedStatement = connection.prepareStatement(sql);</span><br><span class="line">			preparedStatement.setString(<span class="number">1</span>, cust_name);</span><br><span class="line">			preparedStatement.setString(<span class="number">2</span>, cust_address);</span><br><span class="line">			preparedStatement.setString(<span class="number">3</span>, cust_city);</span><br><span class="line">			preparedStatement.setString(<span class="number">4</span>, cust_state);</span><br><span class="line">			preparedStatement.setString(<span class="number">5</span>, cust_zip);</span><br><span class="line">			preparedStatement.setString(<span class="number">6</span>, cust_country);</span><br><span class="line">			preparedStatement.setString(<span class="number">7</span>, cust_contact);</span><br><span class="line">			preparedStatement.setString(<span class="number">8</span>, cust_email);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">// 执行 preparedStatement</span></span><br><span class="line">			preparedStatement.execute();</span><br><span class="line">			</span><br><span class="line">		&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">			e.printStackTrace();</span><br><span class="line">		&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">	      <span class="keyword">try</span>&#123;</span><br><span class="line">	          <span class="keyword">if</span>(preparedStatement!=<span class="keyword">null</span>)</span><br><span class="line">	             preparedStatement.close();</span><br><span class="line">	       &#125;<span class="keyword">catch</span>(SQLException se2)&#123;</span><br><span class="line">	    	   		se2.printStackTrace();</span><br><span class="line">	       &#125;</span><br><span class="line">	       <span class="keyword">try</span>&#123;</span><br><span class="line">	          <span class="keyword">if</span>(connection!=<span class="keyword">null</span>)</span><br><span class="line">	        	  	connection.close();</span><br><span class="line">	       &#125;<span class="keyword">catch</span>(SQLException se)&#123;</span><br><span class="line">	          se.printStackTrace();</span><br><span class="line">	       &#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="JDBC-获取自增类型字段与表的元数据"><a href="#JDBC-获取自增类型字段与表的元数据" class="headerlink" title="JDBC 获取自增类型字段与表的元数据"></a>JDBC 获取自增类型字段与表的元数据</h2><h3 id="获取自增类型字段"><a href="#获取自增类型字段" class="headerlink" title="获取自增类型字段"></a>获取自增类型字段</h3><p>若表中的字段是自增类型(<code>auto_increment</code>)，可以通过<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PreparedStatement ps = c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);</span><br></pre></td></tr></table></figure><br>返回自增字段。</p>
-<h3 id="获取数据库的元数据"><a href="#获取数据库的元数据" class="headerlink" title="获取数据库的元数据"></a>获取数据库的元数据</h3><p>数据库的元数据是指：数据库的版本号、数据库表名称、表的字段名等。通过<code>Connection.getMetaData()</code>方法返回包含元数据的<code>DatabaseMetaData</code>对象。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DatabaseMetaData dbmd = conn.getMetaData();</span><br></pre></td></tr></table></figure></p>
-<h2 id="JDBC-事务"><a href="#JDBC-事务" class="headerlink" title="JDBC 事务"></a>JDBC 事务</h2><h3 id="提交与回滚"><a href="#提交与回滚" class="headerlink" title="提交与回滚"></a>提交与回滚</h3><h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><h2 id="JDBC-批量处理"><a href="#JDBC-批量处理" class="headerlink" title="JDBC 批量处理"></a>JDBC 批量处理</h2><h3 id="Statement-批量处理"><a href="#Statement-批量处理" class="headerlink" title="Statement 批量处理"></a>Statement 批量处理</h3><h3 id="PreparedStatement-批量处理"><a href="#PreparedStatement-批量处理" class="headerlink" title="PreparedStatement 批量处理"></a>PreparedStatement 批量处理</h3><h2 id="ORM"><a href="#ORM" class="headerlink" title="ORM"></a>ORM</h2><blockquote><p>对象关系映射（<strong>O</strong>bject <strong>R</strong>elational <strong>M</strong>apping，简称ORM，或O/RM，或O/R mapping），是一种程序设计技术，用于实现面向对象编程语言里不同类型系统的数据之间的转换。</p>
+<h1 id="JDBC-获取自增类型字段与表的元数据"><a href="#JDBC-获取自增类型字段与表的元数据" class="headerlink" title="JDBC 获取自增类型字段与表的元数据"></a>JDBC 获取自增类型字段与表的元数据</h1><h2 id="获取自增类型字段"><a href="#获取自增类型字段" class="headerlink" title="获取自增类型字段"></a>获取自增类型字段</h2><p>若表中的字段是自增类型(<code>auto_increment</code>)，可以通过<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PreparedStatement ps = c.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);</span><br></pre></td></tr></table></figure><br>返回自增字段。</p>
+<h2 id="获取数据库的元数据"><a href="#获取数据库的元数据" class="headerlink" title="获取数据库的元数据"></a>获取数据库的元数据</h2><p>数据库的元数据是指：数据库的版本号、数据库表名称、表的字段名等。通过<code>Connection.getMetaData()</code>方法返回包含元数据的<code>DatabaseMetaData</code>对象。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DatabaseMetaData dbmd = conn.getMetaData();</span><br></pre></td></tr></table></figure></p>
+<h2 id="ORM"><a href="#ORM" class="headerlink" title="ORM"></a>ORM</h2><blockquote><p>对象关系映射（<strong>O</strong>bject <strong>R</strong>elational <strong>M</strong>apping，简称ORM，或O/RM，或O/R mapping），是一种程序设计技术，用于实现面向对象编程语言里不同类型系统的数据之间的转换。</p>
 </blockquote>
 <p>相比普通的JDBC编程，ORM有以下优点</p>
 <ul>
@@ -410,7 +411,7 @@
 <li>Hibernate</li>
 <li>myBaits</li>
 </ul>
-<h2 id="DAO"><a href="#DAO" class="headerlink" title="DAO"></a>DAO</h2>
+
       
     </div>
     
@@ -442,8 +443,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/09/ServletAndJSPSummary6/" rel="next" title="Servlet/JSP知识小结（6）Filter 过滤器">
-                <i class="fa fa-chevron-left"></i> Servlet/JSP知识小结（6）Filter 过滤器
+              <a href="/2018/01/28/NoteForHTML/" rel="next" title="HTML 知识小结">
+                <i class="fa fa-chevron-left"></i> HTML 知识小结
               </a>
             
           </div>
@@ -452,8 +453,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/26/Mysql-Notes/" rel="prev" title="『Mysql』学习总结">
-                『Mysql』学习总结 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/02/07/ServletAndJSPSummary4/" rel="prev" title="Servlet/JSP学习总结（4）EL表达式">
+                Servlet/JSP学习总结（4）EL表达式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -531,7 +532,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -603,7 +604,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是-JDBC"><span class="nav-number">1.</span> <span class="nav-text">什么是 JDBC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDBC-相关的接口与方法"><span class="nav-number">2.</span> <span class="nav-text">JDBC 相关的接口与方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JDBC-接口"><span class="nav-number">2.1.</span> <span class="nav-text">JDBC 接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JDBC-异常"><span class="nav-number">2.2.</span> <span class="nav-text">JDBC 异常</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDBC-编程流程"><span class="nav-number">3.</span> <span class="nav-text">JDBC 编程流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PreparedStatement"><span class="nav-number">4.</span> <span class="nav-text">PreparedStatement</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDBC-获取自增类型字段与表的元数据"><span class="nav-number">5.</span> <span class="nav-text">JDBC 获取自增类型字段与表的元数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取自增类型字段"><span class="nav-number">5.1.</span> <span class="nav-text">获取自增类型字段</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取数据库的元数据"><span class="nav-number">5.2.</span> <span class="nav-text">获取数据库的元数据</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDBC-事务"><span class="nav-number">6.</span> <span class="nav-text">JDBC 事务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#提交与回滚"><span class="nav-number">6.1.</span> <span class="nav-text">提交与回滚</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例"><span class="nav-number">6.2.</span> <span class="nav-text">示例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDBC-批量处理"><span class="nav-number">7.</span> <span class="nav-text">JDBC 批量处理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Statement-批量处理"><span class="nav-number">7.1.</span> <span class="nav-text">Statement 批量处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PreparedStatement-批量处理"><span class="nav-number">7.2.</span> <span class="nav-text">PreparedStatement 批量处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ORM"><span class="nav-number">8.</span> <span class="nav-text">ORM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DAO"><span class="nav-number">9.</span> <span class="nav-text">DAO</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JDBC-编程流程"><span class="nav-number">1.</span> <span class="nav-text">JDBC 编程流程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PreparedStatement"><span class="nav-number">1.1.</span> <span class="nav-text">PreparedStatement</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JDBC-获取自增类型字段与表的元数据"><span class="nav-number">2.</span> <span class="nav-text">JDBC 获取自增类型字段与表的元数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取自增类型字段"><span class="nav-number">2.1.</span> <span class="nav-text">获取自增类型字段</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取数据库的元数据"><span class="nav-number">2.2.</span> <span class="nav-text">获取数据库的元数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ORM"><span class="nav-number">2.3.</span> <span class="nav-text">ORM</span></a></li></ol></li></ol></div>
             
 
           </div>

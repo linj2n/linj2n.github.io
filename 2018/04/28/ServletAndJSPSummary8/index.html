@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java Web,Servlet/JSP," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="实现 MVC 模式的应用程序由三个模块组成  模型 Model： 负责数据和业务逻辑。 视图 View： 负责应用程序的显式 控制器 Controller： 负责接收用户的输入，并控制 Model 和 View 做出相应的改变  控制器 Controller在 MVC 框架中，控制器 Controller 是由一个 Servlet 或者过滤器实现的，例如常用的 Web 框架 Struct 1 与">
+<meta name="keywords" content="Java Web,Servlet&#x2F;JSP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Servlet&#x2F;JSP学习总结（8） MVC 框架模式">
+<meta property="og:url" content="http://linj2n.cn/2018/04/28/ServletAndJSPSummary8/index.html">
+<meta property="og:site_name" content="1 &#x2F; 0 == ∞">
+<meta property="og:description" content="实现 MVC 模式的应用程序由三个模块组成  模型 Model： 负责数据和业务逻辑。 视图 View： 负责应用程序的显式 控制器 Controller： 负责接收用户的输入，并控制 Model 和 View 做出相应的改变  控制器 Controller在 MVC 框架中，控制器 Controller 是由一个 Servlet 或者过滤器实现的，例如常用的 Web 框架 Struct 1 与">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-04-28T08:52:09.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Servlet&#x2F;JSP学习总结（8） MVC 框架模式">
+<meta name="twitter:description" content="实现 MVC 模式的应用程序由三个模块组成  模型 Model： 负责数据和业务逻辑。 视图 View： 负责应用程序的显式 控制器 Controller： 负责接收用户的输入，并控制 Model 和 View 做出相应的改变  控制器 Controller在 MVC 框架中，控制器 Controller 是由一个 Servlet 或者过滤器实现的，例如常用的 Web 框架 Struct 1 与">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: 'K1Q1DQ07MZ',
+      apiKey: '',
+      indexName: 'linj2nBlog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://linj2n.cn/2018/04/28/ServletAndJSPSummary8/"/>
+
+
+
+
+
+  <title>Servlet/JSP学习总结（8） MVC 框架模式 | 1 / 0 == ∞</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">1 / 0 == ∞</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">To learn without thinking is blindness, to think without learning is idleness .</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/04/28/ServletAndJSPSummary8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linj2n">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="1 / 0 == ∞">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Servlet/JSP学习总结（8） MVC 框架模式</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-28T16:01:26+08:00">
+                2018/04/28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>实现 MVC 模式的应用程序由三个模块组成</p>
+<ul>
+<li><strong>模型 Model：</strong> 负责数据和业务逻辑。</li>
+<li><strong>视图 View：</strong> 负责应用程序的显式</li>
+<li><strong>控制器 Controller：</strong> 负责接收用户的输入，并控制 Model 和 View 做出相应的改变</li>
+</ul>
+<h1 id="控制器-Controller"><a href="#控制器-Controller" class="headerlink" title="控制器 Controller"></a>控制器 Controller</h1><p>在 MVC 框架中，控制器 Controller 是由一个 <strong>Servlet</strong> 或者<strong>过滤器</strong>实现的，例如常用的 Web 框架 Struct 1 与 Spring MVC 在它们的 MVC 架构中使用一个 Servlet Controller， 而另一个流行的框架 Structs 2，则是使用过滤器。</p>
+<h1 id="视图-View"><a href="#视图-View" class="headerlink" title="视图 View"></a>视图 View</h1><p>视图 View 层一般由 JSP 技术实现，例如 Spring MVC 支持许多类型的视图用于不同的表示技术，其中最常用就是 JSP 技术。</p>
+<h1 id="模型-Model"><a href="#模型-Model" class="headerlink" title="模型 Model"></a>模型 Model</h1><p>模型 Model 可以由 JavaBean、 EJB、 POJO(Plain Old Java Object)实现，其中 POJO 与 JavaBean 比较流行。</p>
+<p>在 MVC 模式中的应用程序，每一个 HTTP 请求都必须被定向到控制器中，请求的 URI 告诉控制器要调用那一个 Action，Action 指的是 Web 程序能够执行的一箱操作，与 Action 相关的 Java 对象被称为 Action 对象，一个 Action 类可以服务几个不同的 Action，例如 Structs 2 和 Spring MVC ，或单个 Action ，例如 Struct 1。</p>
+<a id="more"></a>
+<p>举个例子，往数据库中添加一项产品通常需要两个 Action ：</p>
+<ol>
+<li>显示一个 Add Product 表单，供用户输入产品信息。</li>
+<li>在数据中保存产品信息。</li>
+</ol>
+<p>在上面的例子中，我们用 URI 告诉控制器要调用哪一项 Action，可以使用像下面的 URI<br><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//domain/appName/product_input</span></span><br></pre></td></tr></table></figure><br>而保存产品的信息可以使用下面的 URI<br><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="comment">//domain/appName/product_save</span></span><br></pre></td></tr></table></figure><br>控制器会检查 URI 决定调用哪一项 Action ，还会将模型对象保存在一个视图 View 可以访问的对象，通常被称为 VO (Value-Object)。然后控制器使用一个 RequestDIspatcher 跳转到一个 View ( JSP 页面）。 JSP 页面使用 EL 和 JSTL 显示其值。</p>
+<p>MVC 模式使得<strong>创建和操作数据</strong>的代码与<strong>表达数据</strong>的代码分离。</p>
+<p>关键在于使用 RequestDispatcher</p>
+<p>Servlet 处理最初的请求，查找数据，并将结果存储在 bean 中，然后请求转发到 JSP 页面来提交最后的结果，JSP页面使用 bean。</p>
+<p>Servlet 业务逻辑和数据处理，创建 bean 来表示相应的结果，然后确定哪个 JSP 页面适合表达这些特定的结果，并将请求转发到相应的页面。</p>
+<h1 id="使用-RequestDispatcher-实现-MVC"><a href="#使用-RequestDispatcher-实现-MVC" class="headerlink" title="使用 RequestDispatcher 实现 MVC"></a>使用 RequestDispatcher 实现 MVC</h1><h2 id="Step1：定义-JavaBean-来表示数据"><a href="#Step1：定义-JavaBean-来表示数据" class="headerlink" title="Step1：定义 JavaBean 来表示数据"></a>Step1：定义 JavaBean 来表示数据</h2><p>JavaBean 是 Java 中一种特殊的类。符合以下规范的类称为 JavaBean：</p>
+<ol>
+<li>具有一个 <code>public</code> 的无参构造器。</li>
+<li>可序列化，实现<code>java.io.Serializable</code>接口。</li>
+<li>每个属性都是<code>private</code>的，都有相对应的<code>setter()</code>和<code>getter()</code>方法，JavaBean 的使用者只能通过这两个方法访问属性。</li>
+</ol>
+<p>在 Servlet/JSP 中使用的 JavaBean 有两种，一种是表单 FormBean，用于读取请求中的参数， 另外一种主要供数据库、视图 View 使用的 Bean。</p>
+<h3 id="映射HTML表单的FormBean"><a href="#映射HTML表单的FormBean" class="headerlink" title="映射HTML表单的FormBean"></a>映射HTML表单的FormBean</h3><p>Form 类被映射到一个 HTML 表单，它是 HTML 表单在服务器中的表示法，Form 对象有主要用途是保存用户的输入供服务端处理，例如当用户的输入经过验证不符合要求时，原始表单会读取 Form 类重新显示，即做自动填充。</p>
+<h3 id="映射数据库记录的DAO"><a href="#映射数据库记录的DAO" class="headerlink" title="映射数据库记录的DAO"></a>映射数据库记录的DAO</h3><p>DAO 全称 Data Access Object ，顾名思义是数据访问对象，是一种访问数据库中的数据的设计模式。使用这种模式，需要为持久化的每一种类型对象都编写一个类，通常类名以 DAO 结尾。</p>
+<h2 id="Step2：使用-servlet-处理请求"><a href="#Step2：使用-servlet-处理请求" class="headerlink" title="Step2：使用 servlet 处理请求"></a>Step2：使用 servlet 处理请求</h2><p>在定义 JavaBean 之后，接下来就是编写 servlet 读取请求信息，这里回顾一下 servlet 读取请求信息的方式。</p>
+<h3 id="原始的方法"><a href="#原始的方法" class="headerlink" title="原始的方法"></a>原始的方法</h3><p>最原始的方法是在 servlet 中调用<code>HttpRequest.getParameter()、HttpRequest.getParameterValues</code>等方法，但这些方法返回值类型均为<code>String</code>，需要类型转换，这就导致在<code>servlet</code>中要编写大量的类型转换代码、转换异常捕获，例如，如果你需要获得一个<code>double</code>类型的值，则必须将<code>getParameter</code>返回的值传递给<code>Integer.parseInt</code>，并且将相应的代码放入<code>try catch</code>块，检查<code>NumberFormatException</code>异常。如果要读取很多的参数，则需要不断的编写类似代码，导致过程十分冗长。</p>
+<h2 id="Step3：填写-Bean"><a href="#Step3：填写-Bean" class="headerlink" title="Step3：填写 Bean"></a>Step3：填写 Bean</h2><p>在 MVC 框架中，servlet 读取请求中的信息一般使用一个表单<code>Form</code> Bean， 读取完来自请求的表单信息后，根据表单信息查询数据库、业务处理，得到的处理后的数据作为一个 Bean 对象。</p>
+<h2 id="Step4：结果存储"><a href="#Step4：结果存储" class="headerlink" title="Step4：结果存储"></a>Step4：结果存储</h2><p>到目前为止，我们已经读取了请求中的表单信息，读取的数据进过业务处理，并以这些数据创建初始化了一个 Bean 对象，可能还会将这些数据写入数据库。现在我们要将这些 Bean 存储到 JSP 能够访问的地方。</p>
+<p>servlet 能够在三个位置存储 JSP 页面所需要的数据，分别是<code>HttpServletRequest</code>、<code>HttpSession</code>、<code>ServletContext</code>，这些存储位置对应着 JSP 技术(useBean、EL、JSTL)中的三个<code>scope</code>属性<code>request</code>、<code>session</code>、<code>application</code>，在JSP中一般有两种方式读取这些数据，一种是使用<code>useBean</code>动作元素，另外一种是使用 EL 表达式。前者在实际开发中很少用了，因此我们只介绍 EL 表达式读取数据。</p>
+<h3 id="1-存储在当前请求"><a href="#1-存储在当前请求" class="headerlink" title="(1)  存储在当前请求"></a>(1)  存储在当前请求</h3><p>servlet 依照下面的方式创建和存储数据。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ValueObject value = <span class="keyword">new</span> ValueObject(...);</span><br><span class="line">requset.setAttribute(<span class="string">"key"</span>,value);</span><br></pre></td></tr></table></figure></p>
+<p>第一种，使用 <code>useBean</code>动作元素，现在已经很少用了<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;jsp:useBean id=<span class="string">"key"</span> type=<span class="string">"somePackage.ValueObject"</span> scope=<span class="string">"request"</span>/&gt;</span><br></pre></td></tr></table></figure></p>
+<p>第二种，使用 EL 表达式<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ &#123;requestScope.key.someAtrributes &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-存储在当前请求以及同一客户的后续请求"><a href="#2-存储在当前请求以及同一客户的后续请求" class="headerlink" title="(2)  存储在当前请求以及同一客户的后续请求"></a>(2)  存储在当前请求以及同一客户的后续请求</h3><p>servlet 依照下面的方式创建和存储数据。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ValueObject value = <span class="keyword">new</span> ValueObject(...);</span><br><span class="line">HttpSession session = request.getSession();</span><br><span class="line">session.setAttribute(<span class="string">"key"</span>,value);</span><br></pre></td></tr></table></figure></p>
+<p><strong>JSP 中使用 EL 表达式访问数据。</strong><br><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;sessionScope.key.someAttributes&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-存储在当前请求以及任意客户的后续请求中"><a href="#3-存储在当前请求以及任意客户的后续请求中" class="headerlink" title="(3)  存储在当前请求以及任意客户的后续请求中"></a>(3)  存储在当前请求以及任意客户的后续请求中</h3><p>servlet 依照下面的方式创建和存储数据。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ValueObject value = <span class="keyword">new</span> ValueObject(...);</span><br><span class="line">request.getServletContext().setAttribute(<span class="string">"key"</span>,value);</span><br></pre></td></tr></table></figure></p>
+<p><strong>JSP 中使用 EL 表达式访问数据。</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123; applicationScope.key.someAttributes &#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Step5-转发请求到-JSP-页面"><a href="#Step5-转发请求到-JSP-页面" class="headerlink" title="Step5: 转发请求到 JSP 页面"></a>Step5: 转发请求到 JSP 页面</h2><p>转发请求使用<code>RequestDispatcher.forward()</code>方法。</p>
+<p>首先调用<code>HttpServletRequest.getRequestDispatcher()</code>，传入一个定位具体 JSP 页面的<code>address</code>参数，返回一个<code>RequestDispatcher</code>对象。</p>
+<p>然后调用该对象的<code>forward()</code>方法，<code>forward</code>接受两个参数，<code>HttpServletRequest</code>和<code>HttpServletResponse</code>。下面给出一个示例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">RequestDispatcher dispatcher = request.getRequestDispatcher(<span class="string">"xxxx.jsp"</span>);</span><br><span class="line">dispatcher.forward(request,response);</span><br></pre></td></tr></table></figure></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://book.douban.com/subject/1173876/" target="_blank" rel="noopener">Servlet与JSP核心编程</a></p>
+<p><a href="https://book.douban.com/subject/22994746/" target="_blank" rel="noopener">ServletServlet和JSP学习指南</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java-Web/" rel="tag"># Java Web</a>
+          
+            <a href="/tags/Servlet-JSP/" rel="tag"># Servlet/JSP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/26/Mysql-Notes/" rel="next" title="Mysql 使用指南">
+                <i class="fa fa-chevron-left"></i> Mysql 使用指南
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/28/ServletAndJSPSummary9/" rel="prev" title="Servlet/JSP学习总结（9）使用Servlet+JSP+JavaBean实现一个登陆注册实例">
+                Servlet/JSP学习总结（9）使用Servlet+JSP+JavaBean实现一个登陆注册实例 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="linj2n" />
+          <p class="site-author-name" itemprop="name">linj2n</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/linj2n" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/p/1005055919829882" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#控制器-Controller"><span class="nav-number">1.</span> <span class="nav-text">控制器 Controller</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视图-View"><span class="nav-number">2.</span> <span class="nav-text">视图 View</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模型-Model"><span class="nav-number">3.</span> <span class="nav-text">模型 Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用-RequestDispatcher-实现-MVC"><span class="nav-number">4.</span> <span class="nav-text">使用 RequestDispatcher 实现 MVC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step1：定义-JavaBean-来表示数据"><span class="nav-number">4.1.</span> <span class="nav-text">Step1：定义 JavaBean 来表示数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#映射HTML表单的FormBean"><span class="nav-number">4.1.1.</span> <span class="nav-text">映射HTML表单的FormBean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#映射数据库记录的DAO"><span class="nav-number">4.1.2.</span> <span class="nav-text">映射数据库记录的DAO</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step2：使用-servlet-处理请求"><span class="nav-number">4.2.</span> <span class="nav-text">Step2：使用 servlet 处理请求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原始的方法"><span class="nav-number">4.2.1.</span> <span class="nav-text">原始的方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step3：填写-Bean"><span class="nav-number">4.3.</span> <span class="nav-text">Step3：填写 Bean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step4：结果存储"><span class="nav-number">4.4.</span> <span class="nav-text">Step4：结果存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-存储在当前请求"><span class="nav-number">4.4.1.</span> <span class="nav-text">(1)  存储在当前请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-存储在当前请求以及同一客户的后续请求"><span class="nav-number">4.4.2.</span> <span class="nav-text">(2)  存储在当前请求以及同一客户的后续请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-存储在当前请求以及任意客户的后续请求中"><span class="nav-number">4.4.3.</span> <span class="nav-text">(3)  存储在当前请求以及任意客户的后续请求中</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step5-转发请求到-JSP-页面"><span class="nav-number">4.5.</span> <span class="nav-text">Step5: 转发请求到 JSP 页面</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">linj2n</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.2"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
