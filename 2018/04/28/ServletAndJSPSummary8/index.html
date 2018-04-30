@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Java Web,Servlet/JSP," />
+  <meta name="keywords" content="Servlet/JSP,Java Web," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="实现 MVC 模式的应用程序由三个模块组成  模型 Model： 负责数据和业务逻辑。 视图 View： 负责应用程序的显式 控制器 Controller： 负责接收用户的输入，并控制 Model 和 View 做出相应的改变  控制器 Controller在 MVC 框架中，控制器 Controller 是由一个 Servlet 或者过滤器实现的，例如常用的 Web 框架 Struct 1 与">
-<meta name="keywords" content="Java Web,Servlet&#x2F;JSP">
+<meta name="description" content="Servlet/JSP的发展在没有 JSP 页面之前，Servlet 的工作除了数据与业务逻辑处理外，还要负责输出结果，即生成 HTML 内容。生成 HTML 内容主要通过获取 HttpServletResponse的 PrintWriter 对象，编写大量的 println 方法输出 HTML 内容，例如下面的一个 Servlet 向客户端输出 一个 hello world 内容的 HTML 页">
+<meta name="keywords" content="Servlet&#x2F;JSP,Java Web">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Servlet&#x2F;JSP学习总结（8） MVC 框架模式">
 <meta property="og:url" content="http://linj2n.cn/2018/04/28/ServletAndJSPSummary8/index.html">
 <meta property="og:site_name" content="1 &#x2F; 0 == ∞">
-<meta property="og:description" content="实现 MVC 模式的应用程序由三个模块组成  模型 Model： 负责数据和业务逻辑。 视图 View： 负责应用程序的显式 控制器 Controller： 负责接收用户的输入，并控制 Model 和 View 做出相应的改变  控制器 Controller在 MVC 框架中，控制器 Controller 是由一个 Servlet 或者过滤器实现的，例如常用的 Web 框架 Struct 1 与">
+<meta property="og:description" content="Servlet/JSP的发展在没有 JSP 页面之前，Servlet 的工作除了数据与业务逻辑处理外，还要负责输出结果，即生成 HTML 内容。生成 HTML 内容主要通过获取 HttpServletResponse的 PrintWriter 对象，编写大量的 println 方法输出 HTML 内容，例如下面的一个 Servlet 向客户端输出 一个 hello world 内容的 HTML 页">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-04-28T08:52:09.000Z">
+<meta property="og:updated_time" content="2018-04-28T15:41:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Servlet&#x2F;JSP学习总结（8） MVC 框架模式">
-<meta name="twitter:description" content="实现 MVC 模式的应用程序由三个模块组成  模型 Model： 负责数据和业务逻辑。 视图 View： 负责应用程序的显式 控制器 Controller： 负责接收用户的输入，并控制 Model 和 View 做出相应的改变  控制器 Controller在 MVC 框架中，控制器 Controller 是由一个 Servlet 或者过滤器实现的，例如常用的 Web 框架 Struct 1 与">
+<meta name="twitter:description" content="Servlet/JSP的发展在没有 JSP 页面之前，Servlet 的工作除了数据与业务逻辑处理外，还要负责输出结果，即生成 HTML 内容。生成 HTML 内容主要通过获取 HttpServletResponse的 PrintWriter 对象，编写大量的 println 方法输出 HTML 内容，例如下面的一个 Servlet 向客户端输出 一个 hello world 内容的 HTML 页">
 
 
 
@@ -181,7 +181,7 @@
       </a>
     </div>
       
-        <p class="site-subtitle">To learn without thinking is blindness, to think without learning is idleness .</p>
+        <p class="site-subtitle">read,search,ask</p>
       
   </div>
 
@@ -368,15 +368,16 @@
       
 
       
-        <p>实现 MVC 模式的应用程序由三个模块组成</p>
+        <h1 id="Servlet-JSP的发展"><a href="#Servlet-JSP的发展" class="headerlink" title="Servlet/JSP的发展"></a>Servlet/JSP的发展</h1><p>在没有 JSP 页面之前，Servlet 的工作除了数据与业务逻辑处理外，还要负责输出结果，即生成 HTML 内容。生成 HTML 内容主要通过获取 HttpServletResponse的 PrintWriter 对象，编写大量的 println 方法输出 HTML 内容，例如下面的一个 Servlet 向客户端输出 一个 hello world 内容的 HTML 页面。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></p>
+<h2 id="引入-JSP-技术"><a href="#引入-JSP-技术" class="headerlink" title="引入 JSP 技术"></a>引入 JSP 技术</h2><h2 id="引入-JavaBean-组件"><a href="#引入-JavaBean-组件" class="headerlink" title="引入 JavaBean 组件"></a>引入 JavaBean 组件</h2><h1 id="Servlet-JSP的集成：MVC-架构"><a href="#Servlet-JSP的集成：MVC-架构" class="headerlink" title="Servlet/JSP的集成：MVC 架构"></a>Servlet/JSP的集成：MVC 架构</h1><p>实现 MVC 模式的应用程序由三个模块组成</p>
 <ul>
 <li><strong>模型 Model：</strong> 负责数据和业务逻辑。</li>
 <li><strong>视图 View：</strong> 负责应用程序的显式</li>
 <li><strong>控制器 Controller：</strong> 负责接收用户的输入，并控制 Model 和 View 做出相应的改变</li>
 </ul>
-<h1 id="控制器-Controller"><a href="#控制器-Controller" class="headerlink" title="控制器 Controller"></a>控制器 Controller</h1><p>在 MVC 框架中，控制器 Controller 是由一个 <strong>Servlet</strong> 或者<strong>过滤器</strong>实现的，例如常用的 Web 框架 Struct 1 与 Spring MVC 在它们的 MVC 架构中使用一个 Servlet Controller， 而另一个流行的框架 Structs 2，则是使用过滤器。</p>
-<h1 id="视图-View"><a href="#视图-View" class="headerlink" title="视图 View"></a>视图 View</h1><p>视图 View 层一般由 JSP 技术实现，例如 Spring MVC 支持许多类型的视图用于不同的表示技术，其中最常用就是 JSP 技术。</p>
-<h1 id="模型-Model"><a href="#模型-Model" class="headerlink" title="模型 Model"></a>模型 Model</h1><p>模型 Model 可以由 JavaBean、 EJB、 POJO(Plain Old Java Object)实现，其中 POJO 与 JavaBean 比较流行。</p>
+<h2 id="控制器-Controller"><a href="#控制器-Controller" class="headerlink" title="控制器 Controller"></a>控制器 Controller</h2><p>在 MVC 框架中，控制器 Controller 是由一个 <strong>Servlet</strong> 或者<strong>过滤器</strong>实现的，例如常用的 Web 框架 Struct 1 与 Spring MVC 在它们的 MVC 架构中使用一个 Servlet Controller， 而另一个流行的框架 Structs 2，则是使用过滤器。</p>
+<h2 id="视图-View"><a href="#视图-View" class="headerlink" title="视图 View"></a>视图 View</h2><p>视图 View 层一般由 JSP 技术实现，例如 Spring MVC 支持许多类型的视图用于不同的表示技术，其中最常用就是 JSP 技术。</p>
+<h2 id="模型-Model"><a href="#模型-Model" class="headerlink" title="模型 Model"></a>模型 Model</h2><p>模型 Model 可以由 JavaBean、 EJB、 POJO(Plain Old Java Object)实现，其中 POJO 与 JavaBean 比较流行。</p>
 <p>在 MVC 模式中的应用程序，每一个 HTTP 请求都必须被定向到控制器中，请求的 URI 告诉控制器要调用那一个 Action，Action 指的是 Web 程序能够执行的一箱操作，与 Action 相关的 Java 对象被称为 Action 对象，一个 Action 类可以服务几个不同的 Action，例如 Structs 2 和 Spring MVC ，或单个 Action ，例如 Struct 1。</p>
 <a id="more"></a>
 <p>举个例子，往数据库中添加一项产品通常需要两个 Action ：</p>
@@ -432,9 +433,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java-Web/" rel="tag"># Java Web</a>
-          
             <a href="/tags/Servlet-JSP/" rel="tag"># Servlet/JSP</a>
+          
+            <a href="/tags/Java-Web/" rel="tag"># Java Web</a>
           
         </div>
       
@@ -608,7 +609,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#控制器-Controller"><span class="nav-number">1.</span> <span class="nav-text">控制器 Controller</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#视图-View"><span class="nav-number">2.</span> <span class="nav-text">视图 View</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#模型-Model"><span class="nav-number">3.</span> <span class="nav-text">模型 Model</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用-RequestDispatcher-实现-MVC"><span class="nav-number">4.</span> <span class="nav-text">使用 RequestDispatcher 实现 MVC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step1：定义-JavaBean-来表示数据"><span class="nav-number">4.1.</span> <span class="nav-text">Step1：定义 JavaBean 来表示数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#映射HTML表单的FormBean"><span class="nav-number">4.1.1.</span> <span class="nav-text">映射HTML表单的FormBean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#映射数据库记录的DAO"><span class="nav-number">4.1.2.</span> <span class="nav-text">映射数据库记录的DAO</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step2：使用-servlet-处理请求"><span class="nav-number">4.2.</span> <span class="nav-text">Step2：使用 servlet 处理请求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原始的方法"><span class="nav-number">4.2.1.</span> <span class="nav-text">原始的方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step3：填写-Bean"><span class="nav-number">4.3.</span> <span class="nav-text">Step3：填写 Bean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step4：结果存储"><span class="nav-number">4.4.</span> <span class="nav-text">Step4：结果存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-存储在当前请求"><span class="nav-number">4.4.1.</span> <span class="nav-text">(1)  存储在当前请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-存储在当前请求以及同一客户的后续请求"><span class="nav-number">4.4.2.</span> <span class="nav-text">(2)  存储在当前请求以及同一客户的后续请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-存储在当前请求以及任意客户的后续请求中"><span class="nav-number">4.4.3.</span> <span class="nav-text">(3)  存储在当前请求以及任意客户的后续请求中</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step5-转发请求到-JSP-页面"><span class="nav-number">4.5.</span> <span class="nav-text">Step5: 转发请求到 JSP 页面</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">5.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet-JSP的发展"><span class="nav-number">1.</span> <span class="nav-text">Servlet/JSP的发展</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#引入-JSP-技术"><span class="nav-number">1.1.</span> <span class="nav-text">引入 JSP 技术</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引入-JavaBean-组件"><span class="nav-number">1.2.</span> <span class="nav-text">引入 JavaBean 组件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet-JSP的集成：MVC-架构"><span class="nav-number">2.</span> <span class="nav-text">Servlet/JSP的集成：MVC 架构</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#控制器-Controller"><span class="nav-number">2.1.</span> <span class="nav-text">控制器 Controller</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#视图-View"><span class="nav-number">2.2.</span> <span class="nav-text">视图 View</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型-Model"><span class="nav-number">2.3.</span> <span class="nav-text">模型 Model</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用-RequestDispatcher-实现-MVC"><span class="nav-number">3.</span> <span class="nav-text">使用 RequestDispatcher 实现 MVC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step1：定义-JavaBean-来表示数据"><span class="nav-number">3.1.</span> <span class="nav-text">Step1：定义 JavaBean 来表示数据</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#映射HTML表单的FormBean"><span class="nav-number">3.1.1.</span> <span class="nav-text">映射HTML表单的FormBean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#映射数据库记录的DAO"><span class="nav-number">3.1.2.</span> <span class="nav-text">映射数据库记录的DAO</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step2：使用-servlet-处理请求"><span class="nav-number">3.2.</span> <span class="nav-text">Step2：使用 servlet 处理请求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#原始的方法"><span class="nav-number">3.2.1.</span> <span class="nav-text">原始的方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step3：填写-Bean"><span class="nav-number">3.3.</span> <span class="nav-text">Step3：填写 Bean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step4：结果存储"><span class="nav-number">3.4.</span> <span class="nav-text">Step4：结果存储</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-存储在当前请求"><span class="nav-number">3.4.1.</span> <span class="nav-text">(1)  存储在当前请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-存储在当前请求以及同一客户的后续请求"><span class="nav-number">3.4.2.</span> <span class="nav-text">(2)  存储在当前请求以及同一客户的后续请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-存储在当前请求以及任意客户的后续请求中"><span class="nav-number">3.4.3.</span> <span class="nav-text">(3)  存储在当前请求以及任意客户的后续请求中</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step5-转发请求到-JSP-页面"><span class="nav-number">3.5.</span> <span class="nav-text">Step5: 转发请求到 JSP 页面</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">4.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
 
           </div>
