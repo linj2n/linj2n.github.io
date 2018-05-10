@@ -368,27 +368,9 @@
 
       
         
-          <h1 id="Spring概述"><a href="#Spring概述" class="headerlink" title="Spring概述"></a>Spring概述</h1><h2 id="Spring是什么"><a href="#Spring是什么" class="headerlink" title="Spring是什么"></a>Spring是什么</h2><p>在我们的传统的应用开发中，一个完整的Web程序是由一组相互协作的对象组成，共同完成所需的功能。除了开发业务逻辑，为了使得我们的程序变得低耦合、高内聚，我们要花大量的时间在创建以及管理对象之间的依赖关系上面。</p>
-<p>我们是否能够找一种方法能够帮助我们管理这些对象之间的依赖关系，简化我们的开发呢？</p>
-<p>这个时候，设计模式出现了，在一定程度上能简化我们的对对象及类的管理。例如“工厂模式”、“生成器模式”，可以帮助我们创建、管理对象之间的依赖关系。可问题又来了，使用设计模式虽然方便了管理，但引入了新的类——工厂类、生成器类。等于说除了一般的类，我们需要设计出其他额外的类来管理这些一般类，增加了我们的负担。</p>
-<p>如果能有种通过配置方式来创建对象，管理对象之间依赖关系，我们不需要通过工厂和生成器来创建及管理对象之间的依赖关系，这样我们是不是减少了许多工作，加速了开发，能节省出很多时间来干其他事。Spring框架刚出来时主要就是来完成这个功能。</p>
-<h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p>Spring框架除了能帮我们管理对象及其依赖关系外，还能提供以下的功能：</p>
-<ul>
-<li>支持面向切面编程的功能<ul>
-<li>日志记录</li>
-<li>权限控制</li>
-<li>性能统计</li>
-</ul>
-</li>
-<li>管理数据库事务</li>
-<li>可以与第三方框架无缝集成</li>
-</ul>
-<p>总的来说，Spring能够完成除了业务开发之外的所有的事情。</p>
-<h2 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h2><h3 id="IoC-DI-思想"><a href="#IoC-DI-思想" class="headerlink" title="IoC/DI 思想"></a>IoC/DI 思想</h3><p>我们上面提到Spring的一大好处是可以为我们管理对象及其依赖关系，Spring如何完成这样的功能的？</p>
-<p>核心就是 IoC/DI思想，即Inversion of Control，缩写为IoC，控制反转还有一个名字叫做依赖注入（Dependency Injection），就是由容器控制程序之间的关系，而非传统实现中，由程序代码直接操控。</p>
-<p>上面的解释比较晦涩，举个与传统开发对比的例子或许能更快的理解什么是控制反转。</p>
-<p><strong>传统的 Java 程序开发：</strong>当需要一个对象时，我们直接在程序内部通过 new 的方式创建对象，这里是程序主动创建依赖对象（正转），程序<strong>控制</strong>对象的创建。</p>
-<p><strong>引入IoC/DI容器后：</strong>当需要一个对象时，有一个专门的 IoC 容器来帮忙创建对象，程序被动接受依赖对象（反转），IoC/DI容器控制对象的创建。</p>
+          <blockquote><p>本文介绍了 Spring 框架的基本功能、IoC、AOP基本概念以及 IoC 配置，并且给出了使用 Maven 工具构建的 Spring 框架 IoC 入门例子的详细步骤。</p>
+<p>例子的完整代码已托管到 gayhub 上，地址<a href="https://github.com/linj2n/spring-demos/tree/master/hellospring" target="_blank" rel="noopener">https://github.com/linj2n/spring-demos/tree/master/hellospring</a></p>
+</blockquote>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/05/08/spring-note-1/#more" rel="contents">
