@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java Web,Spring,Spring Boot," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="本文介绍一个由 Spring Boot 框架构建的登录模块入门例子的具体步骤。例子的完整代码已托管到 gayhub 上，地址https://github.com/linj2n/spring-demos">
+<meta name="keywords" content="Java Web,Spring,Spring Boot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring学习总结（3）Spring Boot 入门实例">
+<meta property="og:url" content="http://linj2n.cn/2018/05/18/spring-note-3/index.html">
+<meta property="og:site_name" content="1 &#x2F; 0 == ∞">
+<meta property="og:description" content="本文介绍一个由 Spring Boot 框架构建的登录模块入门例子的具体步骤。例子的完整代码已托管到 gayhub 上，地址https://github.com/linj2n/spring-demos">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://p5twacobv.bkt.clouddn.com/spring-boot-hw-pic-1.png">
+<meta property="og:image" content="http://p5twacobv.bkt.clouddn.com/spring-boot-hw-pic-2.png">
+<meta property="og:image" content="http://p5twacobv.bkt.clouddn.com/spring-boot-hw-pic-3.png">
+<meta property="og:image" content="http://p5twacobv.bkt.clouddn.com/spring-boot-hw-pic-4.png">
+<meta property="og:image" content="http://p5twacobv.bkt.clouddn.com/spring-boot-hw-pic-5.png">
+<meta property="og:image" content="http://p5twacobv.bkt.clouddn.com/spring-boot-hw-pic-6.png">
+<meta property="og:image" content="http://p5twacobv.bkt.clouddn.com/spring-boot-hw-pic-7.png">
+<meta property="og:updated_time" content="2018-05-18T14:58:48.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring学习总结（3）Spring Boot 入门实例">
+<meta name="twitter:description" content="本文介绍一个由 Spring Boot 框架构建的登录模块入门例子的具体步骤。例子的完整代码已托管到 gayhub 上，地址https://github.com/linj2n/spring-demos">
+<meta name="twitter:image" content="http://p5twacobv.bkt.clouddn.com/spring-boot-hw-pic-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: 'K1Q1DQ07MZ',
+      apiKey: '',
+      indexName: 'linj2nBlog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://linj2n.cn/2018/05/18/spring-note-3/"/>
+
+
+
+
+
+  <title>Spring学习总结（3）Spring Boot 入门实例 | 1 / 0 == ∞</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">1 / 0 == ∞</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Done is better than perfect.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/05/18/spring-note-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linj2n">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="1 / 0 == ∞">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Spring学习总结（3）Spring Boot 入门实例</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-18T22:55:44+08:00">
+                2018/05/18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote><p>本文介绍一个由 Spring Boot 框架构建的登录模块入门例子的具体步骤。例子的完整代码已托管到 gayhub 上，地址<a href="https://github.com/linj2n/spring-demos" target="_blank" rel="noopener">https://github.com/linj2n/spring-demos</a></p>
+</blockquote>
+<a id="more"></a>
+<h1 id="Spring-boot好处"><a href="#Spring-boot好处" class="headerlink" title="Spring boot好处"></a>Spring boot好处</h1><p>回顾前一篇使用 Spring 框架开发的登录模块的步骤，最多的一个步骤就是配置各种 xml 文件。Spring boot的出现目的是为了减少开发人员编写复杂的 XML 配置文件，仅通过几行代码就能实现一个可运行的 Web 应用，使得开发人员更多的关注业务逻辑开发。</p>
+<h1 id="创建-Maven-项目"><a href="#创建-Maven-项目" class="headerlink" title="创建 Maven 项目"></a>创建 Maven 项目</h1><h2 id="配置pom-xml"><a href="#配置pom-xml" class="headerlink" title="配置pom.xml"></a>配置<code>pom.xml</code></h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">         <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.3.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>cn.linj2n<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hello-spring-boot<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">packaging</span>&gt;</span>war<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 添加boot web 启动器--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.3.3.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-jdbc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-actuator<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>与使用 Spring 框架开发项目的需要在 <code>pom.xml</code> 文件中引入大量的 Spring 子模块依赖不同，这里的 <code>pom.xml</code> 只引入了一个 <code>spring-boot-starter-web</code> 启动器依赖，该依赖封装了 spring-web、spring-webmvc、jackson-databind 等模块依赖。在 Maven Projects 文件视图中 Dependencies 中可以查看相关依赖。</li>
+</ul>
+<h2 id="项目文件结构"><a href="#项目文件结构" class="headerlink" title="项目文件结构"></a>项目文件结构</h2><p>spring boot 建议的目录文件如下。<br><strong>根目录：</strong><code>com.example.myproject</code><br><strong>项目目录:</strong></p>
+<pre>|- com
+    |- example
+       |- myproject
+            |- dao      // 存放数据访问类
+            |
+            |- domain   // 存放领域类
+            |
+            |- service  // 存放业务类
+            |
+            |- controller       // 存放页面访问控制控制类
+            |
+            |_ Application.java  // 主要用于做一些框架配置
+</pre>
+
+<p>参考上面的目录结构，我们的登录模块目录如下。</p>
+<p><img src="http://p5twacobv.bkt.clouddn.com/spring-boot-hw-pic-1.png" alt="spring-boot-hw-pic-1"></p>
+<h1 id="持久层"><a href="#持久层" class="headerlink" title="持久层"></a>持久层</h1><p>Spring 框架提供了几种可选的操作数据库方式，有内置轻量级的 JdbcTemplate ，也有第三方持久框架 MyBait 或 Hibernate。这里我们使用上一篇持久层使用到的轻量级的 <code>JdbcTemplate</code>。</p>
+<h2 id="导入JdbcTemplate依赖"><a href="#导入JdbcTemplate依赖" class="headerlink" title="导入JdbcTemplate依赖"></a>导入JdbcTemplate依赖</h2><p>在<code>pom.xml</code>加入以下内容，导入<code>spring-boot-start-data-jdbc</code>依赖及数据库的JDBC驱动器。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-jdbc<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>mysql<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mysql-connector-java<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>$&#123;mysql.version&#125;<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="配置数据库连接信息"><a href="#配置数据库连接信息" class="headerlink" title="配置数据库连接信息"></a>配置数据库连接信息</h2><p>为了使 Spring Boot 能够自动装配数据源的连接，在资源根目录 resources 下创建一个 <code>application.properties</code>，在该文件加入数据库源连接信息。</p>
+<p><strong>配置数据库连接方式有二：</strong></p>
+<ol>
+<li>自定义连接方式</li>
+<li>JNDI方式</li>
+</ol>
+<p>我们采用第一种方式，即使用自定义连接的方式</p>
+<pre>spring.datasource.name=helloworlddb
+spring.datasource.url=jdbc:mysql://localhost:3306/helloworlddb
+spring.datasource.username=root
+spring.datasource.password=your-password
+spring.datasource.driver-class-name=com.mysql.jdbc.Driver
+</pre>
+
+<h2 id="Dao包"><a href="#Dao包" class="headerlink" title="Dao包"></a>Dao包</h2><h3 id="UserDaoApi"><a href="#UserDaoApi" class="headerlink" title="UserDaoApi"></a>UserDaoApi</h3><p>与上篇的<code>UserDaoApi.java</code>代码完全相同。</p>
+<h3 id="UserDaoImpl"><a href="#UserDaoImpl" class="headerlink" title="UserDaoImpl"></a>UserDaoImpl</h3><p>核心方法与上篇的<code>UserDaoImpl.java</code>相同，不同的是不需要新建一个<code>context.xml</code>文件，在里面配置 Jdbc 注解对应的 Bean， Spring boot 自动帮我们装配好。省略了配置这一步，开发人员只需关注业务的实现。</p>
+<p><code>LoginInfoDaoImpl</code>类似，这里不进行介绍</p>
+<h1 id="业务层"><a href="#业务层" class="headerlink" title="业务层"></a>业务层</h1><h2 id="Spring-Boot-事务支持"><a href="#Spring-Boot-事务支持" class="headerlink" title="Spring Boot 事务支持"></a>Spring Boot 事务支持</h2><p>业务逻辑代码与上篇的 service 包代码完全相同，不同的是对事务使用的配置，在Spring Boot 上使用事务十分简单：</p>
+<p><strong>第一步，</strong>在主类 <code>Application.java</code>使用<code>@EnableTransactionManagement</code>注解，用于开启事务支持。<br><img src="http://p5twacobv.bkt.clouddn.com/spring-boot-hw-pic-2.png" alt="spring-boot-hw-pic-2"></p>
+<p><strong>第二步，</strong>在访问 Service 方法上标注<code>@Transaction</code><br><img src="http://p5twacobv.bkt.clouddn.com/spring-boot-hw-pic-3.png" alt="spring-boot-hw-pic-3"></p>
+<h1 id="展示层"><a href="#展示层" class="headerlink" title="展示层"></a>展示层</h1><p>与上篇一样，仍然基于 Spring MVC 实现。</p>
+<h2 id="配置-pom-xml依赖"><a href="#配置-pom-xml依赖" class="headerlink" title="配置 pom.xml依赖"></a>配置 <code>pom.xml</code>依赖</h2><p>选择 JSP 作为视图，且用到了 JSTL 标签，为了支持 JSP 与 JSTL ，添加了 <code>tomcat-embed-jasper</code> 及 jstl 两个模块依赖，并将模块的打包形式改为 war。<br><img src="http://p5twacobv.bkt.clouddn.com/spring-boot-hw-pic-4.png" alt="spring-boot-hw-pic-4"></p>
+<h2 id="配置-Spring-MVC-框架"><a href="#配置-Spring-MVC-框架" class="headerlink" title="配置 Spring MVC 框架"></a>配置 Spring MVC 框架</h2><p>修改主类 <code>Application</code>，使其继承了 <code>SpringBootServletInitializer</code>，并重写 <code>SpringBootServletInitializer</code>的<code>configure()</code>方法。<br><img src="http://p5twacobv.bkt.clouddn.com/spring-boot-hw-pic-5.png" alt="spring-boot-hw-pic-5"></p>
+<h2 id="处理登录请求"><a href="#处理登录请求" class="headerlink" title="处理登录请求"></a>处理登录请求</h2><h3 id="编写-LoginController"><a href="#编写-LoginController" class="headerlink" title="编写 LoginController"></a>编写 LoginController</h3><p><code>LoginController</code>类与上篇一致。</p>
+<h3 id="配置-MVC-视图"><a href="#配置-MVC-视图" class="headerlink" title="配置 MVC 视图"></a>配置 MVC 视图</h3><p><strong>第一步</strong>，在工程目录下创建如下图所示的文件夹，其中 <code>webapp/WEB-INF/jsp</code>的<code>login.jsp</code>、<code>main.jsp</code>两个<code>jsp</code>文件代码与上篇相同，<code>/static</code>、<code>/public</code>、<code>/resources</code>、<code>\WEB-INF</code>存放静态文件如 <code>CSS、JS、Image</code>等。<br><img src="http://p5twacobv.bkt.clouddn.com/spring-boot-hw-pic-6.png" alt="spring-boot-hw-pic-6"></p>
+<p><strong>第二步</strong>，在<code>application.properties</code>配置创建好的视图的路径，<code>spring.mvc.view.prefix</code>属性指定视图路径的前缀，<code>spring.mvc.view.suffix</code>指定视图文件的后缀。<br><img src="http://p5twacobv.bkt.clouddn.com/spring-boot-hw-pic-7.png" alt="spring-boot-hw-pic-7"></p>
+<h1 id="运行-Web-应用"><a href="#运行-Web-应用" class="headerlink" title="运行 Web 应用"></a>运行 Web 应用</h1><p>在 IDEA 界面的右侧双击<strong>spring-boot:run</strong>命令，启动应用，成功后在浏览器输入<code>http://localhost:8080</code></p>
+<p><img src="" alt="spring-boot-hw-pic-8"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java-Web/" rel="tag"># Java Web</a>
+          
+            <a href="/tags/Spring/" rel="tag"># Spring</a>
+          
+            <a href="/tags/Spring-Boot/" rel="tag"># Spring Boot</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/16/spring-note-2/" rel="next" title="Spring学习总结（2）Spring 入门实例">
+                <i class="fa fa-chevron-left"></i> Spring学习总结（2）Spring 入门实例
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="linj2n" />
+          <p class="site-author-name" itemprop="name">linj2n</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/linj2n" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/p/1005055919829882" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Spring-boot好处"><span class="nav-number">1.</span> <span class="nav-text">Spring boot好处</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建-Maven-项目"><span class="nav-number">2.</span> <span class="nav-text">创建 Maven 项目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置pom-xml"><span class="nav-number">2.1.</span> <span class="nav-text">配置pom.xml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#项目文件结构"><span class="nav-number">2.2.</span> <span class="nav-text">项目文件结构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#持久层"><span class="nav-number">3.</span> <span class="nav-text">持久层</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#导入JdbcTemplate依赖"><span class="nav-number">3.1.</span> <span class="nav-text">导入JdbcTemplate依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置数据库连接信息"><span class="nav-number">3.2.</span> <span class="nav-text">配置数据库连接信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Dao包"><span class="nav-number">3.3.</span> <span class="nav-text">Dao包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#UserDaoApi"><span class="nav-number">3.3.1.</span> <span class="nav-text">UserDaoApi</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#UserDaoImpl"><span class="nav-number">3.3.2.</span> <span class="nav-text">UserDaoImpl</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#业务层"><span class="nav-number">4.</span> <span class="nav-text">业务层</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Boot-事务支持"><span class="nav-number">4.1.</span> <span class="nav-text">Spring Boot 事务支持</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#展示层"><span class="nav-number">5.</span> <span class="nav-text">展示层</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置-pom-xml依赖"><span class="nav-number">5.1.</span> <span class="nav-text">配置 pom.xml依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置-Spring-MVC-框架"><span class="nav-number">5.2.</span> <span class="nav-text">配置 Spring MVC 框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#处理登录请求"><span class="nav-number">5.3.</span> <span class="nav-text">处理登录请求</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#编写-LoginController"><span class="nav-number">5.3.1.</span> <span class="nav-text">编写 LoginController</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置-MVC-视图"><span class="nav-number">5.3.2.</span> <span class="nav-text">配置 MVC 视图</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#运行-Web-应用"><span class="nav-number">6.</span> <span class="nav-text">运行 Web 应用</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">linj2n</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.2"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
