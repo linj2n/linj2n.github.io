@@ -865,17 +865,8 @@
 
       
         
-          <h1 id="Servlet-JSP的发展"><a href="#Servlet-JSP的发展" class="headerlink" title="Servlet/JSP的发展"></a>Servlet/JSP的发展</h1><p>在没有 JSP 页面之前，Servlet 的工作除了数据与业务逻辑处理外，还要负责输出结果，即生成 HTML 内容。生成 HTML 内容主要通过获取 HttpServletResponse的 PrintWriter 对象，编写大量的 println 方法输出 HTML 内容，例如下面的一个 Servlet 向客户端输出 一个 hello world 内容的 HTML 页面。<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></p>
-<h2 id="引入-JSP-技术"><a href="#引入-JSP-技术" class="headerlink" title="引入 JSP 技术"></a>引入 JSP 技术</h2><h2 id="引入-JavaBean-组件"><a href="#引入-JavaBean-组件" class="headerlink" title="引入 JavaBean 组件"></a>引入 JavaBean 组件</h2><h1 id="Servlet-JSP的集成：MVC-架构"><a href="#Servlet-JSP的集成：MVC-架构" class="headerlink" title="Servlet/JSP的集成：MVC 架构"></a>Servlet/JSP的集成：MVC 架构</h1><p>实现 MVC 模式的应用程序由三个模块组成</p>
-<ul>
-<li><strong>模型 Model：</strong> 负责数据和业务逻辑。</li>
-<li><strong>视图 View：</strong> 负责应用程序的显式</li>
-<li><strong>控制器 Controller：</strong> 负责接收用户的输入，并控制 Model 和 View 做出相应的改变</li>
-</ul>
-<h2 id="控制器-Controller"><a href="#控制器-Controller" class="headerlink" title="控制器 Controller"></a>控制器 Controller</h2><p>在 MVC 框架中，控制器 Controller 是由一个 <strong>Servlet</strong> 或者<strong>过滤器</strong>实现的，例如常用的 Web 框架 Struct 1 与 Spring MVC 在它们的 MVC 架构中使用一个 Servlet Controller， 而另一个流行的框架 Structs 2，则是使用过滤器。</p>
-<h2 id="视图-View"><a href="#视图-View" class="headerlink" title="视图 View"></a>视图 View</h2><p>视图 View 层一般由 JSP 技术实现，例如 Spring MVC 支持许多类型的视图用于不同的表示技术，其中最常用就是 JSP 技术。</p>
-<h2 id="模型-Model"><a href="#模型-Model" class="headerlink" title="模型 Model"></a>模型 Model</h2><p>模型 Model 可以由 JavaBean、 EJB、 POJO(Plain Old Java Object)实现，其中 POJO 与 JavaBean 比较流行。</p>
-<p>在 MVC 模式中的应用程序，每一个 HTTP 请求都必须被定向到控制器中，请求的 URI 告诉控制器要调用那一个 Action，Action 指的是 Web 程序能够执行的一箱操作，与 Action 相关的 Java 对象被称为 Action 对象，一个 Action 类可以服务几个不同的 Action，例如 Structs 2 和 Spring MVC ，或单个 Action ，例如 Struct 1。</p>
+          <blockquote><p>本文简要总结了 Web 开发技术的发展历程，特别是 J2EE 关键的技术：Servlet、JSP技术以及两个Web开发设计模型（Model1、Model2）。</p>
+</blockquote>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/04/28/ServletAndJSPSummary8/#more" rel="contents">
@@ -1607,7 +1598,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
