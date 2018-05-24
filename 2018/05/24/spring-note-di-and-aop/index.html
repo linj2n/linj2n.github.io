@@ -109,7 +109,7 @@
 <meta property="og:image" content="http://p5twacobv.bkt.clouddn.com/spring-note-di-and-ioc-pic-5.png">
 <meta property="og:image" content="http://p5twacobv.bkt.clouddn.com/spring-note-di-and-ioc-pic-6.png">
 <meta property="og:image" content="http://p5twacobv.bkt.clouddn.com/spring-note-di-and-ioc-pic-7.png">
-<meta property="og:updated_time" content="2018-05-24T04:30:25.000Z">
+<meta property="og:updated_time" content="2018-05-24T05:41:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring学习总结（4）DI与AOP">
 <meta name="twitter:description" content="本文主要为Spring In Action 4第二章的学习笔记，通过两个例子介绍如何通过 DI 与 AOP 的对组件进行解耦，并且总结了 DI 与 AOP 的用法及优点。">
@@ -391,7 +391,8 @@
 </blockquote>
 <p><strong>一言以蔽之，DI 能够让相互协作的组件（Bean）保持松耦合。</strong></p>
 <h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p><strong>注：</strong>例子来源于<a href="https://www.amazon.cn/dp/B01DN3VR6G/ref=sr_1_1?ie=UTF8&amp;qid=1527081371&amp;sr=8-1&amp;keywords=spring+in+action+%E7%AC%AC%E5%9B%9B%E7%89%88+%E4%B8%AD%E6%96%87%E7%89%88" target="_blank" rel="noopener">Spring In Action</a>。</p>
-<h3 id="DamselRescuingKnight类"><a href="#DamselRescuingKnight类" class="headerlink" title="DamselRescuingKnight类"></a>DamselRescuingKnight类</h3><p>假如我们要模拟拯救少女（Damsel）的骑士（Knight）类，一种实现类的方式可能如下，<code>DamselRescuingKnight</code>拥有一个表示私有类<code>quest</code>表示拯救少女的探险，无参构造器中创建初始化一个<code>quest</code>，并在<code>embarkOnQuest()</code>方法中运行<code>quest.embark()</code>，表示执行探险。</p>
+<h3 id="DamselRescuingKnight类"><a href="#DamselRescuingKnight类" class="headerlink" title="DamselRescuingKnight类"></a>DamselRescuingKnight类</h3><p>假如我们要模拟一个骑士，其中骑士拥有的探险（quest）的能力。如拯救少女（Rescue Damsel）、消灭恶龙（Slay Dragon）等。</p>
+<p>一种实现类的方式可能如下，<code>DamselRescuingKnight</code>拥有一个表示私有属性<code>quest</code>表示拯救少女的探险，无参构造器中创建初始化一个<code>quest</code>，并在<code>embarkOnQuest()</code>方法中运行<code>quest.embark()</code>，表示执行探险。</p>
 <p><img src="http://p5twacobv.bkt.clouddn.com/spring-note-di-and-ioc-pic-1.png" alt="spring-note-di-and-ioc-pic-1"></p>
 <p>该类有两个不足：</p>
 <ul>
