@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java Web,Spring,DI,AOP," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="本文主要为Spring In Action 4第二章的学习笔记，通过两个例子介绍如何通过 DI 与 AOP 的对组件进行解耦，并且总结了 DI 与 AOP 的用法及优点。">
+<meta name="keywords" content="Java Web,Spring,DI,AOP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring学习总结（4）DI与AOP">
+<meta property="og:url" content="http://linj2n.cn/2018/05/24/spring-note-di-and-aop/index.html">
+<meta property="og:site_name" content="1 &#x2F; 0 == ∞">
+<meta property="og:description" content="本文主要为Spring In Action 4第二章的学习笔记，通过两个例子介绍如何通过 DI 与 AOP 的对组件进行解耦，并且总结了 DI 与 AOP 的用法及优点。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://p5twacobv.bkt.clouddn.com/spring-note-di-and-ioc-pic-1.png">
+<meta property="og:image" content="http://p5twacobv.bkt.clouddn.com/spring-note-di-and-ioc-pic-2.png">
+<meta property="og:image" content="http://p5twacobv.bkt.clouddn.com/spring-note-di-and-ioc-pic-3.png">
+<meta property="og:image" content="http://p5twacobv.bkt.clouddn.com/spring-note-di-and-ioc-pic-4.png">
+<meta property="og:image" content="http://p5twacobv.bkt.clouddn.com/spring-note-di-and-ioc-pic-5.png">
+<meta property="og:image" content="http://p5twacobv.bkt.clouddn.com/spring-note-di-and-ioc-pic-6.png">
+<meta property="og:image" content="http://p5twacobv.bkt.clouddn.com/spring-note-di-and-ioc-pic-7.png">
+<meta property="og:updated_time" content="2018-05-24T04:30:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring学习总结（4）DI与AOP">
+<meta name="twitter:description" content="本文主要为Spring In Action 4第二章的学习笔记，通过两个例子介绍如何通过 DI 与 AOP 的对组件进行解耦，并且总结了 DI 与 AOP 的用法及优点。">
+<meta name="twitter:image" content="http://p5twacobv.bkt.clouddn.com/spring-note-di-and-ioc-pic-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: 'K1Q1DQ07MZ',
+      apiKey: '',
+      indexName: 'linj2nBlog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://linj2n.cn/2018/05/24/spring-note-di-and-aop/"/>
+
+
+
+
+
+  <title>Spring学习总结（4）DI与AOP | 1 / 0 == ∞</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">1 / 0 == ∞</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Done is better than perfect.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/05/24/spring-note-di-and-aop/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linj2n">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="1 / 0 == ∞">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Spring学习总结（4）DI与AOP</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-24T12:30:25+08:00">
+                2018/05/24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote><p>本文主要为<a href="https://www.amazon.cn/dp/B01DN3VR6G/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1527134412&amp;sr=1-1" target="_blank" rel="noopener">Spring In Action 4</a>第二章的学习笔记，通过两个例子介绍如何通过 DI 与 AOP 的对组件进行解耦，并且总结了 DI 与 AOP 的用法及优点。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="DI"><a href="#DI" class="headerlink" title="DI"></a>DI</h1><p>博文<a href="http://sishuok.com/forum/blogPost/list/2447.html" target="_blank" rel="noopener">DI 之 3.1 DI的配置使用</a>中很好地总结了<strong>应用依赖注入（DI）的</strong>好处。</p>
+<blockquote><ol>
+<li><strong>动态替换Bean依赖对象，程序更灵活：</strong>替换 Bean 依赖对象，无需修改源文件：应用依赖注入后，由于可以采用配置文件方式实现，从而能随时动态的替换 Bean 的依赖对象，无需修改 Java 源文件；</li>
+<li><strong>更好实践面向接口编程，代码更清晰：</strong>在 Bean 中只需指定依赖对象的接口，接口定义依赖对象完成的功能，通过容器注入依赖实现；</li>
+<li><strong>更好实践优先使用对象组合，而不是类继承：</strong>因为 IoC 容器采用注入依赖，也就是组合对象，从而更好的实践对象组合。</li>
+<li><strong>增加 Bean 可复用性：</strong>依赖于对象组合，Bean 更可复用且复用更简单；</li>
+<li><strong>降低 Bean 之间耦合：</strong>由于我们完全采用面向接口编程，在代码中没有直接引用Bean依赖实现，全部引用接口，而且不会出现显示的创建依赖对象代码，而且这些依赖是由容器来注入，很容易替换依赖实现类，从而降低Bean与依赖之间耦合；</li>
+<li><strong>代码结构更清晰：</strong>要应用依赖注入，代码结构要按照规约方式进行书写，从而更好的应用一些最佳实践，因此代码结构更清晰。</li>
+</ol>
+</blockquote>
+<p><strong>一言以蔽之，DI 能够让相互协作的组件（Bean）保持松耦合。</strong></p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p><strong>注：</strong>例子来源于<a href="https://www.amazon.cn/dp/B01DN3VR6G/ref=sr_1_1?ie=UTF8&amp;qid=1527081371&amp;sr=8-1&amp;keywords=spring+in+action+%E7%AC%AC%E5%9B%9B%E7%89%88+%E4%B8%AD%E6%96%87%E7%89%88" target="_blank" rel="noopener">Spring In Action</a>。</p>
+<h3 id="DamselRescuingKnight类"><a href="#DamselRescuingKnight类" class="headerlink" title="DamselRescuingKnight类"></a>DamselRescuingKnight类</h3><p>假如我们要模拟拯救少女（Damsel）的骑士（Knight）类，一种实现类的方式可能如下，<code>DamselRescuingKnight</code>拥有一个表示私有类<code>quest</code>表示拯救少女的探险，无参构造器中创建初始化一个<code>quest</code>，并在<code>embarkOnQuest()</code>方法中运行<code>quest.embark()</code>，表示执行探险。</p>
+<p><img src="http://p5twacobv.bkt.clouddn.com/spring-note-di-and-ioc-pic-1.png" alt="spring-note-di-and-ioc-pic-1"></p>
+<p>该类有两个不足：</p>
+<ul>
+<li><strong>第一个缺点，不易扩展。</strong> 由于<code>DamselRescuingKnight</code>在它的构造函数中自行创建了<code>RescueDamselQuest</code>，极大了限制了该类的功能：只能执行拯救少女的任务。当遇到其他任务时如消灭恶龙<code>SlayDragonQuest</code>，则无能为力或需要重新设计类。</li>
+<li><strong>第二个缺点，为这个类编写单元测试十分困难。</strong>在这样一个测试中，必须保证<code>embarkOnQuest()</code>方法被调用，同时<code>quest</code>的<code>embark()</code>方法也要被调用。</li>
+</ul>
+<p>因此，我们重新设计一个<code>BraveKnight</code>类。</p>
+<h3 id="BraveKnight类"><a href="#BraveKnight类" class="headerlink" title="BraveKnight类"></a>BraveKnight类</h3><p><img src="http://p5twacobv.bkt.clouddn.com/spring-note-di-and-ioc-pic-2.png" alt="spring-note-di-and-ioc-pic-2"></p>
+<p><strong>改进后：</strong></p>
+<ul>
+<li><p>易扩展。**不同与上一个<code>DamselRecuingKnight</code>，<code>BraveKnight</code>没有自行创建<code>Quest</code>，而是传入一个<code>Quest</code>接口，这使得<code>BraveKnight</code>没有与任何特定的<code>Quest</code>实现发生耦合。<code>BraveKnight</code>可以相应任何的类型的<code>Quest</code>，无论是<code>SlayDragonQuest</code>、还是<code>MakeRoundTableRounderQuest</code>。</p>
+</li>
+<li><p>易测试。**一个可能的测试如下：<br><img src="http://p5twacobv.bkt.clouddn.com/spring-note-di-and-ioc-pic-3.png" alt="spring-note-di-and-ioc-pic-3"><br>易测试体现在：若是测试上一个<code>DamselRescuingKnight</code>，我们必须真正的实现一个<code>RescueDamselQuest</code>。而测试<code>BraveKnight</code>，我们仅需要给它一个<code>Quest</code>模拟类<code>MockQuest</code>，其注入一个<code>BraveKnight</code>，然后测试即可。<code>MockQuest</code>类里的方法都可能是一个简单的 print 语句或者一个返回值。</p>
+</li>
+</ul>
+<p>从<code>BraveKnight</code>类可以得知，如果一个对象只通过<strong>接口</strong>，而不是<strong>具体实现</strong>或<strong>初始化过程</strong>来表明<strong>依赖关系</strong>，<strong>那么这种依赖能够在不改变对象本身的情况下进行替换。</strong></p>
+<h2 id="Bean-装配"><a href="#Bean-装配" class="headerlink" title="Bean 装配"></a>Bean 装配</h2><blockquote><p>Spring 中，把创建应用组件之间的协作的行为称为<strong>装配</strong>。</p>
+</blockquote>
+<h3 id="SlayDragonQuest类"><a href="#SlayDragonQuest类" class="headerlink" title="SlayDragonQuest类"></a>SlayDragonQuest类</h3><p>有了<code>BraveKnight</code>类，若要实现骑士进行消灭恶龙的探险十分简单，首先构造一个<code>SlayDragonQuest</code>类，表示一个消灭恶龙的探险。</p>
+<p><strong><code>SlayDragonQuest.java</code></strong><br><img src="http://p5twacobv.bkt.clouddn.com/spring-note-di-and-ioc-pic-4.png" alt="spring-note-di-and-ioc-pic-4"></p>
+<p>与常见的 Java 实例不同，<code>SlayDragonQuest</code>没有使用<code>System.out.println()</code>，而是在构造方法中请求一个更为通用的<code>PrintStream</code>。</p>
+<p>设计好消灭恶龙探险类后，在 Spring 中如何将<code>SlayDragonQuest</code>与<code>BraveKnight</code>、<code>PringStream</code>与<code>SlayDragonQuest</code>的依赖关系建立起来呢？使得他们能够互相协作？</p>
+<p>这里我们把创建上述提到的类之间的协作的行为，称为装配<code>Wiring</code>。</p>
+<p>Spring有多种装配beand的方式，下面介绍两种装配方式：基于XML与基于Java 配置的装配。</p>
+<h3 id="XML-装配"><a href="#XML-装配" class="headerlink" title="XML 装配"></a>XML 装配</h3><p><strong><code>knights.xml</code></strong><br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">  <span class="attr">www.it-ebooks.info</span></span></span><br><span class="line"><span class="tag">  <span class="attr">Simplifying</span> <span class="attr">Java</span> <span class="attr">development</span> <span class="attr">9</span> <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="tag"><span class="string">  http://www.springframework.org/schema/beans/spring-beans.xsd"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--注入quest--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"knight"</span> <span class="attr">class</span>=<span class="string">"com.springinaction.knights.BraveKnight"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">ref</span>=<span class="string">"quest"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!--创建SlayDragonQuest--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"quest"</span> <span class="attr">class</span>=<span class="string">"com.springinaction.knights.SlayDragonQuest"</span>&gt;</span> </span><br><span class="line">        <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">value</span>=<span class="string">"#&#123;T(System).out&#125;"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>注：</strong></p>
+<p><code>#{T(System).out}</code>，<code>SlayDragonQuest</code> bean 的声明使用了 Spring 表达式语言，将<code>System.out</code>传入<code>SlayDragonQuest</code>的构造器。</p>
+<h3 id="基于-Java-配置的装配"><a href="#基于-Java-配置的装配" class="headerlink" title="基于 Java 配置的装配"></a>基于 Java 配置的装配</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.springinaction.knights.config;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> com.springinaction.knights.BraveKnight;</span><br><span class="line"><span class="keyword">import</span> com.springinaction.knights.Knight;</span><br><span class="line"><span class="keyword">import</span> com.springinaction.knights.Quest;</span><br><span class="line"><span class="keyword">import</span> com.springinaction.knights.SlayDragonQuest;</span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">KnightConfig</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Bean</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Knight <span class="title">knight</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> BraveKnight(quest());</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="meta">@Bean</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> Quest <span class="title">quest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> SlayDragonQuest(System.out);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>无论是基于 XML 的配置还是 Java 的配置，Spring 的依赖注入能够使得在<strong>不修改类的情况下，修改依赖关系。</strong></p>
+<h1 id="AOC"><a href="#AOC" class="headerlink" title="AOC"></a>AOC</h1><blockquote><p>AOP 能够确保 POJO 的简单性。</p>
+</blockquote>
+<p>依赖注入(Dependency Injection,DI) 能够将相互协作的组件<strong>保持松耦合</strong>，而面向切面编程（aspect-oriented programming，AOP）<strong>允许你将核心业务之外的功能分离出来，形成可重用的组件。这些功能通常是</strong>系统服务<strong>，如日志、事务管理、安全等</strong>。</p>
+<h2 id="未分离系统服务"><a href="#未分离系统服务" class="headerlink" title="未分离系统服务"></a>未分离系统服务</h2><p>举个例子，一种未分离<strong>业务功能</strong>和<strong>系统功能</strong>的系统结构图可能如下。<br><img src="http://p5twacobv.bkt.clouddn.com/spring-note-di-and-ioc-pic-5.png" alt="spring-note-di-and-ioc-pic-5"></p>
+<p>这样的系统存在如下问题：</p>
+<ol>
+<li>系统功能模块（日志模块、安全模块等）代码将会重复地、分散地出现在业务功能模块的相关的类中。</li>
+<li>业务对象职责不单一，除了完成自身的核心业务职责外，还需要亲自参与执行系统服务职责，可重用性差。</li>
+<li>业务功能的组件含有大量与核心业务无关的代码，结构将变得十分混乱，造成代码可读性差。</li>
+</ol>
+<h2 id="AOP-分离业务与系统功能"><a href="#AOP-分离业务与系统功能" class="headerlink" title="AOP 分离业务与系统功能"></a>AOP 分离业务与系统功能</h2><p>AOP 的出现能够使这些系统服务<strong>模块化</strong>，并以<strong>声明的方式</strong>将它们应用到其他业务组件中去，业务组件完全不需要涉及系统服务所带来复杂性。</p>
+<p>应用 AOP 的系统结构图可能如下，系统服务作为切面，就好像覆盖在众多业务模块之上的一个外壳，业务模块不需要知道它们的存在。</p>
+<p><img src="http://p5twacobv.bkt.clouddn.com/spring-note-di-and-ioc-pic-6.png" alt="spring-note-di-and-ioc-pic-6"></p>
+<h2 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h2><p>Spring 中如何应用切面的呢？下面一个例子示范了如何使用 Spring 添加一个切面及切面是如何起作用的。</p>
+<p>重新回到上一个骑士的例子，吟游诗人（Minstrel）用诗歌记载着骑士的事迹并将其传唱，假设我们使用一个吟游诗人的<strong>服务类</strong>来记载骑士的所有事迹。</p>
+<h3 id="Minstrel类"><a href="#Minstrel类" class="headerlink" title="Minstrel类"></a>Minstrel类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.springinaction.knights;</span><br><span class="line"><span class="keyword">import</span> java.io.PrintStream;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Minstrel</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> PrintStream stream;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Minstrel</span><span class="params">(PrintStream stream)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.stream = stream;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">singBeforeQuest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        stream.println(<span class="string">"Fa la la, the knight is so brave!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">singAfterQuest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        stream.println(<span class="string">"Tee hee hee, the brave knight "</span> +</span><br><span class="line">        <span class="string">"did embark on a quest!"</span>);</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>Minstrel</code>是一个只有两个方法的简单类，骑士每执行一个探险任务前后，<code>singBeforeQuest()</code>与<code>singAfterQuest()</code>会被调用。</p>
+<h3 id="整合Minstrel的BraveKnight类"><a href="#整合Minstrel的BraveKnight类" class="headerlink" title="整合Minstrel的BraveKnight类"></a>整合Minstrel的BraveKnight类</h3><p>一个最简单的方法是将<code>Minstrel</code>类作为一个私有属性包含进来，然后使用前面提到的依赖注入机制，在 Spring 配置文件中声明 <code>Minstrel Bean</code>并将其注入到 <code>BraveKnight</code>的构造器中。</p>
+<p><strong><code>BraveKnight</code>类</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.springinaction.knights;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BraveKnight</span> <span class="keyword">implements</span> <span class="title">Knight</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">private</span> Quest quest;</span><br><span class="line">    <span class="keyword">private</span> Minstrel minstrel;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BraveKnight</span><span class="params">(Quest quest, Minstrel minstrel)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.quest = quest;</span><br><span class="line">        <span class="keyword">this</span>.minstrel = minstrel;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">embarkOnQuest</span><span class="params">()</span> <span class="keyword">throws</span> QuestException </span>&#123;</span><br><span class="line">        minstrel.singBeforeQuest();	<span class="comment">// </span></span><br><span class="line">        quest.embark();</span><br><span class="line">        minstrel.singAfterQuest();</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这个类虽然可以达到我们期望的效果，但是存在下面的问题：</p>
+<ul>
+<li><strong>骑士类职责不单一。</strong><code>BraveKnight</code>骑士类中增加了对<code>Minstrel</code>吟游诗人类的管理职责，但事实上骑士并没有要求吟游诗人对他的事迹做记录，用诗歌记录骑士的事迹是吟游诗人的职责，这不合理。</li>
+<li><strong>可重用性差。</strong>若存在骑士表示不需要吟游诗人的记录场景，则复用<code>BraveKnight</code>类变得十分困难。</li>
+<li><strong>代码结构混乱，可读性差。</strong><code>BraveKnight</code>的代码会变得可读性差，存在与<code>BraveKnight</code>无关的代码，使得结构混乱。</li>
+</ul>
+<h3 id="引入切面"><a href="#引入切面" class="headerlink" title="引入切面"></a>引入切面</h3><p>为了解决上述存在的问题，我们采用 AOP 的思想，将 <code>Minstrel</code>抽象成一个切面，具体在<code>knights.xml</code>中添加下面的代码。<br><img src="http://p5twacobv.bkt.clouddn.com/spring-note-di-and-ioc-pic-7.png" alt="spring-note-di-and-ioc-pic-7"></p>
+<p><strong>注：</strong></p>
+<ul>
+<li>仅需要少量的 XML 配置，就可将 <code>Minstrel</code> 声明为一个 Spring 切面。</li>
+<li><code>Minstrel</code>与<code>BraveKnight</code>仍然是一个 POJO，并没有修改的这两个类的任何代码。</li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="https://www.amazon.cn/dp/B01DN3VR6G/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1527134412&amp;sr=1-1" target="_blank" rel="noopener">Spring In Action 4</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java-Web/" rel="tag"># Java Web</a>
+          
+            <a href="/tags/Spring/" rel="tag"># Spring</a>
+          
+            <a href="/tags/DI/" rel="tag"># DI</a>
+          
+            <a href="/tags/AOP/" rel="tag"># AOP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/18/spring-note-3/" rel="next" title="Spring学习总结（3）Spring Boot + Spring MVC 入门实例">
+                <i class="fa fa-chevron-left"></i> Spring学习总结（3）Spring Boot + Spring MVC 入门实例
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="linj2n" />
+          <p class="site-author-name" itemprop="name">linj2n</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">37</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">22</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/linj2n" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/p/1005055919829882" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DI"><span class="nav-number">1.</span> <span class="nav-text">DI</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#例子"><span class="nav-number">1.1.</span> <span class="nav-text">例子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DamselRescuingKnight类"><span class="nav-number">1.1.1.</span> <span class="nav-text">DamselRescuingKnight类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BraveKnight类"><span class="nav-number">1.1.2.</span> <span class="nav-text">BraveKnight类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bean-装配"><span class="nav-number">1.2.</span> <span class="nav-text">Bean 装配</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SlayDragonQuest类"><span class="nav-number">1.2.1.</span> <span class="nav-text">SlayDragonQuest类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#XML-装配"><span class="nav-number">1.2.2.</span> <span class="nav-text">XML 装配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基于-Java-配置的装配"><span class="nav-number">1.2.3.</span> <span class="nav-text">基于 Java 配置的装配</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AOC"><span class="nav-number">2.</span> <span class="nav-text">AOC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#未分离系统服务"><span class="nav-number">2.1.</span> <span class="nav-text">未分离系统服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AOP-分离业务与系统功能"><span class="nav-number">2.2.</span> <span class="nav-text">AOP 分离业务与系统功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子-1"><span class="nav-number">2.3.</span> <span class="nav-text">例子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Minstrel类"><span class="nav-number">2.3.1.</span> <span class="nav-text">Minstrel类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#整合Minstrel的BraveKnight类"><span class="nav-number">2.3.2.</span> <span class="nav-text">整合Minstrel的BraveKnight类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引入切面"><span class="nav-number">2.3.3.</span> <span class="nav-text">引入切面</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">linj2n</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.2"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
