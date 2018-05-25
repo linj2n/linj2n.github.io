@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java,Java基础,反射," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="本文介绍的反射的原理、作用以及简单的使用，并给出两个示例。完整代码已托管到 gayhub 上，地址https://github.com/linj2n/spring-demos">
+<meta name="keywords" content="Java,Java基础,反射">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 基础学习笔记之 反射">
+<meta property="og:url" content="http://linj2n.cn/2018/05/25/j2se-note-reflect/index.html">
+<meta property="og:site_name" content="1 &#x2F; 0 == ∞">
+<meta property="og:description" content="本文介绍的反射的原理、作用以及简单的使用，并给出两个示例。完整代码已托管到 gayhub 上，地址https://github.com/linj2n/spring-demos">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://p5twacobv.bkt.clouddn.com/j2se-note-reflect-pic-1.png">
+<meta property="og:updated_time" content="2018-05-25T06:08:47.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java 基础学习笔记之 反射">
+<meta name="twitter:description" content="本文介绍的反射的原理、作用以及简单的使用，并给出两个示例。完整代码已托管到 gayhub 上，地址https://github.com/linj2n/spring-demos">
+<meta name="twitter:image" content="http://p5twacobv.bkt.clouddn.com/j2se-note-reflect-pic-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: 'K1Q1DQ07MZ',
+      apiKey: '',
+      indexName: 'linj2nBlog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://linj2n.cn/2018/05/25/j2se-note-reflect/"/>
+
+
+
+
+
+  <title>Java 基础学习笔记之 反射 | 1 / 0 == ∞</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">1 / 0 == ∞</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Done is better than perfect.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/05/25/j2se-note-reflect/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linj2n">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="1 / 0 == ∞">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java 基础学习笔记之 反射</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-25T14:08:47+08:00">
+                2018/05/25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote><p>本文介绍的反射的原理、作用以及简单的使用，并给出两个示例。完整代码已托管到 gayhub 上，地址<a href="https://github.com/linj2n/spring-demos" target="_blank" rel="noopener">https://github.com/linj2n/spring-demos</a></p>
+</blockquote>
+<a id="more"></a>
+<h1 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h1><p>Java语言允许通过程序化的方式间接对Class进行操作，Class 文件由类装载器装载后，在 JVM 中会形成一份描述 Class 结构的<strong>元信息对象</strong>，通过该元信息对象可以获知 Class 的结构信息，例如构造函数、属性和方法等。</p>
+<p>有了这些信息，我们可以通过编程显式去操作 Class 内部的方法、属性和构造函数等等。</p>
+<h1 id="反射的作用"><a href="#反射的作用" class="headerlink" title="反射的作用"></a>反射的作用</h1><p>反射机制通常可以用来：</p>
+<ul>
+<li>（1）在运行时分析类的能力</li>
+<li>（2）在运行时查看对象</li>
+<li>（3）实现通用数组操作代码</li>
+<li>（4）利用 Method 对象，类似于 C++ 中的函数指针</li>
+</ul>
+<p>使用反射机制的主要人员是工具构造者，例如，Spring IoC 建立在反射机制的基础上，应用程序员通常不需要使用到反射。因此我们学习反射主要的目的在于帮助我们更好地了解框架原理。</p>
+<h1 id="反射的使用"><a href="#反射的使用" class="headerlink" title="反射的使用"></a>反射的使用</h1><p>反射的使用有两个步骤：</p>
+<p><strong>第一步，获取对应的 Class 对象</strong>，有三种方法可以获取 Class 类型；</p>
+<ul>
+<li>（1) <code>[ClassName].class</code></li>
+<li>（2）<code>[ObjectName].getClass()</code></li>
+<li>（3）<code>Class.forName(String ClassName)</code></li>
+</ul>
+<p><strong>第二步，通过 Class 对象调用获取结构信息的方法</strong>；</p>
+<ul>
+<li>（1）<code>getField()</code> 返回类<code>public</code>域</li>
+<li>（2）<code>getMethod()</code> 返回类的方法</li>
+<li>（3）<code>getConstructor()</code> 返回构造器数组</li>
+</ul>
+<p>以上，包括所有返回的信息包括<strong>超类的共有成员</strong>，此外还提供三个方法<code>getDeclareFields</code>、<code>getDeclareMethods</code>和<code>getDeclareConstructors</code>分别返回类中声明的全部域、方法、构造器数组。包括<strong>私有域和受保护成员</strong>，但不含<strong>超类的成员</strong></p>
+<h2 id="数据域的反射"><a href="#数据域的反射" class="headerlink" title="数据域的反射"></a>数据域的反射</h2><p>关于一个对象的数据域的操作无非就两个：<strong>获取</strong>数据域的值与<strong>设置</strong>数据域的值。通过<code>Class</code>对象调用<code>getField()</code>方法后得到一个 <code>Field</code>对象后，然后再使用这个<code>Filed</code>对象进行数据域的操作。</p>
+<p>相应的<code>Filed</code>类有两个方法：</p>
+<ul>
+<li>（1）<code>Object get(Object obj)</code>，返回 <code>obj</code>对象中对应域值。</li>
+<li>（2）<code>void set(Object obj,Object newValue)</code>，用一个新值设置 Obj 对象中对应域的域值。</li>
+</ul>
+<h2 id="方法域的反射"><a href="#方法域的反射" class="headerlink" title="方法域的反射"></a>方法域的反射</h2><p>通过<code>Method</code>类可以调用对应的方法，有点类似于 C++ 中的方法指针。在 Method 类中有一个 invoke 方法, 它允许调用包装在当前 Method 对象中的方法。签名如下： </p>
+<p><code>Object invoke(Object obj, Object... args)</code></p>
+<ul>
+<li>第一个参数是隐式参数, 其余的对象提供了显式参数，对于静态方法, 第一个参数可以被忽略, 即可以将它设置为 nul。</li>
+</ul>
+<h1 id="实例1-通过反射实例化一个-Car-类"><a href="#实例1-通过反射实例化一个-Car-类" class="headerlink" title="实例1 通过反射实例化一个 Car 类"></a>实例1 通过反射实例化一个 Car 类</h1><h2 id="Car类"><a href="#Car类" class="headerlink" title="Car类"></a>Car类</h2><p><strong>Car.java</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.linj2n.reflect;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Car</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String brand;</span><br><span class="line">    <span class="keyword">private</span> String color;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> maxSpeed;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Car</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Car</span><span class="params">(String brand, String color, <span class="keyword">int</span> maxSpeed)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.brand = brand;</span><br><span class="line">        <span class="keyword">this</span>.color = color;</span><br><span class="line">        <span class="keyword">this</span>.maxSpeed = maxSpeed;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Car&#123;"</span> +</span><br><span class="line">                <span class="string">"brand='"</span> + brand + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">", color='"</span> + color + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">", maxSpeed="</span> + maxSpeed +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 省略 getter、setter方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="CarTest类"><a href="#CarTest类" class="headerlink" title="CarTest类"></a>CarTest类</h2><p><strong>CarTest.java</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.linj2n.reflect;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.Assert.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CarTest</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testCarByReflect</span><span class="params">()</span> <span class="keyword">throws</span> Throwable</span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 通过类装载器获取 Car 类对象</span></span><br><span class="line">        ClassLoader loader = Thread.currentThread().getContextClassLoader();</span><br><span class="line">        Class clazz = loader.loadClass(<span class="string">"cn.linj2n.reflect.Car"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取类的默认构造器并通过它实例化 Car</span></span><br><span class="line">        Constructor cons = clazz.getConstructor((Class[])<span class="keyword">null</span>);</span><br><span class="line">        Car car = (Car)cons.newInstance();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 通过反射方法设置属性</span></span><br><span class="line"></span><br><span class="line">        Method setBrand = clazz.getMethod(<span class="string">"setBrand"</span>,String.class);</span><br><span class="line">        setBrand.invoke(car,<span class="string">"雷克萨斯NX300h"</span>);</span><br><span class="line">        Method setColor = clazz.getMethod(<span class="string">"setColor"</span>,String.class);</span><br><span class="line">        setColor.invoke(car,<span class="string">"黑色"</span>);</span><br><span class="line">        Method setMaxSpeed = clazz.getMethod(<span class="string">"setMaxSpeed"</span>,<span class="keyword">int</span>.class);</span><br><span class="line">        setMaxSpeed.invoke(car,<span class="number">200</span>);</span><br><span class="line"></span><br><span class="line">        System.out.println(car.toString());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="实例2-打印任意对象的数据域与类型名称"><a href="#实例2-打印任意对象的数据域与类型名称" class="headerlink" title="实例2 打印任意对象的数据域与类型名称"></a>实例2 打印任意对象的数据域与类型名称</h1><p><strong>注：</strong>例子来自<a href="https://book.douban.com/subject/25762168/" target="_blank" rel="noopener">Java核心技术·卷1</a></p>
+<h2 id="PrintClassInfo类"><a href="#PrintClassInfo类" class="headerlink" title="PrintClassInfo类"></a>PrintClassInfo类</h2><p>通过反射机制，我们来实现一个打印类的全部信息的小程序，这个程序提醒用户输入类名，然后输出类中的所有方法和构造器的签名，以及全部域名。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.linj2n.reflect;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Constructor;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Field;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Method;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Modifier;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrintClassInfo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        showInfo(<span class="string">"cn.linj2n.reflect.Car"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">showInfo</span><span class="params">(String className)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Class cl = Class.forName(className);</span><br><span class="line">            Class supercl = cl.getSuperclass();</span><br><span class="line"></span><br><span class="line">            String modifiers = Modifier.toString(cl.getModifiers());</span><br><span class="line">            <span class="keyword">if</span> (modifiers.length() &gt; <span class="number">0</span>) System.out.print(modifiers + <span class="string">" "</span>);</span><br><span class="line">            System.out.print(<span class="string">"class "</span> + className);</span><br><span class="line">            <span class="keyword">if</span> (supercl != <span class="keyword">null</span> &amp;&amp; supercl != Object.class) System.out.print(<span class="string">" extends "</span> + supercl.getName());</span><br><span class="line"></span><br><span class="line">            System.out.print(<span class="string">"\n&#123;\n"</span>);</span><br><span class="line">            printCosntructor(cl);</span><br><span class="line">            System.out.println();</span><br><span class="line">            printMethods(cl);</span><br><span class="line">            System.out.println();</span><br><span class="line">            printFileds(cl);</span><br><span class="line">            System.out.println(<span class="string">"&#125;"</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printCosntructor</span><span class="params">(Class cl)</span> </span>&#123;</span><br><span class="line">        Constructor[]  constructors = cl.getDeclaredConstructors();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (Constructor c: constructors) &#123;</span><br><span class="line">            String name = c.getName();                              <span class="comment">// 构造器的名字</span></span><br><span class="line">            String modifiers = Modifier.toString(c.getModifiers()); <span class="comment">// 构造器的修饰符</span></span><br><span class="line">            Class[] paramTypes = c.getParameterTypes();             <span class="comment">// 构造器的参数列表数组</span></span><br><span class="line"></span><br><span class="line">            System.out.print(<span class="string">"  "</span>);</span><br><span class="line">            <span class="comment">// 打印构造器的类型</span></span><br><span class="line">            <span class="keyword">if</span> (modifiers.length() &gt; <span class="number">0</span>) System.out.print(modifiers + <span class="string">" "</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 打印构造器的名字</span></span><br><span class="line">            System.out.print(name + <span class="string">"("</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 打印构造器的输入参数</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; paramTypes.length; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (j &gt; <span class="number">0</span>) System.out.print(<span class="string">", "</span>);</span><br><span class="line">                System.out.print(paramTypes[j].getName());</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">");"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printMethods</span><span class="params">(Class cl)</span> </span>&#123;</span><br><span class="line">        Method[] methods = cl.getDeclaredMethods();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (Method m : methods) &#123;</span><br><span class="line"></span><br><span class="line">            String modifiers = Modifier.toString(m.getModifiers());     <span class="comment">// 方法的修饰符</span></span><br><span class="line">            Class reType = m.getReturnType();                           <span class="comment">// 方法的返回类型</span></span><br><span class="line">            String name = m.getName();                                  <span class="comment">// 方法的名称</span></span><br><span class="line">            Class[] paramTypes = m.getParameterTypes();                 <span class="comment">// 方法的参数列表</span></span><br><span class="line"></span><br><span class="line">            System.out.print(<span class="string">"  "</span>);</span><br><span class="line">            <span class="keyword">if</span> (modifiers.length() &gt; <span class="number">0</span>) System.out.print(modifiers + <span class="string">" "</span>);</span><br><span class="line"></span><br><span class="line">            System.out.print(reType.getName() + <span class="string">" "</span> + name + <span class="string">"("</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; paramTypes.length; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (j &gt; <span class="number">0</span>) System.out.print(<span class="string">", "</span>);</span><br><span class="line">                System.out.print(paramTypes[j].getName());</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            System.out.println(<span class="string">");"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printFileds</span><span class="params">(Class cl)</span> </span>&#123;</span><br><span class="line">            Field[] fields = cl.getDeclaredFields();</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> (Field f: fields) &#123;</span><br><span class="line"></span><br><span class="line">                String modifiers = Modifier.toString(f.getModifiers()); <span class="comment">// 域的修饰符</span></span><br><span class="line">                Class type = f.getType();                               <span class="comment">// 域的类型</span></span><br><span class="line">                String name = f.getName();                              <span class="comment">// 域的名字</span></span><br><span class="line"></span><br><span class="line">                System.out.print(<span class="string">"  "</span>);</span><br><span class="line">                <span class="keyword">if</span> (modifiers.length() &gt; <span class="number">0</span>) System.out.print(modifiers + <span class="string">" "</span>);</span><br><span class="line">                System.out.println(type.getName() + <span class="string">" "</span> + name + <span class="string">";"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><p><img src="http://p5twacobv.bkt.clouddn.com/j2se-note-reflect-pic-1.png" alt="j2se-note-reflect-pic-1"></p>
+<p>(完)</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/Java基础/" rel="tag"># Java基础</a>
+          
+            <a href="/tags/反射/" rel="tag"># 反射</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/24/spring-note-di-and-aop/" rel="next" title="Spring学习总结（4）DI与AOP">
+                <i class="fa fa-chevron-left"></i> Spring学习总结（4）DI与AOP
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="linj2n" />
+          <p class="site-author-name" itemprop="name">linj2n</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/linj2n" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/p/1005055919829882" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#原理"><span class="nav-number">1.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#反射的作用"><span class="nav-number">2.</span> <span class="nav-text">反射的作用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#反射的使用"><span class="nav-number">3.</span> <span class="nav-text">反射的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据域的反射"><span class="nav-number">3.1.</span> <span class="nav-text">数据域的反射</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法域的反射"><span class="nav-number">3.2.</span> <span class="nav-text">方法域的反射</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实例1-通过反射实例化一个-Car-类"><span class="nav-number">4.</span> <span class="nav-text">实例1 通过反射实例化一个 Car 类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Car类"><span class="nav-number">4.1.</span> <span class="nav-text">Car类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CarTest类"><span class="nav-number">4.2.</span> <span class="nav-text">CarTest类</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实例2-打印任意对象的数据域与类型名称"><span class="nav-number">5.</span> <span class="nav-text">实例2 打印任意对象的数据域与类型名称</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#PrintClassInfo类"><span class="nav-number">5.1.</span> <span class="nav-text">PrintClassInfo类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行结果"><span class="nav-number">5.2.</span> <span class="nav-text">运行结果</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">linj2n</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.2"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
