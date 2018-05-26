@@ -298,6 +298,155 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/01/05/ServletAndJSPSummary2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linj2n">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="1 / 0 == ∞">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/05/ServletAndJSPSummary2/" itemprop="url">Servlet/JSP学习总结（2） JSP</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-05T17:24:54+08:00">
+                2018/01/05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="JSP技术"><a href="#JSP技术" class="headerlink" title="JSP技术"></a>JSP技术</h2><p>JSP 全称JavaServer Page，是对Servlet技术的补充，可以将常规的、静态的HTML与动态生成的内容混合起来。</p>
+<h3 id="Servlet的缺陷与JSP的优点"><a href="#Servlet的缺陷与JSP的优点" class="headerlink" title="Servlet的缺陷与JSP的优点"></a>Servlet的缺陷与JSP的优点</h3><p>Servlet 擅长于业务逻辑或数据处理，而在需要生成输出的时候，Servelt有几个缺陷无法克服：</p>
+<ul>
+<li><strong>Servlet 中的HTML的编写和维护十分困难</strong><br>在Servlet中编写HTML，必须使用大量<code>PrintWriter.println()</code>语句，对字符串进行拼接，当页面比较的复杂时，编写起来十分的困难。另外使用这种方式，所有文本和HTML标签必须硬编码，一旦对表示层做微小的该改动时，例如，修改背景颜色，也需要重新编译。</li>
+<li>非Java开发人员难以处理这些HTML<br>将HTML嵌入到Servlet中，不了解Java语言的Web开发人员难以检查和更改这些HTML。</li>
+</ul>
+<p>JSP的出现是为了拟补Servlet表示上的补足，使用JSP有以下几个优点：</p>
+<ul>
+<li>JSP中的HTML的编写和维护更加的简单。</li>
+<li>可以使用标准的网站开发工具，例如HTML工具Dreamweaver。</li>
+<li>将静态HTML和动态内容进行了分离。</li>
+</ul>
+<h2 id="JSP生命周期"><a href="#JSP生命周期" class="headerlink" title="JSP生命周期"></a>JSP生命周期</h2><ul>
+<li><p><strong>转换阶段</strong><br>这个阶段只出现在<strong>页面创建</strong>或者<strong>页面被修改</strong>后，客户端的第一次请求。此时JSP容器将JSP页面转换成Servlet，<strong>这种转化只是简单地将所有模板文本改用<code>println()</code>语句，并且将所有的JSP元素转化成Java代码</strong>。此时的JSP文件为<code>someJSP.java</code></p>
+</li>
+<li><p><strong>编译阶段</strong><br>这个阶段同样只出现在<strong>页面创建</strong>或者<strong>页面被修改</strong>后，客户端的第一次请求。JSP容器编译servlet源文件，生成servlet类。此时JSP文件为<code>someJSP.class</code></p>
+</li>
+<li><p><strong>加载阶段</strong><br>客户端对JSP页面进行第一次请求时，JSP容器会将编译好的class加载服务器的内存中，并且常驻内存，直至<strong>JSP页面被修改</strong>。</p>
+</li>
+<li><p><strong>初始化阶段</strong><br>该阶段紧跟在加载阶段之后，同样也发生在客户端对JSP页面进行第一次请求的时候，JSP容器将调用<code>jspInit()</code>，进行初始化工作。</p>
+</li>
+<li><p><strong>执行阶段</strong><br>当每次客户端发出请求时，常驻服务器内存的servlet实例将调用<code>_jspService()</code>处理来自客户端的请求，并生成相应的响应格式，如HTML，返回给客户端。</p>
+</li>
+<li><p><strong>销毁阶段</strong><br>调用与JSP对应的servlet实例的销毁方法，然后销毁servlet实例；</p>
+</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/05/ServletAndJSPSummary2/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/01/04/88-Merge-Sorted-Array/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1395,7 +1544,7 @@ Output: false</pre>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-count">39</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1408,7 +1557,7 @@ Output: false</pre>
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
