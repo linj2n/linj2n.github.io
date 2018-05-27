@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="基础 JavaScript不区分整数与浮点数，统一用Number表示。 JavaScript 语言规定，对象的键名一律为字符串，所以，数组的键名其实也是字符串。 ==和===前者会自动转换数据类型再比较，后者不会，应该尽量使用===代替==。 NaN特殊的Number与所有其他值都不相等，包括它自己12NaN === NaN; // false isNaN (NaN) ; // true,唯一能判">
+<meta name="description" content="本文是 JavaScript 语言的学习笔记，主要内容为 JavaScript 语言的基本知识。">
 <meta name="keywords" content="JavaScrpt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript 基础学习笔记">
+<meta property="og:title" content="JavaScript 学习笔记之 语言基础">
 <meta property="og:url" content="http://linj2n.cn/2018/05/26/javascript-note/index.html">
 <meta property="og:site_name" content="1 &#x2F; 0 == ∞">
-<meta property="og:description" content="基础 JavaScript不区分整数与浮点数，统一用Number表示。 JavaScript 语言规定，对象的键名一律为字符串，所以，数组的键名其实也是字符串。 ==和===前者会自动转换数据类型再比较，后者不会，应该尽量使用===代替==。 NaN特殊的Number与所有其他值都不相等，包括它自己12NaN === NaN; // false isNaN (NaN) ; // true,唯一能判">
+<meta property="og:description" content="本文是 JavaScript 语言的学习笔记，主要内容为 JavaScript 语言的基本知识。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-05-26T06:15:23.000Z">
+<meta property="og:updated_time" content="2018-05-27T12:02:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JavaScript 基础学习笔记">
-<meta name="twitter:description" content="基础 JavaScript不区分整数与浮点数，统一用Number表示。 JavaScript 语言规定，对象的键名一律为字符串，所以，数组的键名其实也是字符串。 ==和===前者会自动转换数据类型再比较，后者不会，应该尽量使用===代替==。 NaN特殊的Number与所有其他值都不相等，包括它自己12NaN === NaN; // false isNaN (NaN) ; // true,唯一能判">
+<meta name="twitter:title" content="JavaScript 学习笔记之 语言基础">
+<meta name="twitter:description" content="本文是 JavaScript 语言的学习笔记，主要内容为 JavaScript 语言的基本知识。">
 
 
 
@@ -140,7 +140,7 @@
 
 
 
-  <title>JavaScript 基础学习笔记 | 1 / 0 == ∞</title>
+  <title>JavaScript 学习笔记之 语言基础 | 1 / 0 == ∞</title>
   
 
 
@@ -318,7 +318,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JavaScript 基础学习笔记</h1>
+          <h1 class="post-title" itemprop="name headline">JavaScript 学习笔记之 语言基础</h1>
         
 
         <div class="post-meta">
@@ -368,7 +368,10 @@
       
 
       
-        <h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><ul>
+        <blockquote><p>本文是 JavaScript 语言的学习笔记，主要内容为 JavaScript 语言的基本知识。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><ul>
 <li>JavaScript不区分整数与浮点数，统一用Number表示。</li>
 <li>JavaScript 语言规定，对象的键名一律为字符串，所以，数组的键名其实也是字符串。</li>
 <li><code>==</code>和<code>===</code>前者会自动转换数据类型再比较，后者不会，应该尽量使用<code>===</code>代替<code>==</code>。</li>
@@ -442,49 +445,9 @@
 <p><strong>与数组的关系：</strong> </p>
 <ul>
 <li>数组专用的方法如<code>slice</code>、<code>forEach</code>，不能再<code>argument</code>上使用。</li>
-<li>可以将<strong>arguments</strong>转换为真正的数组<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>);</span><br></pre></td></tr></table></figure>
-
-**callee属性**
-`arguments`对象的`callee`属性，返回所对应的原函数。达到调用函数自身的目的，在严格模式里面是禁用的，不建议使用。
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>可以将<strong>arguments</strong>转换为真正的数组<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>);</span><br></pre></td></tr></table></figure></li>
 </ul>
-<h3 id="闭包-closure"><a href="#闭包-closure" class="headerlink" title="闭包(closure)"></a>闭包(closure)</h3><p><strong>两个最大用处：</strong><br>闭包是将函数内部和函数外部连接起来的一座桥梁。最大用处有二。一是可以读取函数内部的变量。另外一个是让这些变量始终保持在内存中。</p>
-<p><strong>其他的用处： </strong><br>封装对象的私有属性和私有方法。</p>
-<h3 id="立即调用的函数表达式（IIFE）"><a href="#立即调用的函数表达式（IIFE）" class="headerlink" title="立即调用的函数表达式（IIFE）"></a>立即调用的函数表达式（IIFE）</h3><h2 id="eval-命令"><a href="#eval-命令" class="headerlink" title="eval 命令"></a>eval 命令</h2><h1 id="操作DOM"><a href="#操作DOM" class="headerlink" title="操作DOM"></a>操作DOM</h1><p>DOM 是一个棵代表着 HTML 文档被浏览器解析后生成的树，操作一个 DOM 结点实际上有这么几个操作：</p>
-<ul>
-<li>更新：改变该DOM结点表示的HTML内容</li>
-<li>遍历：遍历该DOM结点下的子结点，以便下一步操作</li>
-<li>添加：在该DOM结点下增加一个子结点，相当于动态增加一个HTML结点</li>
-<li>删除：删除该DOM结点的内容以及它包含的所有子结点</li>
-</ul>
-<h2 id="获取-DOM"><a href="#获取-DOM" class="headerlink" title="获取 DOM"></a>获取 DOM</h2><p>要想对 DOM 结点进行操作，前置操作是获取一个 DOM 结点。有两种方式获取 DOM 结点：</p>
-<ul>
-<li><code>getElementByXXx()</code>方法，<code>XXx</code>可以是<code>id</code>、<code>tagName</code>或<code>className</code></li>
-<li><code>querySelector()</code>与<code>querySelectorAll</code>方法，需要了解<code>selector</code>语法规则</li>
-</ul>
-<h3 id="getElementByXXx-方法"><a href="#getElementByXXx-方法" class="headerlink" title="getElementByXXx()方法"></a>getElementByXXx()方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById();         <span class="comment">// 直接定位唯一的一个 DOM 结点</span></span><br><span class="line"><span class="built_in">document</span>.getElementsByTagName();    <span class="comment">// 通过返回一组 DOM 结点</span></span><br><span class="line"><span class="built_in">document</span>.getElementsByClassName();  <span class="comment">// CSS 选择器，返回一组 DOM 结点</span></span><br></pre></td></tr></table></figure>
-<p>后两种方式，要先定位父结点，再从父结点开始选择，缩小范围。</p>
-<h3 id="querySelector-和querySelectorAll"><a href="#querySelector-和querySelectorAll" class="headerlink" title="querySelector()和querySelectorAll()"></a>querySelector()和querySelectorAll()</h3><p><a href="http://www.runoob.com/cssref/css-selectors.html" target="_blank" rel="noopener">CSS选择器模式</a></p>
-<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML结构 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"test-div"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c-red"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"test-p"</span>&gt;</span>JavaScript<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>Java<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c-red c-green"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Python<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Ruby<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Swift<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c-green"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Scheme<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Haskell<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 选择&lt;p&gt; JavaScript&lt;/p&gt;</span></span><br><span class="line"><span class="keyword">var</span> js1 = <span class="built_in">document</span>.getElementById(<span class="string">'test-p'</span>);</span><br><span class="line"><span class="keyword">var</span> js2 = <span class="built_in">document</span>.querySelector(<span class="string">'#test-p'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 选择&lt;p&gt;Python&lt;/p&gt;,&lt;p&gt;Ruby&lt;/p&gt;,&lt;p&gt;Swift&lt;/p&gt;</span></span><br><span class="line"><span class="keyword">var</span> arr1 = <span class="built_in">document</span>.getElementsByClassName(<span class="string">'c-red c-green'</span>)[<span class="number">0</span>].getElementsByTagName(<span class="string">'p'</span>);</span><br><span class="line"><span class="keyword">var</span> arr2 = <span class="built_in">document</span>.querySelector(<span class="string">'.c-red .c-green'</span>).children;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 选择&lt;p&gt;Haskell&lt;/p&gt;</span></span><br><span class="line"><span class="keyword">var</span> haskell1 = <span class="built_in">document</span>.getElementsByClassName(<span class="string">'c-green'</span>)[<span class="number">1</span>].getElementsByTagName(<span class="string">'p'</span>)[<span class="number">1</span>];</span><br><span class="line"><span class="built_in">console</span>.log(haskell);</span><br><span class="line"><span class="keyword">var</span> haskell2 = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.c-green'</span>)[<span class="number">1</span>].lastElementChild;</span><br></pre></td></tr></table></figure>
-<h2 id="更新-DOM"><a href="#更新-DOM" class="headerlink" title="更新 DOM"></a>更新 DOM</h2><p>修改结点的文本，方法有二：</p>
-<ul>
-<li>修改<code>innerHTML</code>属性，不但可以修改 DOM 结点的文本内容，还可以修改 DOM 结点内部的<code>子树</code></li>
-<li>修改<code>innerText</code>或<code>textContent</code>属性，</li>
-</ul>
-<h3 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- HTML结构 --&gt;</span><br><span class="line">&lt;div id=<span class="string">"test-div"</span>&gt;</span><br><span class="line">  &lt;p id=<span class="string">"test-js"</span>&gt;javascript&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">  &lt;p&gt;Java&lt;/</span>p&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><figcaption><span>lang:</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 获取&lt;p&gt;javascript&lt;/p&gt;节点:</span><br><span class="line">var js = document.getElementById(&quot;test-js&quot;)</span><br><span class="line"></span><br><span class="line">// 修改文本为JavaScript:</span><br><span class="line">js.innerText=&apos;JavaScript&apos;</span><br><span class="line"></span><br><span class="line">// 修改CSS为: color: #ff0000, font-weight: bold</span><br><span class="line">// TODO:</span><br><span class="line">js.style.color=&apos;#ff0000&apos;</span><br><span class="line">js.style.fontWeight=&apos;bold&apos;</span><br></pre></td></tr></table></figure>
-<h2 id="插入-DOM"><a href="#插入-DOM" class="headerlink" title="插入 DOM"></a>插入 DOM</h2><p>在 DOM 结点内插入新的 DOM ，方法有二：</p>
-<ul>
-<li><code>appendChild()</code>方法<ul>
-<li>直接使用<code>appendChild()</code>，将子结点添加到父节点的最后一个子结点</li>
-<li>查找子节点的后，使用<code>appendChild()</code>，在指定位置插入一个子结点</li>
-</ul>
-</li>
-<li><code>parentElement.insertBefore(newElement, referenceElement)</code>子节点插入到<code>referenceElement</code>之前。</li>
-</ul>
-<h2 id="删除-DOM"><a href="#删除-DOM" class="headerlink" title="删除 DOM"></a>删除 DOM</h2><p>获取该结点点的父节点，调用父节点的<code>removeChild</code>删除该结点。</p>
-<p>注意到删除后的节点虽然不在文档树中了，但其实它还在内存中，可以随时再次被添加到别的位置。</p>
+<p><strong>callee属性</strong><br><code>arguments</code>对象的<code>callee</code>属性，返回所对应的原函数。达到调用函数自身的目的，在严格模式里面是禁用的，不建议使用。</p>
 
       
     </div>
@@ -524,6 +487,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/27/javascript-note-about-dom/" rel="prev" title="JavaScript 学习笔记之 操作 DOM">
+                JavaScript 学习笔记之 操作 DOM <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -600,7 +567,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -613,7 +580,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
@@ -672,7 +639,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础"><span class="nav-number">1.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">1.1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串"><span class="nav-number">1.2.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">1.3.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#indexOf"><span class="nav-number">1.3.1.</span> <span class="nav-text">indexOf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#slice"><span class="nav-number">1.3.2.</span> <span class="nav-text">slice</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#push和pop"><span class="nav-number">1.3.3.</span> <span class="nav-text">push和pop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#unshift和shift"><span class="nav-number">1.3.4.</span> <span class="nav-text">unshift和shift</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sort"><span class="nav-number">1.3.5.</span> <span class="nav-text">sort</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reverse"><span class="nav-number">1.3.6.</span> <span class="nav-text">reverse</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#splice"><span class="nav-number">1.3.7.</span> <span class="nav-text">splice</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#concat"><span class="nav-number">1.3.8.</span> <span class="nav-text">concat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#join"><span class="nav-number">1.3.9.</span> <span class="nav-text">join</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象"><span class="nav-number">1.4.</span> <span class="nav-text">对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加会删除属性"><span class="nav-number">1.4.1.</span> <span class="nav-text">添加会删除属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Map-和-Set"><span class="nav-number">1.4.2.</span> <span class="nav-text">Map 和 Set</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Iterable"><span class="nav-number">1.4.3.</span> <span class="nav-text">Iterable</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#for-…-of"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">for … of</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#forEach"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">forEach()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">1.5.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#属性、方法"><span class="nav-number">1.5.1.</span> <span class="nav-text">属性、方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Name"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">Name</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#length"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">length</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#toString-NaN"><span class="nav-number">1.5.1.3.</span> <span class="nav-text">toString()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域"><span class="nav-number">1.5.2.</span> <span class="nav-text">作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数"><span class="nav-number">1.5.3.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Arguments-对象"><span class="nav-number">1.5.4.</span> <span class="nav-text">Arguments 对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包-closure"><span class="nav-number">1.5.5.</span> <span class="nav-text">闭包(closure)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#立即调用的函数表达式（IIFE）"><span class="nav-number">1.5.6.</span> <span class="nav-text">立即调用的函数表达式（IIFE）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#eval-命令"><span class="nav-number">1.6.</span> <span class="nav-text">eval 命令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作DOM"><span class="nav-number">2.</span> <span class="nav-text">操作DOM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取-DOM"><span class="nav-number">2.1.</span> <span class="nav-text">获取 DOM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#getElementByXXx-方法"><span class="nav-number">2.1.1.</span> <span class="nav-text">getElementByXXx()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#querySelector-和querySelectorAll"><span class="nav-number">2.1.2.</span> <span class="nav-text">querySelector()和querySelectorAll()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例子"><span class="nav-number">2.1.3.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新-DOM"><span class="nav-number">2.2.</span> <span class="nav-text">更新 DOM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例子-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入-DOM"><span class="nav-number">2.3.</span> <span class="nav-text">插入 DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除-DOM"><span class="nav-number">2.4.</span> <span class="nav-text">删除 DOM</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础"><span class="nav-number">1.</span> <span class="nav-text">基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">1.1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串"><span class="nav-number">1.2.</span> <span class="nav-text">字符串</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">1.3.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#indexOf"><span class="nav-number">1.3.1.</span> <span class="nav-text">indexOf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#slice"><span class="nav-number">1.3.2.</span> <span class="nav-text">slice</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#push和pop"><span class="nav-number">1.3.3.</span> <span class="nav-text">push和pop</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#unshift和shift"><span class="nav-number">1.3.4.</span> <span class="nav-text">unshift和shift</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sort"><span class="nav-number">1.3.5.</span> <span class="nav-text">sort</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reverse"><span class="nav-number">1.3.6.</span> <span class="nav-text">reverse</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#splice"><span class="nav-number">1.3.7.</span> <span class="nav-text">splice</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#concat"><span class="nav-number">1.3.8.</span> <span class="nav-text">concat</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#join"><span class="nav-number">1.3.9.</span> <span class="nav-text">join</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象"><span class="nav-number">1.4.</span> <span class="nav-text">对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加会删除属性"><span class="nav-number">1.4.1.</span> <span class="nav-text">添加会删除属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Map-和-Set"><span class="nav-number">1.4.2.</span> <span class="nav-text">Map 和 Set</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Iterable"><span class="nav-number">1.4.3.</span> <span class="nav-text">Iterable</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#for-…-of"><span class="nav-number">1.4.3.1.</span> <span class="nav-text">for … of</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#forEach"><span class="nav-number">1.4.3.2.</span> <span class="nav-text">forEach()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">1.5.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#属性、方法"><span class="nav-number">1.5.1.</span> <span class="nav-text">属性、方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Name"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">Name</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#length"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">length</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#toString-NaN"><span class="nav-number">1.5.1.3.</span> <span class="nav-text">toString()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域"><span class="nav-number">1.5.2.</span> <span class="nav-text">作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参数"><span class="nav-number">1.5.3.</span> <span class="nav-text">参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Arguments-对象"><span class="nav-number">1.5.4.</span> <span class="nav-text">Arguments 对象</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

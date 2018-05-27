@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="DOM,JavaScript,HTML," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="本文是 JavaScript 语言的学习笔记，结合若干个例子介绍了如何使用 JavaScript 对 DOM 结点进行操作，包括对控件与表单的操作。">
+<meta name="keywords" content="DOM,JavaScript,HTML">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 学习笔记之 操作 DOM">
+<meta property="og:url" content="http://linj2n.cn/2018/05/27/javascript-note-about-dom/index.html">
+<meta property="og:site_name" content="1 &#x2F; 0 == ∞">
+<meta property="og:description" content="本文是 JavaScript 语言的学习笔记，结合若干个例子介绍了如何使用 JavaScript 对 DOM 结点进行操作，包括对控件与表单的操作。">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-05-27T12:01:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 学习笔记之 操作 DOM">
+<meta name="twitter:description" content="本文是 JavaScript 语言的学习笔记，结合若干个例子介绍了如何使用 JavaScript 对 DOM 结点进行操作，包括对控件与表单的操作。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: 'K1Q1DQ07MZ',
+      apiKey: '',
+      indexName: 'linj2nBlog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://linj2n.cn/2018/05/27/javascript-note-about-dom/"/>
+
+
+
+
+
+  <title>JavaScript 学习笔记之 操作 DOM | 1 / 0 == ∞</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">1 / 0 == ∞</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Done is better than perfect.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/05/27/javascript-note-about-dom/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linj2n">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="1 / 0 == ∞">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">JavaScript 学习笔记之 操作 DOM</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-27T19:49:13+08:00">
+                2018/05/27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote><p>本文是 JavaScript 语言的学习笔记，结合若干个例子介绍了如何使用 JavaScript 对 DOM 结点进行操作，包括对控件与表单的操作。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="操作DOM"><a href="#操作DOM" class="headerlink" title="操作DOM"></a>操作DOM</h1><p>DOM 是一个棵代表着 HTML 文档被浏览器解析后生成的树，操作一个 DOM 结点实际上有这么几个操作：</p>
+<ul>
+<li>更新：改变该DOM结点表示的HTML内容</li>
+<li>遍历：遍历该DOM结点下的子结点，以便下一步操作</li>
+<li>添加：在该DOM结点下增加一个子结点，相当于动态增加一个HTML结点</li>
+<li>删除：删除该DOM结点的内容以及它包含的所有子结点</li>
+</ul>
+<h2 id="获取-DOM"><a href="#获取-DOM" class="headerlink" title="获取 DOM"></a>获取 DOM</h2><p>要想对 DOM 结点进行操作，前置操作是获取一个 DOM 结点。有两种方式获取 DOM 结点：</p>
+<ul>
+<li><code>getElementByXXx()</code>方法，<code>XXx</code>可以是<code>id</code>、<code>tagName</code>或<code>className</code></li>
+<li><code>querySelector()</code>与<code>querySelectorAll</code>方法，需要了解<code>selector</code>语法规则</li>
+</ul>
+<h3 id="getElementByXXx-方法"><a href="#getElementByXXx-方法" class="headerlink" title="getElementByXXx()方法"></a>getElementByXXx()方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.getElementById();         <span class="comment">// 直接定位唯一的一个 DOM 结点</span></span><br><span class="line"><span class="built_in">document</span>.getElementsByTagName();    <span class="comment">// 通过返回一组 DOM 结点</span></span><br><span class="line"><span class="built_in">document</span>.getElementsByClassName();  <span class="comment">// CSS 选择器，返回一组 DOM 结点</span></span><br></pre></td></tr></table></figure>
+<p>后两种方式，要先定位父结点，再从父结点开始选择，缩小范围。</p>
+<h3 id="querySelector-和querySelectorAll"><a href="#querySelector-和querySelectorAll" class="headerlink" title="querySelector()和querySelectorAll()"></a>querySelector()和querySelectorAll()</h3><p><a href="http://www.runoob.com/cssref/css-selectors.html" target="_blank" rel="noopener">CSS选择器模式</a></p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- HTML结构 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"test-div"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c-red"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"test-p"</span>&gt;</span>JavaScript<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">p</span>&gt;</span>Java<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c-red c-green"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Python<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Ruby<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Swift<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"c-green"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Scheme<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>Haskell<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 选择&lt;p&gt; JavaScript&lt;/p&gt;</span></span><br><span class="line"><span class="keyword">var</span> js1 = <span class="built_in">document</span>.getElementById(<span class="string">'test-p'</span>);</span><br><span class="line"><span class="keyword">var</span> js2 = <span class="built_in">document</span>.querySelector(<span class="string">'#test-p'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 选择&lt;p&gt;Python&lt;/p&gt;,&lt;p&gt;Ruby&lt;/p&gt;,&lt;p&gt;Swift&lt;/p&gt;</span></span><br><span class="line"><span class="keyword">var</span> arr1 = <span class="built_in">document</span>.getElementsByClassName(<span class="string">'c-red c-green'</span>)[<span class="number">0</span>].getElementsByTagName(<span class="string">'p'</span>);</span><br><span class="line"><span class="keyword">var</span> arr2 = <span class="built_in">document</span>.querySelector(<span class="string">'.c-red .c-green'</span>).children;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"><span class="comment">// 选择&lt;p&gt;Haskell&lt;/p&gt;</span></span><br><span class="line"><span class="keyword">var</span> haskell1 = <span class="built_in">document</span>.getElementsByClassName(<span class="string">'c-green'</span>)[<span class="number">1</span>].getElementsByTagName(<span class="string">'p'</span>)[<span class="number">1</span>];</span><br><span class="line"><span class="built_in">console</span>.log(haskell);</span><br><span class="line"><span class="keyword">var</span> haskell2 = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.c-green'</span>)[<span class="number">1</span>].lastElementChild;</span><br></pre></td></tr></table></figure>
+<h2 id="更新-DOM"><a href="#更新-DOM" class="headerlink" title="更新 DOM"></a>更新 DOM</h2><p>修改结点的文本，方法有二：</p>
+<ul>
+<li>修改<code>innerHTML</code>属性，不但可以修改 DOM 结点的文本内容，还可以修改 DOM 结点内部的<code>子树</code></li>
+<li>修改<code>innerText</code>或<code>textContent</code>属性，</li>
+</ul>
+<h3 id="例子-1"><a href="#例子-1" class="headerlink" title="例子"></a>例子</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- HTML结构 --&gt;</span><br><span class="line">&lt;div id=<span class="string">"test-div"</span>&gt;</span><br><span class="line">  &lt;p id=<span class="string">"test-js"</span>&gt;javascript&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">  &lt;p&gt;Java&lt;/</span>p&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取&lt;p&gt;javascript&lt;/p&gt;节点:</span></span><br><span class="line"><span class="keyword">var</span> js = <span class="built_in">document</span>.getElementById(<span class="string">"test-js"</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改文本为JavaScript:</span></span><br><span class="line">js.innerText=<span class="string">'JavaScript'</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改CSS为: color: #ff0000, font-weight: bold</span></span><br><span class="line"><span class="comment">// <span class="doctag">TODO:</span></span></span><br><span class="line">js.style.color=<span class="string">'#ff0000'</span>;</span><br><span class="line">js.style.fontWeight=<span class="string">'bold'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="插入-DOM"><a href="#插入-DOM" class="headerlink" title="插入 DOM"></a>插入 DOM</h2><p>在 DOM 结点内插入新的 DOM ，方法有二：</p>
+<ul>
+<li><code>appendChild()</code>方法<ul>
+<li>直接使用<code>appendChild()</code>，将子结点添加到父节点的最后一个子结点</li>
+<li>查找子节点的后，使用<code>appendChild()</code>，在指定位置插入一个子结点</li>
+</ul>
+</li>
+<li><code>parentElement.insertBefore(newElement, referenceElement)</code>子节点插入到<code>referenceElement</code>之前。</li>
+</ul>
+<h2 id="删除-DOM"><a href="#删除-DOM" class="headerlink" title="删除 DOM"></a>删除 DOM</h2><p>获取该结点点的父节点，调用父节点的<code>removeChild</code>删除该结点。</p>
+<p>注意到删除后的节点虽然不在文档树中了，但其实它还在内存中，可以随时再次被添加到别的位置。</p>
+<h1 id="操作表单"><a href="#操作表单" class="headerlink" title="操作表单"></a>操作表单</h1><h2 id="表单控件"><a href="#表单控件" class="headerlink" title="表单控件"></a>表单控件</h2><p>HTML 表单输入控件常见的有以下几种：</p>
+<ul>
+<li>文本框，<code>&lt;input type=&quot;text&quot;&gt;</code>，用于<strong>输入文本</strong>；</li>
+<li>口令框，<code>&lt;input type=&quot;password&gt;</code>，用于<strong>输入密码</strong>；</li>
+<li>单选框，<code>&lt;input type=&quot;radio&quot;&gt;</code>，用于<strong>选择一个项</strong></li>
+<li>复选框，<code>&lt;input type=&quot;checkbox&quot;&gt;</code>，用于<strong>选择多项</strong>；</li>
+<li>下拉框，<code>&lt;select&gt;</code>，用于选择一个项；</li>
+<li>隐藏文本，<code>&lt;input type=&quot;hidden&quot;&gt;</code>，用户不可见，但表单提交的时候会把隐藏文本发送到服务器</li>
+</ul>
+<p>HTML5 新增了大量标准空间，均使用<code>&lt;input&gt;</code>标签。</p>
+<ul>
+<li>date</li>
+<li>datetime</li>
+<li>datetime-local</li>
+<li>color</li>
+</ul>
+<p>支持HTML5的浏览器将获得格式化的字符串。例如，<code>type=&quot;date&quot;</code>类型的 input 的 value 将保证是一个有效的 YYYY-MM-DD 格式的日期，或者空字符串。</p>
+<h2 id="获取控件值"><a href="#获取控件值" class="headerlink" title="获取控件值"></a>获取控件值</h2><p>两个步骤可以获取控件值：</p>
+<ul>
+<li>（1）获取<code>&lt;input&gt;</code>结点的引用</li>
+<li>（2）调用<code>value</code>获得对应用户输入值。</li>
+</ul>
+<p>以上两个步骤可以用于获取所有控件的值，但通过<code>checkbox</code>与<code>radio</code>的<code>value</code>属性返回的永远的是预设值。</p>
+<p>若想要获得用户对<code>checkbox</code>与<code>radio</code>的值，则需要使用它们的<code>checked</code>属性值判断。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// &lt;label&gt;&lt;input type="radio" name="weekday" id="monday" value="1"&gt; Monday &lt;/label&gt;</span></span><br><span class="line"><span class="comment">// &lt;label&gt;&lt;input type="radio" name="weekday" id="tuesday" value="2"&gt; Tuesday &lt;/label&gt;</span></span><br><span class="line"><span class="keyword">var</span> mon = <span class="built_in">document</span>.getElementById(<span class="string">'monday'</span>);</span><br><span class="line"><span class="keyword">var</span> tue = <span class="built_in">document</span>.getElementById(<span class="string">'tuesday'</span>);</span><br><span class="line">mon.value; <span class="comment">// '1'</span></span><br><span class="line">tue.valu; <span class="comment">// '2'</span></span><br><span class="line"></span><br><span class="line">mon.checked; <span class="comment">// true or false</span></span><br><span class="line">tue.checked; <span class="comment">// true or false</span></span><br></pre></td></tr></table></figure>
+<h2 id="设置控件值"><a href="#设置控件值" class="headerlink" title="设置控件值"></a>设置控件值</h2><p>与<strong>获取控件值类似</strong>，直接对<code>value</code>进行赋值。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> input = <span class="built_in">document</span>.getElementById(<span class="string">'email'</span>);</span><br><span class="line">input.value = <span class="string">'test@example.com'</span>;</span><br></pre></td></tr></table></figure></p>
+<h2 id="提交表单"><a href="#提交表单" class="headerlink" title="提交表单"></a>提交表单</h2><p>JavaScript可以以下方式来处理表单的提交：</p>
+<ul>
+<li>（1）<code>&lt;form&gt;</code>元素的<code>submit()</code>方法提交一个表单，如响应一个<code>&lt;button&gt;</code>的<code>click</code>事件。</li>
+<li>（2）响应<code>&lt;form&gt;</code>元素的<code>onsumit</code>事件</li>
+<li>（3）AJAX 方式（以后了解）</li>
+</ul>
+<h2 id="使用submit-方法"><a href="#使用submit-方法" class="headerlink" title="使用submit()方法"></a>使用<code>submit()</code>方法</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--html--&gt;</span></span><br><span class="line"><span class="meta">&lt;!doctype html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">doSubmitForm</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> form = <span class="built_in">document</span>.getElementById(<span class="string">'test-form'</span>);</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 可以在此修改form的input...</span></span></span><br><span class="line"><span class="javascript">    <span class="comment">// 提交form:</span></span></span><br><span class="line"><span class="undefined">    form.submit();</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"test-form"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"test"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"button"</span> <span class="attr">onclick</span>=<span class="string">"doSubmitForm()"</span>&gt;</span>Submit<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这种方法很少被使用，因为会扰乱浏览器对 form 的正常提交。</p>
+<h2 id="使用onsubmit-方法"><a href="#使用onsubmit-方法" class="headerlink" title="使用onsubmit()方法"></a>使用<code>onsubmit()</code>方法</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--html--&gt;</span></span><br><span class="line"><span class="meta">&lt;!doctype html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> &gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  <span class="function"><span class="keyword">function</span> <span class="title">checkForm</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="keyword">var</span> form = <span class="built_in">document</span>.getElementById(<span class="string">'text-form'</span>);</span></span><br><span class="line"><span class="javascript">    <span class="comment">// 可以在此修改form的input...</span></span></span><br><span class="line"><span class="javascript">    <span class="comment">// 继续下一步:</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">return</span> <span class="literal">true</span>;</span></span><br><span class="line"><span class="undefined">  &#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"test-form"</span> <span class="attr">onsubmit</span>=<span class="string">"return checkForm()"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"test"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span> &gt;</span>Submit<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>注：</strong></p>
+<ul>
+<li><code>return true</code>告诉浏览器继续提交，若<code>return false</code>，浏览器则不会提交。</li>
+</ul>
+<p>提交密码时，为了不传输明文密码，通常会将用户的密码转换为MD5，然后再传输给服务器。此时搭配一个控件<code>&lt;input type=&quot;hidden&quot;&gt;</code>使用，一个简单登录表单可能如下。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--html--&gt;</span></span><br><span class="line"><span class="meta">&lt;!doctype html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"login-form"</span> <span class="attr">method</span>=<span class="string">"post"</span> <span class="attr">onsubmit</span>=<span class="string">"return checkFrom()"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"username"</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">id</span>=<span class="string">"input-password"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">id</span>=<span class="string">"md5-password"</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span>Submit<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">checkForm</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> input_pwd = <span class="built_in">document</span>.getElementById(<span class="string">'input-password'</span>);</span></span><br><span class="line"><span class="javascript">  <span class="keyword">var</span> md5_pwd = <span class="built_in">document</span>.getElementById(<span class="string">'md5-password'</span>);</span></span><br><span class="line"><span class="javascript">  <span class="comment">// 把用户输入的明文变为MD5:</span></span></span><br><span class="line"><span class="undefined">  md5_pwd.value = toMD5(input_pwd);</span></span><br><span class="line"><span class="javascript">  <span class="comment">// 下一步操作</span></span></span><br><span class="line"><span class="javascript">  <span class="keyword">return</span> <span class="literal">true</span>;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>注：</strong></p>
+<ul>
+<li>id 为<code>password</code>的控件没有设置<code>name</code>属性，没有<code>name</code>属性的<code>&lt;input&gt;</code>的数据不会被提交。</li>
+</ul>
+<h2 id="例子：用户注册表单检验"><a href="#例子：用户注册表单检验" class="headerlink" title="例子：用户注册表单检验"></a>例子：用户注册表单检验</h2><h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>利用JavaScript检查用户注册信息是否正确，在以下情况不满足时报错并阻止提交表单：</p>
+<ul>
+<li><p>用户名必须是3-10位英文字母或数字；</p>
+</li>
+<li><p>口令必须是6-20位；</p>
+</li>
+<li><p>两次输入口令必须一致。</p>
+</li>
+</ul>
+<h3 id="HTML部分"><a href="#HTML部分" class="headerlink" title="HTML部分"></a>HTML部分</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"register-form"</span> <span class="attr">action</span>=<span class="string">"#"</span> <span class="attr">onsubmit</span>=<span class="string">"return checkRegisterForm()"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">id</span>=<span class="string">"test-error"</span> <span class="attr">style</span>=<span class="string">"color:red"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">        用户名: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"username"</span> <span class="attr">name</span>=<span class="string">"username"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">        口令: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">id</span>=<span class="string">"password"</span> <span class="attr">name</span>=<span class="string">"password"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">        重复口令: <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">id</span>=<span class="string">"password-2"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span>提交<span class="tag">&lt;/<span class="name">button</span>&gt;</span> <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"reset"</span>&gt;</span>重置<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="处理部分"><a href="#处理部分" class="headerlink" title="处理部分"></a>处理部分</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"><span class="keyword">var</span> checkRegisterForm = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> username = <span class="built_in">document</span>.getElementById(<span class="string">'username'</span>),</span><br><span class="line">      password = <span class="built_in">document</span>.getElementById(<span class="string">'password'</span>),</span><br><span class="line">      password2 = <span class="built_in">document</span>.getElementById(<span class="string">'password-2'</span>),</span><br><span class="line">      error_text = <span class="built_in">document</span>.getElementById(<span class="string">'test-error'</span>),</span><br><span class="line">      exp1 =  <span class="regexp">/[A-Za-z]&#123;1&#125;[A-Za-z0-9]&#123;4,11&#125;/</span>,</span><br><span class="line">      exp2 = <span class="regexp">/[A-Za-z0-9]&#123;3,15&#125;/</span>;</span><br><span class="line">  <span class="keyword">if</span>(!(exp1.test(username.value)))&#123;</span><br><span class="line">      error_text.innerHTML = <span class="string">'用户名必须是3-10位英文字母或数字'</span>;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(!(exp2.test(password.value)))&#123;</span><br><span class="line">      error_text.innerHTML = <span class="string">'口令必须是6-20位'</span>;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(password.value !== password2.value )&#123;</span><br><span class="line">      error_text.innerHTML = <span class="string">'两次输入口令必须一致'</span>;</span><br><span class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/DOM-JavaScript-HTML/" rel="tag"># DOM,JavaScript,HTML</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/26/javascript-note/" rel="next" title="JavaScript 学习笔记之 语言基础">
+                <i class="fa fa-chevron-left"></i> JavaScript 学习笔记之 语言基础
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="linj2n" />
+          <p class="site-author-name" itemprop="name">linj2n</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">26</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/linj2n" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/p/1005055919829882" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#操作DOM"><span class="nav-number">1.</span> <span class="nav-text">操作DOM</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取-DOM"><span class="nav-number">1.1.</span> <span class="nav-text">获取 DOM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#getElementByXXx-方法"><span class="nav-number">1.1.1.</span> <span class="nav-text">getElementByXXx()方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#querySelector-和querySelectorAll"><span class="nav-number">1.1.2.</span> <span class="nav-text">querySelector()和querySelectorAll()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例子"><span class="nav-number">1.1.3.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新-DOM"><span class="nav-number">1.2.</span> <span class="nav-text">更新 DOM</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#例子-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">例子</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#插入-DOM"><span class="nav-number">1.3.</span> <span class="nav-text">插入 DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除-DOM"><span class="nav-number">1.4.</span> <span class="nav-text">删除 DOM</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#操作表单"><span class="nav-number">2.</span> <span class="nav-text">操作表单</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#表单控件"><span class="nav-number">2.1.</span> <span class="nav-text">表单控件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取控件值"><span class="nav-number">2.2.</span> <span class="nav-text">获取控件值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置控件值"><span class="nav-number">2.3.</span> <span class="nav-text">设置控件值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#提交表单"><span class="nav-number">2.4.</span> <span class="nav-text">提交表单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用submit-方法"><span class="nav-number">2.5.</span> <span class="nav-text">使用submit()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用onsubmit-方法"><span class="nav-number">2.6.</span> <span class="nav-text">使用onsubmit()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子：用户注册表单检验"><span class="nav-number">2.7.</span> <span class="nav-text">例子：用户注册表单检验</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#需求"><span class="nav-number">2.7.1.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML部分"><span class="nav-number">2.7.2.</span> <span class="nav-text">HTML部分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理部分"><span class="nav-number">2.7.3.</span> <span class="nav-text">处理部分</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">linj2n</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.2"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
