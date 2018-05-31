@@ -298,6 +298,145 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/06/01/javascript-note-todolist/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linj2n">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="1 / 0 == ∞">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/01/javascript-note-todolist/" itemprop="url">JavaScript 学习笔记之 to do list 实例</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-01T00:35:45+08:00">
+                2018/06/01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote><p>一个 to do list 实例。</p>
+</blockquote>
+<h1 id="原生-JS-实现"><a href="#原生-JS-实现" class="headerlink" title="原生 JS 实现"></a>原生 JS 实现</h1><h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><ul>
+<li>（1）显示所有待办事项</li>
+<li>（2）增加待办事项</li>
+<li>（3）删除代办事项</li>
+<li>（3）标记代办事项为完成状态</li>
+</ul>
+<h2 id="HTML页面"><a href="#HTML页面" class="headerlink" title="HTML页面"></a>HTML页面</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"Content-Type"</span> <span class="attr">content</span>=<span class="string">"text/html; charset=utf-8"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>todo<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!--引入 CSS 文件 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">link</span> <span class="attr">href</span>=<span class="string">"todolist.css"</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"myDIV"</span> <span class="attr">class</span>=<span class="string">"header"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h2</span>&gt;</span> TO DO List <span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"myInput"</span> <span class="attr">placeholder</span>=<span class="string">"Title..."</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">onclick</span>=<span class="string">"newElement()"</span> <span class="attr">class</span>=<span class="string">"addBtn"</span>&gt;</span>Add<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"myUL"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">&lt;!--引入 js 文件--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"todolist.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>注：</strong></p>
+<ul>
+<li><code>Add</code>按钮绑定一个<code>newElement()</code>函数，鼠标点击事件会触发该函数。</li>
+</ul>
+<h2 id="CSS文件"><a href="#CSS文件" class="headerlink" title="CSS文件"></a>CSS文件</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Include the padding and border in an element's total width and height */</span></span><br><span class="line">* &#123;</span><br><span class="line">    <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Remove margins and padding from the list */</span></span><br><span class="line"><span class="selector-tag">ul</span> &#123;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Style the list items */</span></span><br><span class="line"><span class="selector-tag">ul</span> <span class="selector-tag">li</span> &#123;</span><br><span class="line">    <span class="attribute">cursor</span>: pointer;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">12px</span> <span class="number">8px</span> <span class="number">12px</span> <span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#eee</span>;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">18px</span>;</span><br><span class="line">    <span class="attribute">transition</span>: <span class="number">0.2s</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/* make the list items unselectable */</span></span><br><span class="line">    <span class="attribute">-webkit-user-select</span>: none;</span><br><span class="line">    <span class="attribute">-moz-user-select</span>: none;</span><br><span class="line">    <span class="attribute">-ms-user-select</span>: none;</span><br><span class="line">    <span class="attribute">user-select</span>: none;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Set all odd list items to a different color (zebra-stripes) */</span></span><br><span class="line"><span class="selector-tag">ul</span> <span class="selector-tag">li</span><span class="selector-pseudo">:nth-child(odd)</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#f9f9f9</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Darker background-color on hover */</span></span><br><span class="line"><span class="selector-tag">ul</span> <span class="selector-tag">li</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#ddd</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* When clicked on, add a background color and strike out text */</span></span><br><span class="line"><span class="selector-tag">ul</span> <span class="selector-tag">li</span><span class="selector-class">.checked</span> &#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#888</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">    <span class="attribute">text-decoration</span>: line-through;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Add a "checked" mark when clicked on */</span></span><br><span class="line"><span class="selector-tag">ul</span> <span class="selector-tag">li</span><span class="selector-class">.checked</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">''</span>;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">border-color</span>: <span class="number">#fff</span>;</span><br><span class="line">    <span class="attribute">border-style</span>: solid;</span><br><span class="line">    <span class="attribute">border-width</span>: <span class="number">0</span> <span class="number">2px</span> <span class="number">2px</span> <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">16px</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(45deg);</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">15px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">7px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Style the close button */</span></span><br><span class="line"><span class="selector-class">.close</span> &#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">12px</span> <span class="number">16px</span> <span class="number">12px</span> <span class="number">16px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.close</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#f44336</span>;</span><br><span class="line">    <span class="attribute">color</span>: white;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Style the header */</span></span><br><span class="line"><span class="selector-class">.header</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#f44336</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">30px</span> <span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">color</span>: white;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Clear floats after the header */</span></span><br><span class="line"><span class="selector-class">.header</span><span class="selector-pseudo">:after</span> &#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">""</span>;</span><br><span class="line">    <span class="attribute">display</span>: table;</span><br><span class="line">    <span class="attribute">clear</span>: both;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Style the input */</span></span><br><span class="line"><span class="selector-tag">input</span> &#123;</span><br><span class="line">    <span class="attribute">border</span>: none;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">75%</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Style the "Add" button */</span></span><br><span class="line"><span class="selector-class">.addBtn</span> &#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">25%</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#d9d9d9</span>;    </span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#555</span>;</span><br><span class="line">    <span class="attribute">float</span>: left;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/*指针光标类型 [help,crosshair,wait]*/</span></span><br><span class="line">    <span class="attribute">cursor</span>: pointer;</span><br><span class="line">    </span><br><span class="line">    <span class="attribute">transition</span>: <span class="number">0.3s</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*鼠标指针浮动在其上的元素，设置的样式*/</span></span><br><span class="line"><span class="selector-class">.addBtn</span><span class="selector-pseudo">:hover</span> &#123;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#bbb</span>; </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="JS文件"><a href="#JS文件" class="headerlink" title="JS文件"></a>JS文件</h2><h3 id="初始化操作"><a href="#初始化操作" class="headerlink" title="初始化操作"></a>初始化操作</h3><p>使用 JavaScript 初始化主要完成三项工作：</p>
+<ul>
+<li>（1）为每个表单项添加的对应 CSS 样式，增加一个<code>close</code>按钮</li>
+<li>（2）为每个表单项中的点击事件绑定对应的函数</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// Create a "close" button and append it to each list item</span></span><br><span class="line"><span class="keyword">var</span> myNodelist = <span class="built_in">document</span>.getElementsByTagName(<span class="string">"LI"</span>);</span><br><span class="line"><span class="keyword">var</span> i;</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; myNodelist.length; i++) &#123;</span><br><span class="line">  <span class="keyword">var</span> span = <span class="built_in">document</span>.createElement(<span class="string">"SPAN"</span>);</span><br><span class="line">  <span class="keyword">var</span> txt = <span class="built_in">document</span>.createTextNode(<span class="string">"\u00D7"</span>);</span><br><span class="line">  span.className = <span class="string">"close"</span>;</span><br><span class="line">  span.appendChild(txt);</span><br><span class="line">  myNodelist[i].appendChild(span);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 点击”Close“按钮，将列表项隐藏</span></span><br><span class="line"><span class="keyword">var</span> close = <span class="built_in">document</span>.getElementsByClassName(<span class="string">"close"</span>);</span><br><span class="line"><span class="keyword">var</span> i;</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; close.length; i++) &#123;</span><br><span class="line">  close[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> div = <span class="keyword">this</span>.parentElement;</span><br><span class="line">    div.style.display = <span class="string">"none"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 点击表项时，增加"checked"</span></span><br><span class="line"><span class="keyword">var</span> list = <span class="built_in">document</span>.querySelector(<span class="string">'ul'</span>);</span><br><span class="line">list.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">ev</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (ev.target.tagName === <span class="string">'LI'</span>) &#123;</span><br><span class="line">    ev.target.classList.toggle(<span class="string">'checked'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;, <span class="literal">false</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="添加操作"><a href="#添加操作" class="headerlink" title="添加操作"></a>添加操作</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 当点击 “Add” 按钮时，增加一个新的表项</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">newElement</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 新建一个列表项</span></span><br><span class="line">  <span class="keyword">var</span> li = <span class="built_in">document</span>.createElement(<span class="string">"li"</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 获取输入框中的待办事项内容，并赋值给新建的列表项 li </span></span><br><span class="line">  <span class="keyword">var</span> inputValue = <span class="built_in">document</span>.getElementById(<span class="string">"myInput"</span>).value;</span><br><span class="line">  <span class="keyword">var</span> t = <span class="built_in">document</span>.createTextNode(inputValue);</span><br><span class="line">  li.appendChild(t);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (inputValue === <span class="string">''</span>) &#123;</span><br><span class="line">    <span class="comment">// 输入框中无内容，则弹出提示</span></span><br><span class="line">    alert(<span class="string">"You must write something!"</span>);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 将包含新待办事项列表项 li 插入列表中</span></span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"myUL"</span>).appendChild(li);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 清空输入框</span></span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">"myInput"</span>).value = <span class="string">""</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 插入的 li 设置 CSS 样式</span></span><br><span class="line">  <span class="keyword">var</span> span = <span class="built_in">document</span>.createElement(<span class="string">"SPAN"</span>);</span><br><span class="line">  <span class="keyword">var</span> txt = <span class="built_in">document</span>.createTextNode(<span class="string">"\u00D7"</span>);</span><br><span class="line">  span.className = <span class="string">"close"</span>;</span><br><span class="line">  span.appendChild(txt);</span><br><span class="line">  li.appendChild(span);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 绑定鼠标点击函数，当点击 close 按钮将隐藏表项</span></span><br><span class="line">  <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; close.length; i++) &#123;</span><br><span class="line">    close[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">var</span> div = <span class="keyword">this</span>.parentElement;</span><br><span class="line">      div.style.display = <span class="string">"none"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/05/27/javascript-note-jquery/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1411,127 +1550,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/04/28/ServletAndJSPSummary9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="linj2n">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="1 / 0 == ∞">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/28/ServletAndJSPSummary9/" itemprop="url">Servlet/JSP学习总结（9）使用Servlet+JSP+JavaBean实现一个登陆注册实例</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-28T16:13:14+08:00">
-                2018/04/28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Servlet、JSP、JavaBean </p>
-<p>上一篇提到一个 MVC 模式有三个模块组成，分别是模型 Model、视图 View 、控制器 Controller</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1582,7 +1600,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">42</span>
+                <span class="site-state-item-count">43</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
