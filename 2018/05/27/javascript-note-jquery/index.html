@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="1 &#x2F; 0 == ∞">
 <meta property="og:description" content="本文是 jQuery 库学习笔记，主要内容有选择器、操作 DOM、AJAX等。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-06-01T03:40:37.000Z">
+<meta property="og:updated_time" content="2018-06-01T05:51:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript 学习笔记之 jQuery">
 <meta name="twitter:description" content="本文是 jQuery 库学习笔记，主要内容有选择器、操作 DOM、AJAX等。">
@@ -544,12 +544,43 @@
 <li><code>remove()</code>方法</li>
 </ul>
 <h1 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h1><p>当一个页面加载的同时时，页面上所有的 JavaScript 代码也会被加载。所有加载工作完成后，相关的 JavaScript 代码只能依赖事件来触发了。</p>
-<p>常见的事件包括：</p>
-<ul>
-<li>（1）鼠标事件：包括单击、双击、进入、移出。</li>
-<li>（2）键盘事件：按下、松开、按一次键后</li>
-<li>（3）其他事件：包括focus、blur、change、submit和ready。</li>
-</ul>
+<p>常见的事件见下表：</p>
+<table>
+<thead>
+<tr>
+<th>Mouse Events</th>
+<th>Keyboard Events</th>
+<th>Form Events</th>
+<th>Document/Window Events</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>click</td>
+<td>keypress</td>
+<td>submit</td>
+<td>load </td>
+</tr>
+<tr>
+<td>dblclick</td>
+<td>keydown</td>
+<td>change</td>
+<td>resize </td>
+</tr>
+<tr>
+<td>mouseenter</td>
+<td>keyup</td>
+<td>focus</td>
+<td>scroll</td>
+</tr>
+<tr>
+<td>mouseleave</td>
+<td></td>
+<td>blur(失去焦点)</td>
+<td>unload </td>
+</tr>
+</tbody>
+</table>
 <h2 id="绑定与解绑"><a href="#绑定与解绑" class="headerlink" title="绑定与解绑"></a>绑定与解绑</h2><p>绑定方法有二：</p>
 <ul>
 <li><code>on</code>方法签名：<code>selector.on(eventsName,function())</code></li>
