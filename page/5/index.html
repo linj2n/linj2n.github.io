@@ -298,6 +298,143 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/01/02/657-Juge-Route-Circle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linj2n">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="1 / 0 == ∞">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/01/02/657-Juge-Route-Circle/" itemprop="url">[Leetcode] 657.Juge Route Circle</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-02T00:22:44+08:00">
+                2018/01/02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="657-Judge-Route-Circle"><a href="#657-Judge-Route-Circle" class="headerlink" title="657. Judge Route Circle"></a>657. Judge Route Circle</h1><h4 id="From：657-Judge-Route-Circle"><a href="#From：657-Judge-Route-Circle" class="headerlink" title="From：657. Judge Route Circle"></a>From：<a href="https://leetcode.com/problems/judge-route-circle/description/" target="_blank" rel="noopener">657. Judge Route Circle</a></h4><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Initially, there is a Robot at position (0, 0). Given a sequence of its moves, judge if this robot makes a circle, which means it moves back to the original place.</p>
+<p>The move sequence is represented by a string. And each move is represent by a character. The valid robot moves are R (Right), L (Left), U (Up) and D (down). The output should be true or false representing whether the robot makes a circle.</p>
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><pre>Input: "UD"
+Output: true
+</pre>
+<pre>Input: "LL"
+Output: false</pre>
+
+<h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis"></a>Input and output analysis</h2><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>两种判别最后是否在原点的方法：</p>
+<ul>
+<li>记录<code>L</code>、<code>R</code>、<code>U</code>、<code>D</code>出现的次数，若<code>L</code>和<code>R</code>出现次数相等，<code>U</code>和<code>D</code>出现次数也相等，则返回<code>true</code>，否则返回<code>false</code>。</li>
+<li>使用两个变量<code>v</code>、<code>h</code>。遍历<code>String moves</code>，若<code>L</code>、<code>U</code>出现则做<code>v++</code>与<code>h++</code>操作，<code>R</code>、<code>D</code>则做<code>v--</code>与<code>h--</code>操作。最后若<code>v == 0 &amp;&amp; h == 0</code>成立则返回<code>true</code>，否则返回<code>false</code>。</li>
+</ul>
+<p>确定判别方法后，接下来就是如何遍历<code>String moves</code>与分别标记<code>L、R、U、D</code>出现次数的问题了，具体见实现代码。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/01/02/657-Juge-Route-Circle/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/01/02/399-Nuts-and-bolts-problem/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -745,7 +882,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-count">44</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -758,7 +895,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-count">33</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
