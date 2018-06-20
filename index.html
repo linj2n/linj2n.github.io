@@ -298,6 +298,333 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/06/20/javascript-note-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linj2n">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="1 / 0 == ∞">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/20/javascript-note-1/" itemprop="url">【JavaScript语言精粹】读书笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-20T22:26:06+08:00">
+                2018/06/20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-Good-Part"><a href="#1-Good-Part" class="headerlink" title="1. Good Part"></a>1. Good Part</h1><h2 id="1-1-Why-JavaScript"><a href="#1-1-Why-JavaScript" class="headerlink" title="1.1 Why JavaScript"></a>1.1 Why JavaScript</h2><ul>
+<li>Web 已经变成了一个重要的应用开发平台，而 JavaScript 是 Web 浏览器的语言，是世界上最被轻视的语言之一。很大部分的原因在于浏览器的 API 和 DOM 内容的糟糕导致 JavaScript 语言被误解。</li>
+<li>拥有极强表达能力的语言</li>
+</ul>
+<h2 id="1-2-Analyzing-JavaScript"><a href="#1-2-Analyzing-JavaScript" class="headerlink" title="1.2 Analyzing JavaScript"></a>1.2 Analyzing JavaScript</h2><p>JavaScript 好的一部分：</p>
+<ul>
+<li>函数、弱类型、动态对象与对象字面量表示法</li>
+</ul>
+<p>JavaScript 差的一部分：</p>
+<ul>
+<li>全局变量的编程模型</li>
+</ul>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><ul>
+<li><p>JavaScript 的函数是基于词法作用域的顶级对象。即函数是根据词法来划分作用域的，而不是动态地划分作用域。</p>
+</li>
+<li><p>JavaScript 是第一个称为主流的 lambda 语言。</p>
+</li>
+</ul>
+<h3 id="弱类型"><a href="#弱类型" class="headerlink" title="弱类型"></a>弱类型</h3><ul>
+<li><p>大部分编程语言都流行要求强类型，原理在于强类型允许编译器在编译时检测错误，越早检测和修复错误，付出的代价越小，但事实上强类型并不会让你的测试工作轻松。</p>
+</li>
+<li><p>弱类型比较自由，无序建立复杂的类层次。</p>
+</li>
+</ul>
+<h3 id="对象字面量表示法"><a href="#对象字面量表示法" class="headerlink" title="对象字面量表示法"></a>对象字面量表示法</h3><ul>
+<li>JavaScript 通过列出对象的组成部分，因此能够简单地创建一个对象。</li>
+<li>这种表示法促使了 JSON 格式的产生。</li>
+</ul>
+<h3 id="原形继承"><a href="#原形继承" class="headerlink" title="原形继承"></a>原形继承</h3><ul>
+<li>原型继承是 JavaScript 中的一个有争议的特性。即JavaScript 有一个无类别（Class-free）的对象系统。</li>
+<li>对于习惯使用类去创建对象的程序员来说，需要习惯原型继承的特性。</li>
+</ul>
+<h1 id="2-Grammar"><a href="#2-Grammar" class="headerlink" title="2.Grammar"></a>2.Grammar</h1><h2 id="2-1-White-Space"><a href="#2-1-White-Space" class="headerlink" title="2.1 White Space"></a>2.1 White Space</h2><ul>
+<li>语法图<img src="" alt=""></li>
+<li>JavaScript 提供两种注释，一种是<code>/* */</code>包围的块注释，另外一种是<code>//</code>行注释。</li>
+<li><strong>建议：避免使用<code>/* */</code>注释，用<code>//</code>注释代替它。</strong></li>
+</ul>
+<h2 id="2-2-Names"><a href="#2-2-Names" class="headerlink" title="2.2 Names"></a>2.2 Names</h2><ul>
+<li>语法图<img src="" alt=""></li>
+<li>标识符由一个字母开头，气候可选择性加上一个或多个字母、数字或下划线。</li>
+<li>保留字如下：<pre>abstract<br>boolean break byte<br>case catch char class const continue<br>debugger default delete do double<br>else enum export extends<br>false final finally float for function<br>goto<br>if implements import in instanceof int interface<br>long<br>native new null<br>package private protected public<br>return<br>short static super switch synchronized<br>this throw throws transient true try typeof<br>var volatile void<br>while with</pre></li>
+</ul>
+<h2 id="2-3-Numbers"><a href="#2-3-Numbers" class="headerlink" title="2.3 Numbers"></a>2.3 Numbers</h2><ul>
+<li>语法图<img src="" alt=""></li>
+<li>仅有一个单一的数字类型，内部被表示为 64 位的浮点数。</li>
+<li>与 Java 的 double 不一样，并没有分离出整数类型，因此 <code>1</code> 与 <code>1.0</code> 是相等的。</li>
+<li><code>NaN</code>是一个数值，表示一个不能产生正常结果的运行结果，<code>NaN</code>不等于任何职，包括它自己。</li>
+<li><code>Infinity</code>表示所有大于<code>1.79769313486231570e+308</code>的值</li>
+</ul>
+<h2 id="2-4-Strings"><a href="#2-4-Strings" class="headerlink" title="2.4 Strings"></a>2.4 Strings</h2><ul>
+<li>语法图<img src="" alt=""></li>
+<li>JavaScript 没有字符类型，要表示一个字符，只需创建仅包含一个字符的字符串即可</li>
+<li>字符串是不可变的，一旦字符串被创建，就无法改变它，但能通过<code>+</code>运算符去连接其他的字符串。</li>
+</ul>
+<h2 id="2-5-Statements"><a href="#2-5-Statements" class="headerlink" title="2.5 Statements"></a>2.5 Statements</h2><ul>
+<li><p>下面的列出的值被当做是<code>false</code>，其他的所有值都被当做<code>true</code></p>
+<ul>
+<li>flase</li>
+<li>null</li>
+<li>undefined</li>
+<li>空字符串</li>
+<li>数字 <code>0</code></li>
+<li>数字 <code>NaN</code></li>
+</ul>
+</li>
+<li><p>throw 语句跑出一个异常，若 throw 语句在一个 try 代码块中，name控制权会调到 catch 从句。若 throw 语句在函数中，则该函数调用会被放弃，且控制权会调到调用该函数的 try 语句的 catch 从句中</p>
+</li>
+<li><p>不允许在 return 关键字和表达式之间换行</p>
+</li>
+<li><p>在 web 浏览器中，每一个<code>&lt;script&gt;</code>标签都提供一个被编译且立即执行的便一单元，因为缺乏连接器，JavaScript 把它们丢进了一个公共的全局名字空间中。</p>
+</li>
+</ul>
+<h2 id="2-6-Literals"><a href="#2-6-Literals" class="headerlink" title="2.6 Literals"></a>2.6 Literals</h2><h3 id="literal"><a href="#literal" class="headerlink" title="literal"></a>literal</h3><p>语法图<img src="" alt=""></p>
+<h3 id="Object-literal"><a href="#Object-literal" class="headerlink" title="Object literal"></a>Object literal</h3><p>语法图<img src="" alt=""></p>
+<h3 id="array-literal"><a href="#array-literal" class="headerlink" title="array literal"></a>array literal</h3><p>语法图<img src="" alt=""></p>
+<h3 id="regexp-literal"><a href="#regexp-literal" class="headerlink" title="regexp literal"></a>regexp literal</h3><p>语法图<img src="" alt=""></p>
+<h2 id="2-7-Functions"><a href="#2-7-Functions" class="headerlink" title="2.7 Functions"></a>2.7 Functions</h2><p>语法图<img src="" alt=""></p>
+<h1 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h1><ul>
+<li>JavaScript 的对象包括简单类型与对象。简单类型有：数字、字符串、布尔值、null 与 underfined，其他所有的值都是对象。</li>
+<li>对象是属性的容器，属性拥有名字与值。属性的名字可以包括空字符串在内的任意字符串。属性值可以是出 underfined 值之外的任何值。</li>
+<li>对象是无类别（class-free），因此对新属性的名字和值没有约束。</li>
+</ul>
+<h2 id="Object-Literal"><a href="#Object-Literal" class="headerlink" title="Object Literal"></a>Object Literal</h2><p>对象字面量（Object literal）是一种创建对象值的表示法。下面是一个例子：<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> empty_object = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> stooge = &#123;         <span class="string">"first-name"</span>: <span class="string">"Jerome"</span>,         <span class="string">"last-name"</span>: <span class="string">"Howard"</span>&#125;;</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/06/20/spring-note-jpa/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linj2n">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="1 / 0 == ∞">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/06/20/spring-note-jpa/" itemprop="url">Spring学习总结（6）使用Spring Data JPA</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-20T01:04:26+08:00">
+                2018/06/20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <blockquote><p>JPA 全称 Java Persistence API ，是一种能将对象映射到关系数据库中的标准技术。<code>spring-boot-starter-data-jpa</code> POM 提供了一种十分快速方式上手。</p>
+</blockquote>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/06/20/spring-note-jpa/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/06/02/spring-note-auto-wiring/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -317,7 +644,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/06/02/spring-note-auto-wiring/" itemprop="url">Spring学习总结（4）自动化装配Bean</a></h1>
+                <a class="post-title-link" href="/2018/06/02/spring-note-auto-wiring/" itemprop="url">Spring学习总结（5）自动化装配Bean</a></h1>
         
 
         <div class="post-meta">
@@ -1284,256 +1611,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/05/24/spring-note-di-and-aop/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="linj2n">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="1 / 0 == ∞">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/24/spring-note-di-and-aop/" itemprop="url">Spring学习总结（4）理解 DI 与 AOP</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-24T12:30:25+08:00">
-                2018/05/24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote><p>本文主要为<a href="https://www.amazon.cn/dp/B01DN3VR6G/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1527134412&amp;sr=1-1" target="_blank" rel="noopener">Spring In Action 4</a>第二章的学习笔记，通过两个例子介绍如何通过 DI 与 AOP 的对组件进行解耦，并且总结了 DI 与 AOP 的用法及优点。</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/05/24/spring-note-di-and-aop/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/05/18/spring-note-3/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="linj2n">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="1 / 0 == ∞">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/18/spring-note-3/" itemprop="url">Spring学习总结（3）Spring Boot + Spring MVC 入门实例</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-18T22:55:44+08:00">
-                2018/05/18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <blockquote><p>上一篇介绍一个使用 Spring 框架开发的登录模块，接下继续利用这个<strong>登录模块</strong>的业务逻辑，不同的是使用 Spring Boot 框架替代 Spring 框架，目的为了大致了解 Spring Boot 开发的一般步骤以及 Spring Boot 的优点。例子的完整代码已托管到 gayhub 上，地址<a href="https://github.com/linj2n/spring-demos" target="_blank" rel="noopener">https://github.com/linj2n/spring-demos</a></p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/05/18/spring-note-3/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1584,7 +1661,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">45</span>
+                <span class="site-state-item-count">47</span>
                 <span class="site-state-item-name">posts</span>
               </a>
             </div>
@@ -1597,7 +1674,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">33</span>
+                <span class="site-state-item-count">36</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
