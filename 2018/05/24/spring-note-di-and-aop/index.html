@@ -109,7 +109,7 @@
 <meta property="og:image" content="http://p5twacobv.bkt.clouddn.com/spring-note-di-and-ioc-pic-5.png">
 <meta property="og:image" content="http://p5twacobv.bkt.clouddn.com/spring-note-di-and-ioc-pic-6.png">
 <meta property="og:image" content="http://p5twacobv.bkt.clouddn.com/spring-note-di-and-ioc-pic-7.png">
-<meta property="og:updated_time" content="2018-06-09T17:25:48.000Z">
+<meta property="og:updated_time" content="2018-07-11T12:57:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring学习总结（4）理解 DI 与 AOP">
 <meta name="twitter:description" content="本文主要为Spring In Action 4第二章的学习笔记，通过两个例子介绍如何通过 DI 与 AOP 的对组件进行解耦，并且总结了 DI 与 AOP 的用法及优点。">
@@ -392,7 +392,7 @@
 <p><strong>一言以蔽之，DI 能够让相互协作的组件（Bean）保持松耦合。</strong></p>
 <h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p><strong>注：</strong>例子来源于<a href="https://www.amazon.cn/dp/B01DN3VR6G/ref=sr_1_1?ie=UTF8&amp;qid=1527081371&amp;sr=8-1&amp;keywords=spring+in+action+%E7%AC%AC%E5%9B%9B%E7%89%88+%E4%B8%AD%E6%96%87%E7%89%88" target="_blank" rel="noopener">Spring In Action</a>。</p>
 <h3 id="DamselRescuingKnight类"><a href="#DamselRescuingKnight类" class="headerlink" title="DamselRescuingKnight类"></a>DamselRescuingKnight类</h3><p>假如我们要模拟一个骑士，其中骑士拥有的探险（quest）的能力。如拯救少女（Rescue Damsel）、消灭恶龙（Slay Dragon）等。</p>
-<p>一种实现类的方式可能如下，<code>DamselRescuingKnight</code>拥有一个表示私有属性<code>quest</code>表示拯救少女的探险，无参构造器中创建初始化一个<code>quest</code>，并在<code>embarkOnQuest()</code>方法中运行<code>quest.embark()</code>，表示执行探险。</p>
+<p>一种实现类的方式可能如下，<code>DamselRescuingKnight</code>拥有一个私有属性<code>quest</code>表示拯救少女的探险，无参构造器中创建初始化一个<code>quest</code>，并在<code>embarkOnQuest()</code>方法中运行<code>quest.embark()</code>，表示执行探险。</p>
 <p><img src="http://p5twacobv.bkt.clouddn.com/spring-note-di-and-ioc-pic-1.png" alt="spring-note-di-and-ioc-pic-1"></p>
 <p>该类有两个不足：</p>
 <ul>
@@ -403,9 +403,9 @@
 <h3 id="BraveKnight类"><a href="#BraveKnight类" class="headerlink" title="BraveKnight类"></a>BraveKnight类</h3><p><img src="http://p5twacobv.bkt.clouddn.com/spring-note-di-and-ioc-pic-2.png" alt="spring-note-di-and-ioc-pic-2"></p>
 <p><strong>改进后：</strong></p>
 <ul>
-<li><p>易扩展。**不同与上一个<code>DamselRecuingKnight</code>，<code>BraveKnight</code>没有自行创建<code>Quest</code>，而是传入一个<code>Quest</code>接口，这使得<code>BraveKnight</code>没有与任何特定的<code>Quest</code>实现发生耦合。<code>BraveKnight</code>可以相应任何的类型的<code>Quest</code>，无论是<code>SlayDragonQuest</code>、还是<code>MakeRoundTableRounderQuest</code>。</p>
+<li><p>易扩展。不同与上一个<code>DamselRecuingKnight</code>，<code>BraveKnight</code>没有自行创建<code>Quest</code>，而是传入一个<code>Quest</code>接口，这使得<code>BraveKnight</code>没有与任何特定的<code>Quest</code>实现发生耦合。<code>BraveKnight</code>可以相应任何的类型的<code>Quest</code>，无论是<code>SlayDragonQuest</code>、还是<code>MakeRoundTableRounderQuest</code>。</p>
 </li>
-<li><p>易测试。**一个可能的测试如下：<br><img src="http://p5twacobv.bkt.clouddn.com/spring-note-di-and-ioc-pic-3.png" alt="spring-note-di-and-ioc-pic-3"><br>易测试体现在：若是测试上一个<code>DamselRescuingKnight</code>，我们必须真正的实现一个<code>RescueDamselQuest</code>。而测试<code>BraveKnight</code>，我们仅需要给它一个<code>Quest</code>模拟类<code>MockQuest</code>，其注入一个<code>BraveKnight</code>，然后测试即可。<code>MockQuest</code>类里的方法都可能是一个简单的 print 语句或者一个返回值。</p>
+<li><p>易测试。一个可能的测试如下：<br><img src="http://p5twacobv.bkt.clouddn.com/spring-note-di-and-ioc-pic-3.png" alt="spring-note-di-and-ioc-pic-3"><br>易测试体现在：若是测试上一个<code>DamselRescuingKnight</code>，我们必须真正的实现一个<code>RescueDamselQuest</code>。而测试<code>BraveKnight</code>，我们仅需要给它一个<code>Quest</code>模拟类<code>MockQuest</code>，其注入一个<code>BraveKnight</code>，然后测试即可。<code>MockQuest</code>类里的方法都可能是一个简单的 print 语句或者一个返回值。</p>
 </li>
 </ul>
 <p>从<code>BraveKnight</code>类可以得知，如果一个对象只通过<strong>接口</strong>，而不是<strong>具体实现</strong>或<strong>初始化过程</strong>来表明<strong>依赖关系</strong>，<strong>那么这种依赖能够在不改变对象本身的情况下进行替换。</strong></p>
@@ -592,7 +592,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">37</span>
                 <span class="site-state-item-name">tags</span>
               </a>
             </div>
