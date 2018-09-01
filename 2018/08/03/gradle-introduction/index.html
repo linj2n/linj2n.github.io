@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Gradle," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="Gradle 概念Project 与 Task整个 Gradle ，有两个最基础的感念：项目和任务。 每一个项目都由一个或多个任务组成。一个任务表示构建执行的一些原子工作，比如编译一些类，创建一个JAR包，生成javadoc，或者是把一些档案发布到仓库中。 PluginGradle 插件能够什么？ Gradle 的设计哲学之一是所有有用的特性都是由 Gradle 插件（Gradle plugins">
+<meta name="keywords" content="Gradle">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gradle-introduction">
+<meta property="og:url" content="http://linj2n.cn/2018/08/03/gradle-introduction/index.html">
+<meta property="og:site_name" content="1 &#x2F; 0 == ∞">
+<meta property="og:description" content="Gradle 概念Project 与 Task整个 Gradle ，有两个最基础的感念：项目和任务。 每一个项目都由一个或多个任务组成。一个任务表示构建执行的一些原子工作，比如编译一些类，创建一个JAR包，生成javadoc，或者是把一些档案发布到仓库中。 PluginGradle 插件能够什么？ Gradle 的设计哲学之一是所有有用的特性都是由 Gradle 插件（Gradle plugins">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-08-03T06:35:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="gradle-introduction">
+<meta name="twitter:description" content="Gradle 概念Project 与 Task整个 Gradle ，有两个最基础的感念：项目和任务。 每一个项目都由一个或多个任务组成。一个任务表示构建执行的一些原子工作，比如编译一些类，创建一个JAR包，生成javadoc，或者是把一些档案发布到仓库中。 PluginGradle 插件能够什么？ Gradle 的设计哲学之一是所有有用的特性都是由 Gradle 插件（Gradle plugins">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: 'K1Q1DQ07MZ',
+      apiKey: '',
+      indexName: 'linj2nBlog',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://linj2n.cn/2018/08/03/gradle-introduction/"/>
+
+
+
+
+
+  <title>gradle-introduction | 1 / 0 == ∞</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">1 / 0 == ∞</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Done is better than perfect.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/08/03/gradle-introduction/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="linj2n">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="1 / 0 == ∞">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">gradle-introduction</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-03T13:58:58+08:00">
+                2018/08/03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Gradle-概念"><a href="#Gradle-概念" class="headerlink" title="Gradle 概念"></a>Gradle 概念</h1><h2 id="Project-与-Task"><a href="#Project-与-Task" class="headerlink" title="Project 与 Task"></a>Project 与 Task</h2><p>整个 Gradle ，有两个最基础的感念：项目和任务。</p>
+<p>每一个项目都由一个或多个任务组成。一个任务表示构建执行的一些原子工作，比如编译一些类，创建一个JAR包，生成javadoc，或者是把一些档案发布到仓库中。</p>
+<h2 id="Plugin"><a href="#Plugin" class="headerlink" title="Plugin"></a>Plugin</h2><p>Gradle 插件能够什么？</p>
+<p>Gradle 的设计哲学之一是所有有用的特性都是由 Gradle 插件（Gradle plugins）提供。插件做的事情有：</p>
+<ol>
+<li>向项目增加一个任务</li>
+<li>对于增加的任务，提供一个默认的配置。默认配置会给项目带来很多便利性。</li>
+<li>可以增加一些属性，用于覆盖插件的默认配置。</li>
+<li>向项目增加新的依赖。</li>
+</ol>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><p>Gradle 包含三类配置文件：</p>
+<ul>
+<li><code>build.gradle</code>文件，Gradle 构建脚本，用于指定了一个项目（project）和它的任务（task）。</li>
+<li><code>gradle.properties</code>文件，Gradle 属性文件，用于配置构建的属性</li>
+<li><code>settings.gradle</code>文件，当构建一个项目时，这个文件是可选的。但是构建多个项目时，这个文件是必须的。每一个项目根目录都要有一个<code>settings.gradle</code>文件。</li>
+</ul>
+<p>Gradle构建脚本（build.gradle）指定了一个项目和它的任务。<br>Gradle属性文件（gradle.properties）用来配置构建属性。<br>Gradle设置文件（gradle.settings）对于只有一个项目的构建而言是可选的，如果我们的构建中包含多于一个项目，那么它就是必须的，因为它描述了哪一个项目参与构建。每一个多项目的构建都必须在项目结构的根目录中加入一个设置文件。</p>
+<h1 id="Gradle构建第一个Java项目"><a href="#Gradle构建第一个Java项目" class="headerlink" title="Gradle构建第一个Java项目"></a>Gradle构建第一个Java项目</h1><h2 id="初始化Project"><a href="#初始化Project" class="headerlink" title="初始化Project"></a>初始化Project</h2><p>选择合适的位置，在 terminal 输入以下命令：</p>
+<p>1.创建 Project 目录<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> mkdir first-java-project</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> <span class="built_in">cd</span> first-java-project</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> mkdir -p src/cn/linj2n/gradle</span></span><br></pre></td></tr></table></figure></p>
+<p>前面介绍了 Gradle 插件的概念，对应的，使用 Gradle 构建一个 Java 项目必须有一个 Java 插件，用于提供 Java 项目的编译、测试与构建。在<code>build.gradle</code>文件加入以下内容。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply <span class="string">plugin:</span> <span class="string">'java'</span></span><br></pre></td></tr></table></figure>
+<h2 id="默认项目结构布局"><a href="#默认项目结构布局" class="headerlink" title="默认项目结构布局"></a>默认项目结构布局</h2><p>Gradle 遵循以下 Java 项目的默认布局的约定。</p>
+<ul>
+<li><code>src/main/java</code>，该目录包含项目的源代码（需要自己提前创建或 IDE 生成）</li>
+<li><code>src/main/resources</code>，该目录包含了项目的资源，如属性文件、XML文件等。（需要自己提前创建或 IDE 生成）</li>
+<li><code>src/test/java</code>，该目录包含项目的测试类（需要自己提前创建或 IDE 生成）</li>
+<li><code>src/test/resources</code>，该目录测试类的资源（需要自己提前创建或 IDE 生成）</li>
+<li><code>classes</code>，该目录包含编译后的<code>.class</code>文件</li>
+<li><code>libs</code>，该目录包含构建后，创建的 jar 或 war 文件。</li>
+</ul>
+<p>具体参见<a href="https://docs.gradle.org/current/userguide/java_plugin.html#N12119" target="_blank" rel="noopener">The Java Plugin#Project layout</a></p>
+<p>Gradle会在 src/main/java 和 src/test/java 分别找你的生产源码和测试源码。并且在 src/main/resources的所有文件都会作为资源被打包进JAR包，任何在 src/test/resources 下的资源文件都会被包含到类路径中用于执行测试。所有输出的文件都会在 build 目录里创建，而JAR包会被输出在build/libs 目录里。 </p>
+<h2 id="增加一个-main-class"><a href="#增加一个-main-class" class="headerlink" title="增加一个 main class"></a>增加一个 main class</h2><p>在 <code>src/test/java/cn/linj2n/gradle/</code>目录下，创建一个打印 “Hello world!”的<code>HelloWorld</code>类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.linj2n.gradle;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String [] args)</span> </span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Hello world!"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Java 插件可以在我们的构建中增加很多任务，但在<code>first-java-project</code>我们涉及到相关的任务及其描述如下：</p>
+<ul>
+<li><code>assemble</code>，编译应用的源码，然后打包成<code>jar</code>文件，这个任务不会运行涉及单元测试。</li>
+<li><code>build</code>，完全编译整个项目</li>
+<li><code>clean</code>，删除构建目录</li>
+<li><code>compile</code>，仅编译应用的源码</li>
+</ul>
+<p>可以通过下面的命令，查看 Java 插件为项目添加了那些任务。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> gralde tasks</span></span><br></pre></td></tr></table></figure></p>
+<p>Java 插件在我们的项目加入了一个 Jar 任务，每一个 Jar 对象都有一个 manifest ，这个属性是 Manifest 的一个实例。因此需要 build.gradle 文件进行必要的改动。代码如下：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">apply <span class="string">plugin:</span> <span class="string">'java'</span></span><br><span class="line"></span><br><span class="line">jar &#123;</span><br><span class="line">    manifest &#123;</span><br><span class="line">        attributes <span class="string">'Main-Class'</span>: <span class="string">'cn.linj2n.gradle.HelloWorld'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关于Manifest 的更多资料，参见<a href="https://docs.oracle.com/javase/tutorial/deployment/jar/manifestindex.html" target="_blank" rel="noopener">Working with Manifest Files</a></p>
+<h2 id="执行构建，打包成-Jar-文件"><a href="#执行构建，打包成-Jar-文件" class="headerlink" title="执行构建，打包成 Jar 文件"></a>执行构建，打包成 Jar 文件</h2><p>在根目录下，执行以下命令：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> gradle build </span></span><br></pre></td></tr></table></figure></p>
+<p>可以看到根目录下生成了一个 build 文件夹，包含三个 class、libs与tmp 子文件夹，其中项目生成的 jar 文件位于 libs 中。</p>
+<p>在根目录下，执行以下命令，运行 jar 文件。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> java -jar first-java-project.jar </span></span><br><span class="line">Hello,world!</span><br></pre></td></tr></table></figure></p>
+<p>至此，我们使用 Gradle 构建的第一个 Java 项目完成。</p>
+<h1 id="依赖管理"><a href="#依赖管理" class="headerlink" title="依赖管理"></a>依赖管理</h1><p>依赖管理是 Gradle 的核心主题。要创造一个没有任何外部依赖的应用程序并非不可能，但也是极具挑战的，依赖管理对每一个项目都是至关重要的。</p>
+<h2 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h2><p>通常一个Java项目都会依赖一些外部JAR文件。如果想在项目里引用这些JAR文件，你需要告诉Gradle如何找到这们。在Gradle中，像JAR文件这样的工件都存在于 仓库。仓库可以用于获取项目中的依赖，或是发布项目的工件。</p>
+<p>在下面的例子中，我们将使用公共的Maven仓库，Gradle 还支持<code>lvy</code>与<code>Flat directory</code> 两种不同的仓库格式。</p>
+<h3 id="添加-Maven-仓库"><a href="#添加-Maven-仓库" class="headerlink" title="添加 Maven 仓库"></a>添加 Maven 仓库</h3><p><strong>build.gradle</strong><br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">repositories &#123;</span><br><span class="line">    mavenCentral()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>除了上面的方式添加仓库外，还可以通过 URL 方式，将 Maven 仓库加入构建中。</p>
+<p><strong>build.gradle</strong><br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 默认使用了 Maven 的中央仓库。这里改用自定义的 aliyun 镜像库</span></span><br><span class="line">repositories &#123;</span><br><span class="line">	<span class="comment">//mavenCentral()</span></span><br><span class="line">	maven &#123;</span><br><span class="line">		url <span class="string">'http://maven.aliyun.com/nexus/content/groups/public/'</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h2><p><strong>依赖管理的步骤有哪些？</strong> </p>
+<ul>
+<li>第一步，指定依赖的配置</li>
+<li>第二部，声明所需的依赖</li>
+</ul>
+<p><strong>依赖分类？ </strong><br>Java插件指定了若干<strong>依赖配置项</strong>，描述如下：</p>
+<ol>
+<li>当项目的源代码被编译时， compile 配置项中的依赖是必须的。</li>
+<li>runtime 配置项中包含的依赖在运行时是必须的。</li>
+<li>testCompile 配置项中包含的依赖在编译项目的测试代码时是必须的。</li>
+<li>testRuntime 配置项中包含的依赖在运行测试代码时是必须的。</li>
+<li>archives 配置项中包含项目生成的文件（如Jar文件）。</li>
+<li>default 配置项中包含运行时必须的依赖。</li>
+</ol>
+<p><strong>如何声明外部依赖？</strong></p>
+<ol>
+<li>group 属性： 指定依赖的分组，对应 Maven 中的 groupId</li>
+<li>name 属性：指定依赖的名称，对应 Maven 中的 artifactId</li>
+<li>version 属性： 指定外部以来的版本，对应 Maven 中的 version</li>
+</ol>
+<p><strong>示例一</strong>： 若需要指定某依赖</p>
+<ul>
+<li>分组：foo</li>
+<li>名称：foo</li>
+<li>版本：0.1</li>
+<li>编译时需要</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">	compile <span class="string">group:</span> <span class="string">'foo'</span>, <span class="string">name:</span> <span class="string">'foo'</span>, <span class="string">version:</span> <span class="string">'0.1'</span>	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>也可以使用快捷模式：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">	compile <span class="string">'foo:foo:0.1'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>示例二</strong>： 若需要在同一个配置项中声明多个依赖</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">	compile( [<span class="string">group:</span> <span class="string">'foo'</span>, <span class="string">name:</span> <span class="string">'foo'</span>, <span class="string">version:</span> <span class="string">'0.1'</span>],</span><br><span class="line">	[<span class="string">group:</span> <span class="string">'bar'</span>, <span class="string">name:</span> <span class="string">'bar'</span>, <span class="string">version:</span> <span class="string">'0.1'</span>] </span><br><span class="line">	)	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>采用快捷模式：<br><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">    compile <span class="string">'foo:foo:0.1'</span>, <span class="string">'bar:bar:0.1'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>使用 Gradle 创建一个项目。该项目需求如下： </p>
+<ul>
+<li>项目的构建脚本必须使用Maven central仓库。</li>
+<li>项目必须使用Log4j写入日志。<br>演示程序必须包含包含单元测试，保证正确的信息返回，单元测试必须使用JUnit编写。</li>
+<li>项目必须创建一个可执行的Jar文件。</li>
+</ul>
+<h2 id="配置-build-gradle-文件"><a href="#配置-build-gradle-文件" class="headerlink" title="配置 build.gradle 文件"></a>配置 build.gradle 文件</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">apply <span class="string">plugin:</span> <span class="string">'java'</span></span><br><span class="line"></span><br><span class="line">repositories &#123;</span><br><span class="line">	<span class="comment">//mavenCentral()</span></span><br><span class="line">	maven &#123;</span><br><span class="line">		url <span class="string">'http://maven.aliyun.com/nexus/content/groups/public/'</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">    compile <span class="string">'log4j:log4j:1.2.17'</span></span><br><span class="line">    testCompile <span class="string">'junit:junit:4.11'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">jar &#123;</span><br><span class="line">    manifest &#123;</span><br><span class="line">        attributes <span class="string">'Main-Class'</span>: <span class="string">'cn.linj2n.gradle.HelloWorld'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="编写代码"><a href="#编写代码" class="headerlink" title="编写代码"></a>编写代码</h2><p>在<code>src/main/java/cn/linj2n/gradle/</code>新建 MessageService 类用于演示 junit 测试以及被主类调用。</p>
+<p><strong>MessageService.java</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.linj2n.gradle;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MessageService</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getHelloWorldMessage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="string">"Hello, world!"</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在<code>src/main/test/cn/linj2n/gradle/</code>新建 MessageServiceTest 类，用于测试 MessageService 类。</p>
+<p><strong>MessageServiceTest.java</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.linj2n.gradle;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.Before;</span><br><span class="line"><span class="keyword">import</span> org.junit.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> org.junit.Assert.assertEquals;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> MessageServiceTest &#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> MessageService messageService;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Before</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        messageService = <span class="keyword">new</span> MessageService();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getMessage_ShouldReturnMessage</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        assertEquals(<span class="string">"Hello, world!"</span>, messageService.getMessage());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>编写项目的主类，从 MessageService 对象获取信息后，使用 Log4j 写入日志。</p>
+<p><strong>HelloWold.java</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.linj2n.gradle;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.log4j.Logger;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Helloworld</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Logger LOGGER = Logger.getLogger(HelloWorld.class);</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        MessageService messageService = <span class="keyword">new</span> MessageService();</span><br><span class="line"></span><br><span class="line">        String message = messageService.getMessage();</span><br><span class="line">        LOGGER.info(<span class="string">"Received message: "</span> + message);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>在src/main/resources目录中，使用log4j.properties配置log4j。</p>
+<p><strong>log4j.properties</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">log4j.appender.Stdout=org.apache.log4j.ConsoleAppender</span><br><span class="line">log4j.appender.Stdout.layout=org.apache.log4j.PatternLayout</span><br><span class="line">log4j.appender.Stdout.layout.conversionPattern=%-5p - %-26.26c&#123;1&#125; - %m\n</span><br><span class="line"> </span><br><span class="line">log4j.rootLogger=DEBUG,Stdout</span><br></pre></td></tr></table></figure></p>
+<h2 id="执行测试"><a href="#执行测试" class="headerlink" title="执行测试"></a>执行测试</h2><p>输入以下命令，执行测试。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> gradle <span class="built_in">test</span></span></span><br></pre></td></tr></table></figure></p>
+<p>执行测试后，可以以下目录查看测试报告：</p>
+<ul>
+<li>build/test-results 目录包含每次测试执行的原始数据。</li>
+<li>build/reports/tests 目录包含一个HTML报告，描述了测试的结果。</li>
+</ul>
+<p>一个可能的错误如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> Task :<span class="built_in">test</span> FAILED</span></span><br><span class="line"></span><br><span class="line">cn.linj2n.gradle.MessageServiceTest &gt; getMessage_ShouldReturnMessage FAILED</span><br><span class="line">    org.junit.ComparisonFailure at MessageServiceTest.java:19</span><br><span class="line"></span><br><span class="line">1 test completed, 1 failed</span><br><span class="line"></span><br><span class="line">FAILURE: Build failed with an exception.</span><br><span class="line"></span><br><span class="line">* What went wrong:</span><br><span class="line">Execution failed for task ':test'.</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> There were failing tests. See the report at: file:///Users/linj2n/all-demo/gradle-demo/dependency-management/build/reports/tests/<span class="built_in">test</span>/index.html</span></span><br><span class="line"></span><br><span class="line">* Try:</span><br><span class="line">Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.</span><br><span class="line"></span><br><span class="line">* Get more help at https://help.gradle.org</span><br><span class="line"></span><br><span class="line">BUILD FAILED in 1s</span><br></pre></td></tr></table></figure>
+<h2 id="打包与运行程序"><a href="#打包与运行程序" class="headerlink" title="打包与运行程序"></a>打包与运行程序</h2><p>在打包之前，我们需要修改 build.gradle 文件，将所有程序运行所需的依赖打包到 Jar 文件中。</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">jar &#123;</span><br><span class="line">    from &#123; configurations.compile.collect &#123; it.isDirectory() ? it : zipTree(it) &#125; &#125;</span><br><span class="line">    manifest &#123;</span><br><span class="line">        attributes <span class="string">'Main-Class'</span>: <span class="string">'cn.linj2n.gradle.HelloWorld'</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Gradle/" rel="tag"># Gradle</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/20/javascript-note-1/" rel="next" title="【JavaScript语言精粹】读书笔记">
+                <i class="fa fa-chevron-left"></i> 【JavaScript语言精粹】读书笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="linj2n" />
+          <p class="site-author-name" itemprop="name">linj2n</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">48</span>
+                <span class="site-state-item-name">posts</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">38</span>
+                <span class="site-state-item-name">tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/linj2n" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/p/1005055919829882" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Gradle-概念"><span class="nav-number">1.</span> <span class="nav-text">Gradle 概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Project-与-Task"><span class="nav-number">1.1.</span> <span class="nav-text">Project 与 Task</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Plugin"><span class="nav-number">1.2.</span> <span class="nav-text">Plugin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置文件"><span class="nav-number">1.3.</span> <span class="nav-text">配置文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Gradle构建第一个Java项目"><span class="nav-number">2.</span> <span class="nav-text">Gradle构建第一个Java项目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化Project"><span class="nav-number">2.1.</span> <span class="nav-text">初始化Project</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#默认项目结构布局"><span class="nav-number">2.2.</span> <span class="nav-text">默认项目结构布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增加一个-main-class"><span class="nav-number">2.3.</span> <span class="nav-text">增加一个 main class</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行构建，打包成-Jar-文件"><span class="nav-number">2.4.</span> <span class="nav-text">执行构建，打包成 Jar 文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#依赖管理"><span class="nav-number">3.</span> <span class="nav-text">依赖管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#仓库"><span class="nav-number">3.1.</span> <span class="nav-text">仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加-Maven-仓库"><span class="nav-number">3.1.1.</span> <span class="nav-text">添加 Maven 仓库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加依赖"><span class="nav-number">3.2.</span> <span class="nav-text">添加依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例"><span class="nav-number">3.3.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置-build-gradle-文件"><span class="nav-number">3.4.</span> <span class="nav-text">配置 build.gradle 文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编写代码"><span class="nav-number">3.5.</span> <span class="nav-text">编写代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行测试"><span class="nav-number">3.6.</span> <span class="nav-text">执行测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#打包与运行程序"><span class="nav-number">3.7.</span> <span class="nav-text">打包与运行程序</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">linj2n</span>
+</div>
+
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.2"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
