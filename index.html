@@ -600,108 +600,16 @@
 
       
         
-          
-            <blockquote><p>语言中的部分特性糟糕带来的麻烦远远地超过它们的价值，例如，因为规范不完善产生了可移植性的问题；一些特性会导致生成那一理解和修改的代码或使得代码风格过于复杂并且容易出错。JavaScript 鸡肋的部分的比重超出了预料，但好在 JavaScript 有一些非常精华的部分，本书旨在揭示 JavaScript 中的精华，同时会偶尔警告要避免鸡肋的部分。</p>
+          <blockquote><p>语言中的部分特性糟糕带来的麻烦远远地超过它们的价值，例如，因为规范不完善产生了可移植性的问题；一些特性会导致生成那一理解和修改的代码或使得代码风格过于复杂并且容易出错。JavaScript 鸡肋的部分的比重超出了预料。</p>
+<p>但好在 JavaScript 有一些非常精华的部分，本书旨在揭示 JavaScript 中的精华，同时会偶尔警告要避免鸡肋的部分。</p>
 </blockquote>
-<h1 id="1-Good-Part"><a href="#1-Good-Part" class="headerlink" title="1. Good Part"></a>1. Good Part</h1><h2 id="1-1-Why-JavaScript"><a href="#1-1-Why-JavaScript" class="headerlink" title="1.1 Why JavaScript"></a>1.1 Why JavaScript</h2><ul>
-<li>Web 已经变成了一个重要的应用开发平台，而 JavaScript 是 Web 浏览器的语言，是世界上最被轻视的语言之一。很大部分的原因在于浏览器的 API 和 DOM 内容的糟糕导致 JavaScript 语言被误解。</li>
-<li>拥有极强表达能力的语言</li>
-</ul>
-<h2 id="1-2-Analyzing-JavaScript"><a href="#1-2-Analyzing-JavaScript" class="headerlink" title="1.2 Analyzing JavaScript"></a>1.2 Analyzing JavaScript</h2><p>JavaScript 好的一部分：</p>
-<ul>
-<li>函数、弱类型、动态对象与对象字面量表示法</li>
-</ul>
-<p>JavaScript 差的一部分：</p>
-<ul>
-<li>全局变量的编程模型</li>
-</ul>
-<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><ul>
-<li><p>JavaScript 的函数是基于词法作用域的顶级对象。即函数是根据词法来划分作用域的，而不是动态地划分作用域。</p>
-</li>
-<li><p>JavaScript 是第一个称为主流的 lambda 语言。</p>
-</li>
-</ul>
-<h3 id="弱类型"><a href="#弱类型" class="headerlink" title="弱类型"></a>弱类型</h3><ul>
-<li><p>大部分编程语言都流行要求强类型，原理在于强类型允许编译器在编译时检测错误，越早检测和修复错误，付出的代价越小，但事实上强类型并不会让你的测试工作轻松。</p>
-</li>
-<li><p>弱类型比较自由，无序建立复杂的类层次。</p>
-</li>
-</ul>
-<h3 id="对象字面量表示法"><a href="#对象字面量表示法" class="headerlink" title="对象字面量表示法"></a>对象字面量表示法</h3><ul>
-<li>JavaScript 通过列出对象的组成部分，因此能够简单地创建一个对象。</li>
-<li>这种表示法促使了 JSON 格式的产生。</li>
-</ul>
-<h3 id="原形继承"><a href="#原形继承" class="headerlink" title="原形继承"></a>原形继承</h3><ul>
-<li>原型继承是 JavaScript 中的一个有争议的特性。即JavaScript 有一个无类别（Class-free）的对象系统。</li>
-<li>对于习惯使用类去创建对象的程序员来说，需要习惯原型继承的特性。</li>
-</ul>
-<h1 id="3-对象"><a href="#3-对象" class="headerlink" title="3 对象"></a>3 对象</h1><p>除了简单类型：数字、字符串、布尔值、null 和 undefined 值之外，JavaScript中的其他所有值都是对象，如函数、数组和正则表达式等。<strong>对象通过引用来传递，它们永远不会被拷贝</strong>。</p>
-<h2 id="3-1-对象字面量"><a href="#3-1-对象字面量" class="headerlink" title="3.1 对象字面量"></a>3.1 对象字面量</h2><ul>
-<li>对象是属性的容器，属性拥有名字与值。属性的名字可以包括空字符串在内的任意字符串。属性值可以是出 underfined 值之外的任何值。</li>
-<li>对象是无类别（class-free），因此对新属性的名字和值没有约束。</li>
-<li>对象字面量可以出现在任何允许表达式出现的地方。</li>
-</ul>
-<p>对象字面量提供了一种非常方便地创建新对象值的表示法；一个对象字面量就是包围在一对花括号中的零或多个<code>Key/Value</code>对。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var empty = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">var stooge = &#123;</span><br><span class="line">	<span class="string">"first-name"</span>: <span class="string">"Jerome"</span>,</span><br><span class="line">	<span class="string">"last-name"</span>: <span class="string">"Howard"</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>如果属性名是一个合法的<code>JavaScript</code> 标识符且不是保留字，并不强制要求用<code>“”</code>（引号）括住属性名，因此<code>first-name</code>必须用引号括住（因为含有<code>-</code>字符），若是<code>first_name</code>则不需要。</li>
-</ul>
-<h2 id="3-2-检索"><a href="#3-2-检索" class="headerlink" title="3.2 检索"></a>3.2 检索</h2><h2 id="检索方式"><a href="#检索方式" class="headerlink" title="检索方式"></a>检索方式</h2><p>检索的对象中包含的值的方式有二：</p>
-<ul>
-<li>在<code>[]</code>后缀中括住一个字符串表达式，检索对象中包含的值。</li>
-<li>直接使用<code>.</code>检索；前提条件：字符串表达式是一个<code>String literal</code>，并且是合法的标识符。这种方式更加紧凑、可读性更好。</li>
-</ul>
-<h2 id="返回结果"><a href="#返回结果" class="headerlink" title="返回结果"></a>返回结果</h2><p>若尝试检索一个并不存在的成员元素的值，将返回一个 <code>underfined</code> 值。<strong>可以使用<code>||</code>运算符填充默认值。</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> middles = stooge[<span class="string">"middle-name"</span>] || <span class="string">"&#123;none&#125;"</span>;</span><br><span class="line"><span class="keyword">var</span> status = flight.status || <span class="string">"unknown"</span>;</span><br></pre></td></tr></table></figure>
-<p>尝试检索一个 <code>undefined</code> 值会导致 <code>TypeError</code> 异常。<strong>可以通过 <code>&amp;&amp;</code> 运算符来避免错误。</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">flight.equipment; <span class="comment">// undefine</span></span><br><span class="line">filght.equipment.model;	<span class="comment">// throw "TypeError"</span></span><br><span class="line">flight.equipment &amp;&amp; filght.equipment.model;	<span class="comment">// undefine</span></span><br></pre></td></tr></table></figure>
-<h2 id="3-3-更新"><a href="#3-3-更新" class="headerlink" title="3.3 更新"></a>3.3 更新</h2><p><strong>规则：</strong>若更新的属性名已经存在与对象中，那么这个属性的值将会被替换；但如果对象之前没有这个属性，那么该属性就被扩充到对象中。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> stooge = &#123;</span><br><span class="line">	<span class="string">"first-name"</span>: <span class="string">"Jerome"</span>,</span><br><span class="line">	<span class="string">"last-name"</span>: <span class="string">"Howard"</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">stooge[<span class="string">'first-name'</span>] = <span class="string">'Jerome'</span>;	<span class="comment">// replace the origin value of first-name</span></span><br><span class="line">stooge[<span class="string">'middle-name'</span>] = <span class="string">'Lester'</span>;	<span class="comment">// insert "middle-name" : "Lester" into stooge</span></span><br></pre></td></tr></table></figure>
-<h2 id="3-4-原型"><a href="#3-4-原型" class="headerlink" title="3.4 原型"></a>3.4 原型</h2><p>每一个对象都存在一个连接它的原型，对象可以继承这个原型的所有的属性（Prototype）；对于所有对象字面量创建的对象，都存在连接它们的原型<code>Object.prototype</code>(来自 JavaScript 标准)。</p>
-<p>通过原型机制，可以为 Object 增加一个方法，例如下面的代码为 Object 增加一个 beget 方法。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 实现一个接口，用作初始化 beget 方法</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">Object</span>.beget !== <span class="string">'function'</span>) &#123;</span><br><span class="line">	Obeject.beget = <span class="function"><span class="keyword">function</span> (<span class="params">o</span>) </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> F = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line">		F.prototype = o;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> F();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 2. 初始化 beget 方法</span></span><br><span class="line"><span class="keyword">var</span> another_stooge = <span class="built_in">Object</span>.beget(stooge);</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-<h3 id="委托（delegation）"><a href="#委托（delegation）" class="headerlink" title="委托（delegation）"></a>委托（delegation）</h3><p>对象在更新（<code>update</code>）时，不影响与原型的连接；原型的连接只有在检索值（<code>retrieval</code>）时才会被用到，如果我们尝试去获取某个对象的某个属性值时，且该对象没有该属性名，那么 JavaScript 会试着从原型对象中获取属性值。如果这个原型对象也没有该属性，那么再从它的原型中寻找，以此类推，直到该过程最后到达终点 <code>Object.prototype</code>，若最终检索失败，则会返回<code>undefined</code>。这一过程称为<strong>委托(delegation)</strong>。</p>
-<h3 id="原型的动态更新"><a href="#原型的动态更新" class="headerlink" title="原型的动态更新"></a>原型的动态更新</h3><p>原型关系是一中动态的关系，当我们添加一个新的属性到原型中，该属性就会立即对所有基于该原型创建的对象可见。</p>
-<h2 id="3-5-反射"><a href="#3-5-反射" class="headerlink" title="3.5 反射"></a>3.5 反射</h2><p><strong>获取的对象的属性类型有二</strong>： （1）使用 <code>typeof</code> 操作符，会检查原型链； （2） <code>hasOwnProperty()</code>方法，返回 <code>true</code> 或 <code>false</code>，注意不会检查原型链；</p>
-<h2 id="3-6-枚举与删除"><a href="#3-6-枚举与删除" class="headerlink" title="3.6 枚举与删除"></a>3.6 枚举与删除</h2><p><strong><code>for in</code>语句</strong></p>
-<p><code>for in</code> 语句可以用来遍历一个对象的所有属性，<strong>特点：</strong>遍历的元素出现的顺序是不确定的。下面是一个使用示例，打印所有不是函数的属性。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name;</span><br><span class="line"><span class="keyword">for</span> (name <span class="keyword">in</span> another_stooge) &#123;</span><br><span class="line">	<span class="keyword">if</span> (<span class="keyword">typeof</span> another_stooge[<span class="string">'name'</span>] !== <span class="string">'function'</span>) &#123;</span><br><span class="line">		<span class="built_in">document</span>.writenln(name + <span class="string">':'</span> + another_stooge[<span class="string">'name'</span>]);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><strong><code>for</code> 语句</strong></p>
-<p>若希望遍历的元素以特定的顺序出现，则需要创建一个数组，然后遍历该数组。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i;</span><br><span class="line"><span class="keyword">var</span> properties = [</span><br><span class="line"> <span class="string">'first-name'</span>,</span><br><span class="line"> <span class="string">'middle-name'</span>,</span><br><span class="line"> <span class="string">'last-name'</span>,</span><br><span class="line"> <span class="string">'profession'</span></span><br><span class="line">];</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; properties.length; i += <span class="number">1</span>) &#123;</span><br><span class="line"> <span class="built_in">document</span>.writeln(properties[i] + <span class="string">': '</span> +</span><br><span class="line">         another_stooge[properties[i]]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><code>delete</code> 运算符可以用来删除对象的属性，它会移除对象的属性，但是不会触及原型链中的任何元素。还需要注意一个现象，删除对象的属性可能会使得来自原型链中的属性浮现出来。</p>
-<h2 id="3-7-减少全局变量污染的方法"><a href="#3-7-减少全局变量污染的方法" class="headerlink" title="3.7 减少全局变量污染的方法"></a>3.7 减少全局变量污染的方法</h2><p>JavaScript 可以随意地定义全局变量，但全局变量削弱了程序的灵活性，应该避免。</p>
-<p><strong>一个方法是在你的应用中只创建唯一一个全局变量</strong>：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> MYAPP = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">MYAPP.stooge = &#123;</span><br><span class="line">    <span class="string">"first-name"</span>: <span class="string">"Joe"</span>,</span><br><span class="line">    <span class="string">"last-name"</span>: <span class="string">"Howard"</span></span><br><span class="line">&#125;;</span><br><span class="line">MYAPP.flight = &#123;</span><br><span class="line">    airline: <span class="string">"Oceanic"</span>,</span><br><span class="line">    number: <span class="number">815</span>,</span><br><span class="line">    departure: &#123;</span><br><span class="line">        IATA: <span class="string">"SYD"</span>,</span><br><span class="line">        time: <span class="string">"2004-09-22 14:55"</span>,</span><br><span class="line">        city: <span class="string">"Sydney"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    arrival: &#123;</span><br><span class="line">            IATA: <span class="string">"LAX"</span>,</span><br><span class="line">            time: <span class="string">"2004-09-23 10:42"</span>,</span><br><span class="line">            city: <span class="string">"Los Angeles"</span></span><br><span class="line">    &#125; </span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-<p>还可以通过闭包的方式封装信息，减少全局污染（之后介绍）。</p>
-<h1 id="4-Function"><a href="#4-Function" class="headerlink" title="4 Function"></a>4 Function</h1><h2 id="4-1-Function-Object"><a href="#4-1-Function-Object" class="headerlink" title="4.1 Function Object"></a>4.1 Function Object</h2><p>函数是对象，而对象是一个 <code>Key/Value</code> 对的集合并拥有一个连到原型对象的隐藏连接。对象字面量产生的对象连接到的是 <code>Object.protoype</code>，函数对象连接到的 <code>Funtion.prototype</code> 。</p>
-<p>因为函数是对象，因此可以拥有以下特性：</p>
-<ul>
-<li>函数可以存放在变量、对象和数组中；</li>
-<li>函数可以被当做参数传递给其他函数，也可以再返回函数；</li>
-<li>函数可以拥有方法。</li>
-</ul>
-<h2 id="4-2-Function-Literal"><a href="#4-2-Function-Literal" class="headerlink" title="4.2 Function Literal"></a>4.2 Function Literal</h2><p>函数字面量可以出现在任何允许表达式出现的地方，同时函数也可以被定义在其他函数中。一个内部函数自然可以访问自己的参数和变量，也可以访问它被嵌套在其中的那个函数的参数和变量。</p>
-<p>通过函数字面量创建的<strong>函数对象</strong>包含一个连到<strong>外部上下文</strong>的连接，称为<strong>闭包</strong>。这是 JavaScript 语言强大表现力的根基。</p>
-<h2 id="4-3-Invocation"><a href="#4-3-Invocation" class="headerlink" title="4.3 Invocation"></a>4.3 Invocation</h2><p>函数被调用时，除了声明时定义的参数外，每个函数接受两个附加的参数：<code>this</code>与<code>arguments</code>。</p>
-<p>第一个参数<code>this</code>的值取决于调用的模式，在 JavaScript 中有四种模式：<strong>方法调用模式</strong>、<strong>函数调用模式</strong>、<strong>构造器调用模式</strong>与<strong>apply 调用模式</strong>。第二个参数<code>arguments</code>是函数内置数组对象，表示被调用时传入的参数值数组。</p>
-<p>参数处理规则： 实际参数（<code>arguments</code>）个数大于形式参数（<code>parameters</code>）个数时，多余的实际参数将会被忽略，反之实际参数不足时，确实的形参值将会被<code>undefined</code>替代。</p>
-<h3 id="方法调用模式"><a href="#方法调用模式" class="headerlink" title="方法调用模式"></a>方法调用模式</h3><p><strong>描述：</strong>当一个函数被保存为对象中的一个属性时，称它为一个方法。JavaScript 将<strong>调用对象中的属性方法</strong>这一情形归类方法调用模式（The Method Invocation Pattern）。</p>
-<ul>
-<li>方法被调用时，<code>this</code>就被绑定到该对象，因此方法能从对象中取值或修改该对象。</li>
-<li><code>this</code>到对象的绑定发生在调用的时候，使得函数可以对<code>this</code>高度复用。</li>
-<li>通过<code>this</code>可取得它们所属对象的上下文的方法称为<strong>公共方法。</strong></li>
-</ul>
-<h3 id="函数调用模式"><a href="#函数调用模式" class="headerlink" title="函数调用模式"></a>函数调用模式</h3><p><strong>描述：</strong>一个函数不属于任何一个对象时，JavaScript 将该函数的调用的情形归类为<strong>函数调用模式（The Function Invocation Pattern）</strong>。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">"The Window"</span></span><br><span class="line"><span class="keyword">var</span> object = &#123;</span><br><span class="line">  name : <span class="string">"My Object"</span>,</span><br><span class="line">  getNameFunc : <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="comment">// 本层匿名函数的上一层也是一个函数，故这里应用的是函数调用模式，this 被绑定到全局变量 Window 上</span></span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">this</span>.name;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">alert(object.getNameFunc()());</span><br></pre></td></tr></table></figure>
-<ul>
-<li>函数在这种模式被调用时，<code>this</code> 会被绑定到全局对象。这是一个 JavaScript 语言上的一个错误。比较正确的规则应该将<code>this</code>仍然绑定到外部函数的<code>this</code>变量上。</li>
-</ul>
-<h3 id="构造调用模式"><a href="#构造调用模式" class="headerlink" title="构造调用模式"></a>构造调用模式</h3><p><strong>描述：</strong>一个函数前面带上了<code>new</code>关键字来调用，该函数会被视作一个 Object 进行初始化。JavaScript 将该函数的调用的情形归类为<strong>构造器调用模式（The Constructor Invocation Pattern）</strong>。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	alert(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">myFunction();	<span class="comment">// 1. alert [object Window]</span></span><br><span class="line"><span class="keyword">var</span> func1 = <span class="keyword">new</span> myFunction();	<span class="comment">// 2. alert [object Object]</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>当上面的代码运行在浏览器环境下，因为 1 处于函数调用模式，<code>this</code>被绑定到全局对象 <code>Window</code>上，2 处的</li>
-</ul>
-<h2 id="4-3-参数与返回"><a href="#4-3-参数与返回" class="headerlink" title="4.3 参数与返回"></a>4.3 参数与返回</h2><p>当函数被调用时，会得到一个参数 <code>arguments</code> 数组，这个数组包含了所有传入的实参。</p>
-<h2 id="4-4-异常"><a href="#4-4-异常" class="headerlink" title="4.4 异常"></a>4.4 异常</h2><h2 id="4-5-为类型添加方法"><a href="#4-5-为类型添加方法" class="headerlink" title="4.5 为类型添加方法"></a>4.5 为类型添加方法</h2><p>我们通过以下的方式为某个对象添加一个方法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">obj.prototype[anMethod] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;...&#125;;</span><br></pre></td></tr></table></figure><br>上面的方式同样适用于函数、数组、字符串、数字、</p>
-<p><strong>实例：为 Number 添加一个取整函数</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 1. 设计一个为函数添加特定函数的接口，第一个参数为该函数的名称，第二参数为函数的定义。</span></span><br><span class="line"><span class="built_in">Function</span>.prototype.method = <span class="function"><span class="keyword">function</span> (<span class="params">name,func</span>) </span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.prototype[name] = func;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 2. 为 Number 添加一个名为 integer 的函数；</span></span><br><span class="line"><span class="built_in">Number</span>.method(<span class="string">'integer'</span>,<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">Math</span>[<span class="keyword">this</span> &lt; <span class="number">0</span> ? <span class="string">'ceil'</span> : <span class="string">'floor'</span>](<span class="keyword">this</span>);	<span class="comment">// 这里应用的是方法调用模式，this 被绑定到 Number 对象上</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 3. 测试</span></span><br><span class="line"><span class="built_in">document</span>.writeln((<span class="number">-10</span> / <span class="number">3</span>).integer()); <span class="comment">// -3</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/06/20/javascript-note-1/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
