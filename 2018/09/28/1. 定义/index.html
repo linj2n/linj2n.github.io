@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Leetcode,OJ," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -94,18 +94,17 @@
 
 
 
-<meta name="description" content="88. Merge Sorted ArrayFrom：Leetcode: 88. Merge Sorted ArrayDescriptionGiven two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.You may assume that nums1 has enough s">
-<meta name="keywords" content="Leetcode,OJ">
+<meta name="description" content="Spring 提供基于注解的编程模型，例如，在模型中通过@Controller与@RestController注解表达 request 映射、request 的输入和异常处理等等。这些注解 Controller有着十分灵活的方法签名，同时既不需要继承任何的基类也不需要实现任何接口即可工作。 1. 定义在WebApplicationContext中，可以使用标准 Spring bean 定义来定义C">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[Leetcode] 88.Merge Sorted Array">
-<meta property="og:url" content="http://linj2n.cn/2018/01/04/88-Merge-Sorted-Array/index.html">
+<meta property="og:title" content="1 &#x2F; 0 == ∞">
+<meta property="og:url" content="http://linj2n.cn/2018/09/28/1. 定义/index.html">
 <meta property="og:site_name" content="1 &#x2F; 0 == ∞">
-<meta property="og:description" content="88. Merge Sorted ArrayFrom：Leetcode: 88. Merge Sorted ArrayDescriptionGiven two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.You may assume that nums1 has enough s">
+<meta property="og:description" content="Spring 提供基于注解的编程模型，例如，在模型中通过@Controller与@RestController注解表达 request 映射、request 的输入和异常处理等等。这些注解 Controller有着十分灵活的方法签名，同时既不需要继承任何的基类也不需要实现任何接口即可工作。 1. 定义在WebApplicationContext中，可以使用标准 Spring bean 定义来定义C">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-03-20T01:42:52.000Z">
+<meta property="og:updated_time" content="2018-09-27T16:59:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="[Leetcode] 88.Merge Sorted Array">
-<meta name="twitter:description" content="88. Merge Sorted ArrayFrom：Leetcode: 88. Merge Sorted ArrayDescriptionGiven two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.You may assume that nums1 has enough s">
+<meta name="twitter:title" content="1 &#x2F; 0 == ∞">
+<meta name="twitter:description" content="Spring 提供基于注解的编程模型，例如，在模型中通过@Controller与@RestController注解表达 request 映射、request 的输入和异常处理等等。这些注解 Controller有着十分灵活的方法签名，同时既不需要继承任何的基类也不需要实现任何接口即可工作。 1. 定义在WebApplicationContext中，可以使用标准 Spring bean 定义来定义C">
 
 
 
@@ -134,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://linj2n.cn/2018/01/04/88-Merge-Sorted-Array/"/>
+  <link rel="canonical" href="http://linj2n.cn/2018/09/28/1. 定义/"/>
 
 
 
 
 
-  <title>[Leetcode] 88.Merge Sorted Array | 1 / 0 == ∞</title>
+  <title> | 1 / 0 == ∞</title>
   
 
 
@@ -301,7 +300,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/01/04/88-Merge-Sorted-Array/">
+    <link itemprop="mainEntityOfPage" href="http://linj2n.cn/2018/09/28/1. 定义/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="linj2n">
@@ -318,7 +317,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">[Leetcode] 88.Merge Sorted Array</h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -330,8 +329,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-04T23:57:37+08:00">
-                2018/01/04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-28T00:59:56+08:00">
+                2018/09/28
               </time>
             
 
@@ -368,23 +367,45 @@
       
 
       
-        <h1 id="88-Merge-Sorted-Array"><a href="#88-Merge-Sorted-Array" class="headerlink" title="88. Merge Sorted Array"></a>88. Merge Sorted Array</h1><h3 id="From：Leetcode-88-Merge-Sorted-Array"><a href="#From：Leetcode-88-Merge-Sorted-Array" class="headerlink" title="From：Leetcode: 88. Merge Sorted Array"></a>From：<a href="https://leetcode.com/problems/merge-sorted-array/description/" target="_blank" rel="noopener">Leetcode: 88. Merge Sorted Array</a></h3><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.<br>You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additional elements from nums2. The number of elements initialized in nums1 and nums2 are m and n respectively.</p>
-<h2 id="Input-and-output-analysis"><a href="#Input-and-output-analysis" class="headerlink" title="Input and output analysis"></a>Input and output analysis</h2><p>给定两个排好序的数组<code>nums1</code>和<code>nums2</code>，将<code>num2</code>数组合并到<code>nums1</code>数组，并且最后的<code>nums1</code>也是有序的。</p>
-<h2 id="Approach-1"><a href="#Approach-1" class="headerlink" title="Approach#1"></a>Approach#1</h2><h3 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h3><p>由于合并<code>nums1</code>的大小为<code>m+n</code>，我们可以对<code>nums1</code>和<code>nums2</code>从后往前遍历，比较两数组的元素，将较大的元素依次复制到<code>nums1</code>末尾位置。</p>
-<a id="more"></a>
-<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><pre><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">merge</span><span class="params">(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span> m, <span class="keyword">int</span> [] nums2, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> i = m - <span class="number">1</span>,j = n - <span class="number">1</span>,k = m + n -<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (i &gt;= <span class="number">0</span> &amp;&amp; j &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums1[i] &lt; nums2[j]) &#123;</span><br><span class="line">                nums1[k--] = nums2[j--];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                nums1[k--] = nums1[i--];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (i &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            nums1[k--] = nums1[i--];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (j &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            nums1[k--] = nums2[j--];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></pre>
-
-<h3 id="Complexity"><a href="#Complexity" class="headerlink" title="Complexity"></a>Complexity</h3><table>
+        <p>Spring 提供基于注解的编程模型，例如，在模型中通过<code>@Controller</code>与<code>@RestController</code>注解表达 request 映射、request 的输入和异常处理等等。这些注解 <code>Controller</code>有着十分灵活的方法签名，同时既不需要继承任何的基类也不需要实现任何接口即可工作。</p>
+<h1 id="1-定义"><a href="#1-定义" class="headerlink" title="1. 定义"></a>1. 定义</h1><p>在<code>WebApplicationContext</code>中，可以使用标准 Spring bean 定义来定义<code>Controller</code> bean。</p>
+<p>要启用此类@Controller bean的自动检测，您可以将组件扫描添加到Java配置中：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@ComponentScan</span>(<span class="string">"org.example.web"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WebConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>等价的xml 配置如下：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:p</span>=<span class="string">"http://www.springframework.org/schema/p"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">xsi:schemaLocation</span>=<span class="string">"</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/beans/spring-beans.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/context</span></span></span><br><span class="line"><span class="tag"><span class="string">        http://www.springframework.org/schema/context/spring-context.xsd"</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"org.example.web"</span>/&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">&lt;!-- ... --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><code>@RestController</code>是一个组合注释，这个注释组合了<code>@Controller</code>与<code>@ResponseBody</code>。与 model-and-view 渲染不同，使用该注解的控制器下的所有方法继承了<code>@ResponseBody</code>，直接将信息写入 response body 映射。</p>
+<h1 id="2-Request-Mapping"><a href="#2-Request-Mapping" class="headerlink" title="2. Request Mapping"></a>2. Request Mapping</h1><p><code>@RequestMapping</code>注解用于将 request 映射到对应的 controller 方法。可以通过该注解的以下属性来指定请求所要满足的条件：</p>
+<table>
 <thead>
 <tr>
-<th>Time</th>
-<th>Space  </th>
+<th>属性</th>
+<th>描述 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>O( n )</td>
-<td>O( 1 )</td>
+<td><code>value</code></td>
+<td>指定请求的 URL template。</td>
+</tr>
+<tr>
+<td><code>method</code></td>
+<td>指定请求的 HTTP method 类型，如<code>method = RequestMethod.POST</code>，表示控制器/方法接受使用 POST 方法的请求</td>
+</tr>
+<tr>
+<td><code>consumes</code></td>
+<td>指定该控制器/方法接受请求的 Content-Type 类型，例如<code>consumes = {&quot;text/plain&quot;, &quot;application/*&quot;}</code>，表示控制器/方法接受<code>Content-Type=</code></td>
+</tr>
+<tr>
+<td><code>produces</code></td>
+<td>指定请求返回的内容类型，即接受处理的请求的<code>header</code>中的（Accept）类型中需要包含该指定类型。</td>
+</tr>
+<tr>
+<td><code>params</code></td>
+<td>指定request中必须包含某些参数值时，例如<code>params=&quot;myParam=myValue&quot;</code>即控制器/方法接受含有<code>myParam=myValue</code>的请求。</td>
+</tr>
+<tr>
+<td><code>headers</code></td>
+<td>指定request中必须包含某些指定的header值，例如<code>headers=&quot;Referer=http://linj2n.cn&quot;</code>，表示</td>
 </tr>
 </tbody>
 </table>
@@ -403,14 +424,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Leetcode/" rel="tag"># Leetcode</a>
-          
-            <a href="/tags/OJ/" rel="tag"># OJ</a>
-          
-        </div>
-      
 
       
       
@@ -420,8 +433,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/04/ServletAndJSPSummary1/" rel="next" title="Servlet/JSP学习总结（1）Servlet">
-                <i class="fa fa-chevron-left"></i> Servlet/JSP学习总结（1）Servlet
+              <a href="/2018/08/03/gradle-introduction/" rel="next" title="gradle-introduction">
+                <i class="fa fa-chevron-left"></i> gradle-introduction
               </a>
             
           </div>
@@ -429,10 +442,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/05/ServletAndJSPSummary2/" rel="prev" title="Servlet/JSP学习总结（2） JSP">
-                Servlet/JSP学习总结（2） JSP <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -581,7 +590,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#88-Merge-Sorted-Array"><span class="nav-number">1.</span> <span class="nav-text">88. Merge Sorted Array</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#From：Leetcode-88-Merge-Sorted-Array"><span class="nav-number">1.0.1.</span> <span class="nav-text">From：Leetcode: 88. Merge Sorted Array</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">1.1.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Input-and-output-analysis"><span class="nav-number">1.2.</span> <span class="nav-text">Input and output analysis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Approach-1"><span class="nav-number">1.3.</span> <span class="nav-text">Approach#1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Solution"><span class="nav-number">1.3.1.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Code"><span class="nav-number">1.3.2.</span> <span class="nav-text">Code</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Complexity"><span class="nav-number">1.3.3.</span> <span class="nav-text">Complexity</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-定义"><span class="nav-number">1.</span> <span class="nav-text">1. 定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Request-Mapping"><span class="nav-number">2.</span> <span class="nav-text">2. Request Mapping</span></a></li></ol></div>
             
 
           </div>
